@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/abc', function () {
+Route::get('/Huu trung', function () {
     return view('welcome');
 });
 
