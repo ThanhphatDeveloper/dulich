@@ -22,9 +22,5 @@ Route::get('/blog', function () {
     return 'home';
 });
 
-Route::get('/cc', function () {
-    return view('test');
-});
-
 // Route::resource('/tours', TourController::class);
 Route::resource('/tours', TourController::class);
