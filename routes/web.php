@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\TourController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/login', [LoginController::class, 'showForm'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.home');
 });
 
-Route::get('/abc', function () {
-    return view('welcome');
-});
+Route::resource('/users', UserController::class);
 
-// Route::resource('/tours', TourController::class);
 Route::resource('/tours', TourController::class);
