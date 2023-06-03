@@ -9,7 +9,7 @@
         @csrf
         <label>Email: </label> <input name="email"><br>
         @if($errors->has('email')) {{$errors->first('email')}} <br> @endif
-        <label>Password: </label> <input name="password"><br>
+        <label>Password: </label> <input type="password" name="password"><br>
         @if($errors->has('email')) {{$errors->first('email')}} <br> @endif
         <label>Remamber </label> <input type="checkbox" name="remamber"><br>
         <input type="submit">

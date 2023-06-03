@@ -19,7 +19,7 @@
             <a href="{{route('login')}}">Đăng nhập</a><br>  
         @endguest
         <br>
-        <a href="/">Home</a>
+        <a href="/admin">Home</a>
     @show
 
     <div class="container">

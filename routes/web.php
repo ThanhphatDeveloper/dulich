@@ -16,14 +16,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [LoginController::class, 'showForm'])->name('login');
-Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::middleware('auth')->group(function(){
+    Route::resource('/admin/users', UserController::class);
+    Route::resource('/admin/tours', TourController::class);
+    
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/', function () {
-    return view('home.home');
+    Route::prefix('admin')->middleware('can:isAdmin')->group(function(){
+        Route::get('dashboard', function(){
+            return view('admin.dashboard');
+        })->name('dashboard');
+    });
 });
 
-Route::resource('/users', UserController::class);
+Route::get('/admin/login', [LoginController::class, 'showForm'])->name('login');
+Route::post('/admin/login', [LoginController::class, 'authenticate'])->name('login');
 
-Route::resource('/tours', TourController::class);
+Route::get('/admin', function () {
+    return view('home.home');
+});
