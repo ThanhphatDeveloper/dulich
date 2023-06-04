@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(50)->create();
+        User::factory(15)->create();
 
         User::find(1)->update(
             [
@@ -22,6 +23,7 @@ class UserSeeder extends Seeder
                 'email'=>'admin@gmail.com',
                 'sdt'=>'0345774006',
                 'image'=>'testimage',
+                'password'=>Hash::make('0128'),
                 'admin'=>1,
                 'trangthai'=>1
             ]

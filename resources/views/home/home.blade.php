@@ -7,6 +7,8 @@
 @endsection
 
 @section('content')
-    <a href="{{route('users.index')}}">Danh sách user</a><br>
-    <a href="{{route('tours.index')}}">Danh sách tour</a>
+    @can('admin')
+        <a href="{{route('users.index')}}">Danh sách user</a><br>
+    @endcan
+    <a href="{{route('tours.index')}}">Danh sách tour</a><br>
 @endsection
