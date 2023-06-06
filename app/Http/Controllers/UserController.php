@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -25,7 +27,7 @@ class UserController extends Controller
         foreach($lst_users as $u){
             $this->fixImage($u);
         }
-        return view('users.user-index', ['lst'=>$lst_users]);
+        return view('admin.users.user-index', ['lst'=>$lst_users]);
     }
 
     /**
@@ -33,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.user-create');
+        return view('admin.users.user-create');
     }
 
     /**
@@ -41,7 +43,34 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd(Hash::make($request->password));
+
+        $u = new User;
+        $u->ho = $request->ho;
+        $u->ten = $request->ten;
+        $u->email = $request->email;
+        $u->sdt = $request->sdt;
+        $u->email_verified_at = Carbon::now()->toDateTimeString();
+        $u->password = Hash::make($request->password);
+        $u->admin = $request->admin;
+        $u->trangthai = 1;
+
+        // $u = User::create([
+        //     'ho'=>$request->ho,
+        //     'ten'=>$request->ten,
+        //     'email'=>$request->email,
+        //     'sdt'=>$request->sdt,
+        //     'email_verified_at'=>Carbon::now()->toDateTimeString(),
+        //     'password'=>Hash::make($request->password),
+        //     'admin'=>$request->admin,
+        //     'trangthai'=>1,
+        //     'image'=>''
+        // ]);
+
+        $path = $request->image->store('upload/user/'.$u->id,'public');
+        $u->image=$path;
+        $u->save();
+        return redirect()->route('users.index');
     }
 
     /**
@@ -54,7 +83,7 @@ class UserController extends Controller
         //     return $user;
         // }
         //dd($product);
-        return view('users.user-show', ['u'=>$user]);
+        return view('admin.users.user-show', ['u'=>$user]);
     }
 
     /**
@@ -62,7 +91,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        //dd($user);
+        return view('admin.users.user-edit', ['u'=>$user]);
     }
 
     /**
@@ -70,7 +100,25 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $path = $user->image;
+        if($request->hasFile('image') && $request->image->isValid()){
+            $path = $request->image->store('upload/product/'.$user->id, 'public');
+        }
+
+        User::where('id', $user->id)->update([
+            'ho'=>$request->ho,
+            'ten'=>$request->ten,
+            'email'=>$request->email,
+            'sdt'=>$request->sdt,
+            'password'=>Hash::make($request->password),
+            'admin'=>$request->admin,
+            'trangthai'=>$request->trangthai,
+            'image'=>$path
+        ]);
+
+        $u=User::where('id', $user->id)->get();
+        //dd($u);
+        return redirect()->route('users.show',['user'=>$user]);
     }
 
     /**
@@ -78,6 +126,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->fill([
+            'trangthai'=> 0,
+        ]);
+        $user->save();
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }

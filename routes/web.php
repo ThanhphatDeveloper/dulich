@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TourController;
+use App\Http\Controllers\LoaiTourController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function(){
     Route::resource('/admin/users', UserController::class);
     Route::resource('/admin/tours', TourController::class);
+    Route::resource('/admin/loaitours', LoaiTourController::class);
     
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 

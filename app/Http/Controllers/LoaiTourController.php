@@ -13,7 +13,8 @@ class LoaiTourController extends Controller
      */
     public function index()
     {
-        //
+        $lst_loaitours=LoaiTour::all();
+        return view('admin.loaitours.loaitour-index', ['lst'=>$lst_loaitours]);
     }
 
     /**
@@ -21,7 +22,7 @@ class LoaiTourController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.loaitours.loaitour-create');
     }
 
     /**
@@ -29,7 +30,12 @@ class LoaiTourController extends Controller
      */
     public function store(StoreLoaiTourRequest $request)
     {
-        //
+        //dd($request);
+        $l = LoaiTour::create([
+            'loaitour'=>$request->loaitour,
+        ]);
+        $l->save();
+        return redirect()->route('loaitours.index');
     }
 
     /**
@@ -59,8 +65,9 @@ class LoaiTourController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(LoaiTour $loaiTour)
+    public function destroy(LoaiTour $loaitour)
     {
-        //
+        $loaitour->delete();
+        return redirect()->route('loaitours.index');
     }
 }

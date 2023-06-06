@@ -31,9 +31,17 @@
             <option value='0'>admin cấp 2</option>
         </select><br>
 
-        <label>Ảnh đại diện: </label><input type="file" accept="image/*" name="image"><br>
+        
+        <label>Ảnh đại diện: </label><input id="ful_img" type="file" accept="image/*" name="image"><br>
         @if($errors->has('image')) {{$errors->first('image')}} <br> @endif
+        <img id="img_upload" style="width:100px;max-height:100px;object-fit:contain;"><br>
 
         <input type="submit">
     </form>
+
+    <script>
+        document.getElementById('ful_img').onchange = function (e) {
+            document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
+        }
+    </script>
 @endsection

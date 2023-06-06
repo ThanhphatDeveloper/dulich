@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'User list')
+@section('title', 'Thông tin người dùng')
 
 @section('header')
     @parent
@@ -23,6 +23,11 @@
         Chức năng: 
         @if ($u->admin == 1) admin cấp 1 @endif
         @if ($u->admin == 0) admin cấp 2 @endif
+    </p>
+    <p>
+        Trạng thái:
+        @if ($u->trangthai == 1) Hoạt động @endif
+        @if ($u->trangthai == 0) Không hoạt động @endif
     </p>
     <br>
 @endsection
