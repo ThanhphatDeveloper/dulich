@@ -23,7 +23,9 @@ class UserController extends Controller
 
     public function index()
     {
-        $lst_users=User::all();
+        //$lst_users=User::all();
+        $lst_users=User::paginate(10);
+        //dd($lst_users);
         foreach($lst_users as $u){
             $this->fixImage($u);
         }
@@ -102,7 +104,7 @@ class UserController extends Controller
     {
         $path = $user->image;
         if($request->hasFile('image') && $request->image->isValid()){
-            $path = $request->image->store('upload/product/'.$user->id, 'public');
+            $path = $request->image->store('upload/user/'.$user->id, 'public');
         }
 
         User::where('id', $user->id)->update([

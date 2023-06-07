@@ -12,6 +12,7 @@
     <a href="{{route('users.create')}}">Thêm</a><br>
     @foreach($lst as $u)
         <div class="tour">
+            {{$u->id}}
             <img style="width:100px;max-height:100px;object-fit:contain;" src="{{$u->image}}">
             <a href="{{route('users.show',['user'=>$u])}}">{{$u->email}}</a>
             {{$u->ho}}
@@ -19,4 +20,6 @@
             {{$u->sdt}}
         </div>
     @endforeach
+    
+    {{$lst->links()}}
 @endsection
