@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function(){
     Route::resource('/admin/users', UserController::class);
+    //Route::get('/admin/users-search', [UserController::class, 'getUserSearch']);
+    
     Route::resource('/admin/tours', TourController::class);
     Route::resource('/admin/loaitours', LoaiTourController::class);
     

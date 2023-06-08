@@ -9,6 +9,13 @@
 
 @section('content')
     <h1>Danh sách user</h1>
+
+    <form method="get" action="{{route('users.create')}}">
+        @csrf
+        <input name="search" value="{{old('search')}}">
+        <input type="submit" value="Tìm kiếm">
+    </form>
+
     <a href="{{route('users.create')}}">Thêm</a><br>
     @foreach($lst as $u)
         <div class="tour">
