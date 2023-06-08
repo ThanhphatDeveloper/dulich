@@ -153,7 +153,7 @@ class UserController extends Controller
                 'image.mimes' => 'Định dạng ảnh không hợp lệ (định dạng hợp lệ: jpg, png, bmp, gif)',
             ]
         );
-
+        
         if( $request->email != $user->email){
             $request->validate(
                 [
