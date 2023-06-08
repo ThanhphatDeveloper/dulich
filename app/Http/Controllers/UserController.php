@@ -45,7 +45,32 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //dd(Hash::make($request->password));
+        $request->validate(
+            [
+                'ho' => ['required', 'max:50'],
+                'ten' => ['required', 'max:20'],
+                'email' => ['required', 'unique:users', 'email',],
+                'sdt' => ['required', 'unique:users', 'max:10', 'min:10'],
+                'password' => ['required'],
+                'image' => ['required', 'mimes:jpg,png,bmp,gif'],
+            ],
+            [
+                'ho.required' => 'Họ không được để trống',
+                'ho.max' => 'Họ tối đa 50 ký tự',
+                'ten.required' => 'Tên không được để trống',
+                'ten.max' => 'Tên tối đa 20 ký tự',
+                'email.required' => 'Email không được để trống',
+                'email.unique' => 'Email đã tồn tại',
+                'email.email' => 'Email không đúng định dạng',
+                'sdt.required' => 'Số điện thoại không được để trống',
+                'sdt.unique' => 'Số điện thoại đã tồn tại',
+                'sdt.max' => 'Số điện thoại không hợp lệ',
+                'sdt.min' => 'Số điện thoại không hợp lệ',
+                'password.required' => 'Mật khẩu không được để trống',
+                'image.required' => 'Ảnh đại diện chưa được chọn',
+                'image.mimes' => 'Định dạng ảnh không hợp lệ (định dạng hợp lệ: jpg, png, bmp, gif)',
+            ]
+        );
 
         $u = new User;
         $u->ho = $request->ho;
@@ -105,6 +130,50 @@ class UserController extends Controller
         $path = $user->image;
         if($request->hasFile('image') && $request->image->isValid()){
             $path = $request->image->store('upload/user/'.$user->id, 'public');
+        }
+
+        $request->validate(
+            [
+                'ho' => ['required', 'max:50'],
+                'ten' => ['required', 'max:20'],
+                'email' => ['required', 'email',],
+                'sdt' => ['required'],
+                'password' => ['required'],
+                'image' => ['mimes:jpg,png,bmp,gif'],
+            ],
+            [
+                'ho.required' => 'Họ không được để trống',
+                'ho.max' => 'Họ tối đa 50 ký tự',
+                'ten.required' => 'Tên không được để trống',
+                'ten.max' => 'Tên tối đa 20 ký tự',
+                'email.required' => 'Email không được để trống',
+                'email.email' => 'Email không đúng định dạng',
+                'sdt.required' => 'Số điện thoại không được để trống',
+                'password.required' => 'Mật khẩu không được để trống',
+                'image.mimes' => 'Định dạng ảnh không hợp lệ (định dạng hợp lệ: jpg, png, bmp, gif)',
+            ]
+        );
+
+        if( $request->email != $user->email){
+            $request->validate(
+                [
+                    'email' => ['unique:users'],
+                ],
+                [
+                    'email.unique' => 'Email đã tồn tại'
+                ]
+            );
+        }
+
+        if( $request->sdt != $user->sdt){
+            $request->validate(
+                [
+                    'sdt' => ['unique:users'],
+                ],
+                [
+                    'sdt.unique' => 'Số diện thoại đã tồn tại'
+                ]
+            );
         }
 
         User::where('id', $user->id)->update([
