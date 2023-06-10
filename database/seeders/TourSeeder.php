@@ -27,8 +27,8 @@ class TourSeeder extends Seeder
                 'trangthai'=>true,
 
                 'nha_cung_cap_id'=>1,
-                
-                'khuyen_mai_id'=>null,
+
+                'khuyen_mai_id'=>0,
             ],
             [
                 'tentour'=>'Tour Hà Nội - Vịnh Hạ Long',

@@ -12,7 +12,7 @@
 
     <form method="get" action="">
         @csrf
-        <input name="key" value="{{old('key')}}" placeholder="Từ khóa(họ tên, số điện thoại, email">
+        <input name="key" value="{{old('key')}}" placeholder="Từ khóa">
         <button type="submit">
             Tìm kiếm
         </button>

@@ -24,6 +24,7 @@ class Tour extends Model
         return $this->belongsTo(KhuyenMai::class);
     }
 
+    
     public function tour_lien_quan(){
         return $this->hasMany(TourLienQuan::class);
     }
