@@ -13,8 +13,8 @@ class TourController extends Controller
      */
     public function index()
     {
-        $lst_tours=Tour::all();
-        return view('tour', ['lst'=>$lst_tours]);
+        $lst=Tour::paginate(10);
+        return view('admin.tours.tour-index', compact('lst'));
     }
 
     /**

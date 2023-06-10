@@ -23,13 +23,13 @@ class UserController extends Controller
 
     public function index()
     {
-        //$lst_users=User::all();
-        $lst_users=User::paginate(10);
-        //dd($lst_users);
+        $lst_users=User::search()->paginate(10);
+
         foreach($lst_users as $u){
             $this->fixImage($u);
         }
-        return view('admin.users.user-index', ['lst'=>$lst_users]);
+
+        return view('admin.users.user-index', compact('lst_users'));
     }
 
     /**

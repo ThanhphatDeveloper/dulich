@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\LoaiTour;
+use App\Models\Tour;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -24,7 +25,9 @@ class TourSeeder extends Seeder
                 'thoigian'=>'5N4D',
                 'phuongtien'=>'Xe khách',
                 'trangthai'=>true,
+
                 'nha_cung_cap_id'=>1,
+                
                 'khuyen_mai_id'=>null,
             ],
             [

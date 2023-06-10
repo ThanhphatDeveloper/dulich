@@ -56,4 +56,16 @@ class User extends Authenticatable
     public function khach_hang(){
         return $this->hasMany(KhachHang::class);
     }
+
+    public function scopeSearch($query)
+    {
+        if($key = request()->key){
+            $query=$query->where('ten', 'like', '%'.$key.'%')
+            ->orWhere('ho', 'like', '%'.$key.'%')
+            ->orWhere('sdt', 'like', '%'.$key.'%')
+            ->orWhere('email', 'like', '%'.$key.'%');
+        }
+
+        return $query;
+    }
 }

@@ -12,7 +12,7 @@ class NhaCungCap extends Model
     use SoftDeletes;
 
     protected $guarded = [];
-    public function tours(){
+    public function ncc_tours(){
         return $this->hasMany(Tour::class);
     }
 }
