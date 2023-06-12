@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LichTrinh;
-use App\Http\Requests\StoreLichTrinhRequest;
-use App\Http\Requests\UpdateLichTrinhRequest;
+use App\Models\ThoiGianTour;
+use App\Http\Requests\StoreThoiGianTourRequest;
+use App\Http\Requests\UpdateThoiGianTourRequest;
 
-class LichTrinhController extends Controller
+class ThoiGianTourController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class LichTrinhController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLichTrinhRequest $request)
+    public function store(StoreThoiGianTourRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class LichTrinhController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(LichTrinh $lichTrinh)
+    public function show(ThoiGianTour $thoiGianTour)
     {
         //
     }
@@ -43,7 +43,7 @@ class LichTrinhController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(LichTrinh $lichTrinh)
+    public function edit(ThoiGianTour $thoiGianTour)
     {
         //
     }
@@ -51,7 +51,7 @@ class LichTrinhController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLichTrinhRequest $request, LichTrinh $lichTrinh)
+    public function update(UpdateThoiGianTourRequest $request, ThoiGianTour $thoiGianTour)
     {
         //
     }
@@ -59,7 +59,7 @@ class LichTrinhController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(LichTrinh $lichTrinh)
+    public function destroy(ThoiGianTour $thoiGianTour)
     {
         //
     }

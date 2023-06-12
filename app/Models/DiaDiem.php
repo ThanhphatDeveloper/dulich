@@ -12,7 +12,7 @@ class DiaDiem extends Model
     use SoftDeletes;
 
     protected $guarded = [];
-    public function lichtrinhs(){
-        return $this->hasMany(LichTrinh::class);
+    public function tours(){
+        return $this->hasMany(Tour::class);
     }
 }

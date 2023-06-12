@@ -17,9 +17,6 @@ return new class extends Migration
             $table->bigInteger('gia');
             $table->string('mota');
             $table->datetime('ngaykhoihanh');
-            $table->string('diemkhoihanh');
-            $table->string('diemketthuc');
-            $table->string('thoigian');
             $table->string('phuongtien');
             $table->boolean('trangthai');
             $table->timestamps();

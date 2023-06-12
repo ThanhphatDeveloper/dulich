@@ -22,11 +22,11 @@ class DatabaseSeeder extends Seeder
             BlogSeeder::class,
             LoaiTourSeeder::class,
             NhaCungCapSeeder::class,
+            DiaDiemSeeder::class,
+            ThoiGianTourSeeder::class,
             TourSeeder::class,
             ImageTourSeeder::class,
             TourLienQuanSeeder::class,
-            DiaDiemSeeder::class,
-            LichTrinhSeeder::class,
         ]);
     }
 }

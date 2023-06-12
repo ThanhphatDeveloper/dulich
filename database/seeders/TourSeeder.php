@@ -7,6 +7,7 @@ use App\Models\Tour;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+
 class TourSeeder extends Seeder
 {
     /**
@@ -20,26 +21,26 @@ class TourSeeder extends Seeder
                 'gia'=>1200000,
                 'mota'=>'đoạn mô tả hcm - dl',
                 'ngaykhoihanh'=>'2023-05-08 08:00:00',
-                'diemkhoihanh'=>'Thành phố Hồ Chí Minh',
-                'diemketthuc'=>'Đà Lạt',
-                'thoigian'=>'5N4D',
+                'dia_diem_khoi_hanh_id'=>1,
+                'dia_diem_ket_thuc_id'=>2,
                 'phuongtien'=>'Xe khách',
                 'trangthai'=>true,
+                'thoi_gian_id'=>1,
 
                 'nha_cung_cap_id'=>1,
 
-                'khuyen_mai_id'=>0,
+                'khuyen_mai_id'=>1,
             ],
             [
                 'tentour'=>'Tour Hà Nội - Vịnh Hạ Long',
                 'gia'=>3000000,
                 'mota'=>'đoạn mô tả hn - vhl',
                 'ngaykhoihanh'=>'2023-05-10 10:00:00',
-                'diemkhoihanh'=>'Hà Nội',
-                'diemketthuc'=>'Vịnh Hạ Long',
-                'thoigian'=>'7N6D',
+                'dia_diem_khoi_hanh_id'=>3,
+                'dia_diem_ket_thuc_id'=>4,
                 'phuongtien'=>'Xe khách',
                 'trangthai'=>true,
+                'thoi_gian_id'=>2,
                 'nha_cung_cap_id'=>2,
                 'khuyen_mai_id'=>2,
             ]

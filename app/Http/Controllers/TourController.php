@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tour;
+use App\Models\ImageTour;
 use App\Http\Requests\StoreTourRequest;
 use App\Http\Requests\UpdateTourRequest;
 
@@ -13,7 +14,10 @@ class TourController extends Controller
      */
     public function index()
     {
-        $lst=Tour::paginate(10);
+        // $a=Tour::find(1);
+        // dd($a->loai_tour->loaitour);
+
+        $lst=Tour::search()->paginate(10);
         return view('admin.tours.tour-index', compact('lst'));
     }
 
@@ -38,7 +42,8 @@ class TourController extends Controller
      */
     public function show(Tour $tour)
     {
-        //
+        $lst_img=ImageTour::all();
+        return view('admin.tours.tour-show', ['t'=>$tour], ['lst_img'=>$lst_img]);
     }
 
     /**

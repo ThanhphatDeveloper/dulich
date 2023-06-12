@@ -27,16 +27,16 @@
                 <th>tên tour</th>
                 <th>điểm khởi hành</th>
                 <th>điểm kết thúc</th>
-                <th>nhà cung cấp</th>
+                <th>loại tour</th>
             </tr>
         </thead>
         <tbody>
             @foreach($lst as $t)
                 <tr>
                     <td>{{$t->id}}</td>
-                    <td>{{$t->tentour}}</td>
-                    <td>{{$t->diemkhoihanh}}</td>
-                    <td>{{$t->diemketthuc}}</td>
+                    <td><a href="{{route('tours.show',['tour'=>$t])}}">{{$t->tentour}}</a></td>
+                    <td>{{$t->dia_diem_khoi_hanh_id}}</td>
+                    <td>{{$t->dia_diem_ket_thuc_id}}</td>
 
                     <td>{{$t->loai_tour->loaitour}}</td>
                 </tr>
@@ -49,5 +49,9 @@
         {{$lst->appends(request()->all())->links()}}
     </div>
     
+    <hr>
+    <div class="">
+        {{$lst->appends(request()->all())->links()}}
+    </div>
     
 @endsection

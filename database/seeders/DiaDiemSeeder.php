@@ -15,25 +15,25 @@ class DiaDiemSeeder extends Seeder
     {
         DiaDiem::create(
             [
-                'diadiem'=>'dia diem 1',
+                'diadiem'=>'Thành phố Hồ Chí Minh',
                 'trangthai'=>1,
             ],
         );
         DiaDiem::create(
             [
-                'diadiem'=>'dia diem 2',
+                'diadiem'=>'Đà Lạt',
                 'trangthai'=>1,
             ],
         );
         DiaDiem::create(
             [
-                'diadiem'=>'dia diem 3',
+                'diadiem'=>'Hà Nội',
                 'trangthai'=>1,
             ],
         );
         DiaDiem::create(
             [
-                'diadiem'=>'dia diem 4',
+                'diadiem'=>'Vịnh Hạ Long',
                 'trangthai'=>1,
             ],
         );

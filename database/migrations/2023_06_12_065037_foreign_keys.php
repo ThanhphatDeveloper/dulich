@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::table('tours', function(Blueprint $table){
             $table->foreignId('loai_tour_id')->constrained('loai_tours');
+            $table->foreignId('dia_diem_khoi_hanh_id')->constrained('dia_diems');
+            $table->foreignId('dia_diem_ket_thuc_id')->constrained('dia_diems');
             $table->foreignId('nha_cung_cap_id')->constrained('nha_cung_caps');
+            $table->foreignId('thoi_gian_id')->constrained('thoi_gian_tours');
             $table->foreignId('khuyen_mai_id')->nullable()->default(null)->constrained('khuyen_mais');
-        });
-
-        Schema::table('lich_trinhs', function(Blueprint $table){
-            $table->foreignId('dia_diem_id')->constrained('dia_diems');
-            $table->foreignId('tour_id')->constrained('tours');
         });
 
         Schema::table('blogs', function(Blueprint $table){
