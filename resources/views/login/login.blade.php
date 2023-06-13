@@ -11,7 +11,7 @@
         @if($errors->has('email')) {{$errors->first('email')}} <br> @endif
         <label>Password: </label> <input type="password" name="password"><br>
         @if($errors->has('email')) {{$errors->first('email')}} <br> @endif
-        <label>Remamber </label> <input type="checkbox" name="remamber"><br>
+        <label>Remember </label> <input type="checkbox" name="remamber"><br>
         <input type="submit">
     </form>
 </body>

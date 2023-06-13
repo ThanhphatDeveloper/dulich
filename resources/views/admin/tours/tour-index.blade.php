@@ -23,7 +23,6 @@
     <table>
         <thead>
             <tr>
-                <th>id</th>
                 <th>tên tour</th>
                 <th>điểm khởi hành</th>
                 <th>điểm kết thúc</th>
@@ -33,10 +32,21 @@
         <tbody>
             @foreach($lst as $t)
                 <tr>
-                    <td>{{$t->id}}</td>
                     <td><a href="{{route('tours.show',['tour'=>$t])}}">{{$t->tentour}}</a></td>
-                    <td>{{$t->dia_diem_khoi_hanh_id}}</td>
-                    <td>{{$t->dia_diem_ket_thuc_id}}</td>
+                    <td>
+                        @foreach($lst_diadiem as $d)
+                            @if($t->dia_diem_khoi_hanh_id == $d->id)
+                                {{$d->diadiem}}
+                            @endif
+                        @endforeach
+                    </td>
+                    <td>
+                        @foreach($lst_diadiem as $d)
+                            @if($t->dia_diem_ket_thuc_id == $d->id)
+                                {{$d->diadiem}}
+                            @endif
+                        @endforeach
+                    </td>
 
                     <td>{{$t->loai_tour->loaitour}}</td>
                 </tr>
@@ -44,11 +54,6 @@
         </tbody>
     </table>
 
-    <hr>
-    <div class="">
-        {{$lst->appends(request()->all())->links()}}
-    </div>
-    
     <hr>
     <div class="">
         {{$lst->appends(request()->all())->links()}}

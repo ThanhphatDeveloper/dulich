@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tour;
+use App\Models\LoaiTour;
 use App\Models\ImageTour;
+use App\Models\DiaDiem;
+use App\Models\NhaCungCap;
+use App\Models\ThoiGianTour;
+use App\Models\KhuyenMai;
 use App\Http\Requests\StoreTourRequest;
 use App\Http\Requests\UpdateTourRequest;
 
@@ -18,7 +23,8 @@ class TourController extends Controller
         // dd($a->loai_tour->loaitour);
 
         $lst=Tour::search()->paginate(10);
-        return view('admin.tours.tour-index', compact('lst'));
+        $lst_diadiem=DiaDiem::all();
+        return view('admin.tours.tour-index', compact('lst'), ['lst_diadiem'=>$lst_diadiem]);
     }
 
     /**
@@ -26,7 +32,7 @@ class TourController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tours.tour-create');
     }
 
     /**
@@ -43,7 +49,21 @@ class TourController extends Controller
     public function show(Tour $tour)
     {
         $lst_img=ImageTour::all();
-        return view('admin.tours.tour-show', ['t'=>$tour], ['lst_img'=>$lst_img]);
+        $lst_dd=DiaDiem::all();
+        $lst_loai_tour=LoaiTour::all();
+        $lst_ncc=NhaCungCap::all();
+        $lst_tg=ThoiGianTour::all();
+        $lst_km=KhuyenMai::all();
+
+        return view('admin.tours.tour-show', ['t'=>$tour],
+        ['lst_img'=>$lst_img,
+        'lst_dd'=>$lst_dd,
+        'lst_loai_tour'=>$lst_loai_tour,
+        'lst_ncc'=>$lst_ncc,
+        'lst_tg'=>$lst_tg,
+        'lst_km'=>$lst_km
+        ]);
+        //['lst_dd'=>$lst_dd], ['lst_loai_tour'=>$lst_loai_tour]
     }
 
     /**
