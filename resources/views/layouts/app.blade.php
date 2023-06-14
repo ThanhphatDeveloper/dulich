@@ -4,6 +4,7 @@
     <title>Tour Du Lịch - @yield('title')</title>
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <script src="/ckeditor/ckeditor.js"></script>
 </head>
 <body>
     @section('header')

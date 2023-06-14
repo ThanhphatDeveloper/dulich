@@ -72,10 +72,14 @@
         @if ($t->trangthai == 1) Hoạt động @endif
         @if ($t->trangthai == 0) Không hoạt động @endif
     </p>
-    @foreach($lst_img as $i)
-        @if($i->tour_id == $t->id)
-            {{$i->image}}
-        @endif
-    @endforeach
+
+    <p>
+        Ảnh tour:
+        @foreach($lst_img as $i)
+            @if($i->tour_id == $t->id)
+                <img style="width:100px;max-height:100px;object-fit:contain;" src="{{$i->image}}">
+            @endif
+        @endforeach
+    </p>
     <br>
 @endsection

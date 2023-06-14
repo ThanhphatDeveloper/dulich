@@ -17,6 +17,16 @@ class KhuyenMaiSeeder extends Seeder
         KhuyenMai::create(
             [
                 'makhuyenmai'=>Str::random(10),
+                'mota'=>'Mô tả khuyến mãi 0',
+                'mucgiam'=>0,
+                'giatoithieu'=>0,
+                'hansudung'=>0,
+                'trangthai'=>1
+            ],
+        );
+        KhuyenMai::create(
+            [
+                'makhuyenmai'=>Str::random(10),
                 'mota'=>'Mô tả khuyến mãi test 1',
                 'mucgiam'=>500000,
                 'giatoithieu'=>1000000,

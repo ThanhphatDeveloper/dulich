@@ -11,24 +11,68 @@
 @section('content')
     <form method="post" action="{{route('tours.store')}}" enctype="multipart/form-data">
         @csrf
-        <label>Họ: </label><input name="ho" value="{{old('ho')}}"><br>
-        @if($errors->has('ho')) {{$errors->first('ho')}} <br> @endif
-        <label>Tên: </label><input name="ten" value="{{old('ten')}}"><br>
-        @if($errors->has('ten')) {{$errors->first('ten')}} <br> @endif
+        <label>Tên tour: </label><input name="tentour" value="{{old('tentour')}}"><br>
+        @if($errors->has('tentour')) {{$errors->first('tentour')}} <br> @endif
 
-        <label>Email: </label><input name="email" value="{{old('email')}}"><br>
-        @if($errors->has('email')) {{$errors->first('email')}} <br> @endif
+        <label>Loại tour: </label>
+        <select name="loaitour">
+            @foreach($lst_loai_tour as $cat)
+                <option value="{{$cat->id}}"> @if ($cat->id==old('loaitour'))
+                    selected @endif {{$cat->loaitour}}</option>
+            @endforeach
+        </select><br>
 
-        <label>Số điện thoại: </label><input name="sdt" value="{{old('sdt')}}"><br>
-        @if($errors->has('sdt')) {{$errors->first('sdt')}} <br> @endif
+        <label>Điểm khởi hành: </label>
+        <select name="dkh">
+            @foreach($lst_dd as $d)
+                <option value="{{$d->id}}"> @if ($d->id==old('diadiem'))
+                    selected @endif {{$d->diadiem}}</option>
+            @endforeach
+        </select><br>
 
-        <label>Mật khẩu: </label><input type="password" name="password" value="{{old('password')}}"><br>
-        @if($errors->has('password')) {{$errors->first('password')}} <br> @endif
+        <label>Điểm kết thúc: </label>
+        <select name="dkt">
+            @foreach($lst_dd as $d)
+                <option value="{{$d->id}}"> @if ($d->id==old('diadiem'))
+                    selected @endif {{$d->diadiem}}</option>
+            @endforeach
+        </select><br>
 
-        <label>Vai trò: </label>
-        <select name="admin">
-            <option value='1'>admin cấp 1</option>
-            <option value='0'>admin cấp 2</option>
+        <label>Nhà cung cấp: </label>
+        <select name="ncc">
+            @foreach($lst_ncc as $n)
+                <option value="{{$n->id}}"> @if ($n->id==old('ncc'))
+                    selected @endif {{$n->nhacungcap}}</option>
+            @endforeach
+        </select><br>
+
+        <label>Thời gian: </label>
+        <input name="ngay" value="{{old('ngay')}}">N
+        @if($errors->has('ngay')) {{$errors->first('ngay')}} @endif
+        <input name="dem" value="{{old('dem')}}">D
+        @if($errors->has('dem')) {{$errors->first('dem')}} @endif <br>
+
+        <label>Giá: </label><input name="gia" value="{{old('gia')}}"><br>
+        @if($errors->has('gia')) {{$errors->first('gia')}} <br> @endif
+
+        <label>Mô tả: </label><br><textarea id="editor" class="form-control" name="mota" rows="4" cols="50" value="{{old('mota')}}"></textarea><br>
+        @if($errors->has('mota')) {{$errors->first('mota')}} <br> @endif
+
+        <label>Ngày khởi hành: </label><input name="nkh" value="{{old('nkh')}}"><br>
+        @if($errors->has('nkh')) {{$errors->first('nkh')}} <br> @endif
+
+        <label>Phương tiện: </label>
+        <select name="phuongtien">
+            <option value='Xe khách'>Xe khách</option>
+            <option value='Máy bay'>Máy bay</option>
+        </select><br>
+
+        <label>Khuyến mãi: </label>
+        <select name="khuyenmai">
+            @foreach($lst_km as $k)
+                <option value="{{$k->id}}"> @if ($k->id==old('km'))
+                    selected @endif {{$k->mucgiam}}</option>
+            @endforeach
         </select><br>
 
         
@@ -43,5 +87,11 @@
         document.getElementById('ful_img').onchange = function (e) {
             document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
         }
+
+        ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        });
     </script>
 @endsection

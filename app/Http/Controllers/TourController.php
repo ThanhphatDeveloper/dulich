@@ -11,9 +11,21 @@ use App\Models\ThoiGianTour;
 use App\Models\KhuyenMai;
 use App\Http\Requests\StoreTourRequest;
 use App\Http\Requests\UpdateTourRequest;
+use Illuminate\Support\Facades\Storage;
 
 class TourController extends Controller
 {
+    protected function fixImage(ImageTour $u)
+    {
+        //dd($u);
+        //1 hình bất kì để vào folder public/img
+        if($u->image && Storage::disk('public')->exists($u->image)){
+            $u->image = Storage::url($u->image);
+        } else{
+            $u->image = '/img/test.gif';
+        }
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -32,7 +44,22 @@ class TourController extends Controller
      */
     public function create()
     {
-        return view('admin.tours.tour-create');
+        $lst_img=ImageTour::all();
+        $lst_dd=DiaDiem::all();
+        $lst_loai_tour=LoaiTour::all();
+        $lst_ncc=NhaCungCap::all();
+        $lst_tg=ThoiGianTour::all();
+        $lst_km=KhuyenMai::all();
+
+        return view('admin.tours.tour-create',
+        [
+            'lst_img'=>$lst_img,
+            'lst_dd'=>$lst_dd,
+            'lst_loai_tour'=>$lst_loai_tour,
+            'lst_ncc'=>$lst_ncc,
+            'lst_tg'=>$lst_tg,
+            'lst_km'=>$lst_km
+        ]);
     }
 
     /**
@@ -55,13 +82,18 @@ class TourController extends Controller
         $lst_tg=ThoiGianTour::all();
         $lst_km=KhuyenMai::all();
 
+        foreach($lst_img as $u){
+            $this->fixImage($u);
+        }
+
         return view('admin.tours.tour-show', ['t'=>$tour],
-        ['lst_img'=>$lst_img,
-        'lst_dd'=>$lst_dd,
-        'lst_loai_tour'=>$lst_loai_tour,
-        'lst_ncc'=>$lst_ncc,
-        'lst_tg'=>$lst_tg,
-        'lst_km'=>$lst_km
+        [
+            'lst_img'=>$lst_img,
+            'lst_dd'=>$lst_dd,
+            'lst_loai_tour'=>$lst_loai_tour,
+            'lst_ncc'=>$lst_ncc,
+            'lst_tg'=>$lst_tg,
+            'lst_km'=>$lst_km
         ]);
         //['lst_dd'=>$lst_dd], ['lst_loai_tour'=>$lst_loai_tour]
     }
