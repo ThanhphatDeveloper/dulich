@@ -10,11 +10,13 @@
 @section('content')
     <h1>{{$t->tentour}}</h1>
     <a href="{{route('tours.edit', ['tour'=>$t])}}">Sửa</a><br>
+
     <form method="post" action="{{route('tours.destroy', ['tour'=>$t])}}">
         @csrf
         @method('DELETE')
         <input type="submit" value="Xóa">
     </form>
+    
     <p>Giá: {{$t->gia}}</p>
     <p>Mô tả: {{$t->mota}}</p>
     <p>Ngày khởi hành: {{$t->ngaykhoihanh}}</p>
@@ -75,6 +77,8 @@
 
     <p>
         Ảnh tour:
+    </p>
+    <p>
         @foreach($lst_img as $i)
             @if($i->tour_id == $t->id)
                 <img style="width:100px;max-height:100px;object-fit:contain;" src="{{$i->image}}">

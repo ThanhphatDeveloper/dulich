@@ -58,7 +58,7 @@
         <label>Mô tả: </label><br><textarea id="editor" class="form-control" name="mota" rows="4" cols="50" value="{{old('mota')}}"></textarea><br>
         @if($errors->has('mota')) {{$errors->first('mota')}} <br> @endif
 
-        <label>Ngày khởi hành: </label><input name="nkh" value="{{old('nkh')}}"><br>
+        <label>Ngày khởi hành: </label><input type="datetime-local" name="nkh" value="{{old('nkh')}}"><br>
         @if($errors->has('nkh')) {{$errors->first('nkh')}} <br> @endif
 
         <label>Phương tiện: </label>
@@ -93,5 +93,9 @@
         .catch( error => {
             console.error( error );
         });
+
+        document.getElementById('ful_img').onchange = function (e) {
+            document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
+        }
     </script>
 @endsection

@@ -34,7 +34,7 @@ class TourController extends Controller
         // $a=Tour::find(1);
         // dd($a->loai_tour->loaitour);
 
-        $lst=Tour::search()->paginate(10);
+        $lst=Tour::search()->orderBy('created_at','DESC')->paginate(10);
         $lst_diadiem=DiaDiem::all();
         return view('admin.tours.tour-index', compact('lst'), ['lst_diadiem'=>$lst_diadiem]);
     }
@@ -67,7 +67,42 @@ class TourController extends Controller
      */
     public function store(StoreTourRequest $request)
     {
-        //
+        //dd($request);
+
+        $thoigian = ThoiGianTour::create([
+            'songay'=>$request->ngay,
+            'sodem'=>$request->dem,
+        ]);
+
+        $thoigian->save();
+
+        $t = Tour::create([
+            'tentour'=>$request->tentour,
+            'gia'=>$request->gia,
+            'mota'=>$request->mota,
+            'ngaykhoihanh'=>$request->nkh,
+            'phuongtien'=>$request->phuongtien,
+            'loai_tour_id'=>$request->loaitour,
+            'dia_diem_khoi_hanh_id'=>$request->dkh,
+            'dia_diem_ket_thuc_id'=>$request->dkt,
+            'nha_cung_cap_id'=>$request->ncc,
+            'thoi_gian_id'=>$thoigian->id,
+            'khuyen_mai_id'=>$request->khuyenmai,
+            'trangthai'=>1,
+        ]);
+
+        $t->save();
+
+        $image = ImageTour::create([
+            'image'=>'',
+            'tour_id'=>$t->id,
+        ]);
+
+        $path = $request->image->store('upload/imagetour/'.$image->id,'public');
+        $image->image=$path;
+        $image->save();
+
+        return redirect()->route('tours.index');
     }
 
     /**
@@ -103,7 +138,8 @@ class TourController extends Controller
      */
     public function edit(Tour $tour)
     {
-        //
+        dd($tour);
+        return view('admin.tours.tour-edit', ['t'=>$tour]);
     }
 
     /**
@@ -119,6 +155,11 @@ class TourController extends Controller
      */
     public function destroy(Tour $tour)
     {
-        //
+        $tour->fill([
+            'trangthai'=> 0,
+        ]);
+        $tour->save();
+        $tour->delete();
+        return redirect()->route('tours.index');
     }
 }

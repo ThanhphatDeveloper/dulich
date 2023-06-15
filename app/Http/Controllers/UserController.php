@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $lst_users=User::search()->paginate(10);
+        $lst_users=User::search()->orderBy('email_verified_at','DESC')->paginate(10);
 
         foreach($lst_users as $u){
             $this->fixImage($u);
@@ -203,23 +203,5 @@ class UserController extends Controller
         $user->save();
         $user->delete();
         return redirect()->route('users.index');
-    }
-
-    public function getUserSearch(Request $request)
-    {
-        dd($request->search);
-        $lst_users = User::query();
-
-        if ($request->has('ho')) {
-            $lst_users->where('name', 'LIKE', '%' . $request->search . '%');
-        }
-
-        $lst_users =  $lst_users->get();
-
-        foreach($lst_users as $u){
-            $this->fixImage($u);
-        }
-
-        return view('admin.users.user-index', ['lst'=>$lst_users]);
     }
 }

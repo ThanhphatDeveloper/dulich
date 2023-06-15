@@ -16,17 +16,11 @@ class ImageTourSeeder extends Seeder
         Tour::where('id',1)->first()->image_tour()->createMany([
             [
                 'image'=>'Ảnh tour 1'
-            ],
-            [
-                'image'=>'Ảnh tour 2'
             ]
         ]);
         Tour::where('id',2)->first()->image_tour()->createMany([
             [
-                'image'=>'Ảnh tour 3'
-            ],
-            [
-                'image'=>'Ảnh tour 4'
+                'image'=>'Ảnh tour 2'
             ]
         ]);
     }
