@@ -138,7 +138,7 @@ class TourController extends Controller
      */
     public function edit(Tour $tour)
     {
-        dd($tour);
+        //dd($tour);
         return view('admin.tours.tour-edit', ['t'=>$tour]);
     }
 

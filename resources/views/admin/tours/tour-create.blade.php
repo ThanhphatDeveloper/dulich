@@ -18,7 +18,7 @@
         <select name="loaitour">
             @foreach($lst_loai_tour as $cat)
                 <option value="{{$cat->id}}"> @if ($cat->id==old('loaitour'))
-                    selected @endif {{$cat->loaitour}}</option>
+                @endif {{$cat->loaitour}}</option>
             @endforeach
         </select><br>
 
@@ -34,7 +34,7 @@
         <select name="dkt">
             @foreach($lst_dd as $d)
                 <option value="{{$d->id}}"> @if ($d->id==old('diadiem'))
-                    selected @endif {{$d->diadiem}}</option>
+                @endif {{$d->diadiem}}</option>
             @endforeach
         </select><br>
 
@@ -42,17 +42,17 @@
         <select name="ncc">
             @foreach($lst_ncc as $n)
                 <option value="{{$n->id}}"> @if ($n->id==old('ncc'))
-                    selected @endif {{$n->nhacungcap}}</option>
+                   @endif {{$n->nhacungcap}}</option>
             @endforeach
         </select><br>
 
         <label>Thời gian: </label>
-        <input name="ngay" value="{{old('ngay')}}">N
+        <input type="number" name="ngay" value="{{old('ngay')}}">N
+        <input type="number" name="dem" value="{{old('dem')}}">D
         @if($errors->has('ngay')) {{$errors->first('ngay')}} @endif
-        <input name="dem" value="{{old('dem')}}">D
         @if($errors->has('dem')) {{$errors->first('dem')}} @endif <br>
 
-        <label>Giá: </label><input name="gia" value="{{old('gia')}}"><br>
+        <label>Giá: </label><input type="number" name="gia" value="{{old('gia')}}"><br>
         @if($errors->has('gia')) {{$errors->first('gia')}} <br> @endif
 
         <label>Mô tả: </label><br><textarea id="editor" class="form-control" name="mota" rows="4" cols="50" value="{{old('mota')}}"></textarea><br>
@@ -83,6 +83,14 @@
         <input type="submit">
     </form>
 
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+    </style>
+
     <script>
         document.getElementById('ful_img').onchange = function (e) {
             document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
@@ -93,9 +101,5 @@
         .catch( error => {
             console.error( error );
         });
-
-        document.getElementById('ful_img').onchange = function (e) {
-            document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
-        }
     </script>
 @endsection
