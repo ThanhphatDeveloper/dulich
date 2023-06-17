@@ -12,4 +12,5 @@
         <a href="{{route('loaitours.index')}}">Danh sách loại tour</a><br>
     @endcan
     <a href="{{route('tours.index')}}">Danh sách tour</a><br>
+    <a href="{{route('loaitours.index')}}">Danh sách  loại tour</a><br>
 @endsection

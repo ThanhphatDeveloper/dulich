@@ -12,6 +12,7 @@ use App\Models\KhuyenMai;
 use App\Http\Requests\StoreTourRequest;
 use App\Http\Requests\UpdateTourRequest;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class TourController extends Controller
 {
@@ -36,6 +37,15 @@ class TourController extends Controller
 
         $lst=Tour::search()->orderBy('created_at','DESC')->paginate(10);
         $lst_diadiem=DiaDiem::all();
+
+        
+
+        foreach($lst as $t){
+            $t->ngaykhoihanh = Carbon::parse($t->ngaykhoihanh)->format('Y-m-d\TH:i');
+        }
+
+        //dd($lst[0]->ngaykhoihanh);
+
         return view('admin.tours.tour-index', compact('lst'), ['lst_diadiem'=>$lst_diadiem]);
     }
 
@@ -139,7 +149,27 @@ class TourController extends Controller
     public function edit(Tour $tour)
     {
         //dd($tour);
-        return view('admin.tours.tour-edit', ['t'=>$tour]);
+        $lst_img=ImageTour::where('tour_id', '=', $tour->id)->get();
+        $lst_dd=DiaDiem::all();
+        $lst_loai_tour=LoaiTour::all();
+        $lst_ncc=NhaCungCap::all();
+        $lst_tg=ThoiGianTour::where('id', '=', $tour->thoi_gian_id)->first();
+        $lst_km=KhuyenMai::all();
+
+        //dd($tour->ngaykhoihanh);
+
+        foreach($lst_img as $u){
+            $this->fixImage($u);
+        }
+
+        return view('admin.tours.tour-edit', ['t'=>$tour],[
+            'lst_img'=>$lst_img,
+            'lst_dd'=>$lst_dd,
+            'lst_loai_tour'=>$lst_loai_tour,
+            'lst_ncc'=>$lst_ncc,
+            'lst_tg'=>$lst_tg,
+            'lst_km'=>$lst_km
+        ]);
     }
 
     /**
@@ -147,7 +177,51 @@ class TourController extends Controller
      */
     public function update(UpdateTourRequest $request, Tour $tour)
     {
-        //
+        //dd($request);
+
+        if( $request->tentour != $tour->tentour){
+            $request->validate(
+                [
+                    'tentour'=>['unique:tours']
+                ],
+                [
+                    'tentour.unique' => 'Tên tour đã tồn tại',
+                ]
+            );
+        }
+
+        $thoigian = ThoiGianTour::where('id', $tour->thoi_gian_id)->update([
+            'songay'=>$request->ngay,
+            'sodem'=>$request->dem,
+        ]);
+
+        //dd($thoigian);
+
+        $t = Tour::where('id', $tour->id)->update([
+            'tentour'=>$request->tentour,
+            'gia'=>$request->gia,
+            'mota'=>$request->mota,
+            'ngaykhoihanh'=>$request->nkh,
+            'phuongtien'=>$request->phuongtien,
+            'loai_tour_id'=>$request->loaitour,
+            'dia_diem_khoi_hanh_id'=>$request->dkh,
+            'dia_diem_ket_thuc_id'=>$request->dkt,
+            'nha_cung_cap_id'=>$request->ncc,
+            'thoi_gian_id'=>$thoigian,
+            'khuyen_mai_id'=>$request->khuyenmai,
+            'trangthai'=>1,
+        ]);
+
+        // $image = ImageTour::where('id', $tour->thoi_gian_id)->update([
+        //     'image'=>'',
+        //     'tour_id'=>$t->id,
+        // ]);
+
+        // $path = $request->image->store('upload/imagetour/'.$image->id,'public');
+        // $image->image=$path;
+        // $image->save();
+
+        return redirect()->route('tours.index');
     }
 
     /**

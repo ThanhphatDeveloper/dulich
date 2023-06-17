@@ -22,7 +22,7 @@ class StoreTourRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tentour'=>['required', 'unique:users'],
+            'tentour'=>['required', 'unique:tours'],
 
             'ngay'=>['required'],
             'dem'=>['required'],
@@ -40,6 +40,7 @@ class StoreTourRequest extends FormRequest
     {
         return [
             'tentour.required' => 'Tên tour không được bỏ trống',
+            'tentour.unique' => 'Tên tour đã tồn tại',
             'ngay.required' => 'Số ngày không được bỏ trống',
             'ngay.min' => 'Số ngày không hợp lệ',
             'dem.required' => 'Số đêm không được bỏ trống',

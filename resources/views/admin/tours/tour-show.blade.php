@@ -18,7 +18,7 @@
     </form>
     
     <p>Giá: {{$t->gia}}</p>
-    <p>Mô tả: {{$t->mota}}</p>
+    <p>Mô tả: {!!$t->mota!!}</p>
     <p>Ngày khởi hành: {{$t->ngaykhoihanh}}</p>
     <p>Phương tiện: {{$t->phuongtien}}</p>
     <p>

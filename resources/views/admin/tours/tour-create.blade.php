@@ -55,7 +55,9 @@
         <label>Giá: </label><input type="number" name="gia" value="{{old('gia')}}"><br>
         @if($errors->has('gia')) {{$errors->first('gia')}} <br> @endif
 
-        <label>Mô tả: </label><br><textarea id="editor" class="form-control" name="mota" rows="4" cols="50" value="{{old('mota')}}"></textarea><br>
+        <label>Mô tả: </label><br><textarea id="editor" class="form-control" name="mota" rows="4" cols="50" value="{{old('mota')}}">
+            {{old('mota')}}
+        </textarea><br>
         @if($errors->has('mota')) {{$errors->first('mota')}} <br> @endif
 
         <label>Ngày khởi hành: </label><input type="datetime-local" name="nkh" value="{{old('nkh')}}"><br>
