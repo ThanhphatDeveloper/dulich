@@ -11,7 +11,7 @@ class UpdateLoaiTourRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class UpdateLoaiTourRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'loaitour'=>['required'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'loaitour.required' => 'Tên tour không được bỏ trống'
         ];
     }
 }

@@ -15,4 +15,13 @@ class LoaiTour extends Model
     public function tours(){
         return $this->hasMany(Tour::class);
     }
+
+    public function scopeSearch($query)
+    {
+        if($key = request()->key){
+            $query=$query->where('loaitour', 'like', '%'.$key.'%');
+        }
+
+        return $query;
+    }
 }

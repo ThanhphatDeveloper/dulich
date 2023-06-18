@@ -13,8 +13,8 @@ class LoaiTourController extends Controller
      */
     public function index()
     {
-        $lst_loaitours=LoaiTour::all();
-        return view('admin.loaitours.loaitour-index', ['lst'=>$lst_loaitours]);
+        $lst=LoaiTour::search()->orderBy('created_at','DESC')->paginate(10);
+        return view('admin.loaitours.loaitour-index', compact('lst'));
     }
 
     /**
@@ -41,7 +41,7 @@ class LoaiTourController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(LoaiTour $loaiTour)
+    public function show(LoaiTour $loaitour)
     {
         //
     }
@@ -49,17 +49,34 @@ class LoaiTourController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(LoaiTour $loaiTour)
+    public function edit(LoaiTour $loaitour)
     {
-        //
+        return view('admin.loaitours.loaitour-edit', ['l'=>$loaitour]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLoaiTourRequest $request, LoaiTour $loaiTour)
+    public function update(UpdateLoaiTourRequest $request, LoaiTour $loaitour)
     {
-        //
+        //dd($request);
+
+        if( $request->loaitour != $loaitour->loaitour){
+            $request->validate(
+                [
+                    'loaitour' => ['unique:loai_tours'],
+                ],
+                [
+                    'loaitour.unique' => 'Loại tour đã tồn tại'
+                ]
+            );
+        }
+
+        $loaitour->fill([
+            'loaitour'=>$request->loaitour,
+        ]);
+        $loaitour->save();
+        return redirect()->route('loaitours.index');
     }
 
     /**
