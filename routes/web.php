@@ -4,6 +4,11 @@ use App\Http\Controllers\TourController;
 use App\Http\Controllers\LoaiTourController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DiaDiemController;
+use App\Http\Controllers\KhuyenMaiController;
+use App\Http\Controllers\NhaCungCapController;
+use App\Http\Controllers\ThanhToanController;
+use App\Http\Controllers\DonHangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +27,11 @@ Route::middleware('auth')->group(function(){
     
     Route::resource('/admin/tours', TourController::class);
     Route::resource('/admin/loaitours', LoaiTourController::class);
+    Route::resource('/admin/diadiems', DiaDiemController::class);
+    Route::resource('/admin/khuyenmais', KhuyenMaiController::class);
+    Route::resource('/admin/nhacungcaps', NhaCungCapController::class);
+    Route::resource('/admin/thanhtoans', ThanhToanController::class);
+    Route::resource('/admin/donhangs', DonHangController::class);
     
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 

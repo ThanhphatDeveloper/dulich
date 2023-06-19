@@ -4,7 +4,7 @@
 
 @section('header')
     @parent
-    &gt; <a href="{{route('loaitours.index');}}">Users</a>
+    &gt; <a href="{{route('loaitours.index');}}">Loại tour</a>
 @endsection
 
 @section('content')

@@ -11,7 +11,7 @@ class StoreNhaCungCapRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class StoreNhaCungCapRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nhacungcap'=>['required', 'unique:nha_cung_caps'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'nhacungcap.required' => 'Nhà cung cấp không được bỏ trống',
+            'nhacungcap.unique' => 'Nhà cung cấp đã tồn tại',
         ];
     }
 }

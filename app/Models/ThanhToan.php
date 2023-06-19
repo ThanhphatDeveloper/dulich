@@ -15,4 +15,16 @@ class ThanhToan extends Model
     public function don_hangs(){
         return $this->hasMany(DonHang::class);
     }
+
+    public function scopeSearch($query)
+    {
+        if($key = request()->key){
+            $query=$query->where('tenkhachhang', 'like', '%'.$key.'%')
+            ->orWhere('mathanhtoan', 'like', '%'.$key.'%')
+            ->orWhere('sotien', 'like', '%'.$key.'%')
+            ->orWhere('tenphuongthuc', 'like', '%'.$key.'%');
+        }
+
+        return $query;
+    }
 }

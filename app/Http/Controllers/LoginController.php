@@ -17,10 +17,17 @@ class LoginController extends Controller
      */
     public function authenticate(Request $request): RedirectResponse
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+        $credentials = $request->validate(
+            [
+                'email' => ['required', 'email'],
+                'password' => ['required'],
+            ],
+            [
+                'email.required' => 'Đăng nhập không hợp lệ',
+                'email.email' => 'Đăng nhập không hợp lệ',
+                'password.required' => 'Đăng nhập không hợp lệ',
+            ]
+        );
  
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
@@ -29,7 +36,7 @@ class LoginController extends Controller
         }
  
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Đăng nhập không hợp lệ'
         ])->onlyInput('email');
     }
 

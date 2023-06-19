@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('tenphuongthuc')->default('');
             $table->bigInteger('sotien')->default(0);
             $table->string('mathanhtoan')->nullable()->default('');
-            $table->string('ten')->default('');
+            $table->string('tenkhachhang')->default('');
             $table->datetime('ngaythanhtoan')->nullable();
             $table->boolean('trangthai')->default(0);
             $table->timestamps();

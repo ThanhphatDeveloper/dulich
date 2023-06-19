@@ -13,7 +13,8 @@ class NhaCungCapController extends Controller
      */
     public function index()
     {
-        //
+        $lst=NhaCungCap::search()->orderBy('created_at','DESC')->paginate(10);
+        return view('admin.nhacungcaps.nhacungcap-index', compact('lst'));
     }
 
     /**
@@ -21,7 +22,7 @@ class NhaCungCapController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.nhacungcaps.nhacungcap-create');
     }
 
     /**
@@ -29,13 +30,18 @@ class NhaCungCapController extends Controller
      */
     public function store(StoreNhaCungCapRequest $request)
     {
-        //
+        $n = NhaCungCap::create([
+            'nhacungcap'=>$request->nhacungcap,
+            'trangthai'=>1
+        ]);
+        $n->save();
+        return redirect()->route('nhacungcaps.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(NhaCungCap $nhaCungCap)
+    public function show(NhaCungCap $nhacungcap)
     {
         //
     }
@@ -43,24 +49,44 @@ class NhaCungCapController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(NhaCungCap $nhaCungCap)
+    public function edit(NhaCungCap $nhacungcap)
     {
-        //
+        return view('admin.nhacungcaps.nhacungcap-edit', ['n'=>$nhacungcap]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateNhaCungCapRequest $request, NhaCungCap $nhaCungCap)
+    public function update(UpdateNhaCungCapRequest $request, NhaCungCap $nhacungcap)
     {
-        //
+        if( $request->nhacungcap != $nhacungcap->nhacungcap){
+            $request->validate(
+                [
+                    'nhacungcap' => ['unique:nha_cung_caps'],
+                ],
+                [
+                    'nhacungcap.unique' => 'Nhà cung cấp đã tồn tại'
+                ]
+            );
+        }
+
+        $nhacungcap->fill([
+            'nhacungcap'=>$request->nhacungcap,
+            'trangthai'=>$request->trangthai,
+        ]);
+        $nhacungcap->save();
+        return redirect()->route('nhacungcaps.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(NhaCungCap $nhaCungCap)
+    public function destroy(NhaCungCap $nhacungcap)
     {
-        //
+        $nhacungcap->fill([
+            'trangthai'=>0,
+        ]);
+        $nhacungcap->save();
+        return redirect()->route('nhacungcaps.index');
     }
 }

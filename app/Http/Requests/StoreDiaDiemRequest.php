@@ -11,7 +11,7 @@ class StoreDiaDiemRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class StoreDiaDiemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'diadiem'=>['required', 'unique:dia_diems'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'diadiem.required' => 'Địa điểm không được bỏ trống',
+            'diadiem.unique' => 'Địa điểm đã tồn tại',
         ];
     }
 }

@@ -15,4 +15,13 @@ class DiaDiem extends Model
     public function tours(){
         return $this->hasMany(Tour::class);
     }
+
+    public function scopeSearch($query)
+    {
+        if($key = request()->key){
+            $query=$query->where('diadiem', 'like', '%'.$key.'%');
+        }
+
+        return $query;
+    }
 }

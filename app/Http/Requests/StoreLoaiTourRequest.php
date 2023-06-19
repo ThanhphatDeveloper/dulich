@@ -22,7 +22,15 @@ class StoreLoaiTourRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'loaitour'=>['required', 'unique:loai_tours'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'loaitour.required' => 'Lọa tour không được bỏ trống',
+            'loaitour.unique' => 'Loại tour đã tồn tại',
         ];
     }
 }

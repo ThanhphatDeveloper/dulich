@@ -19,4 +19,15 @@ class KhuyenMai extends Model
     public function don_hangs(){
         return $this->hasMany(DonHang::class);
     }
+
+    public function scopeSearch($query)
+    {
+        if($key = request()->key){
+            $query=$query->where('mucgiam', 'like', '%'.$key.'%')
+            ->orWhere('mota', 'like', '%'.$key.'%')
+            ->orWhere('makhuyenmai', 'like', '%'.$key.'%');
+        }
+
+        return $query;
+    }
 }

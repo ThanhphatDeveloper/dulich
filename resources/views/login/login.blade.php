@@ -10,7 +10,7 @@
         <label>Email: </label> <input name="email"><br>
         @if($errors->has('email')) {{$errors->first('email')}} <br> @endif
         <label>Password: </label> <input type="password" name="password"><br>
-        @if($errors->has('email')) {{$errors->first('email')}} <br> @endif
+        @if($errors->has('password')) {{$errors->first('password')}} <br> @endif
         <label>Remember </label> <input type="checkbox" name="remamber"><br>
         <input type="submit">
     </form>

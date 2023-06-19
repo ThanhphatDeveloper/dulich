@@ -29,7 +29,7 @@ class UpdateLoaiTourRequest extends FormRequest
     public function messages()
     {
         return [
-            'loaitour.required' => 'Tên tour không được bỏ trống'
+            'loaitour.required' => 'Loại tour không được bỏ trống'
         ];
     }
 }

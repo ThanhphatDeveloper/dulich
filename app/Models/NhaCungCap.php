@@ -20,4 +20,13 @@ class NhaCungCap extends Model
     // public function ncc_tours(){
     //     return $this->hasMany(Tour::class);
     // }
+
+    public function scopeSearch($query)
+    {
+        if($key = request()->key){
+            $query=$query->where('nhacungcap', 'like', '%'.$key.'%');
+        }
+
+        return $query;
+    }
 }
