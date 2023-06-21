@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LoaiTour;
 use App\Http\Requests\StoreLoaiTourRequest;
 use App\Http\Requests\UpdateLoaiTourRequest;
+use Carbon\Carbon;
 
 class LoaiTourController extends Controller
 {
@@ -84,7 +85,11 @@ class LoaiTourController extends Controller
      */
     public function destroy(LoaiTour $loaitour)
     {
-        $loaitour->delete();
+        $loaitour->fill([
+            'trangthai'=>0,
+            'thoigianxoa'=>Carbon::now()->toDateTimeString(),
+        ]);
+        $loaitour->save();
         return redirect()->route('loaitours.index');
     }
 }

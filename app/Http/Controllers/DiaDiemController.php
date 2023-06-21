@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DiaDiem;
 use App\Http\Requests\StoreDiaDiemRequest;
 use App\Http\Requests\UpdateDiaDiemRequest;
+use Carbon\Carbon;
 
 class DiaDiemController extends Controller
 {
@@ -86,6 +87,7 @@ class DiaDiemController extends Controller
     {
         $diadiem->fill([
             'trangthai'=>0,
+            'thoigianxoa'=>Carbon::now()->toDateTimeString(),
         ]);
         $diadiem->save();
         return redirect()->route('diadiems.index');

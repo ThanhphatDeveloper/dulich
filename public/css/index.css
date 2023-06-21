@@ -8,3 +8,7 @@
 body{
     padding: 1em;
 }
+
+#navbar-custom {
+    height: 49px;
+  }

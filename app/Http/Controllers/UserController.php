@@ -189,7 +189,7 @@ class UserController extends Controller
 
         $u=User::where('id', $user->id)->get();
         //dd($u);
-        return redirect()->route('users.show',['user'=>$user]);
+        return redirect()->route('users.index');
     }
 
     /**
@@ -197,11 +197,12 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->fill([
+        User::where('id', $user->id)->update([
             'trangthai'=> 0,
+            'thoigianxoa'=>Carbon::now()->toDateTimeString(),
         ]);
+        //dd($user);
         $user->save();
-        $user->delete();
         return redirect()->route('users.index');
     }
 }

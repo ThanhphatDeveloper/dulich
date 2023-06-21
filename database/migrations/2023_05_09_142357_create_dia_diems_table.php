@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('dia_diems', function (Blueprint $table) {
             $table->id();
             $table->string('diadiem');
-            $table->boolean('trangthai')->default(0);
+            $table->boolean('trangthai')->default(1);
+            $table->datetime('thoigianxoa')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });

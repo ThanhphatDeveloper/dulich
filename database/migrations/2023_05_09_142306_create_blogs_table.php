@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('tieude');
             $table->string('noidung');
             $table->string('anhdaidien');
-            $table->boolean('trangthai');
+            $table->boolean('trangthai')->default(1);
+            $table->datetime('thoigianxoa')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });

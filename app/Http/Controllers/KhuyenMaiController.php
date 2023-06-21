@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\KhuyenMai;
 use App\Http\Requests\StoreKhuyenMaiRequest;
 use App\Http\Requests\UpdateKhuyenMaiRequest;
+use Carbon\Carbon;
 
 class KhuyenMaiController extends Controller
 {
@@ -13,7 +14,8 @@ class KhuyenMaiController extends Controller
      */
     public function index()
     {
-        //
+        $lst=KhuyenMai::search()->orderBy('created_at','DESC')->paginate(10);
+        return view('admin.khuyenmais.khuyenmai-index', compact('lst'));
     }
 
     /**
@@ -21,7 +23,7 @@ class KhuyenMaiController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.khuyenmais.khuyenmai-create');
     }
 
     /**
@@ -29,13 +31,23 @@ class KhuyenMaiController extends Controller
      */
     public function store(StoreKhuyenMaiRequest $request)
     {
-        //
+        //dd($request);
+        $k = KhuyenMai::create([
+            'makhuyenmai'=>$request->makhuyenmai,
+            'mota'=>$request->mota,
+            'mucgiam'=>$request->mucgiam,
+            'giatoithieu'=>$request->giatoithieu,
+            'hansudung'=>$request->hansudung,
+            'trangthai'=>1
+        ]);
+        $k->save();
+        return redirect()->route('khuyenmais.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(KhuyenMai $khuyenMai)
+    public function show(KhuyenMai $khuyenmai)
     {
         //
     }
@@ -43,24 +55,39 @@ class KhuyenMaiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(KhuyenMai $khuyenMai)
+    public function edit(KhuyenMai $khuyenmai)
     {
-        //
+        //dd($khuyenmai);
+        return view('admin.khuyenmais.khuyenmai-edit', ['k'=>$khuyenmai]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateKhuyenMaiRequest $request, KhuyenMai $khuyenMai)
+    public function update(UpdateKhuyenMaiRequest $request, KhuyenMai $khuyenmai)
     {
-        //
+        //dd($request);
+        KhuyenMai::where('id', '=', $khuyenmai->id)->update([
+            'mota'=>$request->mota,
+            'mucgiam'=>$request->mucgiam,
+            'giatoithieu'=>$request->giatoithieu,
+            'hansudung'=>$request->hansudung,
+            'trangthai'=>$request->trangthai,
+        ]);
+        $khuyenmai->save();
+        return redirect()->route('khuyenmais.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(KhuyenMai $khuyenMai)
+    public function destroy(KhuyenMai $khuyenmai)
     {
-        //
+        $khuyenmai->fill([
+            'trangthai'=>0,
+            'thoigianxoa'=>Carbon::now()->toDateTimeString(),
+        ]);
+        $khuyenmai->save();
+        return redirect()->route('khuyenmais.index');
     }
 }

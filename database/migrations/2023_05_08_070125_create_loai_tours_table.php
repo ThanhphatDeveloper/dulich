@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('loai_tours', function (Blueprint $table) {
             $table->id();
             $table->string('loaitour');
+            $table->boolean('trangthai')->default(1);
+            $table->datetime('thoigianxoa')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });

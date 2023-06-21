@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ThanhToan;
 use App\Http\Requests\StoreThanhToanRequest;
 use App\Http\Requests\UpdateThanhToanRequest;
+use Carbon\Carbon;
 
 class ThanhToanController extends Controller
 {
@@ -13,7 +14,8 @@ class ThanhToanController extends Controller
      */
     public function index()
     {
-        //
+        $lst=ThanhToan::search()->orderBy('created_at','DESC')->paginate(10);
+        return view('admin.thanhtoans.thanhtoan-index', compact('lst'));
     }
 
     /**
@@ -59,8 +61,13 @@ class ThanhToanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ThanhToan $thanhToan)
+    public function destroy(ThanhToan $thanhtoan)
     {
-        //
+        $thanhtoan->fill([
+            'trangthai'=>0,
+            'thoigianxoa'=>Carbon::now()->toDateTimeString(),
+        ]);
+        $thanhtoan->save();
+        return redirect()->route('thanhtoans.index');
     }
 }

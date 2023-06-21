@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('admin')->default(0);
             $table->boolean('trangthai')->default(0);
+            $table->datetime('thoigianxoa')->nullable()->default(null);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

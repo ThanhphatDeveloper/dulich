@@ -19,6 +19,7 @@ return new class extends Migration
             $table->datetime('ngaykhoihanh');
             $table->string('phuongtien');
             $table->boolean('trangthai');
+            $table->datetime('thoigianxoa')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });

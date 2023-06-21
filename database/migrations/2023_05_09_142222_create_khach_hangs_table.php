@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('ten')->default('');
             $table->string('gioitinh');
             $table->string('sdt')->default('');
-            $table->boolean('trangthai')->default(0);
+            $table->boolean('trangthai')->default(1);
+            $table->datetime('thoigianxoa')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });

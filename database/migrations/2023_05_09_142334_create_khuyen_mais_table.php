@@ -18,7 +18,8 @@ return new class extends Migration
             $table->bigInteger('mucgiam')->default(0);
             $table->bigInteger('giatoithieu')->default(0);
             $table->bigInteger('hansudung')->default(0);
-            $table->boolean('trangthai')->default(0);
+            $table->boolean('trangthai')->default(1);
+            $table->datetime('thoigianxoa')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });

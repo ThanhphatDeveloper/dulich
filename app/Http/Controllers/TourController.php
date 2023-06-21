@@ -231,9 +231,9 @@ class TourController extends Controller
     {
         $tour->fill([
             'trangthai'=> 0,
+            'thoigianxoa'=>Carbon::now()->toDateTimeString(),
         ]);
         $tour->save();
-        $tour->delete();
         return redirect()->route('tours.index');
     }
 }

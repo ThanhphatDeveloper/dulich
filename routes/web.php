@@ -32,6 +32,10 @@ Route::middleware('auth')->group(function(){
     Route::resource('/admin/nhacungcaps', NhaCungCapController::class);
     Route::resource('/admin/thanhtoans', ThanhToanController::class);
     Route::resource('/admin/donhangs', DonHangController::class);
+
+    Route::get('/admin/home', function () {
+        return view('home.home');
+    });
     
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 

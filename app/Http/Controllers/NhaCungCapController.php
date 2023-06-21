@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\NhaCungCap;
 use App\Http\Requests\StoreNhaCungCapRequest;
 use App\Http\Requests\UpdateNhaCungCapRequest;
+use Carbon\Carbon;
 
 class NhaCungCapController extends Controller
 {
@@ -85,6 +86,7 @@ class NhaCungCapController extends Controller
     {
         $nhacungcap->fill([
             'trangthai'=>0,
+            'thoigianxoa'=>Carbon::now()->toDateTimeString(),
         ]);
         $nhacungcap->save();
         return redirect()->route('nhacungcaps.index');

@@ -20,7 +20,8 @@ return new class extends Migration
             $table->bigInteger('sokhach');
             $table->datetime('ngaydat');
             $table->bigInteger('tongtien');
-            $table->boolean('trangthai')->default(0);
+            $table->boolean('trangthai')->default(1);
+            $table->datetime('thoigianxoa')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });

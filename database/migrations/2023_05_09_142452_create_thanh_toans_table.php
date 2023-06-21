@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('mathanhtoan')->nullable()->default('');
             $table->string('tenkhachhang')->default('');
             $table->datetime('ngaythanhtoan')->nullable();
-            $table->boolean('trangthai')->default(0);
+            $table->boolean('trangthai')->default(1);
+            $table->datetime('thoigianxoa')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });
