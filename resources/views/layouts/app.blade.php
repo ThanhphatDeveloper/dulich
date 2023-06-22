@@ -97,7 +97,7 @@
         
         @section('header')
             @auth
-                Chào {{Auth::user()->ho}} {{Auth::user()->ten}}
+                {{Auth::user()->ho}} {{Auth::user()->ten}}
             @endauth
             @guest
                 <a href="{{route('login')}}">Đăng nhập</a><br>  
@@ -130,8 +130,7 @@
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Thoát</button>
                         @auth
-                            <form method="post"
-                                action="{{route('logout')}}">
+                            <form method="post" action="{{route('logout')}}">
                                 @csrf
                                 <button class="btn btn-primary" type="submit">Đăng xuất</button>
                             </form>
@@ -160,5 +159,8 @@
     <script src="{{asset('js/admin.js')}}"></script>
 	   <!-- Custom scripts for this page-->
     <script src="{{asset('js/admin-charts.js')}}"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('editor');
+    </script>
 </body>
 </html>

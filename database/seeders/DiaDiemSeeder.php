@@ -37,5 +37,11 @@ class DiaDiemSeeder extends Seeder
                 'trangthai'=>1,
             ],
         );
+        DiaDiem::create(
+            [
+                'diadiem'=>'London',
+                'trangthai'=>1,
+            ],
+        );
     }
 }

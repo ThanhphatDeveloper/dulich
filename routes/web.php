@@ -50,5 +50,9 @@ Route::get('/admin/login', [LoginController::class, 'showForm'])->name('login');
 Route::post('/admin/login', [LoginController::class, 'authenticate'])->name('login');
 
 Route::get('/admin', function () {
-    return view('home.home');
+    return view('login.login');
+});
+
+Route::get('/test', function () {
+    return view('test');
 });

@@ -55,7 +55,7 @@
         <label>Giá: </label><input type="number" name="gia" value="{{old('gia')}}"><br>
         @if($errors->has('gia')) {{$errors->first('gia')}} <br> @endif
 
-        <label>Mô tả: </label><br><textarea id="editor" class="form-control" name="mota" rows="4" cols="50" value="{{old('mota')}}">
+        <label>Mô tả: </label><br><textarea rows="8" id="editor" class="form-control" name="mota" rows="4" cols="50" value="{{old('mota')}}">
             {{old('mota')}}
         </textarea><br>
         @if($errors->has('mota')) {{$errors->first('mota')}} <br> @endif
@@ -78,11 +78,13 @@
         </select><br>
 
         
-        <label>Ảnh đại diện: </label><input id="ful_img" type="file" accept="image/*" name="image"><br>
+        <!-- <label>Ảnh đại diện: </label><input id="ful_img" type="file" accept="image/*" name="image"><br>
         @if($errors->has('image')) {{$errors->first('image')}} <br> @endif
-        <img id="img_upload" style="width:100px;max-height:100px;object-fit:contain;"><br>
+        <img id="img_upload" style="width:100px;max-height:100px;object-fit:contain;"><br> -->
+        <label>Ảnh liên quan: </label>
+        <input name="image" type="file" multiple/>
 
-        <input type="submit">
+        <br><input type="submit">
     </form>
 
     <style>
@@ -91,70 +93,36 @@
         -webkit-appearance: none;
         margin: 0;
         }
+
+        .img {
+                height: 100px;
+                display: block;
+            }
     </style>
 
-    <script>
-        document.getElementById('ful_img').onchange = function (e) {
-            document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
-        }
+    <script type="text/javascript">
 
-        ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        });
+        function imgToData(input) {
+            $.each(input.files, function(i, v) {
+                        var n = i + 1;
+                        var File = new FileReader();
+                        File.onload = function(event) {
+                        $('<img/>').attr({
+                            src: event.target.result,
+                            class: 'img',
+                            id: 'img-' + n + '-preview',
+                        }).appendTo('body');
+                        };
+
+                        File.readAsDataURL(input.files[i]);
+                    });
+            }
+
+
+            $('input[type="file"]').change(function(event) {
+                imgToData(this);
+            });
+
     </script>
 @endsection
 
-@section('menu')
-    @can('admin')
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('users.index')}}">
-            <i class="fa fa-fw fa-user"></i>
-            <span class="nav-link-text">Quản lý tài khoản</span>
-        </a>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('loaitours.index')}}">
-            <i class="fa fa-fw fa-pencil"></i>
-            <span class="nav-link-text">Quản lý loại tour</span>
-        </a>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('tours.index')}}">
-            <i class="fa fa-fw fa-globe"></i>
-            <span class="nav-link-text">Quản lý tour</span>
-        </a>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('diadiems.index')}}">
-            <i class="fa fa-fw fa-map-marker"></i>
-            <span class="nav-link-text">Quản lý địa điểm</span>
-        </a>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('khuyenmais.index')}}">
-            <i class="fa fa-fw fa-tags"></i>
-            <span class="nav-link-text">Quản lý khuyến mãi</span>
-        </a>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('nhacungcaps.index')}}">
-            <i class="fa fa-fw fa-id-card-o"></i>
-            <span class="nav-link-text">Quản lý nhà cung cấp</span>
-        </a>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('thanhtoans.index')}}">
-            <i class="fa fa-fw fa-credit-card-alt"></i>
-            <span class="nav-link-text">Quản lý thanh toán</span>
-        </a>
-    @endcan
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('donhangs.index')}}">
-            <i class="fa fa-fw fa-shopping-cart"></i>
-            <span class="nav-link-text">Quản lý đơn hàng</span>
-        </a>
-@endsection

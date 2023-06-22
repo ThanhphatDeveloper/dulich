@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'ten'=>'Trung',
                 'email'=>'admin@gmail.com',
                 'sdt'=>'0345774006',
-                'image'=>'testimage',
+                'image'=>'img/test.gif',
                 'password'=>Hash::make('0128'),
                 'admin'=>1,
                 'trangthai'=>1

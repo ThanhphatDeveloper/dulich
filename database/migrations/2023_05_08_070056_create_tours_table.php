@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('tentour');
             $table->bigInteger('gia');
-            $table->string('mota');
+            $table->longText('mota');
             $table->datetime('ngaykhoihanh');
             $table->string('phuongtien');
             $table->boolean('trangthai');

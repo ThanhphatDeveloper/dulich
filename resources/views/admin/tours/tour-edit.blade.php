@@ -56,7 +56,7 @@
         <label>Giá: </label><input type="number" name="gia" value="{{old('gia', $t->gia)}}"><br>
         @if($errors->has('gia')) {{$errors->first('gia')}} <br> @endif
 
-        <label>Mô tả: </label><br><textarea id="edittour" class="form-control" name="mota" rows="4" cols="50">
+        <label>Mô tả: </label><br><textarea id="editor" class="form-control" name="mota" rows="4" cols="50">
             {!!old('mota', $t->mota)!!}
         </textarea><br>
         @if($errors->has('mota')) {{$errors->first('mota')}} <br> @endif
@@ -100,12 +100,6 @@
         document.getElementById('ful_img').onchange = function (e) {
             document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
         }
-
-        ClassicEditor
-        .create( document.querySelector( '#edittour' ) )
-        .catch( error => {
-            console.error( error );
-        });
     </script>
 @endsection
 
