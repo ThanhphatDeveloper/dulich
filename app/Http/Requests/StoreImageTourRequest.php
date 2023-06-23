@@ -22,7 +22,15 @@ class StoreImageTourRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'image'=>['required', 'mimes:jpg,png,bmp,gif'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'image.required' => 'Ảnh tour không được bỏ trống',
+            'image.mimes' => 'Định dạng ảnh không hợp lệ (định dạng hợp lệ: jpg, png, bmp, gif)'
         ];
     }
 }

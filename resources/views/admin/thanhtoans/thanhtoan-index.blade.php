@@ -27,8 +27,6 @@
                 <th>Mã thanh toán</th>
                 <th>Tên khách hàng</th>
                 <th>Ngày thanh toán</th>
-                <th>Trạng thái</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -40,22 +38,6 @@
                     <td>{{$t->mathanhtoan}}</td>
                     <td>{{$t->tenkhachhang}}</td>
                     <td>{{$t->ngaythanhtoan}}</td>
-                    <td>
-                        @if($t->trangthai == 0)
-                            <span class="badge badge-danger">Đã xóa</span>
-                        @else
-                            <span class="badge badge-success">Hoạt động</span>
-                        @endif
-                    </td>
-                    <td>
-                        <form method="post" action="{{route('thanhtoans.destroy', ['thanhtoan'=>$t])}}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </form>
-                    </td>
                 </tr>
             @endforeach
         </tbody>

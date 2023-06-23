@@ -10,6 +10,16 @@ use Illuminate\Http\Request;
 
 class ImageTourController extends Controller
 {
+    protected function fixImage(User $u)
+    {
+        //1 hình bất kì để vào folder public/img
+        if($u->image && Storage::disk('public')->exists($u->image)){
+            $u->image = Storage::url($u->image);
+        } else{
+            $u->image = '/img/test.gif';
+        }
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -36,7 +46,16 @@ class ImageTourController extends Controller
      */
     public function store(StoreImageTourRequest $request)
     {
-        //
+        //dd($request->id);
+        $i = ImageTour::create([
+            'tour_id'=>$request->id,
+            'image'=>''
+        ]);
+        $path = $request->image->store('upload/imagetour/'.$i->id,'public');
+        $i->image=$path;
+        $i->save();
+
+        return redirect('/admin/imagetours?id='.$request->id);
     }
 
     /**
@@ -68,6 +87,8 @@ class ImageTourController extends Controller
      */
     public function destroy(ImageTour $imagetour)
     {
-        //
+        $imagetour->delete();
+
+        return redirect('/admin/imagetours?id='.$imagetour->tour_id);
     }
 }

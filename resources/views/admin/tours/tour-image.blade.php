@@ -11,7 +11,15 @@
     <h2>{{$tour->tentour}}</h2>
     <h4>Danh sách ảnh</h4>
 
-    <a href="{{route('tours.create')}}">Thêm</a><br>
+    <form method="post" action="{{route('imagetours.store')}}" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="id" value="{{$tour->id}}">
+        <label>Ảnh đại diện: </label><input id="ful_img" type="file" accept="image/*" name="image"><br>
+        @if($errors->has('image')) {{$errors->first('image')}} <br> @endif
+        <img id="img_upload" style="width:100px;max-height:100px;object-fit:contain;"><br>
+
+        <input type="submit">
+    </form>
 
     <table>
         <thead>
@@ -45,6 +53,12 @@
     <div class="">
         {{$lst->appends(request()->all())->links()}}
     </div>
+
+    <script>
+        document.getElementById('ful_img').onchange = function (e) {
+            document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
+        }
+    </script>
 
 @endsection
 
