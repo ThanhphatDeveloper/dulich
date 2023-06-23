@@ -17,7 +17,8 @@ class ImageTourFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'image'=>'img/test.gif',
+            'tour_id'=>1
         ];
     }
 }

@@ -4,8 +4,8 @@
 
 @section('header')
     @parent
-    &gt; <a href="{{route('tours.index');}}">Tours</a>
-    &gt; Edit tour
+    <a href="{{route('tours.index');}}">Tours</a>
+    <li class="breadcrumb-item active">Chỉnh sửa tour</li>
 @endsection
 
 @section('content')

@@ -1,87 +1,38 @@
 @extends('layouts.app')
 
-@section('title', 'Danh sách tour')
+@section('title', 'Danh sách ảnh tour')
 
 @section('header')
     @parent
-    <a href="{{route('tours.index');}}">Tours</a>
+    <a href="{{route('tours.index');}}">Ảnh</a>
 @endsection
 
 @section('content')
-    <h1>Danh sách tour</h1>
-
-    <form method="get" action="">
-        @csrf
-        <input name="key" value="{{old('key')}}" placeholder="Từ khóa">
-        <button type="submit">
-            Tìm kiếm
-        </button>
-    </form>
+    <h2>{{$tour->tentour}}</h2>
+    <h4>Danh sách ảnh</h4>
 
     <a href="{{route('tours.create')}}">Thêm</a><br>
 
     <table>
         <thead>
             <tr>
-                <th>tên tour</th>
-                <th>điểm khởi hành</th>
-                <th>điểm kết thúc</th>
-                <th>loại tour</th>
-                <th>trạng thái</th>
-                <th>Hình ảnh liên quan</th>
-                <th></th>
+                <th>ảnh</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach($lst as $t)
+            @foreach($lst as $i)
                 <tr>
-                    <td>{{$t->tentour}}</td>
+                    
                     <td>
-                        @foreach($lst_diadiem as $d)
-                            @if($t->dia_diem_khoi_hanh_id == $d->id)
-                                {{$d->diadiem}}
-                            @endif
-                        @endforeach
+                        <img style="width:100px;max-height:100px;object-fit:contain;" src="/storage/{{$i->image}}">
                     </td>
                     <td>
-                        @foreach($lst_diadiem as $d)
-                            @if($t->dia_diem_ket_thuc_id == $d->id)
-                                {{$d->diadiem}}
-                            @endif
-                        @endforeach
-                    </td>
-
-                    <td>{{$t->loai_tour->loaitour}}</td>
-                    <td>
-                        @if($t->trangthai == 0)
-                            <span class="badge badge-danger">Ngừng hoạt động</span>
-                        @else
-                            <span class="badge badge-success">Hoạt động</span>
-                        @endif
-                    </td>
-                    <td>
-                        <form method="get" action="{{route('imagetours.index')}}">
-                            <input type="hidden" name="id" value="{{$t->id}}">
-                            <button type="submit" class="btn btn-sm btn-info">
-                                <i class="fas fa-image"></i>
-                            </button>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="post" action="{{route('tours.destroy', ['tour'=>$t])}}">
+                        <form method="post" action="{{route('imagetours.destroy', ['imagetour'=>$i])}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger">
                                 <i class="fas fa-trash"></i>
-                            </button>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="get" action="{{route('tours.edit', ['tour'=>$t])}}">
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-success">
-                                <i class="fas fa-edit"></i>
                             </button>
                         </form>
                     </td>

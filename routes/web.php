@@ -9,6 +9,7 @@ use App\Http\Controllers\KhuyenMaiController;
 use App\Http\Controllers\NhaCungCapController;
 use App\Http\Controllers\ThanhToanController;
 use App\Http\Controllers\DonHangController;
+use App\Http\Controllers\ImageTourController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,7 @@ Route::middleware('auth')->group(function(){
     Route::resource('/admin/nhacungcaps', NhaCungCapController::class);
     Route::resource('/admin/thanhtoans', ThanhToanController::class);
     Route::resource('/admin/donhangs', DonHangController::class);
+    Route::resource('/admin/imagetours', ImageTourController::class);
 
     Route::get('/admin/home', function () {
         return view('home.home');

@@ -3,17 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\ImageTour;
+use App\Models\Tour;
 use App\Http\Requests\StoreImageTourRequest;
 use App\Http\Requests\UpdateImageTourRequest;
+use Illuminate\Http\Request;
 
 class ImageTourController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        //dd( $request->id);
+        $lst = ImageTour::where('tour_id', '=', $request->id)->orderBy('created_at','DESC')->paginate(10);
+        
+        $tour = Tour::where('id', '=', $request->id)->first();
+
+        return view('admin.tours.tour-image' , compact('lst'), ['tour'=>$tour]);
     }
 
     /**
@@ -59,7 +66,7 @@ class ImageTourController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ImageTour $imageTour)
+    public function destroy(ImageTour $imagetour)
     {
         //
     }

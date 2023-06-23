@@ -1,21 +1,24 @@
 @extends('layouts.app')
 
-@section('title', 'User list')
+@section('title', 'Danh sách tài khoản')
 
 @section('header')
     @parent
-    &gt; <a href="{{route('users.index');}}">Users</a>
+    <a href="{{route('users.index');}}">Tài khoản</a>
 @endsection
 
 @section('content')
-    <h1>Danh sách user</h1>
+    <h1>Danh sách tài khoản</h1>
 
-    <form method="get" action="">
-        @csrf
-        <input name="key" value="{{old('key')}}" placeholder="Từ khóa(họ tên, số điện thoại, email">
-        <button type="submit">
-            Tìm kiếm
-        </button>
+    <form class="form-inline my-2 my-lg-0 mr-lg-2" method="get" action="">
+        <div class="input-group">
+        <input class="form-control search-top" name="key" value="{{old('key')}}" placeholder="Từ khóa(họ tên, số điện thoại, email">
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit">
+            <i class="fa fa-search"></i>
+            </button>
+        </span>
+        </div>
     </form>
 
     <a href="{{route('users.create')}}">Thêm</a><br>

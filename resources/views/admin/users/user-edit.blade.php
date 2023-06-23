@@ -4,8 +4,8 @@
 
 @section('header')
     @parent
-    &gt; <a href="{{route('users.index');}}">Người dùng</a>
-    &gt; Sửa sản phẩm
+    <a href="{{route('users.index');}}">Tài khoản</a>
+    <li class="breadcrumb-item active">Chỉnh sửa tài khoản</li>
 @endsection
 
 @section('content')

@@ -66,10 +66,6 @@
                 </form>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-fw fa-sign-out"></i>Đăng xuất</a>
-                </li>
-                <li class="nav-item">
 
                     <nav id="navbar-custom" class="navbar navbar-dark navbar-expand-sm">
                         <div class="collapse navbar-collapse" id="navbar-list-4">
@@ -79,9 +75,25 @@
                                 <img src="/storage/{{Auth::user()->image}}" width="40" height="40" class="rounded-circle">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Dashboard</a>
-                                    <a class="dropdown-item" href="#">Edit Profile</a>
-                                    <a class="dropdown-item" href="#">Log Out</a>
+                                    
+                                    <center>
+                                        <h4 class="dropdown-header text-primary">
+                                            @auth
+                                                {{Auth::user()->ho}} {{Auth::user()->ten}}
+                                            @endauth
+                                        </h4>
+                                        <p class="dropdown-header text-primary">{{Auth::user()->email}}</p>
+                                    </center>
+                                    
+                                    <a style="cursor: pointer" class="dropdown-item" data-toggle="modal" data-target="#editmodel">
+                                        <i class="fa fa-fw fa-user"></i>Chỉnh sửa thông tin
+                                    </a>
+                                    <a style="cursor: pointer" class="dropdown-item" data-toggle="modal" data-target="#changepassmodel">
+                                        <i class="fa fa-fw fa-key"></i>Đổi mật khẩu
+                                    </a>
+                                    <a style="cursor: pointer" class="dropdown-item" data-toggle="modal" data-target="#logoutmodal">
+                                        <i class="fa fa-fw fa-sign-out"></i>Đăng xuất
+                                    </a>
                                 </div>
                             </li>   
                             </ul>
@@ -94,54 +106,118 @@
     </nav>
     <!-- /Navigation-->
     <div class="content-wrapper">
-        
-        @section('header')
-            @auth
-                {{Auth::user()->ho}} {{Auth::user()->ten}}
-            @endauth
-            @guest
-                <a href="{{route('login')}}">Đăng nhập</a><br>  
-            @endguest
-            <br>
-            <a href="/admin/home">Home</a>
-        @show
-
-        <div class="container">
-            @yield('content')
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                
+                    <a href="/admin/home">Home</a>
+                
+                </li>
+                <li class="breadcrumb-item active">@section('header')@show</li>
+            </ol>
+            <div class="container">
+                @yield('content')
+            </div>
         </div>
-
 
         </div>
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-angle-up"></i>
+            <i class="fa fa-angle-up"></i>
         </a>
-        <!-- Logout Modal-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                    </button>
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Bạn chắc chắn muốn đăng xuất</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Thoát</button>
+                            @auth
+                                <form method="post" action="{{route('logout')}}">
+                                    @csrf
+                                    <button class="btn btn-primary" type="submit">Đăng xuất</button>
+                                </form>
+                            @endauth
+                    </div>
                 </div>
-                <div class="modal-body">Bạn chắc chắn muốn đăng xuất</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Thoát</button>
-                        @auth
-                            <form method="post" action="{{route('logout')}}">
-                                @csrf
-                                <button class="btn btn-primary" type="submit">Đăng xuất</button>
-                            </form>
-                        @endauth
                 </div>
             </div>
-        </div>
-        <div>
-
-        </div>
-
+            <!-- Edit profile model -->
+            <div class="modal fade" id="editmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa thông tin tài khoản</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="{{route('users.update', ['user'=>Auth::user()])}}" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="user_update" value="user_update_info">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Họ:</label>
+                            <input name="ho" type="text" class="form-control"><br>
+                            @if($errors->has('ho')) {{$errors->first('ho')}} @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Tên:</label>
+                            <input name="ten" type="text" class="form-control"><br>
+                            @if($errors->has('ten')) {{$errors->first('ten')}} @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Ảnh đại diện:</label>
+                            <input id="ful_img" type="file" accept="image/*" name="image"><br>
+                            <img id="img_upload" width="50" height="50" class="rounded-circle"><br>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>
+                        </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Change Pass -->
+            <div class="modal fade" id="changepassmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Đổi mật khẩu</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="{{route('users.update', ['user'=>Auth::user()])}}" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="user_update" value="user_update_pass">
+                        <div class="form-group">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Mật khẩu mới:</label>
+                            <input name="password" type="text" class="form-control"><br>
+                            @if($errors->has('password')) {{$errors->first('password')}} @endif
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>
+                        </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
     
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('js/custom.js')}}"></script>
@@ -160,6 +236,9 @@
 	   <!-- Custom scripts for this page-->
     <script src="{{asset('js/admin-charts.js')}}"></script>
     <script type="text/javascript">
+        document.getElementById('ful_img').onchange = function (e) {
+            document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
+        }
         CKEDITOR.replace('editor');
     </script>
 </body>

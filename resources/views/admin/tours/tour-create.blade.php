@@ -4,8 +4,8 @@
 
 @section('header')
     @parent
-    &gt; <a href="{{route('tours.index');}}">Tours</a>
-    &gt; Thêm tour
+    <a href="{{route('tours.index');}}">Tours</a>
+    <li class="breadcrumb-item active">Thêm tour</li>
 @endsection
 
 @section('content')
@@ -48,7 +48,7 @@
 
         <label>Thời gian: </label>
         <input type="number" name="ngay" value="{{old('ngay')}}">N
-        <input type="number" name="dem" value="{{old('dem')}}">D
+        <input type="number" name="dem" value="{{old('dem')}}">D<br>
         @if($errors->has('ngay')) {{$errors->first('ngay')}} @endif
         @if($errors->has('dem')) {{$errors->first('dem')}} @endif <br>
 
@@ -82,7 +82,9 @@
         @if($errors->has('image')) {{$errors->first('image')}} <br> @endif
         <img id="img_upload" style="width:100px;max-height:100px;object-fit:contain;"><br> -->
         <label>Ảnh liên quan: </label>
-        <input name="image" type="file" multiple/>
+        <input id="img_upload" name="image" type="file" accept="image/*" name="image[]" multiple/><br>
+        @if($errors->has('image')) {{$errors->first('image')}} <br> @endif
+        <div id="img_locate"></div>
 
         <br><input type="submit">
     </form>
@@ -104,25 +106,79 @@
 
         function imgToData(input) {
             $.each(input.files, function(i, v) {
-                        var n = i + 1;
-                        var File = new FileReader();
-                        File.onload = function(event) {
+                var n = i + 1;
+                var File = new FileReader();
+                File.onload = function(event) {
+                    $("#img_locate").append(
                         $('<img/>').attr({
                             src: event.target.result,
                             class: 'img',
                             id: 'img-' + n + '-preview',
-                        }).appendTo('body');
-                        };
+                            style: 'style="width:100px;max-height:100px;object-fit:contain;"'
+                        }).appendTo('body')
+                    );
+                };
 
-                        File.readAsDataURL(input.files[i]);
-                    });
-            }
-
-
-            $('input[type="file"]').change(function(event) {
-                imgToData(this);
+                File.readAsDataURL(input.files[i]);
             });
+        }
+
+        $('input[type="file"]').change(function(event) {
+            imgToData(this);
+        });
 
     </script>
 @endsection
 
+@section('menu')
+    @can('admin')
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('users.index')}}">
+            <i class="fa fa-fw fa-user"></i>
+            <span class="nav-link-text">Quản lý tài khoản</span>
+        </a>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('loaitours.index')}}">
+            <i class="fa fa-fw fa-pencil"></i>
+            <span class="nav-link-text">Quản lý loại tour</span>
+        </a>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('tours.index')}}">
+            <i class="fa fa-fw fa-globe"></i>
+            <span class="nav-link-text">Quản lý tour</span>
+        </a>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('diadiems.index')}}">
+            <i class="fa fa-fw fa-map-marker"></i>
+            <span class="nav-link-text">Quản lý địa điểm</span>
+        </a>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('khuyenmais.index')}}">
+            <i class="fa fa-fw fa-tags"></i>
+            <span class="nav-link-text">Quản lý khuyến mãi</span>
+        </a>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('nhacungcaps.index')}}">
+            <i class="fa fa-fw fa-id-card-o"></i>
+            <span class="nav-link-text">Quản lý nhà cung cấp</span>
+        </a>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('thanhtoans.index')}}">
+            <i class="fa fa-fw fa-credit-card-alt"></i>
+            <span class="nav-link-text">Quản lý thanh toán</span>
+        </a>
+    @endcan
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('donhangs.index')}}">
+            <i class="fa fa-fw fa-shopping-cart"></i>
+            <span class="nav-link-text">Quản lý đơn hàng</span>
+        </a>
+@endsection

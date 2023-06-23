@@ -1,52 +1,68 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <a style="cursor: pointer" class="dropdown-item" data-toggle="modal" data-target="#editmodal">
+        <i class="fa fa-fw fa-sign-out"></i>Đăng xuất
+    </a>
+    <a style="cursor: pointer" class="dropdown-item" data-toggle="modal" data-target="#logoutmodal">
+        <i class="fa fa-fw fa-sign-out"></i>Đăng xuất
+    </a>
 
-@section('title', 'Thêm Tour')
+    <!-- Logout modal-->
+    <div class="modal fade" id="logoutmodal" tabindex="-1" role="dialog" aria-labelledby="examplemodalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="examplemodalLabel">Thông báo</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Bạn chắc chắn muốn đăng xuất</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Thoát</button>
+                    @auth
+                        <form method="post" action="{{route('logout')}}">
+                            @csrf
+                            <button class="btn btn-primary" type="submit">Đăng xuất</button>
+                        </form>
+                    @endauth
+            </div>
+        </div>
+        </div>
+    </div>
 
-@section('header')
-    @parent
-    &gt; <a href="{{route('tours.index');}}">Tours</a>
-    &gt; Thêm tour
-@endsection
+    <!-- Edit profile model -->
+    <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="examplemodalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="examplemodalLabel">Thông báo</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Bạn chắc chắn muốn đăng xuất</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Thoát</button>
+                    @auth
+                        <form method="post" action="{{route('logout')}}">
+                            @csrf
+                            <button class="btn btn-primary" type="submit">Đăng xuất</button>
+                        </form>
+                    @endauth
+            </div>
+        </div>
+    </div>
 
-@section('content')
-
-        
-        <input type="file" multiple/>
-
-        <br><input type="submit">
-
-    <style>
-
-        .img {
-                height: 100px;
-                display: block;
-            }
-    </style>
-
-    <script type="text/javascript">
-        
-
-        function imgToData(input) {
-            $.each(input.files, function(i, v) {
-                        var n = i + 1;
-                        var File = new FileReader();
-                        File.onload = function(event) {
-                        $('<img/>').attr({
-                            src: event.target.result,
-                            class: 'img',
-                            id: 'img-' + n + '-preview',
-                        }).appendTo('body');
-                        };
-
-                        File.readAsDataURL(input.files[i]);
-                    });
-            }
-
-
-            $('input[type="file"]').change(function(event) {
-                imgToData(this);
-            });
-
-    </script>
-
-@endsection
+</body>
+</html>

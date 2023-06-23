@@ -77,7 +77,7 @@ class TourController extends Controller
      */
     public function store(StoreTourRequest $request)
     {
-        //dd($request);
+        dd($request->file('image'));
 
         $thoigian = ThoiGianTour::create([
             'songay'=>$request->ngay,
@@ -235,5 +235,10 @@ class TourController extends Controller
         ]);
         $tour->save();
         return redirect()->route('tours.index');
+    }
+
+    public function index_customer()
+    {
+        return view('test');
     }
 }

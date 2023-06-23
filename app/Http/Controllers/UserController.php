@@ -127,9 +127,47 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        if($request->user_update === 'user_update_pass'){
+            $request->validate(
+                [
+                    'password' => ['required'],
+                ],
+                [
+                    'password.required' => 'Mật khẩu không được để trống',
+                ]
+            );
+            User::where('id', $user->id)->update([
+                'password'=>Hash::make($request->password)
+            ]);
+            return redirect('/admin/home');
+        }
+
         $path = $user->image;
         if($request->hasFile('image') && $request->image->isValid()){
             $path = $request->image->store('upload/user/'.$user->id, 'public');
+        }
+
+        if($request->user_update === 'user_update_info'){
+            $request->validate(
+                [
+                    'ho' => ['required', 'max:50'],
+                    'ten' => ['required', 'max:20'],
+                    'image' => ['mimes:jpg,png,bmp,gif'],
+                ],
+                [
+                    'ho.required' => 'Họ không được để trống',
+                    'ho.max' => 'Họ tối đa 50 ký tự',
+                    'ten.required' => 'Tên không được để trống',
+                    'ten.max' => 'Tên tối đa 20 ký tự',
+                    'image.mimes' => 'Định dạng ảnh không hợp lệ (định dạng hợp lệ: jpg, png, bmp, gif)',
+                ]
+            );
+            User::where('id', $user->id)->update([
+                'ho'=>$request->ho,
+                'ten'=>$request->ten,
+                'image'=>$path
+            ]);
+            return redirect('/admin/home');
         }
 
         $request->validate(
@@ -188,7 +226,7 @@ class UserController extends Controller
         ]);
 
         $u=User::where('id', $user->id)->get();
-        //dd($u);
+
         return redirect()->route('users.index');
     }
 

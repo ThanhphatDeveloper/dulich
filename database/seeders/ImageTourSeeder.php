@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Tour;
+use App\Models\ImageTour;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,14 +14,10 @@ class ImageTourSeeder extends Seeder
      */
     public function run(): void
     {
-        Tour::where('id',1)->first()->image_tour()->createMany([
-            [
-                'image'=>'Ảnh tour 1'
-            ]
-        ]);
+        ImageTour::factory(15)->create();
         Tour::where('id',2)->first()->image_tour()->createMany([
             [
-                'image'=>'Ảnh tour 2'
+                'image'=>'img/test.gif'
             ]
         ]);
     }
