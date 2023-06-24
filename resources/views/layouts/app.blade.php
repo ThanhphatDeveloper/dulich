@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
 
     <link rel="preconnect" href="{{asset('https://fonts.gstatic.com')}}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="{{asset('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap')}}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset('css/index.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
@@ -19,8 +19,6 @@
     <link rel="stylesheet" href="{{asset('https://use.fontawesome.com/releases/v5.7.0/css/all.css')}}"
     integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <script src="{{asset('/ckeditor/ckeditor.js')}}"></script>
-    <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
     <link href="{{asset('css/admin.css')}}" rel="stylesheet">
     <!-- Icon fonts-->
     <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -219,14 +217,18 @@
                 </div>
             </div>
     
-    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('js/custom.js')}}"></script>
-    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
+    
+    
+    <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
     <!-- Core plugin JavaScript-->
     <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <!-- Page level plugin JavaScript-->
-	<script src="{{asset('vendor/jquery.magnific-popup.min.js')}}"></script>
+	
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <script src="{{asset('vendor/chart.js/Chart.js')}}"></script>
     <script src="{{asset('vendor/datatables/jquery.dataTables.js')}}"></script>
@@ -235,6 +237,7 @@
     <script src="{{asset('js/admin.js')}}"></script>
 	   <!-- Custom scripts for this page-->
     <script src="{{asset('js/admin-charts.js')}}"></script>
+
     <script type="text/javascript">
         document.getElementById('ful_img').onchange = function (e) {
             document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);

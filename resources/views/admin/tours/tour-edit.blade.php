@@ -79,11 +79,7 @@
             @endforeach
         </select><br>
 
-        <label>Ảnh đại diện: </label><input id="ful_img" type="file" accept="image/*" name="image"><br>
-        @if($errors->has('image')) {{$errors->first('image')}} <br> @endif
-        @foreach($lst_img as $i)
-            <img id="img_upload" src="{{$i->image}}" style="width:100px;max-height:100px;object-fit:contain;"><br>
-        @endforeach
+        
 
         <input type="submit">
     </form>

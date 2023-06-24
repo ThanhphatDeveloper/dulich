@@ -80,13 +80,13 @@
         
         <!-- <label>Ảnh đại diện: </label><input id="ful_img" type="file" accept="image/*" name="image"><br>
         @if($errors->has('image')) {{$errors->first('image')}} <br> @endif
-        <img id="img_upload" style="width:100px;max-height:100px;object-fit:contain;"><br> -->
+        <img id="img_upload" style="width:100px;max-height:100px;object-fit:contain;"><br>
         <label>Ảnh liên quan: </label>
         <input id="img_upload" name="image" type="file" accept="image/*" name="image[]" multiple/><br>
         @if($errors->has('image')) {{$errors->first('image')}} <br> @endif
-        <div id="img_locate"></div>
+        <div id="img_locate"></div> -->
 
-        <br><input type="submit">
+        <br><input  type="submit">
     </form>
 
     <style>
@@ -103,6 +103,7 @@
     </style>
 
     <script type="text/javascript">
+
 
         function imgToData(input) {
             $.each(input.files, function(i, v) {

@@ -1,68 +1,117 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-    <a style="cursor: pointer" class="dropdown-item" data-toggle="modal" data-target="#editmodal">
-        <i class="fa fa-fw fa-sign-out"></i>Đăng xuất
+@extends('layouts.app')
+@section('content')
+    
+    
+		<!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Data Table Example</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Age</th>
+                  <th>Start date</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Age</th>
+                  <th>Start date</th>
+                  <th>Salary</th>
+                </tr>
+              </tfoot>
+              <tbody>
+                <tr>
+                  <td>Tiger Nixon</td>
+                  <td>System Architect</td>
+                  <td>Edinburgh</td>
+                  <td>61</td>
+                  <td>2011/04/25</td>
+                  <td>$320,800</td>
+                </tr>
+                <tr>
+                  <td>Garrett Winters</td>
+                  <td>Accountant</td>
+                  <td>Tokyo</td>
+                  <td>63</td>
+                  <td>2011/07/25</td>
+                  <td>$170,750</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+	  <!-- /tables-->
+	  </div>
+	  <!-- /container-fluid-->
+   	</div>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
     </a>
-    <a style="cursor: pointer" class="dropdown-item" data-toggle="modal" data-target="#logoutmodal">
-        <i class="fa fa-fw fa-sign-out"></i>Đăng xuất
-    </a>
 
-    <!-- Logout modal-->
-    <div class="modal fade" id="logoutmodal" tabindex="-1" role="dialog" aria-labelledby="examplemodalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="examplemodalLabel">Thông báo</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Bạn chắc chắn muốn đăng xuất</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Thoát</button>
-                    @auth
-                        <form method="post" action="{{route('logout')}}">
-                            @csrf
-                            <button class="btn btn-primary" type="submit">Đăng xuất</button>
-                        </form>
-                    @endauth
-            </div>
-        </div>
-        </div>
-    </div>
+@endsection
 
-    <!-- Edit profile model -->
-    <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="examplemodalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="examplemodalLabel">Thông báo</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Bạn chắc chắn muốn đăng xuất</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Thoát</button>
-                    @auth
-                        <form method="post" action="{{route('logout')}}">
-                            @csrf
-                            <button class="btn btn-primary" type="submit">Đăng xuất</button>
-                        </form>
-                    @endauth
-            </div>
-        </div>
-    </div>
+@section('menu')
+    @can('admin')
 
-</body>
-</html>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('users.index')}}">
+            <i class="fa fa-fw fa-user"></i>
+            <span class="nav-link-text">Quản lý tài khoản</span>
+        </a>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('loaitours.index')}}">
+            <i class="fa fa-fw fa-pencil"></i>
+            <span class="nav-link-text">Quản lý loại tour</span>
+        </a>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('tours.index')}}">
+            <i class="fa fa-fw fa-globe"></i>
+            <span class="nav-link-text">Quản lý tour</span>
+        </a>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('diadiems.index')}}">
+            <i class="fa fa-fw fa-map-marker"></i>
+            <span class="nav-link-text">Quản lý địa điểm</span>
+        </a>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('khuyenmais.index')}}">
+            <i class="fa fa-fw fa-tags"></i>
+            <span class="nav-link-text">Quản lý khuyến mãi</span>
+        </a>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('nhacungcaps.index')}}">
+            <i class="fa fa-fw fa-id-card-o"></i>
+            <span class="nav-link-text">Quản lý nhà cung cấp</span>
+        </a>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('thanhtoans.index')}}">
+            <i class="fa fa-fw fa-credit-card-alt"></i>
+            <span class="nav-link-text">Quản lý thanh toán</span>
+        </a>
+    @endcan
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('donhangs.index')}}">
+            <i class="fa fa-fw fa-shopping-cart"></i>
+            <span class="nav-link-text">Quản lý đơn hàng</span>
+        </a>
+@endsection
