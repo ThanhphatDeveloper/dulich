@@ -47,10 +47,9 @@
         </select><br>
 
         <label>Thời gian: </label>
-        <input type="number" name="ngay" value="{{old('ngay')}}">N
-        <input type="number" name="dem" value="{{old('dem')}}">D<br>
-        @if($errors->has('ngay')) {{$errors->first('ngay')}} @endif
-        @if($errors->has('dem')) {{$errors->first('dem')}} @endif <br>
+        <input id="ngay" type="number" name="ngay" value="{{old('ngay')}}">N
+        <input id="dem" type="number" name="dem" value="{{old('dem')}}">D<br>
+        <div id="noti_locate"></div><br>
 
         <label>Giá: </label><input type="number" name="gia" value="{{old('gia')}}"><br>
         @if($errors->has('gia')) {{$errors->first('gia')}} <br> @endif
@@ -77,16 +76,8 @@
             @endforeach
         </select><br>
 
+        <br><button id="btn-submit" type="button" class="btn btn-primary">Thêm</button><br>
         
-        <!-- <label>Ảnh đại diện: </label><input id="ful_img" type="file" accept="image/*" name="image"><br>
-        @if($errors->has('image')) {{$errors->first('image')}} <br> @endif
-        <img id="img_upload" style="width:100px;max-height:100px;object-fit:contain;"><br>
-        <label>Ảnh liên quan: </label>
-        <input id="img_upload" name="image" type="file" accept="image/*" name="image[]" multiple/><br>
-        @if($errors->has('image')) {{$errors->first('image')}} <br> @endif
-        <div id="img_locate"></div> -->
-
-        <br><input  type="submit">
     </form>
 
     <style>
@@ -95,37 +86,23 @@
         -webkit-appearance: none;
         margin: 0;
         }
-
-        .img {
-                height: 100px;
-                display: block;
-            }
     </style>
+    <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
 
     <script type="text/javascript">
 
-
-        function imgToData(input) {
-            $.each(input.files, function(i, v) {
-                var n = i + 1;
-                var File = new FileReader();
-                File.onload = function(event) {
-                    $("#img_locate").append(
-                        $('<img/>').attr({
-                            src: event.target.result,
-                            class: 'img',
-                            id: 'img-' + n + '-preview',
-                            style: 'style="width:100px;max-height:100px;object-fit:contain;"'
-                        }).appendTo('body')
-                    );
-                };
-
-                File.readAsDataURL(input.files[i]);
+        $(document).ready(function () {
+        
+        $("#btn-submit").click(function () {
+            var ngay = $("#ngay").val();
+            var dem = $("#dem").val();
+            if(ngay-dem==1 || ngay-dem==-1){
+                $("#btn-submit").attr("type", "submit");
+            }
+            if(ngay-dem!=1 || ngay-dem!=-1){
+                $("#noti_locate").text("Ngày đêm không hợp lệ");
+            }
             });
-        }
-
-        $('input[type="file"]').change(function(event) {
-            imgToData(this);
         });
 
     </script>
