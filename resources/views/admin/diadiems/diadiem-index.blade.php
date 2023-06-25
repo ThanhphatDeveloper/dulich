@@ -4,36 +4,56 @@
 
 @section('header')
     @parent
-    &gt; <a href="{{route('diadiems.index');}}">Địa điểm</a>
+    <a href="{{route('diadiems.index');}}">Địa điểm</a>
 @endsection
 
 @section('content')
-    <h1>Danh sách địa điểm</h1>
-
-    <form method="get" action="">
-        @csrf
-        <input name="key" value="{{old('key')}}" placeholder="Từ khóa">
-        <button type="submit">
-            Tìm kiếm
-        </button>
-    </form>
-
-    <a href="{{route('diadiems.create')}}">Thêm</a><br>
-
-    <table>
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>Địa điểm</th>
-                <th>Trạng thái</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($lst as $d)
+    <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Danh sách địa điểm</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <div class="dataTables_wrapper container-fluid dt-bootstrap4">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <form class="form-inline my-2 my-lg-0 mr-lg-2" method="get" action="{{route('diadiems.create')}}">
+                            <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">
+                                    Thêm địa điểm
+                                </button>
+                            </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <form class="" method="get" action="">
+                            <div class="input-group float-right">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" name="key" value="{{old('key')}}" placeholder="Từ khóa" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
                 <tr>
-                    <td>{{$d->id}}</td>
+                    <th>Địa điểm</th>
+                    <th>Trạng thái</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              @foreach($lst as $d)
+                <tr>
                     <td>{{$d->diadiem}}</td>
                     <td>
                         @if($d->trangthai == 0)
@@ -61,13 +81,23 @@
                     </td>
                 </tr>
             @endforeach
-        </tbody>
-    </table>
-
-    <hr>
-    <div class="">
-        {{$lst->appends(request()->all())->links()}}
-    </div>
+                
+              </tbody>
+            </table>
+            <div class="">
+                {{$lst->appends(request()->all())->links()}}
+            </div>
+          </div>
+        </div>
+      </div>
+	  <!-- /tables-->
+	  </div>
+	  <!-- /container-fluid-->
+   	</div>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
 @endsection
 
 @section('menu')

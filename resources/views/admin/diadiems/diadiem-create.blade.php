@@ -4,18 +4,56 @@
 
 @section('header')
     @parent
-    &gt; <a href="{{route('diadiems.index');}}">Địa điểm</a>
-    &gt; Thêm địa điểm
+    <a href="{{route('diadiems.index');}}">Địa điểm</a>
+    <li class="breadcrumb-item active">Thêm địa điểm</li>
 @endsection
 
 @section('content')
     <form method="post" action="{{route('diadiems.store')}}">
         @csrf
-        <label>Địa điểm: </label><input name="diadiem" value="{{old('diadiem')}}"><br>
-        @if($errors->has('diadiem')) {{$errors->first('diadiem')}} <br> @endif
         
-        <input type="submit">
+        <div class="card mb-3">
+            <div class="card-header">
+            <i class="fa fa-table"></i> Thêm địa điểm </div>
+            <div class="card-body">
+            <div class="table-responsive">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Loại tour: </td>
+                            <td>
+                                <div class="input input-group-sm mb-3">
+                                    <input name="diadiem" value="{{old('diadiem')}}" class="form-control" aria-describedby="basic-addon2">
+                                </div>
+                            </td>
+                            <td> <p class="text-danger">@if($errors->has('diadiem')) {{$errors->first('diadiem')}} @endif</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><button id="btn-submit" type="submit" class="btn btn-primary">Thêm</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+            </div>
+        </div>
+        <!-- /tables-->
+        </div>
+        <!-- /container-fluid-->
+        </div>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+        </a>
     </form>
+    <style>
+
+        table {
+            border-collapse: separate;
+            border-spacing:0 10px;
+        }
+    </style>
 @endsection
 
 @section('menu')

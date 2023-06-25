@@ -4,32 +4,86 @@
 
 @section('header')
     @parent
-    &gt; <a href="{{route('khuyenmais.index');}}">Khuyến mãi</a>
-    &gt; Thêm khuyến mãi
+    <a href="{{route('khuyenmais.index');}}">Khuyến mãi</a>
+    <li class="breadcrumb-item active">Thêm khuyến mãi</li>
 @endsection
 
 @section('content')
     <form method="post" action="{{route('khuyenmais.store')}}">
         @csrf
+
         <input id="makhuyenmai" type="hidden" name="makhuyenmai" value="">
-        <label>Mô tả khuyến mãi: </label><br>
-        <textarea name="mota">{{old('mota')}}</textarea>
-        <br>
-        @if($errors->has('mota')) {{$errors->first('mota')}} <br> @endif
+        <div class="card mb-3">
+            <div class="card-header">
+            <i class="fa fa-table"></i> Thêm khuyến mãi </div>
+            <div class="card-body">
+            <div class="table-responsive">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Mô tả khuyến mãi: </td>
+                        </tr>
 
-        <label>Mức giảm: </label><input type="number" name="mucgiam" value="{{old('mota')}}"><br>
-        @if($errors->has('mucgiam')) {{$errors->first('mucgiam')}} <br> @endif
+                        <tr>
+                            <td colspan="3">
+                                <div class="form-group">
+                                    <textarea name="mota" class="form-control" id="exampleFormControlTextarea1" rows="3">{{old('mota')}}</textarea>
+                                </div>
+                            </td>
+                            <td> <p class="text-danger">@if($errors->has('mota')) {{$errors->first('mota')}} @endif</p></td>
+                        </tr>
 
-        <label>Giá tối thiểu: </label><input type="number" name="giatoithieu" value="{{old('giatoithieu')}}"><br>
-        @if($errors->has('giatoithieu')) {{$errors->first('giatoithieu')}} <br> @endif
+                        <tr>
+                            <td>Mức giảm: </td>
+                            <td>
+                                <div class="input input-group-sm mb-3">
+                                    <input id="number" type="number" name="mucgiam" value="{{old('mota')}}" class="form-control" aria-describedby="basic-addon2">
+                                </div>
+                            </td>
+                            <td><p class="text-danger">@if($errors->has('mucgiam')) {{$errors->first('mucgiam')}} @endif</p></td>
+                        </tr>
 
-        <label>Số lần sử dụng: </label><input type="number" name="hansudung" value="{{old('hansudung')}}"><br>
-        @if($errors->has('hansudung')) {{$errors->first('hansudung')}} <br> @endif
-        
-        <!-- Button trigger modal -->
-        <button onclick="gfg_Run()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        Tạo mã khuyến mãi
-        </button>
+                        <tr>
+                            <td>Giá tối thiểu: </td>
+                            <td>
+                                <div class="input input-group-sm mb-3">
+                                    <input id="number" type="number" name="giatoithieu" value="{{old('giatoithieu')}}" class="form-control" aria-describedby="basic-addon2">
+                                </div>
+                            </td>
+                            <td><p class="text-danger">@if($errors->has('giatoithieu')) {{$errors->first('giatoithieu')}} @endif</p></td>
+                        </tr>
+
+                        <tr>
+                            <td>Số lần sử dụng: </td>
+                            <td>
+                                <div class="input input-group-sm mb-3">
+                                    <input id="number" type="number" name="hansudung" value="{{old('hansudung')}}" class="form-control" aria-describedby="basic-addon2">
+                                </div>
+                            </td>
+                            <td><p class="text-danger">@if($errors->has('hansudung')) {{$errors->first('hansudung')}} @endif</p></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <button onclick="gfg_Run()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                    Tạo mã khuyến mãi
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+            </div>
+        </div>
+        <!-- /tables-->
+        </div>
+        <!-- /container-fluid-->
+        </div>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+        </a>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -53,6 +107,42 @@
             </div>
         </div>
     </form>
+
+    <style>
+
+        table {
+            border-collapse: separate;
+            border-spacing:0 10px;
+        }
+    </style>
+
+    <script>
+        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+        function generateString(length) {
+            let result = '';
+            const charactersLength = characters.length;
+            for ( let i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+
+            return result;
+        }
+
+        var today = new Date();
+
+        var string = today.getFullYear()+''+generateString(3)+''+(today.getMonth()+1)+''+generateString(3)+''+today.getDate()
+        +''+generateString(3)+''+today.getHours()+''+generateString(3)+''+today.getMinutes()+''+generateString(3)
+        +''+today.getSeconds();
+
+        var el_down = document.getElementById("showmakhuyenmai");
+        var inputF = document.getElementById("makhuyenmai");
+
+        function gfg_Run() {
+            inputF.value = string;
+            el_down.innerHTML = string;
+        }
+    </script>
 @endsection
 
 @section('menu')

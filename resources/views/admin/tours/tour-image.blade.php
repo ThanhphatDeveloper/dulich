@@ -13,8 +13,12 @@
 
     <form method="post" action="{{route('imagetours.store')}}" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" name="id" value="{{$tour->id}}">
-        <label>Ảnh đại diện: </label><input id="ful_img" type="file" accept="image/*" name="image"><br>
+        <div class="custom-file">
+        
+            <input type="hidden" name="id" value="{{$tour->id}}">
+            <label>Ảnh đại diện: </label><input class="custom-file-input" id="ful_img" type="file" accept="image/*" name="image">
+            <label class="custom-file-label" for="customFile">Chọn ảnh</label><br>
+        </div>
         @if($errors->has('image')) {{$errors->first('image')}} <br> @endif
         <img id="img_upload" style="width:100px;max-height:100px;object-fit:contain;"><br>
 
@@ -57,7 +61,12 @@
     <script>
         document.getElementById('ful_img').onchange = function (e) {
             document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
-        }
+        };
+
+        $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
     </script>
 
 @endsection

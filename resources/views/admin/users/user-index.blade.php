@@ -21,7 +21,7 @@
                             <div class="input-group">
                             <span class="input-group-btn">
                                 <button class="btn btn-primary" type="submit">
-                                    Thêm tour
+                                    Thêm tài khoản
                                 </button>
                             </span>
                             </div>
@@ -105,10 +105,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-
-    <hr>
-    
-    
     
 @endsection
 
