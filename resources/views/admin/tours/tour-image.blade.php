@@ -8,54 +8,86 @@
 @endsection
 
 @section('content')
-    <h2>{{$tour->tentour}}</h2>
-    <h4>Danh sách ảnh</h4>
-
-    <form method="post" action="{{route('imagetours.store')}}" enctype="multipart/form-data">
-        @csrf
-        <div class="custom-file">
-        
-            <input type="hidden" name="id" value="{{$tour->id}}">
-            <label>Ảnh đại diện: </label><input class="custom-file-input" id="ful_img" type="file" accept="image/*" name="image">
-            <label class="custom-file-label" for="customFile">Chọn ảnh</label><br>
-        </div>
-        @if($errors->has('image')) {{$errors->first('image')}} <br> @endif
-        <img id="img_upload" style="width:100px;max-height:100px;object-fit:contain;"><br>
-
-        <input type="submit">
-    </form>
-
-    <table>
-        <thead>
-            <tr>
-                <th>ảnh</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($lst as $i)
+    <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Danh sách hình ảnh</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <div class="dataTables_wrapper container-fluid dt-bootstrap4">
+                <div class="row">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Thêm</button>
+                </div><br>
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
                 <tr>
-                    
-                    <td>
-                        <img style="width:100px;max-height:100px;object-fit:contain;" src="/storage/{{$i->image}}">
-                    </td>
-                    <td>
-                        <form method="post" action="{{route('imagetours.destroy', ['imagetour'=>$i])}}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </form>
-                    </td>
+                    <th>Ảnh</th>
+                    <th></th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+              </thead>
+              <tbody>
+                @foreach($lst as $i)
+                    <tr>
+                        
+                        <td>
+                            <img style="width:100px;max-height:100px;object-fit:contain;" src="/storage/{{$i->image}}">
+                        </td>
+                        <td>
+                            <form method="post" action="{{route('imagetours.destroy', ['imagetour'=>$i])}}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+                
+              </tbody>
+            </table>
+            <div class="">
+                {{$lst->appends(request()->all())->links()}}
+            </div>
+          </div>
+        </div>
+      </div>
+	  <!-- /tables-->
+	  </div>
+	  <!-- /container-fluid-->
+   	</div>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
 
-    <hr>
-    <div class="">
-        {{$lst->appends(request()->all())->links()}}
+    <!-- Modal thêm ảnh -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm ảnh</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <div class="modal-body">
+                <form method="post" action="{{route('imagetours.store')}}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="custom-file">
+                        <input type="hidden" name="id" value="{{$tour->id}}">
+                        <input class="custom-file-input" id="ful_img" type="file" accept="image/*" name="image"><br>
+                        <label class="custom-file-label" for="customFile">Chọn ảnh</label><br>
+                    </div>
+                    <img id="img_upload" style="width:100px;max-height:100px;object-fit:contain;">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </div>
+                </form>
+            </div>
+            
+            </div>
+        </div>
     </div>
 
     <script>

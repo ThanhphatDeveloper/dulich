@@ -132,17 +132,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Khuyến mãi: </td>
-                            <td>
-                                <select class="custom-select custom-select-sm" name="khuyenmai">
-                                    @foreach($lst_km as $k)
-                                        <option value="{{$k->id}}" @if($t->khuyen_mai_id==old('khuyenmai',$k->id))
-                                        selected @endif> {{$k->mucgiam}}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                        </tr>
+                        
                         <tr>
                             <td><button id="btn-submit" type="button" class="btn btn-primary">Cập nhật</button></td>
                         </tr>
@@ -176,6 +166,8 @@
     </style>
 
     <script>
+        CKEDITOR.replace('editor');
+        
         document.getElementById('ful_img').onchange = function (e) {
             document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
         };

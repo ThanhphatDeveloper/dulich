@@ -134,17 +134,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Khuyến mãi: </td>
-                            <td>
-                                <select class="custom-select custom-select-sm" name="khuyenmai">
-                                    @foreach($lst_km as $k)
-                                        <option value="{{$k->id}}"> @if ($k->id==old('km'))
-                                            selected @endif {{$k->mucgiam}}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
                             <td><button id="btn-submit" type="button" class="btn btn-primary">Thêm</button></td>
                         </tr>
                     </tbody>
@@ -179,6 +168,7 @@
     <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
 
     <script type="text/javascript">
+        CKEDITOR.replace('editor');
 
         $(document).ready(function () {
         

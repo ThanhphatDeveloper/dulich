@@ -37,17 +37,19 @@
                             <td>Mức giảm: </td>
                             <td>
                                 <div class="input input-group-sm mb-3">
-                                    <input id="number" type="number" name="mucgiam" value="{{old('mota')}}" class="form-control" aria-describedby="basic-addon2">
+                                    <input id="number" type="number" name="mucgiam" value="{{old('mota')}}" class="form-control mucgiam" aria-describedby="basic-addon2">
                                 </div>
                             </td>
-                            <td><p class="text-danger">@if($errors->has('mucgiam')) {{$errors->first('mucgiam')}} @endif</p></td>
+                            <td>
+                                <p id="noti_locate" class="text-danger">@if($errors->has('mucgiam')) {{$errors->first('mucgiam')}} @endif</p>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>Giá tối thiểu: </td>
                             <td>
                                 <div class="input input-group-sm mb-3">
-                                    <input id="number" type="number" name="giatoithieu" value="{{old('giatoithieu')}}" class="form-control" aria-describedby="basic-addon2">
+                                    <input id="number" type="number" name="giatoithieu" value="{{old('giatoithieu')}}" class="form-control giatoithieu" aria-describedby="basic-addon2">
                                 </div>
                             </td>
                             <td><p class="text-danger">@if($errors->has('giatoithieu')) {{$errors->first('giatoithieu')}} @endif</p></td>
@@ -65,7 +67,7 @@
 
                         <tr>
                             <td>
-                                <button onclick="gfg_Run()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                <button id="check" onclick="gfg_Run()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                                     Tạo mã khuyến mãi
                                 </button>
                             </td>
@@ -115,8 +117,25 @@
             border-spacing:0 10px;
         }
     </style>
+    <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
 
     <script>
+
+        $(document).ready(function () {
+        
+        $("#check").click(function () {
+            var mucgiam = $(".mucgiam").val();
+            var giatoithieu = $(".giatoithieu").val() * 0.7;
+            if(mucgiam > giatoithieu){
+                $("#check").attr("data-target", "error");
+                $("#noti_locate").text("Mức giảm không quá 70% giá tối thiểu");
+            }
+            else{
+                $("#check").attr("data-target", "#exampleModalCenter");
+            }
+            });
+        });
+
         const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
         function generateString(length) {

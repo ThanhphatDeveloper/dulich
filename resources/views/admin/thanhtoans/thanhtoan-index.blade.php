@@ -53,7 +53,7 @@
                     @foreach($lst as $t)
                     <tr>
                         <td>{{$t->tenphuongthuc}}</td>
-                        <td>{{$t->sotien}}</td>
+                        <td>{{number_format($t->sotien, 0, '', ',')}} VNĐ</td>
                         <td>{{$t->mathanhtoan}}</td>
                         <td>{{$t->tenkhachhang}}</td>
                         <td>{{$t->ngaythanhtoan}}</td>

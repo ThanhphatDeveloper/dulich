@@ -1,39 +1,29 @@
-<h1>Danh sách thanh toán</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ckeditor</title>
+    <script src="{{asset('/ckeditor/ckeditor.js')}}"></script>
+</head>
+<body>
+    <textarea rows="8" id="editor" class="edit" name="mota" rows="4" cols="50"></textarea>
 
-    <form method="get" action="">
-        @csrf
-        <input name="key" value="{{old('key')}}" placeholder="Từ khóa">
-        <button type="submit">
-            Tìm kiếm
-        </button>
-    </form>
+    <button id="get" type="button">Convert</button>
 
-    <table>
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>Tên phương thức</th>
-                <th>Số tiền</th>
-                <th>Mã thanh toán</th>
-                <th>Tên khách hàng</th>
-                <th>Ngày thanh toán</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($lst as $t)
-                <tr>
-                    <td>{{$t->id}}</td>
-                    <td>{{$t->tenphuongthuc}}</td>
-                    <td>{{$t->sotien}}</td>
-                    <td>{{$t->mathanhtoan}}</td>
-                    <td>{{$t->tenkhachhang}}</td>
-                    <td>{{$t->ngaythanhtoan}}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <p id="noti_locate"></p>
 
-    <hr>
-    <div class="">
-        {{$lst->appends(request()->all())->links()}}
-    </div>
+    <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+        
+            $("#get").click(function () {
+                var editor = $(".edit").val();
+                alert(editor);
+
+                $("#noti_locate").text(editor);
+            });
+        });
+        CKEDITOR.replace('editor');
+    </script>
+</body>
+</html>

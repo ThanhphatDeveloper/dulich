@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('dia_diem_ket_thuc_id')->constrained('dia_diems');
             $table->foreignId('nha_cung_cap_id')->constrained('nha_cung_caps');
             $table->foreignId('thoi_gian_id')->constrained('thoi_gian_tours');
-            $table->foreignId('khuyen_mai_id')->nullable()->default(null)->constrained('khuyen_mais');
         });
 
         Schema::table('blogs', function(Blueprint $table){

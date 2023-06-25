@@ -28,8 +28,6 @@ class TourSeeder extends Seeder
                 'thoi_gian_id'=>1,
 
                 'nha_cung_cap_id'=>1,
-
-                'khuyen_mai_id'=>1,
             ],
             [
                 'tentour'=>'Tour Hà Nội - Vịnh Hạ Long',
@@ -42,7 +40,6 @@ class TourSeeder extends Seeder
                 'trangthai'=>true,
                 'thoi_gian_id'=>2,
                 'nha_cung_cap_id'=>2,
-                'khuyen_mai_id'=>2,
             ]
         ]);
     }
