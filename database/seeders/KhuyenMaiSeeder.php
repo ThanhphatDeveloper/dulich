@@ -16,18 +16,8 @@ class KhuyenMaiSeeder extends Seeder
     {
         KhuyenMai::create(
             [
-                'makhuyenmai'=>Str::random(10),
-                'mota'=>'Mô tả khuyến mãi 0',
-                'mucgiam'=>0,
-                'giatoithieu'=>0,
-                'hansudung'=>0,
-                'trangthai'=>1
-            ],
-        );
-        KhuyenMai::create(
-            [
-                'makhuyenmai'=>Str::random(10),
-                'mota'=>'Mô tả khuyến mãi test 1',
+                'makhuyenmai'=>'2023qFn6HUb26cMg170Vn33JSu0',
+                'mota'=>'Mô tả khuyến mãi 1',
                 'mucgiam'=>500000,
                 'giatoithieu'=>1000000,
                 'hansudung'=>4,
@@ -36,8 +26,8 @@ class KhuyenMaiSeeder extends Seeder
         );
         KhuyenMai::create(
             [
-                'makhuyenmai'=>Str::random(10),
-                'mota'=>'Mô tả khuyến mãi test 2',
+                'makhuyenmai'=>'2023Pmh6MDC26Y6017QFL33hqY19',
+                'mota'=>'Mô tả khuyến mãi 2',
                 'mucgiam'=>600000,
                 'giatoithieu'=>1200000,
                 'hansudung'=>5,

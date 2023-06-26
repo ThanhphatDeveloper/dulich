@@ -15,14 +15,50 @@ class ThoiGianTourSeeder extends Seeder
     {
         ThoiGianTour::create(
             [
-                'songay'=>4,
-                'sodem'=>3,
+                'songay'=>3,
+                'sodem'=>2,//1
+            ],
+        );
+        ThoiGianTour::create(
+            [
+                'songay'=>10,
+                'sodem'=>9,//2
+            ],
+        );
+        ThoiGianTour::create(
+            [
+                'songay'=>12,
+                'sodem'=>11,//3
+            ],
+        );
+        ThoiGianTour::create(
+            [
+                'songay'=>5,
+                'sodem'=>4,//4
+            ],
+        );
+        ThoiGianTour::create(
+            [
+                'songay'=>7,
+                'sodem'=>6,//5
+            ],
+        );
+        ThoiGianTour::create(
+            [
+                'songay'=>9,
+                'sodem'=>8,//6
             ],
         );
         ThoiGianTour::create(
             [
                 'songay'=>6,
-                'sodem'=>5,
+                'sodem'=>5,//7
+            ],
+        );
+        ThoiGianTour::create(
+            [
+                'songay'=>5,
+                'sodem'=>4,//8
             ],
         );
     }

@@ -10,6 +10,7 @@ use App\Http\Controllers\NhaCungCapController;
 use App\Http\Controllers\ThanhToanController;
 use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\ImageTourController;
+use App\Http\Controllers\CkeditorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,3 +63,9 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('test');
 });
+
+// Route::get('/ckdata', function () {
+//     return view('ckdata');
+// });
+
+Route::resource('/ckdata', CkeditorController::class);

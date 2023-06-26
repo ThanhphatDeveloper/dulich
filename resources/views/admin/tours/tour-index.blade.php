@@ -49,7 +49,7 @@
                     <th>Tên tour</th>
                     <th>Điểm khởi hành</th>
                     <th>Điểm kết thúc</th>
-                    <th>Loại tour</th>
+                    <th>Giá</th>
                     <th>Trạng thái</th>
                     <th>Hình ảnh liên quan</th>
                     <th></th>
@@ -75,7 +75,7 @@
                             @endforeach
                         </td>
 
-                        <td>{{$t->loai_tour->loaitour}}</td>
+                        <td>{{number_format($t->gia, 0, '', ',')}}</td>
                         <td>
                             @if($t->trangthai == 0)
                                 <span class="badge badge-danger">Ngừng hoạt động</span>
