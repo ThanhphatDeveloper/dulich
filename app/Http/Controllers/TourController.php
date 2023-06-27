@@ -176,7 +176,7 @@ class TourController extends Controller
      */
     public function update(UpdateTourRequest $request, Tour $tour)
     {
-        //dd($request);
+        dd($request);
 
         if( $request->tentour != $tour->tentour){
             $request->validate(

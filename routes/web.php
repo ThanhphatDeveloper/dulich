@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TourController;
+use App\Http\Controllers\BookTourController;
 use App\Http\Controllers\LoaiTourController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\ThanhToanController;
 use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\ImageTourController;
 use App\Http\Controllers\CkeditorController;
+use App\Http\Controllers\CustomerHomepageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,9 +58,8 @@ Route::get('/admin', function () {
     return view('login.login');
 });
 
-Route::get('/', function () {
-    return view('customer.home-page');
-});
+Route::resource('/', CustomerHomepageController::class);
+Route::resource('/customer_tours', BookTourController::class);
 
 Route::get('/test', function () {
     return view('test');

@@ -28,5 +28,18 @@ class UserSeeder extends Seeder
                 'trangthai'=>1
             ]
         );
+
+        User::where('id', '=', 2)->update(
+            [
+                'ho'=>'Nguyễn Thành',
+                'ten'=>'Phát',
+                'email'=>'admin2@gmail.com',
+                'sdt'=>'0123456789',
+                'image'=>'img/test.gif',
+                'password'=>Hash::make('123'),
+                'admin'=>1,
+                'trangthai'=>1
+            ]
+        );
     }
 }

@@ -15,12 +15,58 @@
           <div class="table-responsive">
             <div class="dataTables_wrapper container-fluid dt-bootstrap4">
                 <div class="row">
+                    <h5>{{$tour->tentour}}</h5>
+                </div><br>
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                    <th>Ảnh đại diện</th>
+                    <th>Ảnh mô tả</th>
+                    <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                    <tr>
+                        <td>
+                            <img style="width:100px;max-height:100px;object-fit:contain;" src="/storage/{{$tour->avatar}}">
+                        </td>
+                        <td>
+                            <img style="width:100px;max-height:100px;object-fit:contain;" src="/storage/{{$tour->imagelarge}}">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#image">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                    </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+	  <!-- /tables-->
+	  </div>
+	  <!-- /container-fluid-->
+   	</div>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+
+    <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Danh sách hình ảnh liên quan</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <div class="dataTables_wrapper container-fluid dt-bootstrap4">
+                <div class="row">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Thêm</button>
                 </div><br>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                    <th>Ảnh</th>
+                    <th>Ảnh liên quan</th>
                     <th></th>
                 </tr>
               </thead>
@@ -60,7 +106,7 @@
       <i class="fa fa-angle-up"></i>
     </a>
 
-    <!-- Modal thêm ảnh -->
+    <!-- Modal hình ảnh liên quan -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -90,9 +136,54 @@
         </div>
     </div>
 
+    <!-- Modal hình ảnh -->
+    <div class="modal fade" id="image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm ảnh</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <div class="modal-body">
+                <form method="post" action="{{route('tours.update', ['tour'=>$tour])}}" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <p>Ảnh đại diện (400x267)</p>
+                    <div class="custom-file">
+                        <input type="hidden" name="id" value="{{$tour->id}}">
+                        <input class="custom-file-input" id="ful_img_modal" type="file" accept="image/*" name="image"><br>
+                        <label class="custom-file-label" for="customFile">Chọn ảnh</label><br>
+                    </div>
+                    <img id="img_upload_modal" style="width:100px;max-height:100px;object-fit:contain;">
+
+                    <p>Ảnh mô tả</p>
+                    <div class="custom-file">
+                        <input type="hidden" name="id" value="{{$tour->id}}">
+                        <input class="custom-file-input" id="ful_img_modal" type="file" accept="image/*" name="image"><br>
+                        <label class="custom-file-label" for="customFile">Chọn ảnh</label><br>
+                    </div>
+                    <img id="img_upload_modal" style="width:100px;max-height:100px;object-fit:contain;">
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </div>
+                </form>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+
     <script>
         document.getElementById('ful_img').onchange = function (e) {
             document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
+        };
+
+        document.getElementById('ful_img_modal').onchange = function (e) {
+            document.getElementById('img_upload_modal').src = URL.createObjectURL(e.target.files[0]);
         };
 
         $(".custom-file-input").on("change", function() {
