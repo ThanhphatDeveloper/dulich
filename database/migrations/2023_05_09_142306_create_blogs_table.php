@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('tieude');
-            $table->string('noidung');
+            $table->longText('noidung');
             $table->string('anhdaidien');
             $table->boolean('trangthai')->default(1);
             $table->datetime('thoigianxoa')->nullable()->default(null);

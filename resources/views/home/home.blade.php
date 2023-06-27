@@ -34,6 +34,12 @@
         </a>
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right">
+            <a class="nav-link" href="{{route('blogs.index')}}">
+            <i class="fa fa-fw fa-map-marker"></i>
+            <span class="nav-link-text">Quản lý blogs</span>
+        </a>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
             <a class="nav-link" href="{{route('khuyenmais.index')}}">
             <i class="fa fa-fw fa-tags"></i>
             <span class="nav-link-text">Quản lý khuyến mãi</span>
