@@ -38,7 +38,62 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 
-                @yield('menu')
+            @can('admin')
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="{{route('users.index')}}">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span class="nav-link-text">Quản lý tài khoản</span>
+                </a>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="{{route('loaitours.index')}}">
+                    <i class="fa fa-fw fa-pencil"></i>
+                    <span class="nav-link-text">Quản lý loại tour</span>
+                </a>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="{{route('tours.index')}}">
+                    <i class="fa fa-fw fa-globe"></i>
+                    <span class="nav-link-text">Quản lý tour</span>
+                </a>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="{{route('diadiems.index')}}">
+                    <i class="fa fa-fw fa-map-marker"></i>
+                    <span class="nav-link-text">Quản lý địa điểm</span>
+                </a>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="{{route('blogs.index')}}">
+                    <i class="fa fa-fw fa-newspaper"></i>
+                    <span class="nav-link-text">Quản lý blogs</span>
+                </a>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="{{route('khuyenmais.index')}}">
+                    <i class="fa fa-fw fa-tags"></i>
+                    <span class="nav-link-text">Quản lý khuyến mãi</span>
+                </a>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="{{route('nhacungcaps.index')}}">
+                    <i class="fa fa-fw fa-id-card-o"></i>
+                    <span class="nav-link-text">Quản lý nhà cung cấp</span>
+                </a>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="{{route('thanhtoans.index')}}">
+                    <i class="fa fa-fw fa-credit-card-alt"></i>
+                    <span class="nav-link-text">Quản lý thanh toán</span>
+                </a>
+                @endcan
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="{{route('donhangs.index')}}">
+                    <i class="fa fa-fw fa-shopping-cart"></i>
+                    <span class="nav-link-text">Quản lý đơn hàng</span>
+                </a>
                 
             </ul>
             <ul class="navbar-nav sidenav-toggler">
@@ -52,16 +107,7 @@
             <ul class="navbar-nav ml-auto">
                 
                 <li class="nav-item">
-                <form class="form-inline my-2 my-lg-0 mr-lg-2">
-                    <div class="input-group">
-                    <input class="form-control search-top" type="text" placeholder="Search for...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button">
-                        <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                    </div>
-                </form>
+                
                 </li>
                 <li class="nav-item">
 
@@ -173,9 +219,11 @@
                             @if($errors->has('ten')) {{$errors->first('ten')}} @endif
                         </div>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Ảnh đại diện:</label>
-                            <input id="ful_img" type="file" accept="image/*" name="image"><br>
-                            <img id="img_upload" width="50" height="50" class="rounded-circle"><br>
+                            <div class="custom-file">
+                                <input class="custom-file-input" id="ful_img_layout" type="file" accept="image/*" name="image"><br>
+                                <label class="custom-file-label" for="customFile">Ảnh đại diện</label><br>
+                            </div><br>
+                            <img id="img_upload_layout" width="50" height="50" class="rounded-circle"><br>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
@@ -239,8 +287,8 @@
     <script src="{{asset('js/admin-charts.js')}}"></script>
 
     <script type="text/javascript">
-        document.getElementById('ful_img').onchange = function (e) {
-            document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
+        document.getElementById('ful_img_layout').onchange = function (e) {
+            document.getElementById('img_upload_layout').src = URL.createObjectURL(e.target.files[0]);
         }
 
         document.querySelector("#number").addEventListener("keypress", function (evt) {

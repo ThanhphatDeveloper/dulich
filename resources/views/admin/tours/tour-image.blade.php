@@ -28,10 +28,10 @@
               <tbody>
                     <tr>
                         <td>
-                            <img style="width:100px;max-height:100px;object-fit:contain;" src="/storage/{{$tour->avatar}}">
+                            <img style="width:300px;max-height:300px;object-fit:contain;" src="/storage/{{$tour->avatar}}">
                         </td>
                         <td>
-                            <img style="width:100px;max-height:100px;object-fit:contain;" src="/storage/{{$tour->imagelarge}}">
+                            <img style="width:300px;max-height:300px;object-fit:contain;" src="/storage/{{$tour->imagelarge}}">
                         </td>
                         <td>
                             <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#image">
@@ -75,7 +75,7 @@
                     <tr>
                         
                         <td>
-                            <img style="width:100px;max-height:100px;object-fit:contain;" src="/storage/{{$i->image}}">
+                            <img style="width:250px;max-height:250px;object-fit:contain;" src="/storage/{{$i->image}}">
                         </td>
                         <td>
                             <form method="post" action="{{route('imagetours.destroy', ['imagetour'=>$i])}}">
@@ -111,7 +111,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Thêm ảnh</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm ảnh liên quan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -122,9 +122,9 @@
                     <div class="custom-file">
                         <input type="hidden" name="id" value="{{$tour->id}}">
                         <input class="custom-file-input" id="ful_img" type="file" accept="image/*" name="image"><br>
-                        <label class="custom-file-label" for="customFile">Chọn ảnh</label><br>
+                        <label class="custom-file-label" for="customFile">Chọn ảnh (800x600)</label><br>
                     </div>
-                    <img id="img_upload" style="width:100px;max-height:100px;object-fit:contain;">
+                    <img id="img_upload" style="width:200px;max-height:200px;object-fit:contain;">
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                         <button type="submit" class="btn btn-primary">Lưu</button>
@@ -147,24 +147,21 @@
                     </button>
                 </div>
             <div class="modal-body">
-                <form method="post" action="{{route('tours.update', ['tour'=>$tour])}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('update_image')}}" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
-                    <p>Ảnh đại diện (400x267)</p>
                     <div class="custom-file">
                         <input type="hidden" name="id" value="{{$tour->id}}">
-                        <input class="custom-file-input" id="ful_img_modal" type="file" accept="image/*" name="image"><br>
-                        <label class="custom-file-label" for="customFile">Chọn ảnh</label><br>
+                        <input class="custom-file-input" id="ful_img_modal" type="file" accept="avatar/*" name="avatar"><br>
+                        <label class="custom-file-label" for="customFile">Ảnh đại diện (400x267)</label>
                     </div>
-                    <img id="img_upload_modal" style="width:100px;max-height:100px;object-fit:contain;">
+                    <img id="img_upload_modal" style="width:200px;max-height:200px;object-fit:contain;margin-bottom:30px;margin-top:15px;">
 
-                    <p>Ảnh mô tả</p>
                     <div class="custom-file">
                         <input type="hidden" name="id" value="{{$tour->id}}">
-                        <input class="custom-file-input" id="ful_img_modal" type="file" accept="image/*" name="image"><br>
-                        <label class="custom-file-label" for="customFile">Chọn ảnh</label><br>
+                        <input class="custom-file-input" id="ful_img_modal1" type="file" accept="imagelarge/*" name="imagelarge"><br>
+                        <label class="custom-file-label" for="customFile">Ảnh mô tả (1600x1067)</label>
                     </div>
-                    <img id="img_upload_modal" style="width:100px;max-height:100px;object-fit:contain;">
+                    <img id="img_upload_modal1" style="width:200px;max-height:200px;object-fit:contain;margin-top:15px;">
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
@@ -186,63 +183,14 @@
             document.getElementById('img_upload_modal').src = URL.createObjectURL(e.target.files[0]);
         };
 
+        document.getElementById('ful_img_modal1').onchange = function (e) {
+            document.getElementById('img_upload_modal1').src = URL.createObjectURL(e.target.files[0]);
+        };
+
         $(".custom-file-input").on("change", function() {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
     </script>
 
-@endsection
-
-@section('menu')
-    @can('admin')
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('users.index')}}">
-            <i class="fa fa-fw fa-user"></i>
-            <span class="nav-link-text">Quản lý tài khoản</span>
-        </a>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('loaitours.index')}}">
-            <i class="fa fa-fw fa-pencil"></i>
-            <span class="nav-link-text">Quản lý loại tour</span>
-        </a>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('tours.index')}}">
-            <i class="fa fa-fw fa-globe"></i>
-            <span class="nav-link-text">Quản lý tour</span>
-        </a>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('diadiems.index')}}">
-            <i class="fa fa-fw fa-map-marker"></i>
-            <span class="nav-link-text">Quản lý địa điểm</span>
-        </a>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('khuyenmais.index')}}">
-            <i class="fa fa-fw fa-tags"></i>
-            <span class="nav-link-text">Quản lý khuyến mãi</span>
-        </a>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('nhacungcaps.index')}}">
-            <i class="fa fa-fw fa-id-card-o"></i>
-            <span class="nav-link-text">Quản lý nhà cung cấp</span>
-        </a>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('thanhtoans.index')}}">
-            <i class="fa fa-fw fa-credit-card-alt"></i>
-            <span class="nav-link-text">Quản lý thanh toán</span>
-        </a>
-    @endcan
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-            <a class="nav-link" href="{{route('donhangs.index')}}">
-            <i class="fa fa-fw fa-shopping-cart"></i>
-            <span class="nav-link-text">Quản lý đơn hàng</span>
-        </a>
 @endsection

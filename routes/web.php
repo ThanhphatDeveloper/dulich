@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function(){
     Route::resource('/admin/imagetours', ImageTourController::class);
     Route::resource('/admin/blogs', BlogController::class);
 
+    Route::post('/admin/image', 'App\Http\Controllers\ImageTourController@update_image')->name('update_image');
+
     Route::get('/admin/home', function () {
         return view('home.home');
     });

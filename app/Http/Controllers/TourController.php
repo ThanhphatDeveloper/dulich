@@ -13,6 +13,7 @@ use App\Http\Requests\StoreTourRequest;
 use App\Http\Requests\UpdateTourRequest;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class TourController extends Controller
 {
@@ -176,7 +177,7 @@ class TourController extends Controller
      */
     public function update(UpdateTourRequest $request, Tour $tour)
     {
-        dd($request);
+        //dd($request);
 
         if( $request->tentour != $tour->tentour){
             $request->validate(
