@@ -84,7 +84,7 @@
                             <td>
                                 <div class="custom-file">
                                     <input class="custom-file-input" id="ful_img" type="file" accept="image/*" name="image">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                    <label class="custom-file-label" for="customFile">Chọn ảnh</label>
                                 </div>
                             </td>
                             <td><p class="text-danger">@if($errors->has('image')) {{$errors->first('image')}} @endif</p></td>

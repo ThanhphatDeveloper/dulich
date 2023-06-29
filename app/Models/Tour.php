@@ -26,6 +26,9 @@ class Tour extends Model
     //     return $this->hasMany(NhaCungCap::class);
     // }
 
+
+    
+
     // public function khuyenmai_tour(){
     //     return $this->hasMany(KhuyenMai::class);
     // }
@@ -40,6 +43,10 @@ class Tour extends Model
     
     public function tour_lien_quan(){
         return $this->hasMany(TourLienQuan::class);
+    }
+
+    public function don_hang(){
+        return $this->hasMany(DonHang::class);
     }
 
     public function image_tour(){

@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BookTourController;
 use App\Http\Controllers\LoaiTourController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DiaDiemController;
 use App\Http\Controllers\KhuyenMaiController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\NhaCungCapController;
 use App\Http\Controllers\ThanhToanController;
 use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\ImageTourController;
+use App\Http\Controllers\TourLienQuanController;
 use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\CustomerHomepageController;
 use Illuminate\Support\Facades\Route;
@@ -38,9 +40,12 @@ Route::middleware('auth')->group(function(){
     Route::resource('/admin/thanhtoans', ThanhToanController::class);
     Route::resource('/admin/donhangs', DonHangController::class);
     Route::resource('/admin/imagetours', ImageTourController::class);
+    Route::resource('/admin/tourlienquans', TourLienQuanController::class);
     Route::resource('/admin/blogs', BlogController::class);
+    Route::resource('/admin/khachhangs', KhachHangController::class);
 
     Route::post('/admin/image', 'App\Http\Controllers\ImageTourController@update_image')->name('update_image');
+    Route::get('/admin/donhangdaduyets', 'App\Http\Controllers\DonHangController@index_da_duyet')->name('da_duyet');
 
     Route::get('/admin/home', function () {
         return view('home.home');

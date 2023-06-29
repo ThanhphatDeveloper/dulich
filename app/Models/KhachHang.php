@@ -19,4 +19,15 @@ class KhachHang extends Model
     public function don_hang(){
         return $this->belongsTo(DonHang::class);
     }
+
+    public function scopeSearch($query)
+    {
+        if($key = request()->key){
+            $query=$query->where('ho', 'like', '%'.$key.'%')
+            ->orWhere('ten', 'like', '%'.$key.'%')
+            ->orWhere('sdt', 'like', '%'.$key.'%');
+        }
+
+        return $query;
+    }
 }

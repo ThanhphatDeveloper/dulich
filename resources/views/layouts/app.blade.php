@@ -87,13 +87,29 @@
                     <i class="fa fa-fw fa-credit-card-alt"></i>
                     <span class="nav-link-text">Quản lý thanh toán</span>
                 </a>
-                @endcan
 
                 <li class="nav-item" data-toggle="tooltip" data-placement="right">
-                    <a class="nav-link" href="{{route('donhangs.index')}}">
-                    <i class="fa fa-fw fa-shopping-cart"></i>
-                    <span class="nav-link-text">Quản lý đơn hàng</span>
+                    <a class="nav-link" href="{{route('khachhangs.index')}}">
+                    <i class="fa fa-fw fa-users"></i>
+                    <span class="nav-link-text">Quản lý khách hàng</span>
                 </a>
+
+                @endcan
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
+                        <i class="fa fa-fw fa-shopping-cart"></i>
+                        <span class="nav-link-text">Quản lý đơn hàng</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseComponents">
+                        <li>
+                        <a href="{{route('donhangs.index')}}">Chưa duyệt</a>
+                        </li>
+                        <li>
+                        <a href="{{route('da_duyet')}}">Đã duyệt</a>
+                        </li>
+                    </ul>
+                </li>
                 
             </ul>
             <ul class="navbar-nav sidenav-toggler">
@@ -155,7 +171,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                 
-                    <a href="/admin/home">Home</a>
+                    
                 
                 </li>
                 <li class="breadcrumb-item active">@section('header')@show</li>

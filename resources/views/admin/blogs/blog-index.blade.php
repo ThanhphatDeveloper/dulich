@@ -45,8 +45,10 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                    <th>Tiêu đề</th>
                     <th>Ảnh đại diện</th>
+                    <th>Tiêu đề</th>
+                    <th>Tác giả</th>
+                    <th>Tour liên quan</th>
                     <th>Trạng thái</th>
                     <th></th>
                     <th></th>
@@ -55,8 +57,25 @@
               <tbody>
                 @foreach($lst as $l)
                     <tr>
+                        <td><img style="width:100px;max-height:100px;object-fit:contain;" src="{{$l->anhdaidien}}"></td>
                         <td>{{$l->tieude}}</td>
-                        <td><img style="width:100px;max-height:100px;object-fit:contain;" src="{{$l->image}}"></td>
+
+                        <td>
+                            @foreach($lst_user as $u)
+                                @if($l->user_id == $u->id)
+                                    {{$u->ho}} {{$u->ten}}
+                                @endif 
+                            @endforeach
+                        </td>
+
+                        <td>
+                            <form method="get" action="{{route('tourlienquans.index')}}">
+                                <input type="hidden" name="id" value="{{$l->id}}">
+                                <button type="submit" class="btn btn-sm btn-info">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </form>
+                        </td>
 
                         <td>
                             @if($l->trangthai == 0)
@@ -66,7 +85,7 @@
                             @endif
                         </td>
                         <td>
-                            <form method="post" action="{{route('blogs.destroy', ['loaitour'=>$l])}}">
+                            <form method="post" action="{{route('blogs.destroy', ['blog'=>$l])}}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger">
@@ -75,7 +94,7 @@
                             </form>
                         </td>
                         <td>
-                            <form method="get" action="{{route('blogs.edit', ['loaitour'=>$l])}}">
+                            <form method="get" action="{{route('blogs.edit', ['blog'=>$l])}}">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-success">
                                     <i class="fas fa-edit"></i>

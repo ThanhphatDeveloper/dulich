@@ -16,15 +16,15 @@ class DatabaseSeeder extends Seeder
         $this->call([
             KhuyenMaiSeeder::class,
             ThanhToanSeeder::class,
-            DonHangSeeder::class,
             UserSeeder::class,
-            KhachHangSeeder::class,
             BlogSeeder::class,
             LoaiTourSeeder::class,
             NhaCungCapSeeder::class,
             DiaDiemSeeder::class,
             ThoiGianTourSeeder::class,
             TourSeeder::class,
+            DonHangSeeder::class,
+            KhachHangSeeder::class,
             ImageTourSeeder::class,
             TourLienQuanSeeder::class,
         ]);

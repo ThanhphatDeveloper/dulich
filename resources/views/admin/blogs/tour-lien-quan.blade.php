@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Danh sách nhà cung cấp')
+@section('title', 'Danh sách tour liên quan')
 
 @section('header')
     @parent
-    <a href="{{route('nhacungcaps.index');}}">Nhà cung cấp</a>
+    <a href="{{route('tourlienquans.index');}}">Tour liên quan</a>
 @endsection
 
 @section('content')
     <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Danh sách nhà cung cấp</div>
+          <i class="fa fa-table"></i> Danh sách tour liên quan</div>
         <div class="card-body">
           <div class="table-responsive">
             <div class="dataTables_wrapper container-fluid dt-bootstrap4">
@@ -20,7 +20,7 @@
                             <div class="input-group">
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                    Thêm nhà cung cấp
+                                    Thêm tour
                                 </button>
                             </span>
                             </div>
@@ -45,37 +45,26 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                    <th>Nhà cung cấp</th>
-                    <th>Trạng thái</th>
-                    <th></th>
+                    <th>Tên tour</th>
                     <th></th>
                 </tr>
               </thead>
               <tbody>
               @foreach($lst as $d)
                 <tr>
-                    <td>{{$d->nhacungcap}}</td>
                     <td>
-                        @if($d->trangthai == 0)
-                            <span class="badge badge-danger">Ngừng hoạt động</span>
-                        @else
-                            <span class="badge badge-success">Hoạt động</span>
-                        @endif
+                        @foreach($lst_tour as $t)
+                            @if($d->tour_id == $t->id)
+                                {{$t->tentour}}
+                            @endif
+                        @endforeach
                     </td>
                     <td>
-                        <form method="post" action="{{route('nhacungcaps.destroy', ['nhacungcap'=>$d])}}">
+                        <form method="post" action="{{route('tourlienquans.destroy', ['tourlienquan'=>$d])}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger">
                                 <i class="fas fa-trash"></i>
-                            </button>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="get" action="{{route('nhacungcaps.edit', ['nhacungcap'=>$d])}}">
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-success">
-                                <i class="fas fa-edit"></i>
                             </button>
                         </form>
                     </td>
@@ -105,17 +94,22 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Thêm nhà cung cấp</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Thêm tour liên quan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{route('nhacungcaps.store')}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('tourlienquans.store')}}">
                 @csrf
                 <div class="form-group">
-                    <input placeholder="Tên nhà cung cấp" name="nhacungcap" type="text" class="form-control"><br>
-                    @if($errors->has('nhacungcap')) {{$errors->first('nhacungcap')}} @endif
+                    <input type="hidden" name="blog_id" value="{{$blog_id}}">
+                    <select class="custom-select custom-select-sm" name="tour_id">
+                        @foreach($lst_tour as $cat)
+                            <option value="{{$cat->id}}"> @if ($cat->id==old('tour_id'))
+                            @endif {{$cat->tentour}}</option>
+                        @endforeach
+                    </select>          
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>

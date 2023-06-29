@@ -19,4 +19,13 @@ class Blog extends Model
     public function tour_lien_quan(){
         return $this->hasMany(TourLienQuan::class);
     }
+
+    public function scopeSearch($query)
+    {
+        if($key = request()->key){
+            $query=$query->where('tieude', 'like', '%'.$key.'%');
+        }
+
+        return $query;
+    }
 }

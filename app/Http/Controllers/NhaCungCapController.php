@@ -60,6 +60,7 @@ class NhaCungCapController extends Controller
      */
     public function update(UpdateNhaCungCapRequest $request, NhaCungCap $nhacungcap)
     {
+        //dd($nhacungcap);
         if( $request->nhacungcap != $nhacungcap->nhacungcap){
             $request->validate(
                 [

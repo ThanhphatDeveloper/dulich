@@ -23,4 +23,19 @@ class DonHang extends Model
     public function khach_hangs(){
         return $this->hasMany(KhachHang::class);
     }
+
+    public function tour(){
+        return $this->belongsTo(Tour::class);
+    }
+
+    public function scopeSearch($query)
+    {
+        if($key = request()->key){
+            $query=$query->where('ten', 'like', '%'.$key.'%')
+            ->orWhere('email', 'like', '%'.$key.'%')
+            ->orWhere('sdt', 'like', '%'.$key.'%');
+        }
+
+        return $query;
+    }
 }
