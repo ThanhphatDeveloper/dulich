@@ -13,6 +13,7 @@ class BookTourController extends Controller
      */
     public function index()
     {
+        
         return view('customer.list-tour');
     }
 
@@ -35,9 +36,14 @@ class BookTourController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(BookTour $bookTour)
+    // public function show(BookTour $bookTour)
+    // {
+    //     return view('customer.tour-detail');
+    // }
+
+    public function show()
     {
-        //
+        return view('customer.tour-detail');
     }
 
     /**

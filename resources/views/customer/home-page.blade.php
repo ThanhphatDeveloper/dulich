@@ -52,44 +52,11 @@
 		<nav id="menu" class="main-menu">
 			<ul>
 				<li><span><a href="{{route('customer_tours.index')}}">Tours</a></span>
-					<ul>
-						<li>
-							<span><a href="#0">Tours Grid</a></span>
-							<ul>
-								<li><a href="tours-grid-isotope.html">Tours Grid Isotope</a></li>
-								<li><a href="tours-grid-sidebar.html">Tours Grid Sidebar</a></li>
-								<li><a href="tours-grid-sidebar-2.html">Tours Grid Sidebar 2</a></li>
-								<li><a href="tours-grid.html">Tours Grid Simple</a></li>
-							</ul>
-						</li>
-						<li>
-							<span><a href="#0">Tours List</a></span>
-							<ul>
-								<li><a href="tours-list-isotope.html">Tours List Isotope</a></li>
-								<li><a href="tours-list-sidebar.html">Tours List Sidebar</a></li>
-								<li><a href="tours-list-sidebar-2.html">Tours List Sidebar 2</a></li>
-								<li><a href="tours-list.html">Tours List Simple</a></li>
-							</ul>
-						</li>
-						<li><a href="tours-half-screen-map.html">Tours Half Screen Map</a></li>
-						<li><a href="tour-detail.html">Tour Detail</a></li>
-						<li><a href="detail-working-contact-form.html">Detail Contact Form <strong class="badge text-bg-danger">New!</strong></a></li>
-						<li>
-							<span><a href="#0">Open Street Map</a></span>
-							<ul>
-								<li><a href="tours-half-screen-map-leaflet.html">Tours Half Screen Map</a></li>
-								<li><a href="tours-list-isotope-leaflet.html">Tours Grid Isotope</a></li>
-								<li><a href="tours-list-sidebar-leaflet.html">Tours Grid Sidebar</a></li>
-								<li><a href="tours-list-sidebar-2-leaflet.html">Tours Grid Sidebar 2</a></li>
-								<li><a href="tours-list-leaflet.html">Tours Grid Simple</a></li>
-								<li><a href="tours-list-isotope-leaflet.html">Tours List Isotope</a></li>
-								<li><a href="tours-list-sidebar-leaflet.html">Tours List Sidebar</a></li>
-								<li><a href="tours-list-sidebar-2-leaflet.html">Tours List Sidebar 2</a></li>
-								<li><a href="tours-list-leaflet.html">Tours List Simple</a></li>
-								<li><a href="tour-detail-leaflet.html">Tour Detail</a></li>
-							</ul>
-						</li>
-					</ul>
+					
+				</li>
+
+				<li><span><a href="{{route('customer_tours.index')}}">Blog</a></span>
+					
 				</li>
 			</ul>
 		</nav>

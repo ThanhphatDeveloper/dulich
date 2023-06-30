@@ -38,7 +38,7 @@
 		<div id="logo">
 			<a href="http://localhost:8000">
 				<img src="{{asset('img/trungphattravel.png')}}" width="150" height="36" alt="" class="logo_normal">
-				<img src="{{asset('img/trungphattravel.png')}}" width="150" height="36" alt="" class="logo_sticky">
+				<img src="{{asset('customer/img/custom/trungphattravel.png')}}" width="150" height="36" alt="" class="logo_sticky">
 			</a>
 		</div>
 		<!-- /top_menu -->
@@ -51,45 +51,11 @@
 		</a>
 		<nav id="menu" class="main-menu">
 			<ul>
-				<li><span><a href="#0">Tours</a></span>
-					<ul>
-						<li>
-							<span><a href="#0">Tours Grid</a></span>
-							<ul>
-								<li><a href="tours-grid-isotope.html">Tours Grid Isotope</a></li>
-								<li><a href="tours-grid-sidebar.html">Tours Grid Sidebar</a></li>
-								<li><a href="tours-grid-sidebar-2.html">Tours Grid Sidebar 2</a></li>
-								<li><a href="tours-grid.html">Tours Grid Simple</a></li>
-							</ul>
-						</li>
-						<li>
-							<span><a href="#0">Tours List</a></span>
-							<ul>
-								<li><a href="tours-list-isotope.html">Tours List Isotope</a></li>
-								<li><a href="tours-list-sidebar.html">Tours List Sidebar</a></li>
-								<li><a href="tours-list-sidebar-2.html">Tours List Sidebar 2</a></li>
-								<li><a href="tours-list.html">Tours List Simple</a></li>
-							</ul>
-						</li>
-						<li><a href="tours-half-screen-map.html">Tours Half Screen Map</a></li>
-						<li><a href="tour-detail.html">Tour Detail</a></li>
-						<li><a href="detail-working-contact-form.html">Detail Contact Form <strong class="badge text-bg-danger">New!</strong></a></li>
-						<li>
-							<span><a href="#0">Open Street Map</a></span>
-							<ul>
-								<li><a href="tours-half-screen-map-leaflet.html">Tours Half Screen Map</a></li>
-								<li><a href="tours-list-isotope-leaflet.html">Tours Grid Isotope</a></li>
-								<li><a href="tours-list-sidebar-leaflet.html">Tours Grid Sidebar</a></li>
-								<li><a href="tours-list-sidebar-2-leaflet.html">Tours Grid Sidebar 2</a></li>
-								<li><a href="tours-list-leaflet.html">Tours Grid Simple</a></li>
-								<li><a href="tours-list-isotope-leaflet.html">Tours List Isotope</a></li>
-								<li><a href="tours-list-sidebar-leaflet.html">Tours List Sidebar</a></li>
-								<li><a href="tours-list-sidebar-2-leaflet.html">Tours List Sidebar 2</a></li>
-								<li><a href="tours-list-leaflet.html">Tours List Simple</a></li>
-								<li><a href="tour-detail-leaflet.html">Tour Detail</a></li>
-							</ul>
-						</li>
-					</ul>
+				<li><span><a href="{{route('customer_tours.index')}}">Tours</a></span>
+					
+				</li>
+				<li><span><a href="{{route('customer_tours.index')}}">Blog</a></span>
+					
 				</li>
 			</ul>
 		</nav>
@@ -149,11 +115,11 @@
 					<div class="box_grid">
 						<figure>
 							<a href="#0" class="wish_bt"></a>
-							<a href="tour-detail.html"><img src="img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
+							<a href="{{url('/customer_tour_detail')}}"><img src="img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
 							<small>Historic</small>
 						</figure>
 						<div class="wrapper">
-							<h3><a href="tour-detail.html">Arc Triomphe</a></h3>
+							<h3><a href="{{url('/customer_tour_detail')}}">Arc Triomphe</a></h3>
 							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
 							<span class="price">From <strong>$54</strong> /per person</span>
 						</div>
@@ -168,11 +134,11 @@
 					<div class="box_grid">
 						<figure>
 							<a href="#0" class="wish_bt"></a>
-							<a href="tour-detail.html"><img src="img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
+							<a href="{{url('/customer_tour_detail')}}"><img src="img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
 							<small>Churches</small>
 						</figure>
 						<div class="wrapper">
-							<h3><a href="tour-detail.html">Notredam</a></h3>
+							<h3><a href="{{url('/customer_tour_detail')}}">Notredam</a></h3>
 							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
 							<span class="price">From <strong>$124</strong> /per person</span>
 						</div>
@@ -187,11 +153,11 @@
 					<div class="box_grid">
 						<figure>
 							<a href="#0" class="wish_bt"></a>
-							<a href="tour-detail.html"><img src="img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
+							<a href="{{url('/customer_tour_detail')}}"><img src="img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
 							<small>Historic</small>
 						</figure>
 						<div class="wrapper">
-							<h3><a href="tour-detail.html">Versailles</a></h3>
+							<h3><a href="{{url('/customer_tour_detail')}}">Versailles</a></h3>
 							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
 							<span class="price">From <strong>$25</strong> /per person</span>
 						</div>
@@ -206,11 +172,11 @@
 					<div class="box_grid">
 						<figure>
 							<a href="#0" class="wish_bt"></a>
-							<a href="tour-detail.html"><img src="img/tour_4.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
+							<a href="{{url('/customer_tour_detail')}}"><img src="img/tour_4.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
 							<small>Museum</small>
 						</figure>
 						<div class="wrapper">
-							<h3><a href="tour-detail.html">Pompidue Museum</a></h3>
+							<h3><a href="{{url('/customer_tour_detail')}}">Pompidue Museum</a></h3>
 							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
 							<span class="price">From <strong>$45</strong> /per person</span>
 						</div>
@@ -225,11 +191,11 @@
 					<div class="box_grid">
 						<figure>
 							<a href="#0" class="wish_bt"></a>
-							<a href="tour-detail.html"><img src="img/tour_5.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
+							<a href="{{url('/customer_tour_detail')}}"><img src="img/tour_5.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
 							<small>Walking</small>
 						</figure>
 						<div class="wrapper">
-							<h3><a href="tour-detail.html">Tour Eiffel</a></h3>
+							<h3><a href="{{url('/customer_tour_detail')}}">Tour Eiffel</a></h3>
 							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
 							<span class="price">From <strong>$65</strong> /per person</span>
 						</div>
@@ -244,11 +210,11 @@
 					<div class="box_grid">
 						<figure>
 							<a href="#0" class="wish_bt"></a>
-							<a href="tour-detail.html"><img src="img/tour_6.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
+							<a href="{{url('/customer_tour_detail')}}"><img src="img/tour_6.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
 							<small>Museum</small>
 						</figure>
 						<div class="wrapper">
-							<h3><a href="tour-detail.html">Louvre Museum</a></h3>
+							<h3><a href="{{url('/customer_tour_detail')}}">Louvre Museum</a></h3>
 							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
 							<span class="price">From <strong>$95</strong> /per person</span>
 						</div>
