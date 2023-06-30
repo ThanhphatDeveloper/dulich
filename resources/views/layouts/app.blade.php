@@ -91,7 +91,7 @@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right">
                     <a class="nav-link" href="{{route('khachhangs.index')}}">
                     <i class="fa fa-fw fa-users"></i>
-                    <span class="nav-link-text">Quản lý khách hàng</span>
+                    <span class="nav-link-text">Thông tin khách hàng</span>
                 </a>
 
                 @endcan
@@ -171,7 +171,6 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                 
-                    
                 
                 </li>
                 <li class="breadcrumb-item active">@section('header')@show</li>

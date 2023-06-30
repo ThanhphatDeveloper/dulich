@@ -114,7 +114,7 @@
                 <form method="post" action="{{route('nhacungcaps.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <input placeholder="Tên nhà cung cấp" name="nhacungcap" type="text" class="form-control"><br>
+                    <input placeholder="Tên nhà cung cấp" name="nhacungcap" type="text" class="form-control" value="{{old('nhacungcap')}}"><br>
                     @if($errors->has('nhacungcap')) {{$errors->first('nhacungcap')}} @endif
                 </div>
                 <div class="modal-footer">

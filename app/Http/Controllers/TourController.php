@@ -55,10 +55,10 @@ class TourController extends Controller
      */
     public function create()
     {
-        $lst_img=ImageTour::all();
-        $lst_dd=DiaDiem::all();
-        $lst_loai_tour=LoaiTour::all();
-        $lst_ncc=NhaCungCap::all();
+        $lst_img=ImageTour::where('trangthai', '=', 1)->get();
+        $lst_dd=DiaDiem::where('trangthai', '=', 1)->get();
+        $lst_loai_tour=LoaiTour::where('trangthai', '=', 1)->get();
+        $lst_ncc=NhaCungCap::where('trangthai', '=', 1)->get();
         $lst_tg=ThoiGianTour::all();
         $lst_km=KhuyenMai::all();
 

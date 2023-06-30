@@ -16,10 +16,10 @@
             <div class="dataTables_wrapper container-fluid dt-bootstrap4">
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
-                        <form class="form-inline my-2 my-lg-0 mr-lg-2" method="get" action="{{route('diadiems.create')}}">
+                        <form class="form-inline my-2 my-lg-0 mr-lg-2">
                             <div class="input-group">
                             <span class="input-group-btn">
-                                <button class="btn btn-primary" type="submit">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                     Thêm địa điểm
                                 </button>
                             </span>
@@ -98,4 +98,31 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
+
+    <!-- Modal store-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm địa điểm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="{{route('diadiems.store')}}" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <input placeholder="Loại tour" name="diadiem" value="{{old('diadiem')}}" type="text" class="form-control"><br>
+                    @if($errors->has('diadiem')) {{$errors->first('diadiem')}} @endif
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
 @endsection
