@@ -10,7 +10,7 @@
 @section('content')
     <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Danh sách đơn hàng chưa duyệt</div>
+          <i class="fa fa-table"></i> Đơn hàng chưa duyệt</div>
         <div class="card-body">
           <div class="table-responsive">
             <div class="dataTables_wrapper container-fluid dt-bootstrap4">
@@ -41,32 +41,31 @@
                     <th>Tổng tiền</th>
                     <th>Tên tour</th>
                     <th>Thông tin chi tiết</th>
-                    <th>Duyệt</th>
-                    <th>Không duyệt</th>
+                    <th></th>
+                    <th></th>
                 </tr>
               </thead>
               <tbody>
-              @foreach($lst as $d)
                 <tr>
-                    <td>{{$d->ten}}</td>
-                    <td>{{$d->sdt}}</td>
-                    <td>{{number_format($d->tongtien, 0, '', ',')}}</td>
+                    <td>{{$donhang->ten}}</td>
+                    <td>{{$donhang->sdt}}</td>
+                    <td>{{number_format($donhang->tongtien, 0, '', ',')}}</td>
                     <td>
                         @foreach($lst_tour as $t)
-                            @if($d->tour_id == $t->id)
+                            @if($donhang->tour_id == $t->id)
                                 {{$t->tentour}}
                             @endif
                         @endforeach
                     </td>
                     <td>
-                        <form method="get" action="{{route('donhangs.show', ['donhang'=>$d])}}">
+                        <form method="get" action="{{route('donhangs.show', ['donhang'=>$donhang])}}">
                             <button type="submit" class="btn btn-sm btn-info">
                                 <i class="fas fa-eye"></i>
                             </button>
                         </form>
                     </td>
                     <td>
-                        <form method="post" action="{{route('donhangs.update', ['donhang'=>$d])}}">
+                        <form method="post" action="{{route('donhangs.update', ['donhang'=>$donhang])}}">
                             @csrf
                             @method('PUT')
                             <button type="submit" onclick="return checkOrder()" class="btn btn-sm btn-success">
@@ -75,7 +74,7 @@
                         </form>
                     </td>
                     <td>
-                        <form method="post" action="{{route('donhangs.destroy', ['donhang'=>$d])}}">
+                        <form method="post" action="{{route('donhangs.destroy', ['donhang'=>$donhang])}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="return checkDelete()" class="btn btn-sm btn-danger">
@@ -84,13 +83,9 @@
                         </form>
                     </td>
                 </tr>
-            @endforeach
                 
               </tbody>
             </table>
-            <div class="">
-                {{$lst->appends(request()->all())->links()}}
-            </div>
           </div>
         </div>
       </div>

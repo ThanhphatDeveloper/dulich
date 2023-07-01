@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function(){
 
     Route::post('/admin/image', 'App\Http\Controllers\ImageTourController@update_image')->name('update_image');
     Route::get('/admin/donhangdaduyets', 'App\Http\Controllers\DonHangController@index_da_duyet')->name('da_duyet');
+    Route::get('/admin/donhangkhongduyets', 'App\Http\Controllers\DonHangController@index_khong_duyet')->name('khong_duyet');
 
     Route::get('/admin/home', function () {
         return view('home.home');

@@ -7,6 +7,7 @@ use App\Models\Tour;
 use App\Models\KhuyenMai;
 use App\Http\Requests\StoreDonHangRequest;
 use App\Http\Requests\UpdateDonHangRequest;
+use Carbon\Carbon;
 
 class DonHangController extends Controller
 {
@@ -37,6 +38,18 @@ class DonHangController extends Controller
         ]);
     }
 
+    public function index_khong_duyet()
+    {
+        $lst_tour = Tour::all();
+        $lst_km = KhuyenMai::all();
+        $lst = DonHang::search()->where('thoigianxoa', '!=', null)->orderBy('created_at','DESC')->paginate(10);
+        return view('admin.donhangs.donhang-khongduyet', compact('lst'),
+        [
+            'lst_tour'=>$lst_tour,
+            'lst_km'=>$lst_km,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -58,7 +71,14 @@ class DonHangController extends Controller
      */
     public function show(DonHang $donhang)
     {
-        //
+        $lst_tour = Tour::all();
+        $lst_km = KhuyenMai::all();
+        return view('admin.donhangs.donhang-chuaduyet-show',
+        [
+            'donhang'=>$donhang,
+            'lst_tour'=>$lst_tour,
+            'lst_km'=>$lst_km,
+        ]);
     }
 
     /**
@@ -86,7 +106,11 @@ class DonHangController extends Controller
      */
     public function destroy(DonHang $donhang)
     {
-        $donhang->delete();
+        $donhang->fill([
+            'trangthai'=>0,
+            'thoigianxoa'=>Carbon::now()->toDateTimeString(),
+        ]);
+        $donhang->save();
         return redirect()->route('donhangs.index');
     }
 }

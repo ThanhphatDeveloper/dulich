@@ -44,5 +44,80 @@ class DonHangSeeder extends Seeder
                 'trangthai'=>0,
             ]
         );
+        DonHang::create(
+            [
+                'ten'=>'Nguyễn Thành Phát',
+                'email'=>'0306201474@caothang.edu.vn',
+                'sdt'=>'0123456789',
+                'thoigiankhoihanh'=>'2023-05-08 08:00:00',
+                'sokhach'=>2,
+                'ngaydat'=>'2023-05-04 20:00:00',
+                'tongtien'=>4000000,
+                'thanh_toan_id'=>2,
+                'khuyen_mai_id'=>2,
+                'tour_id'=>2,
+                'trangthai'=>0,
+            ]
+        );
+        DonHang::create(
+            [
+                'ten'=>'Nguyễn Thành Phát',
+                'email'=>'0306201474@caothang.edu.vn',
+                'sdt'=>'0123456789',
+                'thoigiankhoihanh'=>'2023-05-08 08:00:00',
+                'sokhach'=>2,
+                'ngaydat'=>'2023-05-04 20:00:00',
+                'tongtien'=>4000000,
+                'thanh_toan_id'=>2,
+                'khuyen_mai_id'=>2,
+                'tour_id'=>2,
+                'trangthai'=>0,
+            ]
+        );
+        DonHang::create(
+            [
+                'ten'=>'Nguyễn Thành Phát',
+                'email'=>'0306201474@caothang.edu.vn',
+                'sdt'=>'0123456789',
+                'thoigiankhoihanh'=>'2023-05-08 08:00:00',
+                'sokhach'=>2,
+                'ngaydat'=>'2023-05-04 20:00:00',
+                'tongtien'=>4000000,
+                'thanh_toan_id'=>2,
+                'khuyen_mai_id'=>2,
+                'tour_id'=>2,
+                'trangthai'=>0,
+            ]
+        );
+        DonHang::create(
+            [
+                'ten'=>'Nguyễn Thành Phát',
+                'email'=>'0306201474@caothang.edu.vn',
+                'sdt'=>'0123456789',
+                'thoigiankhoihanh'=>'2023-05-08 08:00:00',
+                'sokhach'=>2,
+                'ngaydat'=>'2023-05-04 20:00:00',
+                'tongtien'=>4000000,
+                'thanh_toan_id'=>2,
+                'khuyen_mai_id'=>2,
+                'tour_id'=>2,
+                'trangthai'=>0,
+            ]
+        );
+        DonHang::create(
+            [
+                'ten'=>'Nguyễn Thành Phát',
+                'email'=>'0306201474@caothang.edu.vn',
+                'sdt'=>'0123456789',
+                'thoigiankhoihanh'=>'2023-05-08 08:00:00',
+                'sokhach'=>2,
+                'ngaydat'=>'2023-05-04 20:00:00',
+                'tongtien'=>4000000,
+                'thanh_toan_id'=>2,
+                'khuyen_mai_id'=>2,
+                'tour_id'=>2,
+                'trangthai'=>0,
+            ]
+        );
     }
 }

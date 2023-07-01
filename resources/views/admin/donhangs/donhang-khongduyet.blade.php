@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Đơn chưa duyệt')
+@section('title', 'Đơn không được duyệt')
 
 @section('header')
     @parent
-    <a href="{{route('donhangs.index');}}">Đơn hàng chưa duyệt</a>
+    <a href="{{route('donhangs.index');}}">Đơn hàng không được duyệt</a>
 @endsection
 
 @section('content')
     <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Danh sách đơn hàng chưa duyệt</div>
+          <i class="fa fa-table"></i> Danh sách đơn hàng không được duyệt</div>
         <div class="card-body">
           <div class="table-responsive">
             <div class="dataTables_wrapper container-fluid dt-bootstrap4">
@@ -37,19 +37,32 @@
               <thead>
                 <tr>
                     <th>Họ tên</th>
+                    <th>Email</th>
                     <th>Số điện thoại</th>
+                    <th>Thời gian khởi hành</th>
+                    <th>Số khách</th>
+                    <th>Ngày đặt</th>
+                    <th>Khuyến mãi</th>
                     <th>Tổng tiền</th>
                     <th>Tên tour</th>
-                    <th>Thông tin chi tiết</th>
-                    <th>Duyệt</th>
-                    <th>Không duyệt</th>
                 </tr>
               </thead>
               <tbody>
               @foreach($lst as $d)
                 <tr>
                     <td>{{$d->ten}}</td>
+                    <td>{{$d->email}}</td>
                     <td>{{$d->sdt}}</td>
+                    <td>{{$d->thoigiankhoihanh}}</td>
+                    <td>{{$d->sokhach}}</td>
+                    <td>{{$d->ngaydat}}</td>
+                    <td>
+                        @foreach($lst_km as $k)
+                            @if($d->khuyen_mai_id == $k->id)
+                                {{$k->makhuyenmai}}
+                            @endif
+                        @endforeach
+                    </td>
                     <td>{{number_format($d->tongtien, 0, '', ',')}}</td>
                     <td>
                         @foreach($lst_tour as $t)
@@ -57,31 +70,6 @@
                                 {{$t->tentour}}
                             @endif
                         @endforeach
-                    </td>
-                    <td>
-                        <form method="get" action="{{route('donhangs.show', ['donhang'=>$d])}}">
-                            <button type="submit" class="btn btn-sm btn-info">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="post" action="{{route('donhangs.update', ['donhang'=>$d])}}">
-                            @csrf
-                            @method('PUT')
-                            <button type="submit" onclick="return checkOrder()" class="btn btn-sm btn-success">
-                                <i class="fas fa-check"></i>
-                            </button>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="post" action="{{route('donhangs.destroy', ['donhang'=>$d])}}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" onclick="return checkDelete()" class="btn btn-sm btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </form>
                     </td>
                 </tr>
             @endforeach
@@ -102,12 +90,4 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-
-    <header>
-        <script type="text/javascript">
-            function checkOrder() {
-                return confirm('Bạn có chắc chắn muốn duyệt đơn');
-            }
-        </script>
-    </header>
 @endsection

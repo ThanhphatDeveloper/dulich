@@ -26,6 +26,25 @@
     <link href="{{asset('vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
     <!-- Your custom styles -->
     <link href="css/custom.css" rel="stylesheet">
+    <link href="{{asset('css/jquery-confirm.min.css')}}" rel="stylesheet">
+
+    <script src=
+    "https://cdn.jsdelivr.net/npm/smartwizard@4.3.1/dist/js/jquery.smartWizard.min.js">
+    </script>
+    <script src=
+    "https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js">
+    </script>
+    
+    <link rel="stylesheet" 
+        href=
+    "https://cdn.jsdelivr.net/npm/smartwizard@4.3.1/dist/css/smart_wizard.min.css">
+    <script src=
+    "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
+            integrity=
+    "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
+            crossorigin="anonymous">
+    </script>
+    
 </head>
 <body class="fixed-nav sticky-footer" id="page-top">
 
@@ -96,6 +115,12 @@
 
                 @endcan
 
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="{{route('khachhangs.index')}}">
+                    <i class="fa fa-fw fa-table"></i>
+                    <span class="nav-link-text">Thống kê</span>
+                </a>
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
                         <i class="fa fa-fw fa-shopping-cart"></i>
@@ -107,6 +132,9 @@
                         </li>
                         <li>
                         <a href="{{route('da_duyet')}}">Đã duyệt</a>
+                        </li>
+                        <li>
+                        <a href="{{route('khong_duyet')}}">Không duyệt</a>
                         </li>
                     </ul>
                 </li>
@@ -314,5 +342,13 @@
         });
         CKEDITOR.replace('editor');
     </script>
+
+    <header>
+        <script type="text/javascript">
+            function checkDelete() {
+                return confirm('Bạn có chắc chắn muốn xóa');
+            }
+        </script>
+    </header>
 </body>
 </html>

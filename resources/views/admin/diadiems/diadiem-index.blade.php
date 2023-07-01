@@ -66,7 +66,7 @@
                         <form method="post" action="{{route('diadiems.destroy', ['diadiem'=>$d])}}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">
+                            <button type="submit" onclick="return checkDelete()" class="btn btn-sm btn-danger">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
@@ -113,7 +113,7 @@
                 <form method="post" action="{{route('diadiems.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <input placeholder="Loại tour" name="diadiem" value="{{old('diadiem')}}" type="text" class="form-control"><br>
+                    <input placeholder="Địa điểm" name="diadiem" value="{{old('diadiem')}}" type="text" class="form-control"><br>
                     @if($errors->has('diadiem')) {{$errors->first('diadiem')}} @endif
                 </div>
                 <div class="modal-footer">
@@ -125,4 +125,27 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal delete-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn chắc chắn muốn xóa
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Xóa</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
 @endsection
