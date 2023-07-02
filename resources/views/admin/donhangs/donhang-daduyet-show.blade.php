@@ -1,36 +1,22 @@
 @extends('layouts.app')
 
-@section('title', 'Đơn chưa duyệt')
+@section('title', 'Đơn đã duyệt')
 
 @section('header')
     @parent
-    <a href="{{route('donhangs.index');}}">Đơn hàng chưa duyệt</a>
+    <a href="{{route('da_duyet')}}">Đơn hàng đã duyệt</a>
 @endsection
 
 @section('content')
     <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Đơn hàng chưa duyệt</div>
+          <i class="fa fa-table"></i> Đơn hàng đã duyệt</div>
         <div class="card-body">
           <div class="table-responsive">
             <div class="dataTables_wrapper container-fluid dt-bootstrap4">
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
                         <div class="row">
-                            <form style="margin-left: 15px" method="post" action="{{route('donhangs.update', ['donhang'=>$donhang])}}">
-                                @csrf
-                                @method('PUT')
-                                <button type="submit" onclick="return checkOrder()" class="btn btn-sm btn-success">
-                                    <i class="fas fa-check"></i>
-                                </button>
-                            </form>
-                            <form style="margin-left: 15px; margin-bottom: 20px" method="post" action="{{route('donhangs.destroy', ['donhang'=>$donhang])}}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" onclick="return checkDelete()" class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6">
@@ -159,12 +145,4 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-
-    <header>
-        <script type="text/javascript">
-            function checkOrder() {
-                return confirm('Bạn có chắc chắn muốn duyệt đơn');
-            }
-        </script>
-    </header>
 @endsection

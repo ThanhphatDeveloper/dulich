@@ -46,6 +46,8 @@ Route::middleware('auth')->group(function(){
 
     Route::post('/admin/image', 'App\Http\Controllers\ImageTourController@update_image')->name('update_image');
     Route::get('/admin/donhangdaduyets', 'App\Http\Controllers\DonHangController@index_da_duyet')->name('da_duyet');
+    Route::get('/admin/chitietdaduyet', 'App\Http\Controllers\DonHangController@show_da_duyet')->name('show_da_duyet');
+    Route::get('/admin/chitietkhongduyet', 'App\Http\Controllers\DonHangController@show_khong_duyet')->name('show_khong_duyet');
     Route::get('/admin/donhangkhongduyets', 'App\Http\Controllers\DonHangController@index_khong_duyet')->name('khong_duyet');
 
     Route::get('/admin/home', function () {

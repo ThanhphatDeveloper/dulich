@@ -15,7 +15,10 @@ class LoaiTourController extends Controller
     public function index()
     {
         $lst=LoaiTour::search()->orderBy('created_at','DESC')->paginate(10);
-        return view('admin.loaitours.loaitour-index', compact('lst'));
+        $lst_loaitour=LoaiTour::all();
+
+        //dd($lst_validate);
+        return view('admin.loaitours.loaitour-index', compact('lst'), ['loaitour'=>$lst_loaitour]);
     }
 
     /**

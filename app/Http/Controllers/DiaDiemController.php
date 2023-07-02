@@ -15,7 +15,8 @@ class DiaDiemController extends Controller
     public function index()
     {
         $lst=DiaDiem::search()->orderBy('created_at','DESC')->paginate(10);
-        return view('admin.diadiems.diadiem-index', compact('lst'));
+        $lst_diadiem=DiaDiem::all();
+        return view('admin.diadiems.diadiem-index', compact('lst'), ['diadiem'=>$lst_diadiem]);
     }
 
     /**

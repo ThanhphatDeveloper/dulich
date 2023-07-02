@@ -15,7 +15,9 @@ class NhaCungCapController extends Controller
     public function index()
     {
         $lst=NhaCungCap::search()->orderBy('created_at','DESC')->paginate(10);
-        return view('admin.nhacungcaps.nhacungcap-index', compact('lst'));
+        $lst_ncc=NhaCungCap::all();
+
+        return view('admin.nhacungcaps.nhacungcap-index', compact('lst'), ['ncc'=>$lst_ncc]);
     }
 
     /**

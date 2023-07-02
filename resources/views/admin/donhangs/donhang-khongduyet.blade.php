@@ -4,7 +4,7 @@
 
 @section('header')
     @parent
-    <a href="{{route('donhangs.index');}}">Đơn hàng không được duyệt</a>
+    <a href="{{route('khong_duyet');}}">Đơn hàng không được duyệt</a>
 @endsection
 
 @section('content')
@@ -37,32 +37,17 @@
               <thead>
                 <tr>
                     <th>Họ tên</th>
-                    <th>Email</th>
                     <th>Số điện thoại</th>
-                    <th>Thời gian khởi hành</th>
-                    <th>Số khách</th>
-                    <th>Ngày đặt</th>
-                    <th>Khuyến mãi</th>
                     <th>Tổng tiền</th>
                     <th>Tên tour</th>
+                    <th>Thông tin chi tiết</th>
                 </tr>
               </thead>
               <tbody>
               @foreach($lst as $d)
                 <tr>
                     <td>{{$d->ten}}</td>
-                    <td>{{$d->email}}</td>
                     <td>{{$d->sdt}}</td>
-                    <td>{{$d->thoigiankhoihanh}}</td>
-                    <td>{{$d->sokhach}}</td>
-                    <td>{{$d->ngaydat}}</td>
-                    <td>
-                        @foreach($lst_km as $k)
-                            @if($d->khuyen_mai_id == $k->id)
-                                {{$k->makhuyenmai}}
-                            @endif
-                        @endforeach
-                    </td>
                     <td>{{number_format($d->tongtien, 0, '', ',')}}</td>
                     <td>
                         @foreach($lst_tour as $t)
@@ -70,6 +55,14 @@
                                 {{$t->tentour}}
                             @endif
                         @endforeach
+                    </td>
+                    <td>
+                        <form method="get" action="{{route('show_khong_duyet')}}">
+                            <input type="hidden" name="id" value="{{$d->id}}">
+                            <button type="submit" class="btn btn-sm btn-info">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

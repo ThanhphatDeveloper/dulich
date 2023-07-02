@@ -55,7 +55,7 @@ class DonHangSeeder extends Seeder
                 'tongtien'=>4000000,
                 'thanh_toan_id'=>2,
                 'khuyen_mai_id'=>2,
-                'tour_id'=>2,
+                'tour_id'=>3,
                 'trangthai'=>0,
             ]
         );
@@ -70,7 +70,7 @@ class DonHangSeeder extends Seeder
                 'tongtien'=>4000000,
                 'thanh_toan_id'=>2,
                 'khuyen_mai_id'=>2,
-                'tour_id'=>2,
+                'tour_id'=>4,
                 'trangthai'=>0,
             ]
         );
@@ -85,7 +85,7 @@ class DonHangSeeder extends Seeder
                 'tongtien'=>4000000,
                 'thanh_toan_id'=>2,
                 'khuyen_mai_id'=>2,
-                'tour_id'=>2,
+                'tour_id'=>5,
                 'trangthai'=>0,
             ]
         );
@@ -100,7 +100,7 @@ class DonHangSeeder extends Seeder
                 'tongtien'=>4000000,
                 'thanh_toan_id'=>2,
                 'khuyen_mai_id'=>2,
-                'tour_id'=>2,
+                'tour_id'=>6,
                 'trangthai'=>0,
             ]
         );
@@ -115,7 +115,7 @@ class DonHangSeeder extends Seeder
                 'tongtien'=>4000000,
                 'thanh_toan_id'=>2,
                 'khuyen_mai_id'=>2,
-                'tour_id'=>2,
+                'tour_id'=>7,
                 'trangthai'=>0,
             ]
         );

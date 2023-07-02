@@ -111,15 +111,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{route('nhacungcaps.store')}}" enctype="multipart/form-data">
+                <form id="store" method="post" action="{{route('nhacungcaps.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <input placeholder="Tên nhà cung cấp" name="nhacungcap" type="text" class="form-control" value="{{old('nhacungcap')}}"><br>
-                    @if($errors->has('nhacungcap')) {{$errors->first('nhacungcap')}} @endif
+                    <input id="data" placeholder="Tên nhà cung cấp" name="nhacungcap" type="text" class="form-control" value="{{old('nhacungcap')}}"><br>
+                    <p class="text-danger" id="noti"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <button id="save" type="button" class="btn btn-primary">Lưu</button>
                 </div>
                 </form>
             </div>
@@ -131,7 +131,24 @@
 
     <script>
         
+        $(document).ready(function () {
         
+        $("#save").click(function () {
+            var array = @json($ncc);
+            var data = $("#data").val().trim();
+            if(data==''){
+                $("#noti").text('Tên nhà cung cấp trống');
+                return;
+            }
+            for(i=0;i<array.length;i++){
+                if(array[i].nhacungcap==data){
+                    $("#noti").text('Tên nhà cung cấp đã tồn tại');
+                    return;
+                }
+            }
+            $('#store').submit();
+        });
+    });
 
     </script>
 @endsection

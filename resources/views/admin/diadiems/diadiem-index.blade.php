@@ -110,15 +110,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{route('diadiems.store')}}" enctype="multipart/form-data">
+                <form id="store" method="post" action="{{route('diadiems.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <input placeholder="Địa điểm" name="diadiem" value="{{old('diadiem')}}" type="text" class="form-control"><br>
-                    @if($errors->has('diadiem')) {{$errors->first('diadiem')}} @endif
+                    <input id="data" placeholder="Địa điểm" name="diadiem" value="{{old('diadiem')}}" type="text" class="form-control"><br>
+                    <p class="text-danger" id="noti"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <button id="save" type="button" class="btn btn-primary">Lưu</button>
                 </div>
                 </form>
             </div>
@@ -141,11 +141,34 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Xóa</button>
+                <button id="save" type="button" class="btn btn-primary">Xóa</button>
             </div>
             </div>
         </div>
     </div>
 
     <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+        
+            $("#save").click(function () {
+                var array = @json($diadiem);
+                var data = $("#data").val().trim();
+                if(data==''){
+                    $("#noti").text('Địa điểm trống');
+                    return;
+                }
+                for(i=0;i<array.length;i++){
+                    if(array[i].diadiem==data){
+                        $("#noti").text('Địa điểm đã tồn tại');
+                        return;
+                    }
+                }
+                $('#store').submit();
+            });
+        }); 
+
+    </script>
 @endsection

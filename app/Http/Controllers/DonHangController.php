@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\DonHang;
 use App\Models\Tour;
 use App\Models\KhuyenMai;
+use App\Models\ThoiGianTour;
+use App\Models\DiaDiem;
 use App\Http\Requests\StoreDonHangRequest;
 use App\Http\Requests\UpdateDonHangRequest;
+use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class DonHangController extends Controller
@@ -18,7 +21,8 @@ class DonHangController extends Controller
     {
         $lst_tour = Tour::all();
         $lst_km = KhuyenMai::all();
-        $lst = DonHang::search()->where('trangthai', '=', 0)->orderBy('created_at','DESC')->paginate(10);
+        $lst = DonHang::search()->where('thoigianxoa', '=', null)
+        ->where('trangthai', '=', 0)->orderBy('created_at','DESC')->paginate(10);
         return view('admin.donhangs.donhang-chuaduyet', compact('lst'),
         [
             'lst_tour'=>$lst_tour,
@@ -73,11 +77,51 @@ class DonHangController extends Controller
     {
         $lst_tour = Tour::all();
         $lst_km = KhuyenMai::all();
+        $lst_tg = ThoiGianTour::all();
+        $lst_dd = DiaDiem::all();
         return view('admin.donhangs.donhang-chuaduyet-show',
         [
             'donhang'=>$donhang,
             'lst_tour'=>$lst_tour,
             'lst_km'=>$lst_km,
+            'lst_tg'=>$lst_tg,
+            'lst_dd'=>$lst_dd,
+        ]);
+    }
+
+    public function show_da_duyet(Request $request)
+    {
+        //dd($request->id);
+        $donhang = DonHang::where('id', '=', $request->id)->first();
+        $lst_tour = Tour::all();
+        $lst_km = KhuyenMai::all();
+        $lst_tg = ThoiGianTour::all();
+        $lst_dd = DiaDiem::all();
+        return view('admin.donhangs.donhang-daduyet-show',
+        [
+            'donhang'=>$donhang,
+            'lst_tour'=>$lst_tour,
+            'lst_km'=>$lst_km,
+            'lst_tg'=>$lst_tg,
+            'lst_dd'=>$lst_dd,
+        ]);
+    }
+
+    public function show_khong_duyet(Request $request)
+    {
+        //dd($request->id);
+        $donhang = DonHang::where('id', '=', $request->id)->first();
+        $lst_tour = Tour::all();
+        $lst_km = KhuyenMai::all();
+        $lst_tg = ThoiGianTour::all();
+        $lst_dd = DiaDiem::all();
+        return view('admin.donhangs.donhang-khongduyet-show',
+        [
+            'donhang'=>$donhang,
+            'lst_tour'=>$lst_tour,
+            'lst_km'=>$lst_km,
+            'lst_tg'=>$lst_tg,
+            'lst_dd'=>$lst_dd,
         ]);
     }
 

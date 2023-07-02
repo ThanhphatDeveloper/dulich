@@ -110,19 +110,44 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{route('loaitours.store')}}" enctype="multipart/form-data">
+                <form id="store" method="post" action="{{route('loaitours.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <input placeholder="Loại tour" name="loaitour" value="{{old('loaitour')}}" type="text" class="form-control"><br>
-                    @if($errors->has('loaitour')) {{$errors->first('loaitour')}} @endif
+                    <input id="data" placeholder="Loại tour" name="loaitour" value="{{old('loaitour')}}" type="text" class="form-control"><br>
+                    <p class="text-danger" id="noti"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <button id="save" type="button" class="btn btn-primary">Lưu</button>
                 </div>
                 </form>
             </div>
             </div>
         </div>
     </div>
+
+    <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+        
+            $("#save").click(function () {
+                var array = @json($loaitour);
+                var data = $("#data").val().trim();
+                if(data==''){
+                    $("#noti").text('Loại tour trống');
+                    return;
+                }
+                for(i=0;i<array.length;i++){
+                    if(array[i].loaitour==data){
+                        $("#noti").text('Loại tour đã tồn tại');
+                        return;
+                    }
+                }
+                $('#store').submit();
+            });
+        });
+
+    </script>
 @endsection
