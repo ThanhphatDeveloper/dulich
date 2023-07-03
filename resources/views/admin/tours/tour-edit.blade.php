@@ -34,7 +34,7 @@
                             <td>
                                 <select class="custom-select custom-select-sm" name="loaitour">
                                     @foreach($lst_loai_tour as $cat)
-                                        <option value="{{$cat->id}}" @if($t->loai_tour_id_id==old('loaitour',$cat->id))
+                                        <option value="{{$cat->id}}" @if($t->loai_tour_id==old('loaitour',$cat->id))
                                         selected @endif> {{$cat->loaitour}}</option>
                                     @endforeach
                                 </select>

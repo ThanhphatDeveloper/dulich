@@ -62,7 +62,14 @@ class NhaCungCapController extends Controller
      */
     public function update(UpdateNhaCungCapRequest $request, NhaCungCap $nhacungcap)
     {
-        //dd($nhacungcap);
+        if($request->restore == 1){
+            NhaCungCap::where('id', $nhacungcap->id)->update([
+                'trangthai'=>1
+            ]);
+
+            return redirect()->route('nhacungcaps.index');
+        }
+
         if( $request->nhacungcap != $nhacungcap->nhacungcap){
             $request->validate(
                 [

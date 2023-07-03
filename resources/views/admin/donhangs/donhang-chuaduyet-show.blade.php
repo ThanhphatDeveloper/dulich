@@ -147,6 +147,31 @@
                     <td>{{number_format($donhang->tongtien, 0, '', ',')}} VNĐ</td>
                 </tr>
               </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2"><b>Thông tin thanh toán</b></td>
+                    </tr>
+                    <tr>
+                        <td>Tên thanh toán</td>
+                        <td>{{$donhang->tenthanhtoan}}</td>
+                    </tr>
+                    <tr>
+                        <td>Mã thanh toán</td>
+                        <td>{{$donhang->mathanhtoan}}</td>
+                    </tr>
+                    <tr>
+                        <td>Phương thức thanh toán</td>
+                        <td>{{$donhang->tenphuongthuctt}}</td>
+                    </tr>
+                    <tr>
+                        <td>Tiền thanh toán</td>
+                        <td>{{number_format($donhang->tienthanhtoan, 0, '', ',')}} VNĐ</td>
+                    </tr>
+                    <tr>
+                        <td>Thời gian thanh toán</td>
+                        <td>{{\Carbon\Carbon::parse($donhang->thoigianthanhtoan)->format('d/m/Y h:m:s')}}</td>
+                    </tr>
+                </tfoot>
             </table>
           </div>
         </div>

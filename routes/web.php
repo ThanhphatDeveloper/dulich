@@ -16,6 +16,7 @@ use App\Http\Controllers\ImageTourController;
 use App\Http\Controllers\TourLienQuanController;
 use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\CustomerHomepageController;
+use App\Http\Controllers\StatisticController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,12 +44,14 @@ Route::middleware('auth')->group(function(){
     Route::resource('/admin/tourlienquans', TourLienQuanController::class);
     Route::resource('/admin/blogs', BlogController::class);
     Route::resource('/admin/khachhangs', KhachHangController::class);
+    Route::resource('/admin/statistic', StatisticController::class);
 
     Route::post('/admin/image', 'App\Http\Controllers\ImageTourController@update_image')->name('update_image');
     Route::get('/admin/donhangdaduyets', 'App\Http\Controllers\DonHangController@index_da_duyet')->name('da_duyet');
     Route::get('/admin/chitietdaduyet', 'App\Http\Controllers\DonHangController@show_da_duyet')->name('show_da_duyet');
     Route::get('/admin/chitietkhongduyet', 'App\Http\Controllers\DonHangController@show_khong_duyet')->name('show_khong_duyet');
     Route::get('/admin/donhangkhongduyets', 'App\Http\Controllers\DonHangController@index_khong_duyet')->name('khong_duyet');
+    Route::put('/admin/updatestatus_loaitour', 'App\Http\Controllers\LoaiTourController@update_trangthai')->name('updatestatus_loaitour');
 
     Route::get('/admin/home', function () {
         return view('home.home');
@@ -74,7 +77,7 @@ Route::resource('/', CustomerHomepageController::class);
 Route::resource('/customer_tours', BookTourController::class);
 
 Route::get('/customer_tour_detail', function () {
-    return view('');
+    return view('customer.tour-detail');
 });
 
 Route::get('/test', function () {

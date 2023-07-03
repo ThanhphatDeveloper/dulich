@@ -8,6 +8,8 @@ use App\Models\Blog;
 use App\Http\Requests\StoreTourLienQuanRequest;
 use App\Http\Requests\UpdateTourLienQuanRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Carbon\Carbon;
 
 class TourLienQuanController extends Controller
 {
@@ -16,14 +18,18 @@ class TourLienQuanController extends Controller
      */
     public function index(Request $request)
     {
-        $lst_blog=Blog::all();
+        $lst_blog=Blog::where('id', '=', $request->id)->get();
+
         $lst_tour=Tour::search()->get();
-        $lst=TourLienQuan::where('blog_id', '=', $request->id)->orderBy('created_at','DESC')->paginate(10);
+        $lst=TourLienQuan::where('trangthai', '=', 1)->where('blog_id', '=', $request->id)->orderBy('created_at','DESC')->paginate(10);
+        $lst_tlq=TourLienQuan::where('trangthai', '=', 1)->where('blog_id', '=', $request->id)->get();
+        //dd($tour_id);
         return view('admin.blogs.tour-lien-quan', compact('lst'),
         [
             'lst_blog'=>$lst_blog,
             'lst_tour'=>$lst_tour,
             'blog_id'=>$request->id,
+            'lst_tlq'=>$lst_tlq,
         ]);
     }
 
@@ -81,7 +87,11 @@ class TourLienQuanController extends Controller
      */
     public function destroy(TourLienQuan $tourlienquan)
     {
-        $tourlienquan->delete();
+        $tourlienquan->fill([
+            'trangthai'=>0,
+            'thoigianxoa'=>Carbon::now()->toDateTimeString(),
+        ]);
+        $tourlienquan->save();
         return redirect('/admin/tourlienquans?id='.$tourlienquan->blog_id);
     }
 }

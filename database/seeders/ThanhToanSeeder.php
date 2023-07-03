@@ -14,35 +14,6 @@ class ThanhToanSeeder extends Seeder
      */
     public function run(): void
     {
-        ThanhToan::create(
-            [
-                'tenphuongthuc'=>'momo',
-                'sotien'=>1200000,
-                'mathanhtoan'=>Str::random(20),
-                'tenkhachhang'=>'Phạm Hữu Trung',
-                'ngaythanhtoan'=>'2023-05-08 08:00:00',
-                'trangthai'=>1
-            ]
-        );
-        ThanhToan::create(
-            [
-                'tenphuongthuc'=>'vnpay',
-                'sotien'=>1000000,
-                'mathanhtoan'=>Str::random(20),
-                'tenkhachhang'=>'Nguyễn Thành Phát',
-                'ngaythanhtoan'=>'2023-05-08 08:00:00',
-                'trangthai'=>1
-            ]
-        );
-        ThanhToan::create(
-            [
-                'tenphuongthuc'=>'tiền mặt',
-                'sotien'=>1250000,
-                'mathanhtoan'=>Str::random(20),
-                'tenkhachhang'=>'Trần Văn A',
-                'ngaythanhtoan'=>'2023-05-08 08:00:00',
-                'trangthai'=>0
-            ]
-        );
+        
     }
 }

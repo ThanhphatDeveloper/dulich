@@ -6,6 +6,7 @@ use App\Models\KhuyenMai;
 use App\Models\DonHang;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DonHangSeeder extends Seeder
 {
@@ -23,9 +24,13 @@ class DonHangSeeder extends Seeder
                 'sokhach'=>3,
                 'ngaydat'=>'2023-05-04 20:00:00',
                 'tongtien'=>2500000,
-                'thanh_toan_id'=>1,
                 'khuyen_mai_id'=>1,
                 'tour_id'=>1,
+                'tenphuongthuctt'=>'momo',
+                'tienthanhtoan'=>1200000,
+                'mathanhtoan'=>Str::random(20),
+                'tenthanhtoan'=>'Phạm Hữu Trung',
+                'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
         );
@@ -38,9 +43,13 @@ class DonHangSeeder extends Seeder
                 'sokhach'=>2,
                 'ngaydat'=>'2023-05-04 20:00:00',
                 'tongtien'=>4000000,
-                'thanh_toan_id'=>2,
                 'khuyen_mai_id'=>2,
                 'tour_id'=>2,
+                'tenphuongthuctt'=>'momo',
+                'tienthanhtoan'=>1200000,
+                'mathanhtoan'=>Str::random(20),
+                'tenthanhtoan'=>'Phạm Hữu Trung',
+                'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
         );
@@ -53,9 +62,13 @@ class DonHangSeeder extends Seeder
                 'sokhach'=>2,
                 'ngaydat'=>'2023-05-04 20:00:00',
                 'tongtien'=>4000000,
-                'thanh_toan_id'=>2,
                 'khuyen_mai_id'=>2,
                 'tour_id'=>3,
+                'tenphuongthuctt'=>'momo',
+                'tienthanhtoan'=>1200000,
+                'mathanhtoan'=>Str::random(20),
+                'tenthanhtoan'=>'Phạm Hữu Trung',
+                'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
         );
@@ -68,9 +81,13 @@ class DonHangSeeder extends Seeder
                 'sokhach'=>2,
                 'ngaydat'=>'2023-05-04 20:00:00',
                 'tongtien'=>4000000,
-                'thanh_toan_id'=>2,
                 'khuyen_mai_id'=>2,
                 'tour_id'=>4,
+                'tenphuongthuctt'=>'momo',
+                'tienthanhtoan'=>1200000,
+                'mathanhtoan'=>Str::random(20),
+                'tenthanhtoan'=>'Phạm Hữu Trung',
+                'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
         );
@@ -83,9 +100,13 @@ class DonHangSeeder extends Seeder
                 'sokhach'=>2,
                 'ngaydat'=>'2023-05-04 20:00:00',
                 'tongtien'=>4000000,
-                'thanh_toan_id'=>2,
                 'khuyen_mai_id'=>2,
                 'tour_id'=>5,
+                'tenphuongthuctt'=>'momo',
+                'tienthanhtoan'=>1200000,
+                'mathanhtoan'=>Str::random(20),
+                'tenthanhtoan'=>'Phạm Hữu Trung',
+                'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
         );
@@ -98,9 +119,13 @@ class DonHangSeeder extends Seeder
                 'sokhach'=>2,
                 'ngaydat'=>'2023-05-04 20:00:00',
                 'tongtien'=>4000000,
-                'thanh_toan_id'=>2,
                 'khuyen_mai_id'=>2,
                 'tour_id'=>6,
+                'tenphuongthuctt'=>'momo',
+                'tienthanhtoan'=>1200000,
+                'mathanhtoan'=>Str::random(20),
+                'tenthanhtoan'=>'Phạm Hữu Trung',
+                'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
         );
@@ -113,9 +138,13 @@ class DonHangSeeder extends Seeder
                 'sokhach'=>2,
                 'ngaydat'=>'2023-05-04 20:00:00',
                 'tongtien'=>4000000,
-                'thanh_toan_id'=>2,
                 'khuyen_mai_id'=>2,
                 'tour_id'=>7,
+                'tenphuongthuctt'=>'momo',
+                'tienthanhtoan'=>1200000,
+                'mathanhtoan'=>Str::random(20),
+                'tenthanhtoan'=>'Phạm Hữu Trung',
+                'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
         );

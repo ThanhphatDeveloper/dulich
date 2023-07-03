@@ -66,7 +66,14 @@ class KhuyenMaiController extends Controller
      */
     public function update(UpdateKhuyenMaiRequest $request, KhuyenMai $khuyenmai)
     {
-        //dd($request);
+        if($request->restore == 1){
+            KhuyenMai::where('id', $khuyenmai->id)->update([
+                'trangthai'=>1
+            ]);
+
+            return redirect()->route('khuyenmais.index');
+        }
+
         KhuyenMai::where('id', '=', $khuyenmai->id)->update([
             'mota'=>$request->mota,
             'mucgiam'=>$request->mucgiam,

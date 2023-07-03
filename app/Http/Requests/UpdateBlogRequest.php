@@ -22,7 +22,18 @@ class UpdateBlogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tieude'=>['required'],
+            'noidung'=>['required'],
+            'image' => ['mimes:jpg,png,bmp,gif'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'tieude.required' => 'Tiêu đề không được bỏ trống',
+            'noidung.required' => 'Nội dung không được bỏ trống',
+            'image.mimes' => 'Định dạng ảnh không hợp lệ (định dạng hợp lệ: jpg, png, bmp, gif)',
         ];
     }
 }

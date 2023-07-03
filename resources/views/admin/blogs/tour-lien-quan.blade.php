@@ -63,7 +63,7 @@
                         <form method="post" action="{{route('tourlienquans.destroy', ['tourlienquan'=>$d])}}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">
+                            <button type="submit" onclick="return checkDelete()" class="btn btn-sm btn-danger">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
@@ -74,6 +74,22 @@
                 
               </tbody>
             </table>
+            <div class="form-group">
+                        @foreach($lst_tour as $a)
+                            @foreach($lst_tlq as $b)
+                                @if($a->id != $b->tour_id)
+                                    {{$a->id}}
+                                    @break
+                                @endif
+                            @endforeach
+                        @endforeach
+                        <br>
+                        {{count($lst_tour)}}
+                        <br>
+                        @foreach($lst_tlq as $b)
+                            {{$b->tour_id}}
+                        @endforeach
+                </div>
             <div class="">
                 {{$lst->appends(request()->all())->links()}}
             </div>
@@ -105,9 +121,13 @@
                 <div class="form-group">
                     <input type="hidden" name="blog_id" value="{{$blog_id}}">
                     <select class="custom-select custom-select-sm" name="tour_id">
-                        @foreach($lst_tour as $cat)
-                            <option value="{{$cat->id}}"> @if ($cat->id==old('tour_id'))
-                            @endif {{$cat->tentour}}</option>
+                        @foreach($lst_tlq as $b)
+                            @foreach($lst_tour as $cat)
+                                @if($b->tour_id != $cat->id)
+                                    <option value="{{$cat->id}}"> @if ($cat->id==old('tour_id'))
+                                    @endif {{$cat->tentour}}</option>
+                                @endif
+                            @endforeach
                         @endforeach
                     </select>          
                 </div>

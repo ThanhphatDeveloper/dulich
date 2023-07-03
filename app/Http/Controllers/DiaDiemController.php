@@ -62,6 +62,14 @@ class DiaDiemController extends Controller
      */
     public function update(UpdateDiaDiemRequest $request, DiaDiem $diadiem)
     {
+        if($request->restore == 1){
+            DiaDiem::where('id', $diadiem->id)->update([
+                'trangthai'=>1
+            ]);
+
+            return redirect()->route('diadiems.index');
+        }
+
         if( $request->diadiem != $diadiem->diadiem){
             $request->validate(
                 [

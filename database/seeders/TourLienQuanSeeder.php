@@ -20,17 +20,17 @@ class TourLienQuanSeeder extends Seeder
             ],
             [
                 'trangthai'=>1,
-                'tour_id'=>1
+                'tour_id'=>2
             ]
         ]);
         Blog::where('id',2)->first()->tour_lien_quan()->createMany([
             [
                 'trangthai'=>1,
-                'tour_id'=>2
+                'tour_id'=>3
             ],
             [
                 'trangthai'=>1,
-                'tour_id'=>2
+                'tour_id'=>4
             ]
         ]);
     }

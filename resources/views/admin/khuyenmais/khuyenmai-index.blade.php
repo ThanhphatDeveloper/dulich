@@ -51,8 +51,8 @@
                     <th>Giá tối thiểu</th>
                     <th>Số lần sử dụng còn lại</th>
                     <th>Trạng thái</th>
-                    <th></th>
-                    <th></th>
+                    <th>Xóa/Khôi phục</th>
+                    <th>Chỉnh sửa</th>
                 </tr>
               </thead>
               <tbody>
@@ -71,13 +71,24 @@
                             @endif
                         </td>
                         <td>
-                            <form method="post" action="{{route('khuyenmais.destroy', ['khuyenmai'=>$k])}}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" onclick="return checkDelete()" class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
+                            @if($k->trangthai == 0)
+                                <form method="post" action="{{route('khuyenmais.update', ['khuyenmai'=>$k])}}">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="restore" value="1">
+                                    <button type="submit" onclick="return checkRestore()" class="btn btn-sm btn-info">
+                                        <i class="fas fa-arrow-circle-left"></i>
+                                    </button>
+                                </form>
+                            @else
+                                <form method="post" action="{{route('khuyenmais.destroy', ['khuyenmai'=>$k])}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return checkDelete()" class="btn btn-sm btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            @endif
                         </td>
                         <td>
                             <form method="get" action="{{route('khuyenmais.edit', ['khuyenmai'=>$k])}}">
