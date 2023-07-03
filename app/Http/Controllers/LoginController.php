@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
  
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
  
@@ -17,6 +18,19 @@ class LoginController extends Controller
      */
     public function authenticate(Request $request): RedirectResponse
     {
+        $trangthai = User::where('email', '=', $request->email)->first();
+
+        if($trangthai->trangthai == 0){
+            $request->validate(
+                [
+                    'trangthai' => ['required']
+                ],
+                [
+                    'trangthai.required' => 'Đăng nhập không hợp lệ'
+                ]
+            );
+        }
+
         $credentials = $request->validate(
             [
                 'email' => ['required', 'email'],

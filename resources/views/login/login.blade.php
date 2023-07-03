@@ -33,6 +33,8 @@
                 </div>
                 <div class="form-group">
                     <p class="text-danger">@if($errors->has('password')) {{$errors->first('password')}} @endif</p>
+                    <input name="trangthai" value="" type="hidden" class="validate">
+                    <p class="text-danger">@if($errors->has('trangthai')) {{$errors->first('trangthai')}} @endif</p>
                 </div>
                 <div class="form-group">
                     <button typr="submit" class="btn btn-info">Login</button>

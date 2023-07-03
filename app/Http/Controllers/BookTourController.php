@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\BookTour;
+use App\Models\Tour;
+use App\Models\ImageTour;
 use App\Http\Requests\StoreBookTourRequest;
 use App\Http\Requests\UpdateBookTourRequest;
 
@@ -13,8 +15,9 @@ class BookTourController extends Controller
      */
     public function index()
     {
-        
-        return view('customer.list-tour');
+        $lst = Tour::orderBy('updated_at','DESC')->paginate(6);
+        $lst_img = ImageTour::all();
+        return view('customer.list-tour', compact('lst'), ['lst_img'=>$lst_img]);
     }
 
     /**
@@ -36,13 +39,9 @@ class BookTourController extends Controller
     /**
      * Display the specified resource.
      */
-    // public function show(BookTour $bookTour)
-    // {
-    //     return view('customer.tour-detail');
-    // }
-
-    public function show()
+    public function show(Tour $tour)
     {
+        dd($tour);
         return view('customer.tour-detail');
     }
 

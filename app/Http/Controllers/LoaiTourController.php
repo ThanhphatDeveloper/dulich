@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LoaiTour;
 use App\Http\Requests\StoreLoaiTourRequest;
 use App\Http\Requests\UpdateLoaiTourRequest;
+use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class LoaiTourController extends Controller
@@ -64,6 +65,13 @@ class LoaiTourController extends Controller
     public function update(UpdateLoaiTourRequest $request, LoaiTour $loaitour)
     {
         //dd($request);
+        if($request->restore == 1){
+            LoaiTour::where('id', $loaitour->id)->update([
+                'trangthai'=>1
+            ]);
+
+            return redirect()->route('loaitours.index');
+        }
 
         if( $request->loaitour != $loaitour->loaitour){
             $request->validate(
@@ -76,12 +84,24 @@ class LoaiTourController extends Controller
             );
         }
 
-        $loaitour->fill([
+        LoaiTour::where('id', $loaitour->id)->update([
             'loaitour'=>$request->loaitour,
+            'trangthai'=>$request->trangthai,
         ]);
-        $loaitour->save();
+
         return redirect()->route('loaitours.index');
     }
+
+    public function update_trangthai(Request $request)
+    {
+        //dd($request->id);
+        LoaiTour::where('id', $request->id)->update([
+            'trangthai'=>1
+        ]);
+
+        return redirect()->route('loaitours.index');
+    }
+
 
     /**
      * Remove the specified resource from storage.

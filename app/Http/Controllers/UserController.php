@@ -127,6 +127,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        if($request->restore == 1){
+            User::where('id', $user->id)->update([
+                'trangthai'=>1
+            ]);
+
+            return redirect()->route('users.index');
+        }
+        
         if($request->user_update === 'user_update_pass'){
             $request->validate(
                 [

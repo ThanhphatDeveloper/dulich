@@ -69,7 +69,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        //
+        
     }
 
     /**
@@ -77,7 +77,8 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        $lst=User::all();
+        return view('admin.blogs.blog-edit', ['lst'=>$lst, 'blog'=>$blog]);
     }
 
     /**
@@ -85,7 +86,39 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        //
+        if($request->restore == 1){
+            Blog::where('id', $blog->id)->update([
+                'trangthai'=>1
+            ]);
+
+            return redirect()->route('blogs.index');
+        }
+
+        $path = $blog->anhdaidien;
+        if($request->hasFile('image') && $request->image->isValid()){
+            $path = $request->image->store('upload/blog/'.$blog->id, 'public');
+        }
+
+        if($request->tieude != $blog->tieude){
+            $request->validate(
+                [
+                    'tieude' => ['unique:blogs'],
+                ],
+                [
+                    'tieude.unique' => 'Tiêu đề đã tồn tại',
+                ]
+            );
+        }
+
+        Blog::where('id', $blog->id)->update([
+            'tieude'=>$request->tieude,
+            'noidung'=>$request->noidung,
+            'anhdaidien'=>$path,
+            'user_id'=>$request->tacgia,
+            'trangthai'=>$request->trangthai
+        ]);
+        
+        return redirect('admin/blogs');
     }
 
     /**

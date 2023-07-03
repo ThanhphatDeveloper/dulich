@@ -38,7 +38,6 @@ return new class extends Migration
 
         Schema::table('don_hangs', function(Blueprint $table){
             $table->foreignId('khuyen_mai_id')->nullable()->default(null)->constrained('khuyen_mais');
-            $table->foreignId('thanh_toan_id')->default(0)->constrained('thanh_toans');
             $table->foreignId('tour_id')->default(0)->constrained('tours');
         });
     }

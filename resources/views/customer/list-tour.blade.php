@@ -76,27 +76,7 @@
 		
 		<div class="filters_listing sticky_horizontal">
 			<div class="container">
-				<ul class="clearfix">
-					<li>
-						<div class="switch-field">
-							<input type="radio" id="all" name="listing_filter" value="all" checked>
-							<label for="all">All</label>
-							<input type="radio" id="popular" name="listing_filter" value="popular">
-							<label for="popular">Popular</label>
-							<input type="radio" id="latest" name="listing_filter" value="latest">
-							<label for="latest">Latest</label>
-						</div>
-					</li>
-					<li>
-						<div class="layout_view">
-							<a href="#0" class="active"><i class="icon-th"></i></a>
-							<a href="tours-list-isotope.html"><i class="icon-th-list"></i></a>
-						</div>
-					</li>
-					<li>
-						<a class="btn_map" data-bs-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap" data-text-swap="Hide map" data-text-original="View on map">View on map</a>
-					</li>
-				</ul>
+				
 			</div>
 			<!-- /container -->
 		</div>
@@ -111,126 +91,34 @@
 			
 		<div class="wrapper-grid">
 			<div class="row">
-				<div class="col-xl-4 col-lg-6 col-md-6">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="wish_bt"></a>
-							<a href="{{url('/customer_tour_detail')}}"><img src="img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Historic</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="{{url('/customer_tour_detail')}}">Arc Triomphe</a></h3>
-							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-							<span class="price">From <strong>$54</strong> /per person</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>
-						</ul>
-					</div>
-				</div>
+				@foreach($lst as $t)
 				<!-- /box_grid -->
-				<div class="col-xl-4 col-lg-6 col-md-6">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="wish_bt"></a>
-							<a href="{{url('/customer_tour_detail')}}"><img src="img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Churches</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="{{url('/customer_tour_detail')}}">Notredam</a></h3>
-							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-							<span class="price">From <strong>$124</strong> /per person</span>
+					<div class="col-xl-4 col-lg-6 col-md-6">
+						<div class="box_grid">
+							<figure>
+								<a href="{{route('customer_tours.show', ['tour'=>$t])}}"><img src="storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533">
+									<div class="read_more"><span>Chi tiết</span>
+									</div>
+								</a>
+							</figure>
+							<div class="wrapper">
+								<h3><a href="{{url('/customer_tour_detail')}}">{{$t->tentour}}</a></h3>
+								<span class="price">Chỉ từ <strong>{{number_format($t->gia, 0, '', ',')}} VNĐ</strong> /người</span>
+							</div>
 						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-						</ul>
 					</div>
-				</div>
-				<!-- /box_grid -->
-				<div class="col-xl-4 col-lg-6 col-md-6">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="wish_bt"></a>
-							<a href="{{url('/customer_tour_detail')}}"><img src="img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Historic</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="{{url('/customer_tour_detail')}}">Versailles</a></h3>
-							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-							<span class="price">From <strong>$25</strong> /per person</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-						</ul>
-					</div>
-				</div>
-				<!-- /box_grid -->
-				<div class="col-xl-4 col-lg-6 col-md-6">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="wish_bt"></a>
-							<a href="{{url('/customer_tour_detail')}}"><img src="img/tour_4.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Museum</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="{{url('/customer_tour_detail')}}">Pompidue Museum</a></h3>
-							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-							<span class="price">From <strong>$45</strong> /per person</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 2h 30min</li>
-							<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.0</strong></div></li>
-						</ul>
-					</div>
-				</div>
-				<!-- /box_grid -->
-				<div class="col-xl-4 col-lg-6 col-md-6">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="wish_bt"></a>
-							<a href="{{url('/customer_tour_detail')}}"><img src="img/tour_5.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Walking</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="{{url('/customer_tour_detail')}}">Tour Eiffel</a></h3>
-							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-							<span class="price">From <strong>$65</strong> /per person</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.5</strong></div></li>
-						</ul>
-					</div>
-				</div>
-				<!-- /box_grid -->
-				<div class="col-xl-4 col-lg-6 col-md-6">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="wish_bt"></a>
-							<a href="{{url('/customer_tour_detail')}}"><img src="img/tour_6.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Museum</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="{{url('/customer_tour_detail')}}">Louvre Museum</a></h3>
-							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-							<span class="price">From <strong>$95</strong> /per person</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.8</strong></div></li>
-						</ul>
-					</div>
-				</div>
+				@endforeach
 				<!-- /box_grid -->
 			</div>
 			<!-- /row -->
 			</div>
 			<!-- /wrapper-grid -->
+
+			<p class="rounded">
+                {{$lst->appends(request()->all())->links()}}
+			</p>
 			
-			<p class="text-center"><a href="#0" class="btn_1 rounded add_top_30">Load more</a></p>
+			<!-- <p class="text-center"><a href="#0" class="btn_1 rounded add_top_30">Load more</a></p> -->
 			
 		</div>
 		<!-- /container -->

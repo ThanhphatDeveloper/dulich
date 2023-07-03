@@ -22,7 +22,20 @@ class StoreBlogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tieude'=>['required', 'unique:blogs'],
+            'noidung'=>['required'],
+            'image' => ['required', 'mimes:jpg,png,bmp,gif'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'tieude.required' => 'Tiêu đề không được bỏ trống',
+            'tieude.unique' => 'Tiêu đề đã tồn tại',
+            'noidung.required' => 'Nội dung không được bỏ trống',
+            'image.required' => 'Ảnh đại diện chưa được chọn',
+            'image.mimes' => 'Định dạng ảnh không hợp lệ (định dạng hợp lệ: jpg, png, bmp, gif)',
         ];
     }
 }
