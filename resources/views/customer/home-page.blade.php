@@ -205,7 +205,7 @@
 				<!-- /item -->
 			</div>
 			<!-- /carousel -->
-			<p class="btn_home_align"><a href="tours-grid-isotope.html" class="btn_1 rounded">View all Tours</a></p>
+			<p class="btn_home_align"><a href="tours-grid-isotope.html" class="btn_1 rounded">Xem tất cả tour</a></p>
 			<hr class="large">
 		</div>
 		<!-- /container -->
@@ -220,10 +220,10 @@
 			<div class="banner mb-0">
 				<div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
 					<div>
-						<small>Adventure</small>
-						<h3>Your Perfect<br>Advenure Experience</h3>
-						<p>Activities and accommodations</p>
-						<a href="adventure.html" class="btn_1">Read more</a>
+						<small></small>
+						<h3>Lĩnh Vực Hoạt Động<br>Trong nước & Ngoài nước</h3>
+						<p>Cung cấp nhiều tour chất lượng hàng đầu Việt Nam</p>
+						<a href="adventure.html" class="btn_1">Xem thêm</a>
 					</div>
 				</div>
 				<!-- /wrapper -->
@@ -237,8 +237,8 @@
 			<div class="container margin_80_55">
 				<div class="main_title_2">
 					<span><em></em></span>
-					<h3>News and Events</h3>
-					<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+					<h3>Tin tức và sự kiện</h3>
+					<p>Những địa điểm được yêu thích năm 2023.</p>
 				</div>
 				<div class="row">
 					<div class="col-lg-6">
@@ -247,10 +247,10 @@
 								<figcaption><strong>28</strong>Dec</figcaption>
 							</figure>
 							<ul>
-								<li>Mark Twain</li>
-								<li>20.11.2017</li>
+								<li>Đà Lạt</li>
+								<li>20/06/2023</li>
 							</ul>
-							<h4>Pri oportere scribentur eu</h4>
+							<h4>Đại hội âm nhạc chưa từng có</h4>
 							<p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
 						</a>
 					</div>
@@ -311,9 +311,9 @@
 					<div class="block-reveal">
 						<div class="block-vertical"></div>
 						<div class="box_1">
-							<h3>Enjoy a GREAT travel with us</h3>
-							<p>Ius cu tamquam persequeris, eu veniam apeirian platonem qui, id aliquip voluptatibus pri. Ei mea primis ornatus disputationi. Menandri erroribus cu per, duo solet congue ut. </p>
-							<a href="#0" class="btn_1 rounded">Read more</a>
+							<h3>Tầm Nhìn - Sứ Mệnh</h3>
+							<p>Như tên thương hiệu đã khẳng định Trung Phát Travel và khẩu hiệu công ty đã lựa chọn “Du lịch Châu Á, Khám phá Mỹ – Úc – Âu”. Công ty Trung Phát Travel mong muốn phát triển bền vững để Trung Phát Travel đứng vào hàng ngũ 10 công ty du lịch hàng đầu của Việt Nam vào năm 2023. </p>
+							<a href="#0" class="btn_1 rounded">Xem thêm</a>
 						</div>
 					</div>
 				</div>
@@ -328,7 +328,7 @@
 			<div class="row">
 				<div class="col-lg-5 col-md-12 pe-5">
 					<p><img src="{{asset('img/trungphattravel.png')}}" width="150" height="36" alt=""></p>
-					<p>Mea nibh meis philosophia eu. Duis legimus efficiantur ea sea. Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu. Nihil facilisi indoctum an vix, ut delectus expetendis vis.</p>
+					<p>Là một trong những đơn vị hoạt động kinh doanh trong lĩnh vực Dịch vụ và Du lịch tại Việt Nam, Trung Phát Travel nhanh chóng được đánh giá là một công ty trẻ nhưng chuyên nghiệp ngay từ nền tảng. Xây dựng với một cơ cấu 90% nhân viên từng là các “thủ lĩnh” xuất sắc của các công ty Du lịch hàng đầu Việt Nam, Trung Phát Travel luôn thấu hiểu những giá trị cốt yếu của du lịch. Trên bước đường trưởng thành, Trung Phát Travel không ngừng nổ lực tìm kiếm và thiết kế những tour du lịch với hình thức độc đáo và mới lạ, nhằm đưa thế giới gần hơn với du khách.</p>
 					<div class="follow_us">
 						<ul>
 							<li>Follow us</li>
@@ -341,31 +341,21 @@
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 ms-lg-auto">
-					<h5>Useful links</h5>
+					<h5>Thông tin về chúng tôi</h5>
 					<ul class="links">
 						<li><a href="about.html">About</a></li>
-						<li><a href="login.html">Login</a></li>
-						<li><a href="register.html">Register</a></li>
-						<li><a href="blog.html">News &amp; Events</a></li>
+						<li><a href="register.html">Blog</a></li>
+						<li><a href="blog.html">Tin tức &amp; sự kiện</a></li>
 						<li><a href="contacts.html">Contacts</a></li>
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<h5>Contact with Us</h5>
 					<ul class="contacts">
-						<li><a href="tel://61280932400"><i class="ti-mobile"></i> + 61 23 8093 3400</a></li>
-						<li><a href="mailto:info@Panagea.com"><i class="ti-email"></i> info@Panagea.com</a></li>
+						<li><a href="tel://353110711"><i class="ti-mobile"></i> +84 353 110 711</a></li>
+						<li><a href="nguyenthanhphatdeveloper@gmail.com"><i class="ti-email"></i> nguyenthanhphat@id.vn</a></li>
 					</ul>
-					<div id="newsletter">
-					<h6>Newsletter</h6>
-					<div id="message-newsletter"></div>
-					<form method="post" action="" name="newsletter_form" id="newsletter_form">
-						<div class="form-group">
-							<input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="Your email">
-							<input type="submit" value="Submit" id="submit-newsletter">
-						</div>
-					</form>
-					</div>
+					
 				</div>
 			</div>
 			<!--/row-->
@@ -374,23 +364,9 @@
 				<div class="col-lg-6">
 					<ul id="footer-selector">
 						<li>
-							<div class="styled-select" id="lang-selector">
-								<select>
-									<option value="English" selected>English</option>
-									<option value="French">French</option>
-									<option value="Spanish">Spanish</option>
-									<option value="Russian">Russian</option>
-								</select>
-							</div>
+							
 						</li>
-						<li>
-							<div class="styled-select" id="currency-selector">
-								<select>
-									<option value="US Dollars" selected>US Dollars</option>
-									<option value="Euro">Euro</option>
-								</select>
-							</div>
-						</li>
+						
 						<li><img src="img/cards_all.svg" alt=""></li>
 					</ul>
 				</div>
