@@ -52,6 +52,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/admin/chitietkhongduyet', 'App\Http\Controllers\DonHangController@show_khong_duyet')->name('show_khong_duyet');
     Route::get('/admin/donhangkhongduyets', 'App\Http\Controllers\DonHangController@index_khong_duyet')->name('khong_duyet');
     Route::put('/admin/updatestatus_loaitour', 'App\Http\Controllers\LoaiTourController@update_trangthai')->name('updatestatus_loaitour');
+    Route::put('/admin/tours', 'App\Http\Controllers\TourController@update_trangthai')->name('updatestatus_tour');
+
+    Route::post('/admin/statistic', 'App\Http\Controllers\StatisticController@index_date')->name('index_date');
 
     Route::get('/admin/home', function () {
         return view('home.home');

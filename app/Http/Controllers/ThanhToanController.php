@@ -14,7 +14,7 @@ class ThanhToanController extends Controller
      */
     public function index()
     {
-        $lst=ThanhToan::search()->orderBy('created_at','DESC')->paginate(10);
+        $lst=ThanhToan::search()->orderBy('updated_at','DESC')->paginate(10);
         return view('admin.thanhtoans.thanhtoan-index', compact('lst'));
     }
 

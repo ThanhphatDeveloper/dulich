@@ -14,7 +14,7 @@ class KhuyenMaiController extends Controller
      */
     public function index()
     {
-        $lst=KhuyenMai::search()->orderBy('created_at','DESC')->paginate(10);
+        $lst=KhuyenMai::search()->orderBy('updated_at','DESC')->paginate(10);
         return view('admin.khuyenmais.khuyenmai-index', compact('lst'));
     }
 

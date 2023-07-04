@@ -44,7 +44,7 @@
               <tbody>
               @foreach($lst as $d)
                 <tr>
-                    <td>{{$d->ho}} {{$d->ten}}</td>
+                    <td>{{$d->hoten}}</td>
                     <td>{{$d->gioitinh}}</td>
                     <td>{{$d->sdt}}</td>
                 </tr>

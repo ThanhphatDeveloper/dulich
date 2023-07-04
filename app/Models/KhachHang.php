@@ -23,9 +23,9 @@ class KhachHang extends Model
     public function scopeSearch($query)
     {
         if($key = request()->key){
-            $query=$query->where('ho', 'like', '%'.$key.'%')
-            ->orWhere('ten', 'like', '%'.$key.'%')
-            ->orWhere('sdt', 'like', '%'.$key.'%');
+            $query=$query->where('hoten', 'like', '%'.$key.'%')
+            ->orWhere('sdt', 'like', '%'.$key.'%')
+            ->orWhere('gioitinh', 'like', '%'.$key.'%');
         }
 
         return $query;

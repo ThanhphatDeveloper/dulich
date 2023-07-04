@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('khach_hangs', function (Blueprint $table) {
             $table->id();
-            $table->string('ho')->default('');
-            $table->string('ten')->default('');
+            $table->string('hoten')->default('');
             $table->string('gioitinh');
             $table->string('sdt')->default('');
-            $table->boolean('trangthai')->default(1);
-            $table->datetime('thoigianxoa')->nullable()->default(null);
+            $table->string('email')->default('');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -15,7 +15,11 @@
 
     <link rel="stylesheet" href="{{asset('css/index.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
-    <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link rel="stylesheet" href="{{asset('https://use.fontawesome.com/releases/v5.7.0/css/all.css')}}"
     integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <script src="{{asset('/ckeditor/ckeditor.js')}}"></script>
@@ -23,27 +27,8 @@
     <!-- Icon fonts-->
     <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- Plugin styles -->
-    <link href="{{asset('vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
     <!-- Your custom styles -->
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
-    <link href="{{asset('css/jquery-confirm.min.css')}}" rel="stylesheet">
-
-    <script src=
-    "https://cdn.jsdelivr.net/npm/smartwizard@4.3.1/dist/js/jquery.smartWizard.min.js">
-    </script>
-    <script src=
-    "https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js">
-    </script>
-    
-    <link rel="stylesheet" 
-        href=
-    "https://cdn.jsdelivr.net/npm/smartwizard@4.3.1/dist/css/smart_wizard.min.css">
-    <script src=
-    "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
-            integrity=
-    "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
-            crossorigin="anonymous">
-    </script>
     
 </head>
 <body class="fixed-nav sticky-footer" id="page-top">
@@ -144,9 +129,6 @@
 
             <ul class="navbar-nav ml-auto">
                 
-                <li class="nav-item">
-                
-                </li>
                 <li class="nav-item">
 
                     <nav id="navbar-custom" class="navbar navbar-dark navbar-expand-sm">
@@ -303,28 +285,24 @@
             </div>
     
     
-    
-    <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
-    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-    <!-- Page level plugin JavaScript-->
-
-    <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
-	
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-    
-    <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-
-    <script src="{{asset('vendor/chart.js/Chart.js')}}"></script>
-    <script src="{{asset('vendor/datatables/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('vendor/datatables/dataTables.bootstrap4.js')}}"></script>
+    <!-- <script src="{{asset('customer/js/popper.min.js')}}"></script> -->
+    <!-- <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script> -->
+    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <script src="{{asset('vendor/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" 
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" 
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
     <!-- Custom scripts for all pages-->
     <script src="{{asset('js/admin.js')}}"></script>
-	   <!-- Custom scripts for this page-->
-    <script src="{{asset('js/admin-charts.js')}}"></script>
-    <script src="{{asset('js/admin-charts-all.js')}}"></script>
 
     <script type="text/javascript">
         document.getElementById('ful_img_layout').onchange = function (e) {

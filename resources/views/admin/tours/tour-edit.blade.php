@@ -32,7 +32,7 @@
                         <tr>
                             <td>Loại tour: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="loaitour">
+                                <select class="custom-select" name="loaitour">
                                     @foreach($lst_loai_tour as $cat)
                                         <option value="{{$cat->id}}" @if($t->loai_tour_id==old('loaitour',$cat->id))
                                         selected @endif> {{$cat->loaitour}}</option>
@@ -43,7 +43,7 @@
                         <tr>
                             <td>Điểm khởi hành: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="dkh">
+                                <select class="custom-select" name="dkh">
                                     @foreach($lst_dd as $d)
                                         <option value="{{$d->id}}" @if($t->dia_diem_khoi_hanh_id==old('dkh',$d->id))
                                             selected @endif> {{$d->diadiem}}</option>
@@ -54,7 +54,7 @@
                         <tr>
                             <td>Điểm kết thúc: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="dkt">
+                                <select class="custom-select" name="dkt">
                                     @foreach($lst_dd as $d)
                                         <option value="{{$d->id}}" @if($t->dia_diem_ket_thuc_id==old('dkt',$d->id))
                                             selected @endif> {{$d->diadiem}}</option>
@@ -65,7 +65,7 @@
                         <tr>
                             <td>Nhà cung cấp: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="ncc">
+                                <select class="custom-select" name="ncc">
                                     @foreach($lst_ncc as $n)
                                         <option value="{{$n->id}}" @if($t->nha_cung_cap_id==old('ncc',$n->id))
                                         selected @endif> {{$n->nhacungcap}}</option>
@@ -126,7 +126,7 @@
                         <tr>
                             <td>Phương tiện: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="phuongtien">
+                                <select class="custom-select" name="phuongtien">
                                     <option value='Xe khách' @if ($t->phuongtien=='Xe khách') selected @endif>Xe khách</option>
                                     <option value='Máy bay' @if ($t->phuongtien=='Máy bay') selected @endif>Máy bay</option>
                                 </select>

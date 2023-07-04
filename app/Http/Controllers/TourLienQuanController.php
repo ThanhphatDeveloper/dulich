@@ -21,7 +21,7 @@ class TourLienQuanController extends Controller
         $lst_blog=Blog::where('id', '=', $request->id)->get();
 
         $lst_tour=Tour::search()->get();
-        $lst=TourLienQuan::where('trangthai', '=', 1)->where('blog_id', '=', $request->id)->orderBy('created_at','DESC')->paginate(10);
+        $lst=TourLienQuan::where('trangthai', '=', 1)->where('blog_id', '=', $request->id)->orderBy('updated_at','DESC')->paginate(10);
         $lst_tlq=TourLienQuan::where('trangthai', '=', 1)->where('blog_id', '=', $request->id)->get();
         //dd($tour_id);
         return view('admin.blogs.tour-lien-quan', compact('lst'),

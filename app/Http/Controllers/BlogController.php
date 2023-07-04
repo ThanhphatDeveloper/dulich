@@ -27,7 +27,7 @@ class BlogController extends Controller
     public function index()
     {
         $lst_user=User::all();
-        $lst=Blog::search()->orderBy('created_at','DESC')->paginate(10);
+        $lst=Blog::search()->orderBy('updated_at','DESC')->paginate(10);
         foreach($lst as $u){
             $this->fixImage($u);
         }

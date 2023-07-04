@@ -22,7 +22,7 @@ class DonHangController extends Controller
         $lst_tour = Tour::all();
         $lst_km = KhuyenMai::all();
         $lst = DonHang::search()->where('thoigianxoa', '=', null)
-        ->where('trangthai', '=', 0)->orderBy('created_at','DESC')->paginate(10);
+        ->where('trangthai', '=', 0)->orderBy('updated_at','DESC')->paginate(10);
         return view('admin.donhangs.donhang-chuaduyet', compact('lst'),
         [
             'lst_tour'=>$lst_tour,
@@ -34,7 +34,7 @@ class DonHangController extends Controller
     {
         $lst_tour = Tour::all();
         $lst_km = KhuyenMai::all();
-        $lst = DonHang::search()->where('trangthai', '=', 1)->orderBy('created_at','DESC')->paginate(10);
+        $lst = DonHang::search()->where('trangthai', '=', 1)->orderBy('updated_at','DESC')->paginate(10);
         return view('admin.donhangs.donhang-daduyet', compact('lst'),
         [
             'lst_tour'=>$lst_tour,
@@ -46,7 +46,7 @@ class DonHangController extends Controller
     {
         $lst_tour = Tour::all();
         $lst_km = KhuyenMai::all();
-        $lst = DonHang::search()->where('thoigianxoa', '!=', null)->orderBy('created_at','DESC')->paginate(10);
+        $lst = DonHang::search()->where('thoigianxoa', '!=', null)->orderBy('updated_at','DESC')->paginate(10);
         return view('admin.donhangs.donhang-khongduyet', compact('lst'),
         [
             'lst_tour'=>$lst_tour,

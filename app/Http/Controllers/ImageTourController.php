@@ -27,7 +27,7 @@ class ImageTourController extends Controller
     public function index(Request $request)
     {
         //dd( $request->id);
-        $lst = ImageTour::where('tour_id', '=', $request->id)->orderBy('created_at','DESC')->paginate(10);
+        $lst = ImageTour::where('tour_id', '=', $request->id)->orderBy('updated_at','DESC')->paginate(10);
         
         $tour = Tour::where('id', '=', $request->id)->first();
 

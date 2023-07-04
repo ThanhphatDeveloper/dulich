@@ -73,7 +73,7 @@
                         <tr>
                             <td>Vai trò: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="admin">
+                                <select class="custom-select" name="admin">
                                     <option value="1" @if ($u->admin==1) selected @endif>admin cấp 1</option>
                                     <option value="0" @if ($u->admin==0) selected @endif>admin cấp 2</option>
                                 </select>
@@ -83,7 +83,7 @@
                         <tr>
                             <td>Trạng thái: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="trangthai">
+                                <select class="custom-select" name="trangthai">
                                     <option value="1" @if ($u->trangthai==1) selected @endif>Hoạt động</option>
                                     <option value="0" @if ($u->trangthai==0) selected @endif>Ngừng hoạt động</option>
                                 </select>

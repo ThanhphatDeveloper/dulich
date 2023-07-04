@@ -17,7 +17,21 @@ class KhachHangFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'hoten'=>fake()->name(),
+            'gioitinh'=>'Nam',
+            'sdt'=>$this->randomphone(),
+            'email'=>fake()->unique()->safeEmail(),
+            'don_hang_id'=>1,
         ];
+    }
+
+    public function randomphone(): string{
+        $phone = '0';
+
+        for($i=1;$i<10;$i++){
+            $phone=$phone.rand(0,9);
+        }
+
+        return $phone;
     }
 }

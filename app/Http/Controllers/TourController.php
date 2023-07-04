@@ -36,7 +36,7 @@ class TourController extends Controller
         // $a=Tour::find(1);
         // dd($a->loai_tour->loaitour);
 
-        $lst=Tour::search()->orderBy('created_at','DESC')->paginate(10);
+        $lst=Tour::search()->orderBy('updated_at','DESC')->paginate(10);
         $lst_diadiem=DiaDiem::all();
 
         
@@ -177,7 +177,6 @@ class TourController extends Controller
      */
     public function update(UpdateTourRequest $request, Tour $tour)
     {
-        //dd($request);
 
         if( $request->tentour != $tour->tentour){
             $request->validate(
@@ -219,6 +218,16 @@ class TourController extends Controller
         // $path = $request->image->store('upload/imagetour/'.$image->id,'public');
         // $image->image=$path;
         // $image->save();
+
+        return redirect()->route('tours.index');
+    }
+
+    public function update_trangthai(Request $request)
+    {
+        //dd($request->id);
+        Tour::where('id', $request->id)->update([
+            'trangthai'=>1
+        ]);
 
         return redirect()->route('tours.index');
     }

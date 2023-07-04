@@ -14,7 +14,7 @@ class CustomerHomepageController extends Controller
      */
     public function index()
     {
-        $lst = Tour::orderBy('created_at','DESC')->get();
+        $lst = Tour::orderBy('updated_at','DESC')->get();
         //dd($lst[0]->tentour);
         return view('customer.home-page', ['lst'=>$lst]);
     }

@@ -52,8 +52,8 @@
                     <th>Giá</th>
                     <th>Trạng thái</th>
                     <th>Hình ảnh</th>
-                    <th></th>
-                    <th></th>
+                    <th>Xóa/Khôi phục</th>
+                    <th>Chỉnh sửa</th>
                 </tr>
               </thead>
               <tbody>
@@ -92,13 +92,24 @@
                             </form>
                         </td>
                         <td>
-                            <form method="post" action="{{route('tours.destroy', ['tour'=>$t])}}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" onclick="return checkDelete()" class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
+                            @if($t->trangthai == 0)
+                                <form method="post" action="{{route('updatestatus_tour')}}">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="id" value="{{$t->id}}">
+                                    <button type="submit" onclick="return checkRestore()" class="btn btn-sm btn-info">
+                                        <i class="fas fa-arrow-circle-left"></i>
+                                    </button>
+                                </form>
+                            @else
+                                <form method="post" action="{{route('tours.destroy', ['tour'=>$t])}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return checkDelete()" class="btn btn-sm btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            @endif
                         </td>
                         <td>
                             <form method="get" action="{{route('tours.edit', ['tour'=>$t])}}">

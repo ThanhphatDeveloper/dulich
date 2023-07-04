@@ -13,7 +13,7 @@ class KhachHangController extends Controller
      */
     public function index()
     {
-        $lst = KhachHang::search()->orderBy('created_at','DESC')->paginate(10);
+        $lst = KhachHang::search()->orderBy('updated_at','DESC')->paginate(10);
         return view('admin.khachhangs.khachhang-index', compact('lst'));
     }
 
