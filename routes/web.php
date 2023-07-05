@@ -15,6 +15,7 @@ use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\ImageTourController;
 use App\Http\Controllers\TourLienQuanController;
 use App\Http\Controllers\CkeditorController;
+use App\Http\Controllers\CustomerBlogController;
 use App\Http\Controllers\CustomerHomepageController;
 use App\Http\Controllers\StatisticController;
 use Illuminate\Support\Facades\Route;
@@ -78,17 +79,23 @@ Route::get('/admin', function () {
 
 Route::resource('/', CustomerHomepageController::class);
 Route::resource('/customer_tours', BookTourController::class);
+Route::resource('/customer_blogs', CustomerBlogController::class);
 
 Route::get('/customer_tour_detail', function () {
     return view('customer.tour-detail');
+
 });
 
 Route::get('/test', function () {
     return view('test');
 });
 
+Route::get('/blog', function () {
+    return view('customer.blog');
+});
+
 // Route::get('/ckdata', function () {
 //     return view('ckdata');
 // });
 
-Route::resource('/ckdata', CkeditorController::class);
+Route::resource('/abc', CkeditorController::class);

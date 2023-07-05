@@ -6038,7 +6038,7 @@ a.grid_item.latest_adventure em {
 }
 
 .banner {
-  background: url(../img/banner_bg_desktop.jpg) center center no-repeat;
+  background: url(/img/banner_bg_desktop.jpg) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -6050,7 +6050,7 @@ a.grid_item.latest_adventure em {
 }
 @media (max-width: 767px) {
   .banner {
-    background: url(../img/banner_bg_mobile.jpg) center center no-repeat;
+    background: url(/img/banner_bg_mobile.jpg) center center no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
-    <title>Panagea |</title>
+    <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -23,15 +23,18 @@
     <link href="{{asset('customer/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('customer/css/style.css')}}" rel="stylesheet">
 	<link href="{{asset('customer/css/vendors.css')}}" rel="stylesheet">
+    
+    <!-- SPECIFIC CSS -->
+    <link href="{{asset('customer/css/blog.css')}}" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{{asset('customer/css/custom.css')}}" rel="stylesheet">
-
+	
 </head>
 
-<body class="datepicker_mobile_full"><!-- Remove this class to disable datepicker full on mobile -->
+<body>
 	
-	<div id="page" class="theia-exception">
+	<div id="page">
 		
 	<header class="header menu_fixed">
 		<div id="preloader"><div data-loader="circle-side"></div></div><!-- /Preload -->
@@ -217,80 +220,210 @@
 	<!-- /header -->
 	
 	<main>
-		<section class="hero_in tours_detail">
+		<section class="hero_in general">
 			<div class="wrapper">
 				<div class="container">
-					<h1 class="fadeInUp"><span></span>Tour detail page</h1>
+					<h1 class="fadeInUp"><span></span>Panagea blog</h1>
 				</div>
-				<span class="magnific-gallery">
-					<a href="img/gallery/tour_list_1.jpg" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>
-					<a href="img/gallery/tour_list_2.jpg" title="Photo title" data-effect="mfp-zoom-in"></a>
-					<a href="img/gallery/tour_list_3.jpg" title="Photo title" data-effect="mfp-zoom-in"></a>
-				</span>
 			</div>
 		</section>
 		<!--/hero_in-->
 
-		<div class="bg_color_1">
-			<nav class="secondary_nav sticky_horizontal">
-				<div class="container">
-					<ul class="clearfix">
-						<li><a href="#description" class="active">Description</a></li>
-						<li><a href="#reviews">Reviews</a></li>
-						<li><a href="#sidebar">Booking</a></li>
-					</ul>
-				</div>
-			</nav>
-			<div class="container margin_60_35">
-				<div class="row">
-					<div class="col-lg-8">
-						{{-- chỗ này dùng ckediter --}}
-						{!! $a[1]->mota!!}
-						<!-- /section -->
-						<!-- /section -->
-						<hr>
-					</div>
-					<!-- /col -->
-					
-					<aside class="col-lg-4" id="sidebar">
-						<div class="box_detail booking">
-							<div class="price">
-								<span>45$ <small>person</small></span>
-								<div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div>
+		<div class="container margin_60_35">
+			<div class="row">
+				<div class="col-lg-9">
+					<article class="blog wow fadeIn">
+						<div class="row g-0">
+							<div class="col-lg-7">
+								<figure>
+									<a href="blog-post.html"><img src="img/blog-1.jpg" alt="">
+										<div class="preview"><span>Read more</span></div>
+									</a>
+								</figure>
 							</div>
-							<div class="form-group input-dates">
-								<input class="form-control" type="text" name="dates" placeholder="When..">
-								<i class="icon_calendar"></i>
-							</div>
-							<div class="panel-dropdown">
-								<a href="#">Guests <span class="qtyTotal">1</span></a>
-								<div class="panel-dropdown-content right">
-									<div class="qtyButtons">
-										<label>Adults</label>
-										<input type="text" name="qtyInput" value="1">
-									</div>
-									<div class="qtyButtons">
-										<label>Childrens</label>
-										<input type="text" name="qtyInput" value="0">
-									</div>
+							<div class="col-lg-5">
+								<div class="post_info">
+									<small>20 Nov. 2017</small>
+									<h3><a href="blog-post.html">Nec nihil menandri appellantur ut</a></h3>
+									<p>Quodsi sanctus pro eu, ne audire scripserit quo. Vel an enim offendit salutandi, in eos quod omnes epicurei, ex veri qualisque scriptorem mei.</p>
+									<ul>
+										<li>
+											<div class="thumb"><img src="img/thumb_blog.jpg" alt=""></div> Jessica Hoops
+										</li>
+										<li><i class="icon_comment_alt"></i> 20</li>
+									</ul>
 								</div>
 							</div>
-							<a href="cart-1.html" class="btn_1 full-width purchase">Purchase</a>
-							<a href="wishlist.html" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> Add to wishlist</a>
-							<div class="text-center"><small>No money charged in this step</small></div>
 						</div>
-						<ul class="share-buttons">
-							<li><a class="fb-share" href="#0"><i class="social_facebook"></i> Share</a></li>
-							<li><a class="twitter-share" href="#0"><i class="social_twitter"></i> Tweet</a></li>
-							<li><a class="gplus-share" href="#0"><i class="social_googleplus"></i> Share</a></li>
+					</article>
+					<!-- /article -->
+
+					<article class="blog wow fadeIn">
+						<div class="row g-0">
+							<div class="col-lg-7">
+								<figure>
+									<a href="blog-post.html"><img src="img/blog-2.jpg" alt="">
+										<div class="preview"><span>Read more</span></div>
+									</a>
+								</figure>
+							</div>
+							<div class="col-lg-5">
+								<div class="post_info">
+									<small>20 Nov. 2017</small>
+									<h3><a href="blog-post.html">Nec nihil menandri appellantur ut</a></h3>
+									<p>Quodsi sanctus pro eu, ne audire scripserit quo. Vel an enim offendit salutandi, in eos quod omnes epicurei, ex veri qualisque scriptorem mei.</p>
+									<ul>
+										<li>
+											<div class="thumb"><img src="img/thumb_blog.jpg" alt=""></div> Jessica Hoops
+										</li>
+										<li><i class="icon_comment_alt"></i> 20</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</article>
+					<!-- /article -->
+
+					<article class="blog wow fadeIn">
+						<div class="row g-0">
+							<div class="col-lg-7">
+								<figure>
+									<a href="blog-post.html"><img src="img/blog-3.jpg" alt="">
+										<div class="preview"><span>Read more</span></div>
+									</a>
+								</figure>
+							</div>
+							<div class="col-lg-5">
+								<div class="post_info">
+									<small>20 Nov. 2017</small>
+									<h3><a href="blog-post.html">Nec nihil menandri appellantur ut</a></h3>
+									<p>Quodsi sanctus pro eu, ne audire scripserit quo. Vel an enim offendit salutandi, in eos quod omnes epicurei, ex veri qualisque scriptorem mei.</p>
+									<ul>
+										<li>
+											<div class="thumb"><img src="img/thumb_blog.jpg" alt=""></div> Jessica Hoops
+										</li>
+										<li><i class="icon_comment_alt"></i> 20</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</article>
+					<!-- /article -->
+
+					<article class="blog wow fadeIn">
+						<div class="row g-0">
+							<div class="col-lg-7">
+								<figure>
+									<a href="blog-post.html"><img src="img/blog-4.jpg" alt="">
+										<div class="preview"><span>Read more</span></div>
+									</a>
+								</figure>
+							</div>
+							<div class="col-lg-5">
+								<div class="post_info">
+									<small>20 Nov. 2017</small>
+									<h3><a href="blog-post.html">Nec nihil menandri appellantur ut</a></h3>
+									<p>Quodsi sanctus pro eu, ne audire scripserit quo. Vel an enim offendit salutandi, in eos quod omnes epicurei, ex veri qualisque scriptorem mei.</p>
+									<ul>
+										<li>
+											<div class="thumb"><img src="img/thumb_blog.jpg" alt=""></div> Jessica Hoops
+										</li>
+										<li><i class="icon_comment_alt"></i> 20</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</article>
+					<!-- /article -->
+
+					<nav aria-label="...">
+						<ul class="pagination pagination-sm">
+							<li class="page-item disabled">
+								<a class="page-link" href="#" tabindex="-1">Previous</a>
+							</li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item">
+								<a class="page-link" href="#">Next</a>
+							</li>
 						</ul>
-					</aside>
+					</nav>
+					<!-- /pagination -->
 				</div>
-				<!-- /row -->
+				<!-- /col -->
+
+				<aside class="col-lg-3">
+					<div class="widget">
+						<form>
+							<div class="form-group">
+								<input type="text" name="search" id="search" class="form-control" placeholder="Search...">
+							</div>
+							<button type="submit" id="submit" class="btn_1 rounded"> Search</button>
+						</form>
+					</div>
+					<!-- /widget -->
+					<div class="widget">
+						<div class="widget-title">
+							<h4>Recent Posts</h4>
+						</div>
+						<ul class="comments-list">
+							<li>
+								<div class="alignleft">
+									<a href="#0"><img src="img/blog-5.jpg" alt=""></a>
+								</div>
+								<small>11.08.2016</small>
+								<h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+							</li>
+							<li>
+								<div class="alignleft">
+									<a href="#0"><img src="img/blog-6.jpg" alt=""></a>
+								</div>
+								<small>11.08.2016</small>
+								<h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+							</li>
+							<li>
+								<div class="alignleft">
+									<a href="#0"><img src="img/blog-4.jpg" alt=""></a>
+								</div>
+								<small>11.08.2016</small>
+								<h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+							</li>
+						</ul>
+					</div>
+					<!-- /widget -->
+					<div class="widget">
+						<div class="widget-title">
+							<h4>Blog Categories</h4>
+						</div>
+						<ul class="cats">
+							<li><a href="#">Admissions <span>(12)</span></a></li>
+							<li><a href="#">News <span>(21)</span></a></li>
+							<li><a href="#">Events <span>(44)</span></a></li>
+							<li><a href="#">Focus in the lab <span>(31)</span></a></li>
+						</ul>
+					</div>
+					<!-- /widget -->
+					<div class="widget">
+						<div class="widget-title">
+							<h4>Popular Tags</h4>
+						</div>
+						<div class="tags">
+							<a href="#">Information tecnology</a>
+							<a href="#">Students</a>
+							<a href="#">Community</a>
+							<a href="#">Carreers</a>
+							<a href="#">Literature</a>
+							<a href="#">Seminars</a>
+						</div>
+					</div>
+					<!-- /widget -->
+				</aside>
+				<!-- /aside -->
 			</div>
-			<!-- /container -->
+			<!-- /row -->
 		</div>
-		<!-- /bg_color_1 -->
+		<!-- /container -->
 	</main>
 	<!--/main-->
 	
@@ -433,35 +566,7 @@
     <script src="{{asset('customer/js/common_scripts.js')}}"></script>
     <script src="{{asset('customer/js/main.js')}}"></script>
 	<script src="{{asset('customer/phpmailer/validate.js')}}"></script>
-	
-	<!-- Map -->
-	<script src="http://maps.googleapis.com/maps/api/js"></script>
-	<script src="{{asset('customer/js/map_single_tour.js')}}"></script>
-	<script src="{{asset('customer/js/infobox.js')}}"></script>
-	
-	<!-- DATEPICKER  -->
-	<script>
-	$(function() {
-	  $('input[name="dates"]').daterangepicker({
-		  autoUpdateInput: false,
-		  parentEl:'.scroll-fix',
-		  minDate:new Date(),
-		  opens: 'left',
-		  locale: {
-			  cancelLabel: 'Clear'
-		  }
-	  });
-	  $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
-		  $(this).val(picker.startDate.format('MM-DD-YY') + ' > ' + picker.endDate.format('MM-DD-YY'));
-	  });
-	  $('input[name="dates"]').on('cancel.daterangepicker', function(ev, picker) {
-		  $(this).val('');
-	  });
-	});
-	</script>
-	
-	<!-- INPUT QUANTITY  -->
-	<script src="{{asset('customer/js/input_qty.js')}}"></script>
-  
+
+
 </body>
 </html>

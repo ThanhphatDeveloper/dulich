@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
-    <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
+    <title>Trang chủ</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="{{asset('customer/img/favicon.ico')}}" type="image/x-icon">
@@ -96,7 +96,7 @@
 					<div class="col-xl-4 col-lg-6 col-md-6">
 						<div class="box_grid">
 							<figure>
-								<a href="{{route()}}"><img src="storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533">
+								<a href=""><img src="storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533">
 									<div class="read_more"><span>Chi tiết</span>
 									</div>
 								</a>
