@@ -94,6 +94,18 @@ Route::get('/blog', function () {
     return view('customer.blog');
 });
 
+Route::get('/policy', function () {
+    return view('customer.policy');
+});
+
+Route::get('/payment', function () {
+    return view('customer.payment');
+});
+
+Route::get('/contact', function () {
+    return view('customer.contact');
+});
+
 // Route::get('/ckdata', function () {
 //     return view('ckdata');
 // });

@@ -7,7 +7,7 @@
     <meta name="description"
         content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
-    <title>Panagea </title>
+    <title>Chính sách về Trung Phát Travel</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -75,7 +75,7 @@
             <section class="hero_in general">
                 <div class="wrapper">
                     <div class="container">
-                        <h1 class="fadeInUp"><span></span>Blog nổi bật</h1>
+                        <h1 class="fadeInUp"><span></span>Chính sách bảo mật thông tin</h1>
                     </div>
                 </div>
             </section>
@@ -86,11 +86,8 @@
                     <div class="col-lg-9">
                         <div class="bloglist singlepost">
                             <p><img alt="" class="img-fluid" src="img/blog-single.jpg"></p>
-                            <h1>Your blog article title</h1>
+                            <h1>Chính sách đặt tour</h1>
                             <div class="postmeta">
-                                <ul>
-                                    <li><a href="#"><i class="icon_clock_alt"></i> 23/12/2015</a></li>
-                                </ul>
                             </div>
                             <!-- /post meta -->
                             <div class="post-content">
@@ -127,50 +124,7 @@
                     </div>
                     <!-- /col -->
 
-                    <aside class="col-lg-3">
-                        <div class="widget">
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" name="search" id="search" class="form-control"
-                                        placeholder="Search...">
-                                </div>
-                                <button type="submit" id="submit" class="btn_1 rounded"> Search</button>
-                            </form>
-                        </div>
-                        <!-- /widget -->
-                        <div class="widget">
-                            <div class="widget-title">
-                                <h4>Recent Posts</h4>
-                            </div>
-                            <ul class="comments-list">
-                                <li>
-                                    <div class="alignleft">
-                                        <a href="#0"><img src="img/blog-5.jpg" alt=""></a>
-                                    </div>
-                                    <small>11.08.2016</small>
-                                    <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                                </li>
-                                <li>
-                                    <div class="alignleft">
-                                        <a href="#0"><img src="img/blog-6.jpg" alt=""></a>
-                                    </div>
-                                    <small>11.08.2016</small>
-                                    <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                                </li>
-                                <li>
-                                    <div class="alignleft">
-                                        <a href="#0"><img src="img/blog-4.jpg" alt=""></a>
-                                    </div>
-                                    <small>11.08.2016</small>
-                                    <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /widget -->
-
-                        <!-- /widget -->
-                        <!-- /widget -->
-                    </aside>
+                    
                     <!-- /aside -->
                 </div>
                 <!-- /row -->
@@ -214,18 +168,7 @@
                             <li><a href="tel://61280932400"><i class="ti-mobile"></i> + 61 23 8093 3400</a></li>
                             <li><a href="mailto:info@Panagea.com"><i class="ti-email"></i> info@Panagea.com</a></li>
                         </ul>
-                        <div id="newsletter">
-                            <h6>Newsletter</h6>
-                            <div id="message-newsletter"></div>
-                            <form method="post" action="phpmailer/newsletter_template_email.php"
-                                name="newsletter_form" id="newsletter_form">
-                                <div class="form-group">
-                                    <input type="email" name="email_newsletter" id="email_newsletter"
-                                        class="form-control" placeholder="Your email">
-                                    <input type="submit" value="Submit" id="submit-newsletter">
-                                </div>
-                            </form>
-                        </div>
+                        
                     </div>
                 </div>
                 <!--/row-->
@@ -295,23 +238,11 @@
                             <span class="checkmark"></span>
                         </label>
                     </div>
-                    <div class="float-end mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a>
-                    </div>
+                    
                 </div>
-                <div class="text-center"><input type="submit" value="Log In" class="btn_1 full-width"></div>
-                <div class="text-center">
-                    Don’t have an account? <a href="register.html">Sign up</a>
-                </div>
-                <div id="forgot_pw">
-                    <div class="form-group">
-                        <label>Please confirm login email below</label>
-                        <input type="email" class="form-control" name="email_forgot" id="email_forgot">
-                        <i class="icon_mail_alt"></i>
-                    </div>
-                    <p>You will receive an email containing a link allowing you to reset your password to a new
-                        preferred one.</p>
-                    <div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
-                </div>
+                
+                
+                
             </div>
         </form>
         <!--form -->

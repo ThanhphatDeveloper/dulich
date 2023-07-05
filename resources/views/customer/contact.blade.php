@@ -60,10 +60,13 @@
             </a>
             <nav id="menu" class="main-menu">
                 <ul>
-                    <li><span><a href="#0">Home</a></span>
+                    <li><span><a href="">Home</a></span>
 
                     </li>
                     <li><span><a href="#0">Tours</a></span>
+                    <li><span><a href="#0">Contac</a></span>
+                    <li><span><a href="#0">Payment</a></span>
+                    <li><span><a href="#0">Police</a></span>
 
                 </ul>
             </nav>
@@ -72,110 +75,91 @@
         <!-- /header -->
 
         <main>
-            <section class="hero_in general">
+            <section class="hero_in contacts">
                 <div class="wrapper">
                     <div class="container">
-                        <h1 class="fadeInUp"><span></span>Blog nổi bật</h1>
+                        <h1 class="fadeInUp"><span></span>Liên hệ chúng tôi</h1>
                     </div>
                 </div>
             </section>
             <!--/hero_in-->
-
-            <div class="container margin_60_35">
-                <div class="row">
-                    <div class="col-lg-9">
-                        <div class="bloglist singlepost">
-                            <p><img alt="" class="img-fluid" src="img/blog-single.jpg"></p>
-                            <h1>Your blog article title</h1>
-                            <div class="postmeta">
-                                <ul>
-                                    <li><a href="#"><i class="icon_clock_alt"></i> 23/12/2015</a></li>
-                                </ul>
-                            </div>
-                            <!-- /post meta -->
-                            <div class="post-content">
-                                <div class="dropcaps">
-                                    <p>Aorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen
-                                        book. It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s
-                                        with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                                        recently with desktop publishing software like Aldus PageMaker including
-                                        versions of Lorem Ipsum.</p>
-                                </div>
-
-                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                    piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                    Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked
-                                    up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-                                    going through the cites of the word in classical literature, discovered the
-                                    undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de
-                                    Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45
-                                    BC. This book is a treatise on the theory of ethics, very popular during the
-                                    Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes
-                                    from a line in section 1.10.32.</p>
-                            </div>
-                            <!-- /post -->
-                        </div>
-                        <!-- /single-post -->
-
-
-
-                        <hr>
-
-                    </div>
-                    <!-- /col -->
-
-                    <aside class="col-lg-3">
-                        <div class="widget">
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" name="search" id="search" class="form-control"
-                                        placeholder="Search...">
-                                </div>
-                                <button type="submit" id="submit" class="btn_1 rounded"> Search</button>
-                            </form>
-                        </div>
-                        <!-- /widget -->
-                        <div class="widget">
-                            <div class="widget-title">
-                                <h4>Recent Posts</h4>
-                            </div>
-                            <ul class="comments-list">
-                                <li>
-                                    <div class="alignleft">
-                                        <a href="#0"><img src="img/blog-5.jpg" alt=""></a>
-                                    </div>
-                                    <small>11.08.2016</small>
-                                    <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                                </li>
-                                <li>
-                                    <div class="alignleft">
-                                        <a href="#0"><img src="img/blog-6.jpg" alt=""></a>
-                                    </div>
-                                    <small>11.08.2016</small>
-                                    <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                                </li>
-                                <li>
-                                    <div class="alignleft">
-                                        <a href="#0"><img src="img/blog-4.jpg" alt=""></a>
-                                    </div>
-                                    <small>11.08.2016</small>
-                                    <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /widget -->
-
-                        <!-- /widget -->
-                        <!-- /widget -->
-                    </aside>
-                    <!-- /aside -->
+    
+            <div class="contact_info">
+                <div class="container">
+                    <ul class="clearfix">
+                        <li>
+                            <i class="pe-7s-map-marker"></i>
+                            <h4>Địa chỉ</h4>
+                            <span>Khu 2 phường 3 thị xã Cai lậy<br>Tỉnh Tiền Gian</span>
+                        </li>
+                        <li>
+                            <i class="pe-7s-mail-open-file"></i>
+                            <h4>Địa chỉ mail</h4>
+                            <span>nguyenthanhphatdeveloper@gmail.com<br></span>
+    
+                        </li>
+                        <li>
+                            <i class="pe-7s-phone"></i>
+                            <h4>Liên lạc</h4>
+                            <span>0353 110 711 - 0372 777 911<br><small>Thứ 2 đến Thứ 6</small></span>
+                        </li>
+                    </ul>
                 </div>
-                <!-- /row -->
             </div>
-            <!-- /container -->
+            <!--/contact_info-->
+    
+            <div class="bg_color_1">
+                <div class="container margin_80_55">
+                    <div class="container margin_60_35">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="bloglist singlepost">
+                                    <h1>Thông tin liên hệ chúng tôi</h1>
+                                    <!-- /post meta -->
+                                    <div class="post-content">
+                                        <div class="dropcaps">
+                                            <p>Aorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                                unknown printer took a galley of type and scrambled it to make a type specimen
+                                                book. It has survived not only five centuries, but also the leap into electronic
+                                                typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                                                with the release of Letraset sheets containing Lorem Ipsum passages, and more
+                                                recently with desktop publishing software like Aldus PageMaker including
+                                                versions of Lorem Ipsum.</p>
+                                        </div>
+        
+                                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                                            piece of classical Latin literature from 45 BC, making it over 2000 years old.
+                                            Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked
+                                            up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+                                            going through the cites of the word in classical literature, discovered the
+                                            undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de
+                                            Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45
+                                            BC. This book is a treatise on the theory of ethics, very popular during the
+                                            Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes
+                                            from a line in section 1.10.32.</p>
+                                    </div>
+                                    <!-- /post -->
+                                </div>
+                                <!-- /single-post -->
+        
+        
+        
+                                <hr>
+        
+                            </div>
+                            <!-- /col -->
+        
+                            
+                            <!-- /aside -->
+                        </div>
+                        <!-- /row -->
+                    </div>
+                    <!-- /row -->
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /bg_color_1 -->
         </main>
         <!--/main-->
 
@@ -214,54 +198,12 @@
                             <li><a href="tel://61280932400"><i class="ti-mobile"></i> + 61 23 8093 3400</a></li>
                             <li><a href="mailto:info@Panagea.com"><i class="ti-email"></i> info@Panagea.com</a></li>
                         </ul>
-                        <div id="newsletter">
-                            <h6>Newsletter</h6>
-                            <div id="message-newsletter"></div>
-                            <form method="post" action="phpmailer/newsletter_template_email.php"
-                                name="newsletter_form" id="newsletter_form">
-                                <div class="form-group">
-                                    <input type="email" name="email_newsletter" id="email_newsletter"
-                                        class="form-control" placeholder="Your email">
-                                    <input type="submit" value="Submit" id="submit-newsletter">
-                                </div>
-                            </form>
-                        </div>
+                        
                     </div>
                 </div>
                 <!--/row-->
                 <hr>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <ul id="footer-selector">
-                            <li>
-                                <div class="styled-select" id="lang-selector">
-                                    <select>
-                                        <option value="English" selected>English</option>
-                                        <option value="French">French</option>
-                                        <option value="Spanish">Spanish</option>
-                                        <option value="Russian">Russian</option>
-                                    </select>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="styled-select" id="currency-selector">
-                                    <select>
-                                        <option value="US Dollars" selected>US Dollars</option>
-                                        <option value="Euro">Euro</option>
-                                    </select>
-                                </div>
-                            </li>
-                            <li><img src="img/cards_all.svg" alt=""></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6">
-                        <ul id="additional_links">
-                            <li><a href="#0">Terms and conditions</a></li>
-                            <li><a href="#0">Privacy</a></li>
-                            <li><span>© Panagea</span></li>
-                        </ul>
-                    </div>
-                </div>
+                
             </div>
         </footer>
         <!--/footer-->
