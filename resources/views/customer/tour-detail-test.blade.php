@@ -56,7 +56,7 @@
 		</a>
 		<nav id="menu" class="main-menu">
 			<ul>
-				<li><span><a href="{{route('customer_tours.index')}}">Tours</a></span></li>
+				<li><span><a href="{{route('index_customer')}}">Tours</a></span></li>
 				<li><span><a href="#0">Blogs</a></span></li>
 			</ul>
 		</nav>
@@ -89,16 +89,20 @@
 					<div class="col-lg-8">
 						<section id="description">
 							<h2>Mô tả</h2>
+							
+							{!!$lst[9]->mota!!}
 
 							<h3>Ảnh lên quan</h3>
 							<div class="pictures_grid magnific-gallery clearfix">
-								
+								@foreach($lst_img as $i)
+									@if($i->tour_id == 10)
 							    		<figure>
-											<a href="" title="" data-effect="mfp-zoom-in">
-												<img src="" alt="">
+											<a href="storage/{{$i->image}}" title="" data-effect="mfp-zoom-in">
+												<img src="storage/{{$i->image}}" alt="">
 											</a>
 										</figure>
-							    	
+							    	@endif
+								@endforeach
 							</div>
 							<!-- /pictures -->
 							
@@ -161,6 +165,19 @@
 							</div>
 							<a href="cart-1.html" class="btn_1 full-width purchase">Purchase</a>
 
+							<form action="{{url('/momo_payment_qr')}}" method="post">
+								@csrf
+								<input type="hidden" name="total_momo" value="{{$lst[9]->gia}}"><br>
+
+								<button name="payUrl" class="glow-on-hover" type="submit">Thanh toán QR MOMO</button>
+							</form>
+
+							<form action="{{url('/vnpay_payment')}}" method="post">
+								@csrf
+								<input type="hidden" name="total_vnpay" value="{{$lst[9]->gia}}"><br>
+								<button style="margin-right: 15px" name="redirect" class="glow-on-hover" type="submit">Thanh toán VNPAY</button>
+							</form>
+							
 							<div class="text-center"><small>No money charged in this step</small></div>
 						</div>
 						<ul class="share-buttons">

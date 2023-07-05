@@ -9,24 +9,27 @@
     <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="{{asset('customer/img/favicon.ico')}}" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="{{asset('customer/img/apple-touch-icon-57x57-precomposed.png')}}">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{asset('customer/img/apple-touch-icon-72x72-precomposed.png')}}">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{asset('customer/img/apple-touch-icon-114x114-precomposed.png')}}">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{asset('customer/img/apple-touch-icon-144x144-precomposed.png')}}">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
 
     <!-- GOOGLE WEB FONT -->
-    <link rel="preconnect" href="{{asset('https://fonts.gstatic.com')}}">
-    <link href="{{asset('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap')}}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- BASE CSS -->
     <link href="{{asset('customer/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('customer/css/style.css')}}" rel="stylesheet">
 	<link href="{{asset('customer/css/vendors.css')}}" rel="stylesheet">
+    
+    <!-- SPECIFIC CSS -->
+    <link href="{{asset('customer/css/blog.css')}}" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{{asset('customer/css/custom.css')}}" rel="stylesheet">
-
+	
 </head>
 
 <body>
@@ -34,13 +37,18 @@
 	<div id="page">
 		
 	<header class="header menu_fixed">
-		<div id="preloader"><div data-loader="circle-side"></div></div><!-- /Page Preload -->
+		<div id="preloader"><div data-loader="circle-side"></div></div><!-- /Preload -->
 		<div id="logo">
-			<a href="http://localhost:8000">
-				<img src="{{asset('img/trungphattravel.png')}}" width="150" height="36" alt="" class="logo_normal">
-				<img src="{{asset('customer/img/custom/trungphattravel.png')}}" width="150" height="36" alt="" class="logo_sticky">
+			<a href="index.html">
+				<img src="img/logo.svg" width="150" height="36" alt="" class="logo_normal">
+				<img src="img/logo_sticky.svg" width="150" height="36" alt="" class="logo_sticky">
 			</a>
 		</div>
+		<ul id="top_menu">
+			<li><a href="cart-1.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
+			<li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
+			<li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+		</ul>
 		<!-- /top_menu -->
 		<a href="#menu" class="btn_mobile">
 			<div class="hamburger hamburger--spin" id="hamburger">
@@ -51,8 +59,9 @@
 		</a>
 		<nav id="menu" class="main-menu">
 			<ul>
-				<li><span><a href="{{route('customer_tours.index')}}">Tours</a></span></li>
-				<li><span><a href="{{route('customer_blogs.index')}}">Blog</a></span></li>
+                    <li><span><a href="{{route('customer_tours.index')}}">Tours</a></span></li>
+    
+                    <li><span><a href="{{route('customer_blogs.index')}}">Blog</a></span></li>
 			</ul>
 		</nav>
 
@@ -60,100 +69,124 @@
 	<!-- /header -->
 	
 	<main>
-		
-		<section class="hero_in tours">
+		<section class="hero_in general">
 			<div class="wrapper">
 				<div class="container">
-					<h1 class="fadeInUp"><span></span>Trung phat travel</h1>
+					<h1 class="fadeInUp"><span></span>Panagea blog</h1>
 				</div>
 			</div>
 		</section>
 		<!--/hero_in-->
-		
-		<div class="filters_listing sticky_horizontal">
-			<div class="container">
-				
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /filters -->
-		
-		<div class="collapse" id="collapseMap">
-			<div id="map" class="map"></div>
-		</div>
-		<!-- End Map -->
 
 		<div class="container margin_60_35">
-			
-		<div class="wrapper-grid">
 			<div class="row">
-				@foreach($lst as $t)
-				<!-- /box_grid -->
-					<div class="col-xl-4 col-lg-6 col-md-6">
-						<div class="box_grid">
-							<figure>
-								<a href="{{route('customer_tours.show', ['customer_tour'=>$t])}}"><img src="storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533">
-									<div class="read_more"><span>Chi tiết</span>
-									</div>
-								</a>
-							</figure>
-							<div class="wrapper">
-								<h3><a href="{{route('customer_tours.show', ['customer_tour'=>$t])}}">{{$t->tentour}}</a></h3>
-								<span class="price">Chỉ từ <strong>{{number_format($t->gia, 0, '', ',')}} VNĐ</strong> /người</span>
+				<div class="col-lg-9">
+
+                    @foreach($lst as $b)
+                        <article class="blog wow fadeIn">
+                            <div class="row g-0">
+                                <div class="col-lg-7">
+                                    <figure>
+                                        <a href="{{route('customer_blogs.show',['customer_blog'=>$b])}}"><img src="storage{{$b->anhdaidien}}" alt="">
+                                            <div class="preview"><span>Chi tiết</span></div>
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="post_info">
+                                        <h3><a href="{{route('customer_blogs.show',['customer_blog'=>$b])}}">{{$b->tieude}}</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    @endforeach
+					<!-- /article -->
+
+					
+					<!-- /article -->
+
+					<nav aria-label="...">
+						<ul class="pagination pagination-sm">
+							<li class="page-item disabled">
+                                {{$lst->appends(request()->all())->links()}}
+							</li>
+						</ul>
+					</nav>
+					<!-- /pagination -->
+				</div>
+				<!-- /col -->
+
+				<aside class="col-lg-3">
+					<div class="widget">
+						<form>
+							<div class="form-group">
+								<input type="text" name="search" id="search" class="form-control" placeholder="Search...">
 							</div>
+							<button type="submit" id="submit" class="btn_1 rounded"> Search</button>
+						</form>
+					</div>
+					<!-- /widget -->
+					<div class="widget">
+						<div class="widget-title">
+							<h4>Recent Posts</h4>
+						</div>
+						<ul class="comments-list">
+							<li>
+								<div class="alignleft">
+									<a href="#0"><img src="img/blog-5.jpg" alt=""></a>
+								</div>
+								<small>11.08.2016</small>
+								<h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+							</li>
+							<li>
+								<div class="alignleft">
+									<a href="#0"><img src="img/blog-6.jpg" alt=""></a>
+								</div>
+								<small>11.08.2016</small>
+								<h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+							</li>
+							<li>
+								<div class="alignleft">
+									<a href="#0"><img src="img/blog-4.jpg" alt=""></a>
+								</div>
+								<small>11.08.2016</small>
+								<h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+							</li>
+						</ul>
+					</div>
+					<!-- /widget -->
+					<div class="widget">
+						<div class="widget-title">
+							<h4>Blog Categories</h4>
+						</div>
+						<ul class="cats">
+							<li><a href="#">Admissions <span>(12)</span></a></li>
+							<li><a href="#">News <span>(21)</span></a></li>
+							<li><a href="#">Events <span>(44)</span></a></li>
+							<li><a href="#">Focus in the lab <span>(31)</span></a></li>
+						</ul>
+					</div>
+					<!-- /widget -->
+					<div class="widget">
+						<div class="widget-title">
+							<h4>Popular Tags</h4>
+						</div>
+						<div class="tags">
+							<a href="#">Information tecnology</a>
+							<a href="#">Students</a>
+							<a href="#">Community</a>
+							<a href="#">Carreers</a>
+							<a href="#">Literature</a>
+							<a href="#">Seminars</a>
 						</div>
 					</div>
-				@endforeach
-				<!-- /box_grid -->
+					<!-- /widget -->
+				</aside>
+				<!-- /aside -->
 			</div>
 			<!-- /row -->
-			</div>
-			<!-- /wrapper-grid -->
-
-			<nav aria-label="...">
-				<ul class="pagination pagination-sm">
-					<li class="page-item disabled">
-						{{$lst->appends(request()->all())->links()}}
-					</li>
-				</ul>
-			</nav>
-			
-			<!-- <p class="text-center"><a href="#0" class="btn_1 rounded add_top_30">Load more</a></p> -->
-			
 		</div>
 		<!-- /container -->
-		
-		<div class="bg_color_1">
-			<div class="container margin_60_35">
-				<div class="row">
-					<div class="col-md-4">
-						<a href="#0" class="boxed_list">
-							<i class="pe-7s-help2"></i>
-							<h4>Need Help? Contact us</h4>
-							<p>Cum appareat maiestatis interpretaris et, et sit.</p>
-						</a>
-					</div>
-					<div class="col-md-4">
-						<a href="#0" class="boxed_list">
-							<i class="pe-7s-wallet"></i>
-							<h4>Payments</h4>
-							<p>Qui ea nemore eruditi, magna prima possit.</p>
-						</a>
-					</div>
-					<div class="col-md-4">
-						<a href="#0" class="boxed_list">
-							<i class="pe-7s-note2"></i>
-							<h4>Cancel Policy</h4>
-							<p>Hinc vituperata sed ut, pro laudem nonumes ex.</p>
-						</a>
-					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /bg_color_1 -->
-		
 	</main>
 	<!--/main-->
 	
@@ -161,7 +194,7 @@
 		<div class="container margin_60_35">
 			<div class="row">
 				<div class="col-lg-5 col-md-12 pe-5">
-					<p><img src="{{asset('img/trungphattravel.png')}}" width="150" height="36" alt=""></p>
+					<p><img src="img/logo.svg" width="150" height="36" alt=""></p>
 					<p>Mea nibh meis philosophia eu. Duis legimus efficiantur ea sea. Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu. Nihil facilisi indoctum an vix, ut delectus expetendis vis.</p>
 					<div class="follow_us">
 						<ul>
@@ -296,13 +329,7 @@
     <script src="{{asset('customer/js/common_scripts.js')}}"></script>
     <script src="{{asset('customer/js/main.js')}}"></script>
 	<script src="{{asset('customer/phpmailer/validate.js')}}"></script>
-	
-	<!-- Map -->
-	<script src="{{asset('http://maps.googleapis.com/maps/api/js')}}"></script>
-	<script src="{{asset('js/markerclusterer.js')}}"></script>
-	<script src="{{asset('js/map_tours.js')}}"></script>
-	<script src="{{asset('js/infobox.js')}}"></script>
-	
-  
+
+
 </body>
 </html>

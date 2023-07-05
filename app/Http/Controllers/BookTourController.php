@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BookTour;
 use App\Models\Tour;
 use App\Models\ImageTour;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreBookTourRequest;
 use App\Http\Requests\UpdateBookTourRequest;
 
@@ -33,7 +34,7 @@ class BookTourController extends Controller
      */
     public function store(StoreBookTourRequest $request)
     {
-        //
+        
     }
 
     /**
@@ -42,6 +43,7 @@ class BookTourController extends Controller
     public function show(Tour $tour)
     {
         dd($tour);
+        
         return view('customer.tour-detail');
     }
 

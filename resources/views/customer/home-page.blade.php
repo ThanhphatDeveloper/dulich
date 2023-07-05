@@ -55,7 +55,7 @@
 					
 				</li>
 
-				<li><span><a href="{{route('customer_tours.index')}}">Blog</a></span>
+				<li><span><a href="{{route('customer_blogs.index')}}">Blog</a></span>
 					
 				</li>
 			</ul>

@@ -50,6 +50,41 @@ class TourController extends Controller
         return view('admin.tours.tour-index', compact('lst'), ['lst_diadiem'=>$lst_diadiem]);
     }
 
+    public function index_customer()
+    {
+        $lst = Tour::orderBy('updated_at','DESC')->paginate(6);
+        $lst_img = ImageTour::all();
+        return view('customer.list-tour', compact('lst'), ['lst_img'=>$lst_img]);
+    }
+
+    public function show_customer(Tour $tour)
+    {
+        dd($tour);
+
+
+        $lst_img=ImageTour::all();
+        $lst_dd=DiaDiem::all();
+        $lst_loai_tour=LoaiTour::all();
+        $lst_ncc=NhaCungCap::all();
+        $lst_tg=ThoiGianTour::all();
+        $lst_km=KhuyenMai::all();
+
+        foreach($lst_img as $u){
+            $this->fixImage($u);
+        }
+
+        return view('customer.tour-detail', ['t'=>$tour],
+        [
+            'lst_img'=>$lst_img,
+            'lst_dd'=>$lst_dd,
+            'lst_loai_tour'=>$lst_loai_tour,
+            'lst_ncc'=>$lst_ncc,
+            'lst_tg'=>$lst_tg,
+            'lst_km'=>$lst_km
+        ]);
+        //['lst_dd'=>$lst_dd], ['lst_loai_tour'=>$lst_loai_tour]
+    }
+
     /**
      * Show the form for creating a new resource.
      */

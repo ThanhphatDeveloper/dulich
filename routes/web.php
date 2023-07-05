@@ -16,8 +16,12 @@ use App\Http\Controllers\ImageTourController;
 use App\Http\Controllers\TourLienQuanController;
 use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\CustomerHomepageController;
+use App\Http\Controllers\CustomerBlogController;
 use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Tour;
+use App\Models\ImageTour;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +73,8 @@ Route::middleware('auth')->group(function(){
     });
 });
 
+Route::resource('/customer_blogs', CustomerBlogController::class);
+
 Route::get('/admin/login', [LoginController::class, 'showForm'])->name('login');
 Route::post('/admin/login', [LoginController::class, 'authenticate'])->name('login');
 
@@ -78,10 +84,18 @@ Route::get('/admin', function () {
 
 Route::resource('/', CustomerHomepageController::class);
 Route::resource('/customer_tours', BookTourController::class);
+// Route::get('/customer_tours', 'App\Http\Controllers\TourController@index_customer')->name('index_customer');
+
+// Route::get('/tour_detail', 'App\Http\Controllers\TourController@show_customer')->name('tour_detail');
 
 Route::get('/customer_tour_detail', function () {
-    return view('customer.tour-detail');
+    $lst = Tour::all();
+    $lst_img=ImageTour::all();
+    return view('customer.tour-detail-test', ['lst' => $lst, 'lst_img' => $lst_img]);
 });
+
+Route::post('/momo_payment_qr', [PaymentController::class, 'momo_payment_qr']);
+Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment']);
 
 Route::get('/test', function () {
     return view('test');
