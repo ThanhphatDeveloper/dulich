@@ -33,5 +33,4 @@ class CustomerBlogController extends Controller
     {
         dd($blog);
     }
-
 }

@@ -56,8 +56,12 @@
 		</a>
 		<nav id="menu" class="main-menu">
 			<ul>
-				<li><span><a href="{{route('customer_tours.index')}}">Tours</a></span></li>
-				<li><span><a href="#0">Blogs</a></span></li>
+				<li><span><a href="{{route('customer_tours.index')}}">Tours</a></span>
+					
+				</li>
+				<li><span><a href="{{route('customer_tours.index')}}">Blog</a></span>
+					
+				</li>
 			</ul>
 		</nav>
 
@@ -78,97 +82,77 @@
 			</div>
 		</section>
 		<!--/hero_in-->
+		
+		<div class="filters_listing sticky_horizontal">
+			<div class="container">
+				
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /filters -->
+		
+		<div class="collapse" id="collapseMap">
+			<div id="map" class="map"></div>
+		</div>
+		<!-- End Map -->
 
+		<div class="container margin_60_35">
+			
+		<div class="wrapper-grid">
+			<div class="row">
+				@foreach($lst as $t)
+				<!-- /box_grid -->
+					<div class="col-xl-4 col-lg-6 col-md-6">
+						<div class="box_grid">
+							<figure>
+								<a href="{{url('/customer_tour_detail')}}"><img src="storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Chi tiết</span></div></a>
+							</figure>
+							<div class="wrapper">
+								<h3><a href="{{url('/customer_tour_detail')}}">{{$t->tentour}}</a></h3>
+								<span class="price">Chỉ từ <strong>{{number_format($t->gia, 0, '', ',')}} VNĐ</strong> /người</span>
+							</div>
+						</div>
+					</div>
+				@endforeach
+				<!-- /box_grid -->
+			</div>
+			<!-- /row -->
+			</div>
+			<!-- /wrapper-grid -->
+
+			<p class="rounded">
+                {{$lst->appends(request()->all())->links()}}
+			</p>
+			
+			<!-- <p class="text-center"><a href="#0" class="btn_1 rounded add_top_30">Load more</a></p> -->
+			
+		</div>
+		<!-- /container -->
+		
 		<div class="bg_color_1">
-			<nav class="secondary_nav sticky_horizontal">
-				<div class="container">
-				</div>
-			</nav>
 			<div class="container margin_60_35">
 				<div class="row">
-					<div class="col-lg-8">
-						<section id="description">
-							<h2>Mô tả</h2>
-
-							<h3>Ảnh lên quan</h3>
-							<div class="pictures_grid magnific-gallery clearfix">
-								
-							    		<figure>
-											<a href="" title="" data-effect="mfp-zoom-in">
-												<img src="" alt="">
-											</a>
-										</figure>
-							    	
-							</div>
-							<!-- /pictures -->
-							
-							<hr>
-
-							
-							<hr>
-							<p>Mea appareat omittantur eloquentiam ad, nam ei quas <strong>oportere democritum</strong>. Prima causae admodum id est, ei timeam inimicus sed. Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam vulputate pertinacia eum at.</p>
-							<div class="row">
-								<div class="col-lg-6">
-									<ul class="bullets">
-										<li>Dolorem mediocritatem</li>
-										<li>Mea appareat</li>
-										<li>Prima causae</li>
-										<li>Singulis indoctum</li>
-									</ul>
-								</div>
-								<div class="col-lg-6">
-									<ul class="bullets">
-										<li>Timeam inimicus</li>
-										<li>Oportere democritum</li>
-										<li>Cetero inermis</li>
-										<li>Pertinacia eum</li>
-									</ul>
-								</div>
-							</div>
-							<!-- /row -->
-							
-							<!-- End Map -->
-						</section>
-						<!-- /section -->
-					
-						<!-- /section -->
-						<hr>
+					<div class="col-md-4">
+						<a href="#0" class="boxed_list">
+							<i class="pe-7s-help2"></i>
+							<h4>Need Help? Contact us</h4>
+							<p>Cum appareat maiestatis interpretaris et, et sit.</p>
+						</a>
 					</div>
-					<!-- /col -->
-					
-					<aside class="col-lg-4" id="sidebar">
-						<div class="box_detail booking">
-							<div class="price">
-								<span>45$ <small>person</small></span>
-								<div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div>
-							</div>
-							<div class="form-group input-dates">
-								<input class="form-control" type="text" name="dates" placeholder="When..">
-								<i class="icon_calendar"></i>
-							</div>
-							<div class="panel-dropdown">
-								<a href="#">Guests <span class="qtyTotal">1</span></a>
-								<div class="panel-dropdown-content right">
-									<div class="qtyButtons">
-										<label>Adults</label>
-										<input type="text" name="qtyInput" value="1">
-									</div>
-									<div class="qtyButtons">
-										<label>Childrens</label>
-										<input type="text" name="qtyInput" value="0">
-									</div>
-								</div>
-							</div>
-							<a href="cart-1.html" class="btn_1 full-width purchase">Purchase</a>
-
-							<div class="text-center"><small>No money charged in this step</small></div>
-						</div>
-						<ul class="share-buttons">
-							<li><a class="fb-share" href="#0"><i class="social_facebook"></i> Share</a></li>
-							<li><a class="twitter-share" href="#0"><i class="social_twitter"></i> Tweet</a></li>
-							<li><a class="gplus-share" href="#0"><i class="social_googleplus"></i> Share</a></li>
-						</ul>
-					</aside>
+					<div class="col-md-4">
+						<a href="#0" class="boxed_list">
+							<i class="pe-7s-wallet"></i>
+							<h4>Payments</h4>
+							<p>Qui ea nemore eruditi, magna prima possit.</p>
+						</a>
+					</div>
+					<div class="col-md-4">
+						<a href="#0" class="boxed_list">
+							<i class="pe-7s-note2"></i>
+							<h4>Cancel Policy</h4>
+							<p>Hinc vituperata sed ut, pro laudem nonumes ex.</p>
+						</a>
+					</div>
 				</div>
 				<!-- /row -->
 			</div>

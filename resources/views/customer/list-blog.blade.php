@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
+<<<<<<< HEAD
     <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
+=======
+    <title>Trung Phát Blog</title>
+>>>>>>> b28a60ae76262fe8e78c911977143ee022846c9e
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -72,7 +76,7 @@
 		<section class="hero_in general">
 			<div class="wrapper">
 				<div class="container">
-					<h1 class="fadeInUp"><span></span>Panagea blog</h1>
+					<h1 class="fadeInUp"><span></span>Blog nổi bật</h1>
 				</div>
 			</div>
 		</section>

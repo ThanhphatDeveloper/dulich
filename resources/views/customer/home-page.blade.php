@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
-    <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
+    <title>Trung Phát Travel</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="{{asset('customer/img/favicon.ico')}}" type="image/x-icon">
@@ -92,114 +92,96 @@
 				<div class="item">
 					<div class="box_grid">
 						<figure>
-							<a href="#0" class="wish_bt"></a>
+							
 							<a href="tour-detail.html"><img src="img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Historic</small>
+							
 						</figure>
 						<div class="wrapper">
 							<h3><a href="tour-detail.html">Arc Triomphe</a></h3>
 							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
 							<span class="price">From <strong>$54</strong> /per person</span>
 						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>
-						</ul>
+						
 					</div>
 				</div>
 				<!-- /item -->
 				<div class="item">
 					<div class="box_grid">
 						<figure>
-							<a href="#0" class="wish_bt"></a>
+						
 							<a href="tour-detail.html"><img src="img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Churches</small>
+							
 						</figure>
 						<div class="wrapper">
 							<h3><a href="tour-detail.html">Notredam</a></h3>
 							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
 							<span class="price">From <strong>$124</strong> /per person</span>
 						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-						</ul>
+						
 					</div>
 				</div>
 				<!-- /item -->
 				<div class="item">
 					<div class="box_grid">
 						<figure>
-							<a href="#0" class="wish_bt"></a>
+							
 							<a href="tour-detail.html"><img src="img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Historic</small>
+							
 						</figure>
 						<div class="wrapper">
 							<h3><a href="tour-detail.html">Versailles</a></h3>
 							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
 							<span class="price">From <strong>$25</strong> /per person</span>
 						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-						</ul>
+						
 					</div>
 				</div>
 				<!-- /item -->
 				<div class="item">
 					<div class="box_grid">
 						<figure>
-							<a href="#0" class="wish_bt"></a>
+							
 							<a href="tour-detail.html"><img src="img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Historic</small>
+							
 						</figure>
 						<div class="wrapper">
 							<h3><a href="tour-detail.html">Versailles</a></h3>
 							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
 							<span class="price">From <strong>$25</strong> /per person</span>
 						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-						</ul>
+						
 					</div>
 				</div>
 				<!-- /item -->
 				<div class="item">
 					<div class="box_grid">
 						<figure>
-							<a href="#0" class="wish_bt"></a>
+							
 							<a href="tour-detail.html"><img src="img/tour_4.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Museum</small>
+							
 						</figure>
 						<div class="wrapper">
 							<h3><a href="tour-detail.html">Pompidue Museum</a></h3>
 							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
 							<span class="price">From <strong>$45</strong> /per person</span>
 						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 2h 30min</li>
-							<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.0</strong></div></li>
-						</ul>
+						
 					</div>
 				</div>
 				<!-- /item -->
 				<div class="item">
 					<div class="box_grid">
 						<figure>
-							<a href="#0" class="wish_bt"></a>
+							
 							<a href="tour-detail.html"><img src="img/tour_5.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Walking</small>
+							
 						</figure>
 						<div class="wrapper">
 							<h3><a href="tour-detail.html">Tour Eiffel</a></h3>
 							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
 							<span class="price">From <strong>$65</strong> /per person</span>
 						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.5</strong></div></li>
-						</ul>
+						
 					</div>
 				</div>
 				<!-- /item -->
@@ -299,7 +281,7 @@
 					<!-- /box_news -->
 				</div>
 				<!-- /row -->
-				<p class="btn_home_align"><a href="blog.html" class="btn_1 rounded">View all news</a></p>
+				<p class="btn_home_align"><a href="blog.html" class="btn_1 rounded">Xem thêm</a></p>
 			</div>
 			<!-- /container -->
 		</div>
@@ -360,25 +342,7 @@
 			</div>
 			<!--/row-->
 			<hr>
-			<div class="row">
-				<div class="col-lg-6">
-					<ul id="footer-selector">
-						<li>
-							
-						</li>
-						
-						<li><img src="img/cards_all.svg" alt=""></li>
-					</ul>
-				</div>
-				<div class="col-lg-6">
-					<ul id="additional_links">
-						<li><a href="#0">Terms and conditions</a></li>
-						<li><a href="#0">Privacy</a></li>
-						<li><span>© Panagea</span></li>
-					</ul>
-				</div>
-			</div>
-		</div>
+			
 	</footer>
 	<!--/footer-->
 	</div>

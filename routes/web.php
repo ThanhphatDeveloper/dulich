@@ -15,8 +15,8 @@ use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\ImageTourController;
 use App\Http\Controllers\TourLienQuanController;
 use App\Http\Controllers\CkeditorController;
-use App\Http\Controllers\CustomerHomepageController;
 use App\Http\Controllers\CustomerBlogController;
+use App\Http\Controllers\CustomerHomepageController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
@@ -84,14 +84,9 @@ Route::get('/admin', function () {
 
 Route::resource('/', CustomerHomepageController::class);
 Route::resource('/customer_tours', BookTourController::class);
-// Route::get('/customer_tours', 'App\Http\Controllers\TourController@index_customer')->name('index_customer');
-
-// Route::get('/tour_detail', 'App\Http\Controllers\TourController@show_customer')->name('tour_detail');
 
 Route::get('/customer_tour_detail', function () {
-    $lst = Tour::all();
-    $lst_img=ImageTour::all();
-    return view('customer.tour-detail-test', ['lst' => $lst, 'lst_img' => $lst_img]);
+    return view('customer.tour-detail');
 });
 
 Route::post('/momo_payment_qr', [PaymentController::class, 'momo_payment_qr']);
@@ -101,8 +96,24 @@ Route::get('/test', function () {
     return view('test');
 });
 
+Route::get('/blog', function () {
+    return view('customer.blog');
+});
+
+Route::get('/policy', function () {
+    return view('customer.policy');
+});
+
+Route::get('/payment', function () {
+    return view('customer.payment');
+});
+
+Route::get('/contact', function () {
+    return view('customer.contact');
+});
+
 // Route::get('/ckdata', function () {
 //     return view('ckdata');
 // });
 
-Route::resource('/ckdata', CkeditorController::class);
+Route::resource('/abc', CkeditorController::class);
