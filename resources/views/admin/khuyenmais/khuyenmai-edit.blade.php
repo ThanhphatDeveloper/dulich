@@ -72,7 +72,7 @@
                         <tr>
                             <td>Trạng thái: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="trangthai">
+                                <select class="custom-select" name="trangthai">
                                     <option value='1' @if ($k->trangthai==1) selected @endif>Hoạt động</option>
                                     <option value='0' @if ($k->trangthai==0) selected @endif>Ngừng hoạt động</option>
                                 </select>

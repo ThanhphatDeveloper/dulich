@@ -120,7 +120,7 @@
                 @csrf
                 <div class="form-group">
                     <input type="hidden" name="blog_id" value="{{$blog_id}}">
-                    <select class="custom-select custom-select-sm" name="tour_id">
+                    <select class="custom-select" name="tour_id">
                         @foreach($lst_tlq as $b)
                             @foreach($lst_tour as $cat)
                                 @if($b->tour_id != $cat->id)

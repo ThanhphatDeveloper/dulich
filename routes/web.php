@@ -97,10 +97,6 @@ Route::get('/test', function () {
     return view('test');
 });
 
-Route::get('/blog', function () {
-    return view('customer.blog');
-});
-
 Route::get('/policy', function () {
     return view('customer.policy');
 });

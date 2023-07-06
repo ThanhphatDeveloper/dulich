@@ -63,7 +63,7 @@
                         <tr>
                             <td>Tác giả: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="tacgia">
+                                <select class="custom-select" name="tacgia">
                                     @foreach($lst as $n)
                                         <option value="{{$n->id}}"> @if ($n->id==old('tacgia'))
                                         @endif {{$n->ho}} {{$n->ten}}</option>
@@ -100,6 +100,7 @@
 
     <script>
         CKEDITOR.replace('editor');
+
         document.getElementById('ful_img').onchange = function (e) {
             document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
         }

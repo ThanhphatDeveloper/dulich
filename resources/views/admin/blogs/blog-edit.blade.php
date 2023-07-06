@@ -64,7 +64,7 @@
                         <tr>
                             <td>Tác giả: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="tacgia">
+                                <select class="custom-select" name="tacgia">
                                     @foreach($lst as $n)
                                         <option value="{{$n->id}}" @if($blog->user_id==old('tacgia',$n->id))
                                         selected @endif> {{$n->ho}} {{$n->ten}}</option>
@@ -76,7 +76,7 @@
                         <tr>
                             <td>Trạng thái: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="trangthai">
+                                <select class="custom-select" name="trangthai">
                                     <option value="1" @if ($blog->trangthai==1) selected @endif>Hoạt động</option>
                                     <option value="0" @if ($blog->trangthai==0) selected @endif>Ngừng hoạt động</option>
                                 </select>

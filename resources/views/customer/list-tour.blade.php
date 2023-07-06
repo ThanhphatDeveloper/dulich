@@ -72,20 +72,20 @@
 			<div class="container margin_60_35">
 				<div class="row">
 					<div class="col-md-4">
-						<a href="#0" class="boxed_list">
+						<a href="{{url('/contact')}}" class="boxed_list">
 							<i class="pe-7s-help2"></i>
 							<h4>Bạn cần giúp đỡ? Liên hệ chúng tôi</h4>
 
 						</a>
 					</div>
 					<div class="col-md-4">
-						<a href="#0" class="boxed_list">
+						<a href="{{url('/policy')}}" class="boxed_list">
 							<i class="pe-7s-wallet"></i>
 							<h4>Quy định thanh toán</h4>
 						</a>
 					</div>
 					<div class="col-md-4">
-						<a href="#0" class="boxed_list">
+						<a href="{{url('/payment')}}" class="boxed_list">
 							<i class="pe-7s-note2"></i>
 							<h4>Bảo mật và điều khoản</h4>
 						</a>

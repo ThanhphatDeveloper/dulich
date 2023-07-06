@@ -72,7 +72,7 @@
                         <tr>
                             <td>Vai trò: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="admin">
+                                <select class="custom-select" name="admin">
                                     <option value='1'>admin cấp 1</option>
                                     <option value='0'>admin cấp 2</option>
                                 </select>
