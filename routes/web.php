@@ -83,6 +83,7 @@ Route::get('/admin', function () {
 });
 
 Route::resource('/', CustomerHomepageController::class);
+
 Route::resource('/customer_tours', BookTourController::class);
 
 Route::get('/customer_tour_detail', function () {

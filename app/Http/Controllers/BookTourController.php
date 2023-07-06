@@ -18,6 +18,7 @@ class BookTourController extends Controller
     {
         $lst = Tour::orderBy('updated_at','DESC')->paginate(6);
         $lst_img = ImageTour::all();
+        
         return view('customer.list-tour', compact('lst'), ['lst_img'=>$lst_img]);
     }
 
@@ -40,11 +41,14 @@ class BookTourController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tour $tour)
+    public function show( $id)
     {
-        dd($tour);
+        //dd($id);
+
+        $tour = Tour::where('id', $id)->first();
+        $lst_img = ImageTour::where('tour_id', $id)->orderBy('updated_at','DESC')->take(12)->get();
         
-        return view('customer.tour-detail');
+        return view('customer.tour-detail', ['tour' => $tour, 'lst_img' => $lst_img]);
     }
 
     /**

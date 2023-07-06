@@ -30,7 +30,7 @@
                         <form class="" method="get" action="">
                             <div class="input-group float-right">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="key" value="{{old('key')}}" placeholder="Từ khóa" aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control" name="key" value="{{old('key')}}" placeholder="Tiêu đề" aria-describedby="basic-addon2">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="submit">
                                             <i class="fa fa-search"></i>

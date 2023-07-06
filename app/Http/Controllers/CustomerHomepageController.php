@@ -14,8 +14,8 @@ class CustomerHomepageController extends Controller
      */
     public function index()
     {
-        $lst = Tour::orderBy('updated_at','DESC')->get();
-        //dd($lst[0]->tentour);
+        $lst = Tour::where('trangthai', 1)->orderBy('updated_at','DESC')->take(6)->get();
+        //dd($lst);
         return view('customer.home-page', ['lst'=>$lst]);
     }
 
