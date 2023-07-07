@@ -6,6 +6,7 @@ use App\Models\KhuyenMai;
 use App\Http\Requests\StoreKhuyenMaiRequest;
 use App\Http\Requests\UpdateKhuyenMaiRequest;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class KhuyenMaiController extends Controller
 {
@@ -14,7 +15,7 @@ class KhuyenMaiController extends Controller
      */
     public function index()
     {
-        $lst=KhuyenMai::search()->orderBy('updated_at','DESC')->paginate(10);
+        $lst=KhuyenMai::search()->where('id','!=', 1)->orderBy('updated_at','DESC')->paginate(10);
         return view('admin.khuyenmais.khuyenmai-index', compact('lst'));
     }
 

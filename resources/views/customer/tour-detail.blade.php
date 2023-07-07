@@ -69,18 +69,22 @@
 							</div>
 							<div class="form-group input-dates">
 								<input id="customer_ten" class="form-control" type="text" placeholder="Họ và tên">
+								<p id="noti_ten" class="noti"></p>
 							</div>
 
 							<div class="form-group input-dates">
 								<input id="customer_email" class="form-control" type="text" placeholder="Email">
+								<p id="noti_email" class="noti"></p>
 							</div>
 
 							<div class="form-group input-dates">
 								<input id="customer_sdt" class="form-control" type="text" placeholder="Số điện thoại">
+								<p id="noti_sdt" class="noti"></p>
 							</div>
 
 							<div class="form-group input-dates">
 								<input id="customer_sokhach" id="number" min="1" class="form-control" type="number" placeholder="Số người">
+								<p id="noti_sokhach" class="noti"></p>
 							</div>
 
 							<div class="form-group input-dates">
@@ -89,7 +93,7 @@
 
 							<div class="form-group">
 								<button id="btn_khuyenmai" type="button">
-									Nhập mã khuyến mãi
+									Tính tiền
 								</button>
 							</div>
 
@@ -102,12 +106,6 @@
 							</div>
 
 							<a href="cart-1.html" class="btn_1 full-width purchase">Tư vấn</a>
-
-							<form id="atm_momo" action="{{url('/momo_payment')}}" method="post">
-								@csrf
-								<input type="hidden" name="total_momo"><br>
-								<button id="btn_atm_momo" id="btn_atm_momo" name="payUrl" class="glow-on-hover" type="submit">Đặt cọc bằng ATM MOMO</button>
-							</form>
 
 							<form id="qr_momo" action="{{url('/momo_payment_qr')}}" method="post">
 								@csrf
@@ -139,6 +137,10 @@
 			-o-background-size: cover;
 			background-size: cover;
 		}
+
+		.noti{
+			color: red;
+		}
 	</style>
 
 	<script src="{{asset('vendor/jquery/jquery.js')}}"></script>
@@ -149,16 +151,29 @@
 
 		$("#btn_khuyenmai").click(function () {
 
-			var makhuyenmai = $("#customer_makhuyenmai").val();
+			var makhuyenmai = $("#customer_makhuyenmai").val().trim();
 			var array = @json($lst_km);
 			var sokhach = $("#customer_sokhach").val();
 
-			console.log(array[0].makhuyenmai)
+			if(makhuyenmai == ''){
+				var gia = {{$tour->gia}} * sokhach;
+				convert = gia.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+
+				$("#giakhuyenmai").text('Giá của tour là: '+convert);
+				$("#giadatcoc").text('Giá đặt cọc là: '+(gia*0.7).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }));
+
+				return;
+			}
+
+			if(sokhach == ''){
+				$("#noti_sokhach").text('Vui lòng nhập số lượng khách');
+				return;
+			}
 
 			for(i=0;i<array.length;i++){
 				if(array[i].makhuyenmai==makhuyenmai && array[i].hansudung>0){
-					
-					gia = {{$tour->gia}} * sokhach - array[i].mucgiam;
+
+					var gia = {{$tour->gia}} * sokhach - array[i].mucgiam;
 
 					convert = gia.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
 
@@ -178,7 +193,26 @@
 			var email = $("#customer_email").val();
 			var sdt = $("#customer_sdt").val();
 			var sokhach = $("#customer_sokhach").val();
-			var makhuyenmai = $("#customer_makhuyenmai").val();
+			var makhuyenmai = $("#customer_makhuyenmai").val().trim();
+
+			if(sokhach == '' || ten == '' || email == '' || sdt == ''){
+				$("#btn_qr_momo").attr("type", "button");
+				if(sokhach == ''){
+					$("#noti_sokhach").text('Vui lòng nhập số lượng khách');
+				}
+				if(ten == ''){
+					$("#noti_ten").text('Vui lòng nhập tên của bạn');
+				}
+				if(email == ''){
+					$("#noti_email").text('Vui lòng nhập email của bạn');
+				}
+				if(sdt == ''){
+					$("#noti_sdt").text('Vui lòng nhập số điện thoại của bạn');
+				}
+				return;
+			}
+
+			$("#btn_qr_momo").attr("type", "submit");
 
 			$('<input>').attr({
 				type: 'hidden',
@@ -221,6 +255,8 @@
 				name: 'gioitinh',
 				value: 'Nam',
 			}).appendTo('#qr_momo');
+
+			$("#qr_momo").submit();
 
 		});
 
@@ -282,7 +318,26 @@
 			var email = $("#customer_email").val();
 			var sdt = $("#customer_sdt").val();
 			var sokhach = $("#customer_sokhach").val();
-			var makhuyenmai = $("#customer_makhuyenmai").val();
+			var makhuyenmai = $("#customer_makhuyenmai").val().trim();
+
+			if(sokhach == '' || ten == '' || email == '' || sdt == ''){
+				$("#atm_momo").attr("type", "button");
+				if(sokhach == ''){
+					$("#noti_sokhach").text('Vui lòng nhập số lượng khách');
+				}
+				if(ten == ''){
+					$("#noti_ten").text('Vui lòng nhập tên của bạn');
+				}
+				if(email == ''){
+					$("#noti_email").text('Vui lòng nhập email của bạn');
+				}
+				if(sdt == ''){
+					$("#noti_sdt").text('Vui lòng nhập số điện thoại của bạn');
+				}
+				return;
+			}
+
+			$("#atm_momo").attr("type", "submit");
 
 			$('<input>').attr({
 				type: 'hidden',

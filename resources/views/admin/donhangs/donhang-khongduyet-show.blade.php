@@ -98,7 +98,7 @@
                 </tr>
                 <tr>
                     <td>Thời gian khởi hành</td>
-                    <td>{{\Carbon\Carbon::parse($donhang->thoigiankhoihanh)->format('d/m/Y h:m')}}</td>
+                    <td>{{\Carbon\Carbon::parse($donhang->thoigiankhoihanh)->format('d/m/Y H:m')}}</td>
                 </tr>
                 <tr>
                     <td>Số khách</td>
@@ -106,7 +106,7 @@
                 </tr>
                 <tr>
                     <td>Thời gian đặt</td>
-                    <td>{{\Carbon\Carbon::parse($donhang->ngaydat)->format('d/m/Y h:m:s')}}</td>
+                    <td>{{\Carbon\Carbon::parse($donhang->ngaydat)->format('d/m/Y H:m:s')}}</td>
                 </tr>
                 <tr>
                     <td>Giá tour</td>
@@ -151,7 +151,7 @@
                 </tr>
                 <tr>
                     <td>Thời gian thanh toán</td>
-                    <td>{{\Carbon\Carbon::parse($donhang->thoigianthanhtoan)->format('d/m/Y h:m:s')}}</td>
+                    <td>{{\Carbon\Carbon::parse($donhang->thoigianthanhtoan)->format('d/m/Y H:m:s')}}</td>
                 </tr>
             </tfoot>
             </table>

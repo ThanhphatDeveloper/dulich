@@ -30,59 +30,16 @@ class PaymentController extends Controller
     public function momo_payment(Request $request){
         //0919100100
 
-        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+        //dd($request);
 
-        $partnerCode = 'MOMOBKUN20180529';
-        $accessKey = 'klm05TvNBzhg7h7j';
-        $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
-        $orderInfo = "Thanh toán qua ATM MoMo";
-        $amount = $request->total_momo;
-        $orderId = time() ."";
-        $redirectUrl = "http://localhost:8000/thanhtoan";
-        $ipnUrl = "http://localhost:8000/thanhtoan";
-        $extraData = "";
-
-            $requestId = time() . "";
-            $requestType = "payWithATM";
-            // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
-            //before sign HMAC SHA256 signature
-            $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
-            $signature = hash_hmac("sha256", $rawHash, $secretKey);
-            $data = array('partnerCode' => $partnerCode,
-                'partnerName' => "Test",
-                "storeId" => "MomoTestStore",
-                'requestId' => $requestId,
-                'amount' => $amount,
-                'orderId' => $orderId,
-                'orderInfo' => $orderInfo,
-                'redirectUrl' => $redirectUrl,
-                'ipnUrl' => $ipnUrl,
-                'lang' => 'vi',
-                'extraData' => $extraData,
-                'requestType' => $requestType,
-                'signature' => $signature);
-            $result = $this->execPostRequest($endpoint, json_encode($data));
-            $jsonResult = json_decode($result, true);  // decode json
-
-            //Just a example, please check more in there
-            return redirect()->to($jsonResult['payUrl']);
-            // header('Location: ' . $jsonResult['payUrl']);
-        
-    }
-
-    public function momo_payment_qr(Request $request){
-        //0919100100
-        //dd($request->makhuyenmai);
-        //$money = $request->total_momo;
         $money = $request->total_momo * $request->sokhach;
         $giagoc = $money;
-        $km_id = '';
+        $km_id = 1;
 
         if(KhuyenMai::where('makhuyenmai', $request->makhuyenmai)->exists()){
             $km = KhuyenMai::where('makhuyenmai', $request->makhuyenmai)->where('hansudung', '>', 0)->first();
             $km_id = $km->id;
             $money = $money - $km->mucgiam;
-
         }
 
         $tour = Tour::where('id', $request->tour_id)->first();
@@ -96,6 +53,78 @@ class PaymentController extends Controller
         $gioitinh = $request->gioitinh;
         $tour_id = $request->tour_id;
         $thoigiankhoihanh = $tour->ngaykhoihanh;
+
+        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+
+        $partnerCode = 'MOMOBKUN20180529';
+        $accessKey = 'klm05TvNBzhg7h7j';
+        $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+        $orderInfo = "Thanh toán qua ATM MoMo";
+        $amount = $money;
+        $orderId = time() ."";
+        $redirectUrl = 
+        "http://localhost:8000/thanhtoan/$a/$ten/$email/$sdt/$sokhach/$gioitinh/$tour_id/$km_id/$money/$giagoc/$thoigiankhoihanh";
+        $ipnUrl = 
+        "http://localhost:8000/thanhtoan/$a/$ten/$email/$sdt/$sokhach/$gioitinh/$tour_id/$km_id/$money/$giagoc/$thoigiankhoihanh";
+        $extraData = "";
+
+            $requestId = time() . "";
+            $requestType = "payWithATM";
+            // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
+            //before sign HMAC SHA256 signature
+            $rawHash = "accessKey=" . $accessKey . "&amount=" . $money . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
+            $signature = hash_hmac("sha256", $rawHash, $secretKey);
+            $data = array('partnerCode' => $partnerCode,
+                'partnerName' => "Test",
+                "storeId" => "MomoTestStore",
+                'requestId' => $requestId,
+                'amount' => 1,
+                'orderId' => $orderId,
+                'orderInfo' => $orderInfo,
+                'redirectUrl' => $redirectUrl,
+                'ipnUrl' => $ipnUrl,
+                'lang' => 'vi',
+                'extraData' => $extraData,
+                'requestType' => $requestType,
+                'signature' => $signature);
+            $result = $this->execPostRequest($endpoint, json_encode($data));
+            $jsonResult = json_decode($result, true);  // decode json
+
+            dd($jsonResult);
+
+            //Just a example, please check more in there
+            return redirect()->to($jsonResult['payUrl']);
+            // header('Location: ' . $jsonResult['payUrl']);
+        
+    }
+
+    public function momo_payment_qr(Request $request){
+        //0919100100
+        //dd($request->makhuyenmai);
+        //$money = $request->total_momo;
+        $money = $request->total_momo * $request->sokhach;
+        $giagoc = $money;
+        $km_id = 1;
+
+        if(KhuyenMai::where('makhuyenmai', $request->makhuyenmai)->exists()){
+            $km = KhuyenMai::where('makhuyenmai', $request->makhuyenmai)->where('hansudung', '>', 0)->first();
+            $km_id = $km->id;
+            $money = $money - $km->mucgiam;
+        }
+
+        $tour = Tour::where('id', $request->tour_id)->first();
+
+        $money = $money * 0.7;
+        $a = 1;
+        $ten = $request->ten;
+        $email = $request->email;
+        $sdt = $request->sdt;
+        $sokhach = $request->sokhach;
+        $gioitinh = $request->gioitinh;
+        $tour_id = $request->tour_id;
+        $thoigiankhoihanh = $tour->ngaykhoihanh;
+
+       
 
         //dd($tour);
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
@@ -112,13 +141,12 @@ class PaymentController extends Controller
          "http://localhost:8000/thanhtoan/$a/$ten/$email/$sdt/$sokhach/$gioitinh/$tour_id/$km_id/$money/$giagoc/$thoigiankhoihanh";
         $extraData = "";
         $resultCode = "";
-        $status = "";
 
             $requestId = time() . "";
             $requestType = "captureWallet";
             // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
             //before sign HMAC SHA256 signature
-            $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . 
+            $rawHash = "accessKey=" . $accessKey . "&amount=" . $money . "&extraData=" . $extraData . "&ipnUrl=" . 
             $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . 
             "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
             $signature = hash_hmac("sha256", $rawHash, $secretKey);
@@ -126,7 +154,7 @@ class PaymentController extends Controller
                 'partnerName' => "Test",
                 "storeId" => "MomoTestStore",
                 'requestId' => $requestId,
-                'amount' => $amount,
+                'amount' => $money,
                 'orderId' => $orderId,
                 'orderInfo' => $orderInfo,
                 'redirectUrl' => $redirectUrl,
@@ -134,7 +162,6 @@ class PaymentController extends Controller
                 'lang' => 'vi',
                 'extraData' => $extraData,
                 'resultCode' => $resultCode,
-                'status' => $status,
                 'requestType' => $requestType,
                 'signature' => $signature);
             $result = $this->execPostRequest($endpoint, json_encode($data));
