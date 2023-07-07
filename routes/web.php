@@ -121,7 +121,7 @@ Route::resource('/abc', CkeditorController::class);
 Route::get('/thanhtoan/{phuongthuc?}/{ten?}/{email?}/{sdt?}/{sokhach?}/{gioitinh?}/{tour_id?}/{km_id?}/{money?}/{giagoc?}/{thoigiankhoihanh?}', 
 function ($phuongthuc, $ten, $email, $sdt, $sokhach, $gioitinh, $tour_id, $km_id, $money, $giagoc, $thoigiankhoihanh) {
 
-    //dd($km_id);
+    //dd();
 
     if($phuongthuc == 1){
     
@@ -129,7 +129,7 @@ function ($phuongthuc, $ten, $email, $sdt, $sokhach, $gioitinh, $tour_id, $km_id
             return view('customer.thanhtoan-thatbai');
         }
         else{
-            DonHang::create(
+            $d = DonHang::create(
                 [
                     'ten'=>$ten,
                     'email'=>$email,
@@ -147,6 +147,9 @@ function ($phuongthuc, $ten, $email, $sdt, $sokhach, $gioitinh, $tour_id, $km_id
                     'trangthai'=>0,
                 ]
             );
+            
+            $d->save();
+
             return view('customer.thanhtoan-thanhcong');
         }
 

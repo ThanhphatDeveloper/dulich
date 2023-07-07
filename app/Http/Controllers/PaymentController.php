@@ -95,9 +95,9 @@ class PaymentController extends Controller
         $sokhach = $request->sokhach;
         $gioitinh = $request->gioitinh;
         $tour_id = $request->tour_id;
-        $thoigiankhoihanh = $tour->thoigiankhoihanh;
+        $thoigiankhoihanh = $tour->ngaykhoihanh;
 
-        //dd($money);
+        //dd($tour);
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
         $partnerCode = 'MOMOBKUN20180529';
