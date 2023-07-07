@@ -174,19 +174,47 @@ class PaymentController extends Controller
 
     public function vnpay_payment(Request $request){
         //dd($request);
+
+        $money = $request->total_vnpay * $request->sokhach;
+        //dd($money);
+        $giagoc = $money;
+        $km_id = 1;
+
+        if(KhuyenMai::where('makhuyenmai', $request->makhuyenmai)->exists()){
+            $km = KhuyenMai::where('makhuyenmai', $request->makhuyenmai)->where('hansudung', '>', 0)->first();
+            $km_id = $km->id;
+            $money = $money - $km->mucgiam;
+        }
+
+        $tour = Tour::where('id', $request->tour_id)->first();
+
+        $money = $money * 0.7;
+
+
+        $ten = $request->ten;
+        $email = $request->email;
+        $sdt = $request->sdt;
+        $sokhach = $request->sokhach;
+        $gioitinh = $request->gioitinh;
+        $tour_id = $request->tour_id;
+        $thoigiankhoihanh = $tour->ngaykhoihanh;
+
         $a = 0;
         $data = $request->all();
         $code_cart = rand(00,9999);
 
+        //dd($money);
+
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://localhost:8000/thanhtoan/$a";
+        $vnp_Returnurl = 
+        "http://localhost:8000/thanhtoan/$a/$ten/$email/$sdt/$sokhach/$gioitinh/$tour_id/$km_id/$money/$giagoc/$thoigiankhoihanh";
         $vnp_TmnCode = "FM9XJF5C";
         $vnp_HashSecret = "NRDAOOOFDEKIQUFRBDSUMQOLIKIEAFPW";
 
         $vnp_TxnRef = $code_cart;
         $vnp_OrderInfo = 'Thanh toán đơn hàng test';
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = $data['total_vnpay'] * 100;
+        $vnp_Amount = $money * 100;
         $vnp_Locale = 'vn';
         $vnp_BankCode = 'NCB';
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
