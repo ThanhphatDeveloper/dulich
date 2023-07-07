@@ -87,6 +87,19 @@
 								<p id="noti_sokhach" class="noti"></p>
 							</div>
 
+							<div class="container1">
+								<form class="namnu">
+									<label class="nu">
+										<input type="radio" name="radio" checked="">
+										<span>Nam</span>
+									</label>
+									<label class="nu">
+										<input type="radio" name="radio">
+										<span>Nữ</span>
+									</label>
+								</form>
+							</div>
+
 							<div class="form-group input-dates">
 								<input id="customer_makhuyenmai" class="form-control" type="text" placeholder="Mã khuyến mãi">
 							</div>
@@ -141,6 +154,69 @@
 		.noti{
 			color: red;
 		}
+
+		.container1 form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0 20px;
+}
+
+.namnu .nu{
+margin: auto 40px;
+}
+
+
+
+.container1 label {
+  display: flex;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.375em;
+}
+
+.container1  label input {
+  position: absolute;
+  left: -9999px;
+}
+
+.container1 label input:checked + span {
+  background-color: #414181;
+  color: white;
+}
+
+.container1 label input:checked + span:before {
+  box-shadow: inset 0 0 0 0.4375em #00005c;
+}
+
+.container1 label span {
+  display: flex;
+  align-items: center;
+  padding: 0.375em 0.75em 0.375em 0.375em;
+  border-radius: 99em;
+  transition: 0.25s ease;
+  color: #414181;
+}
+
+.container1 label span:hover {
+  background-color: #d6d6e5;
+}
+
+.container1 label span:before {
+  display: flex;
+  flex-shrink: 0;
+  content: "";
+  background-color: #fff;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  margin-right: 0.375em;
+  transition: 0.25s ease;
+  box-shadow: inset 0 0 0 0.125em #00005c;
+}
+
 	</style>
 
 	<script src="{{asset('vendor/jquery/jquery.js')}}"></script>
