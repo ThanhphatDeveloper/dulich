@@ -19,6 +19,9 @@ use App\Http\Controllers\CustomerBlogController;
 use App\Http\Controllers\CustomerHomepageController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\PaymentController;
+use App\Models\DonHang;
+use App\Models\KhachHang;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use App\Models\Tour;
 use App\Models\ImageTour;
@@ -114,3 +117,47 @@ Route::get('/contact', function () {
 // });
 
 Route::resource('/abc', CkeditorController::class);
+
+Route::get('/thanhtoan/{phuongthuc?}/{ten?}/{email?}/{sdt?}/{sokhach?}/{gioitinh?}/{tour_id?}/{km_id?}/{money?}/{giagoc?}/{thoigiankhoihanh?}', 
+function ($phuongthuc, $ten, $email, $sdt, $sokhach, $gioitinh, $tour_id, $km_id, $money, $giagoc, $thoigiankhoihanh) {
+
+    //dd($km_id);
+
+    if($phuongthuc == 1){
+    
+        if($_GET['resultCode'] != 0){
+            return view('customer.thanhtoan-thatbai');
+        }
+        else{
+            DonHang::create(
+                [
+                    'ten'=>$ten,
+                    'email'=>$email,
+                    'sdt'=>$sdt,
+                    'thoigiankhoihanh'=>$thoigiankhoihanh,
+                    'sokhach'=>$sokhach,
+                    'ngaydat'=>Carbon::now()->toDateTimeString(),
+                    'tongtien'=>$giagoc,
+                    'khuyen_mai_id'=>$km_id,
+                    'tour_id'=>$tour_id,
+                    'tenphuongthuctt'=>'momo',
+                    'tienthanhtoan'=>$money,
+                    'mathanhtoan'=>$_GET['orderId'],
+                    'thoigianthanhtoan'=>Carbon::now()->toDateTimeString(),
+                    'trangthai'=>0,
+                ]
+            );
+            return view('customer.thanhtoan-thanhcong');
+        }
+
+    }
+    else{
+        if($_GET['vnp_ResponseCode'] != 0){
+            return view('customer.thanhtoan-thatbai');
+        }
+        else{
+            return view('customer.thanhtoan-thanhcong');
+        }
+    }
+
+});

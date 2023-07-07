@@ -29,7 +29,6 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>'Phạm Hữu Trung',
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -48,7 +47,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -67,7 +66,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -86,7 +85,6 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>'Phạm Hữu Trung',
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -105,7 +103,6 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>'Phạm Hữu Trung',
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -124,7 +121,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>'Phạm Hữu Trung',
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -143,7 +140,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>'Phạm Hữu Trung',
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -162,7 +159,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>'Phạm Hữu Trung',
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -181,7 +178,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>'Phạm Hữu Trung',
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -200,7 +197,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>'Phạm Hữu Trung',
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -219,7 +216,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'cod',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -238,7 +235,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'cod',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -257,7 +254,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'vnpay',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -276,7 +273,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'vnpay',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -295,7 +292,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'vnpay',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -314,7 +311,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'vnpay',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -333,7 +330,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'vnpay',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -352,7 +349,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'vnpay',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -371,7 +368,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'vnpay',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -390,7 +387,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -409,7 +406,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -428,7 +425,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -447,7 +444,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -466,7 +463,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -485,7 +482,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -504,7 +501,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -523,7 +520,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -542,7 +539,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -561,7 +558,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>1,
             ]
@@ -582,7 +579,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
@@ -601,7 +598,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
@@ -620,7 +617,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
@@ -639,7 +636,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
@@ -658,7 +655,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
@@ -677,7 +674,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
@@ -696,7 +693,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
@@ -715,7 +712,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
@@ -734,7 +731,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
@@ -753,7 +750,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
@@ -772,7 +769,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
             ]
@@ -793,7 +790,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
                 'thoigianxoa'=>'2023-06-19 20:00:00',
@@ -813,7 +810,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
                 'thoigianxoa'=>'2023-06-19 20:00:00',
@@ -833,7 +830,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
                 'thoigianxoa'=>'2023-06-19 20:00:00',
@@ -853,7 +850,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
                 'thoigianxoa'=>'2023-06-19 20:00:00',
@@ -873,7 +870,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
                 'thoigianxoa'=>'2023-06-19 20:00:00',
@@ -893,7 +890,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
                 'thoigianxoa'=>'2023-06-19 20:00:00',
@@ -913,7 +910,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
                 'thoigianxoa'=>'2023-06-19 20:00:00',
@@ -933,7 +930,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
                 'thoigianxoa'=>'2023-06-19 20:00:00',
@@ -953,7 +950,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
                 'thoigianxoa'=>'2023-06-19 20:00:00',
@@ -973,7 +970,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
                 'thoigianxoa'=>'2023-06-19 20:00:00',
@@ -993,7 +990,7 @@ class DonHangSeeder extends Seeder
                 'tenphuongthuctt'=>'momo',
                 'tienthanhtoan'=>1200000,
                 'mathanhtoan'=>Str::random(20),
-                'tenthanhtoan'=>fake()->name(),
+                
                 'thoigianthanhtoan'=>'2023-05-08 08:00:00',
                 'trangthai'=>0,
                 'thoigianxoa'=>'2023-06-19 20:00:00',

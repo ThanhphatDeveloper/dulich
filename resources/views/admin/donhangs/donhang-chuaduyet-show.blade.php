@@ -152,10 +152,6 @@
                         <td colspan="2"><b>Thông tin thanh toán</b></td>
                     </tr>
                     <tr>
-                        <td>Tên thanh toán</td>
-                        <td>{{$donhang->tenthanhtoan}}</td>
-                    </tr>
-                    <tr>
                         <td>Mã thanh toán</td>
                         <td>{{$donhang->mathanhtoan}}</td>
                     </tr>

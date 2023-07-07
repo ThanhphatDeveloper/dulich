@@ -1,6 +1,6 @@
 @extends('layouts.customer')
 
-@section('title', 'Danh sách tour')
+@section('title', 'Chính sách đặt tour')
 
 @section('content')
 

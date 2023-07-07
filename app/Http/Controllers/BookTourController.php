@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BookTour;
+use App\Models\KhuyenMai;
 use App\Models\Tour;
 use App\Models\ImageTour;
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class BookTourController extends Controller
      */
     public function index()
     {
-        $lst = Tour::orderBy('updated_at','DESC')->paginate(6);
+        $lst = Tour::search()->where('trangthai', 1)->orderBy('updated_at','DESC')->paginate(6);
+        
         $lst_img = ImageTour::all();
         
         return view('customer.list-tour', compact('lst'), ['lst_img'=>$lst_img]);
@@ -46,9 +48,10 @@ class BookTourController extends Controller
         //dd($id);
 
         $tour = Tour::where('id', $id)->first();
+        $lst_km = KhuyenMai::all();
         $lst_img = ImageTour::where('tour_id', $id)->orderBy('updated_at','DESC')->take(12)->get();
         
-        return view('customer.tour-detail', ['tour' => $tour, 'lst_img' => $lst_img]);
+        return view('customer.tour-detail', ['tour' => $tour, 'lst_img' => $lst_img, 'lst_km' => $lst_km]);
     }
 
     /**

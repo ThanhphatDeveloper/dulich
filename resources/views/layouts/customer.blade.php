@@ -87,10 +87,9 @@
 				<div class="col-lg-3 col-md-6 ms-lg-auto">
 					<h5>Thông tin về chúng tôi</h5>
 					<ul class="links">
-						<li><a href="about.html">About</a></li>
-						<li><a href="register.html">Blog</a></li>
-						<li><a href="blog.html">Tin tức &amp; sự kiện</a></li>
-						<li><a href="contacts.html">Contacts</a></li>
+						<li><a href="{{url('/policy')}}">Quy định thanh toán</a></li>
+						<li><a href="{{route('customer_blogs.index')}}">Blog</a></li>
+						<li><a href="{{url('/contact')}}">Contacts</a></li>
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6">
@@ -110,6 +109,8 @@
 	</div>
 	
 	<div id="toTop"></div><!-- Back to top button -->
+
+
 	
 	<!-- COMMON SCRIPTS -->
     <script src="{{asset('customer/js/common_scripts.js')}}"></script>
@@ -123,6 +124,13 @@
 				fixed: true
 			});
 		});
+
+		document.querySelector("#number").addEventListener("keypress", function (evt) {
+            if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57)
+            {
+                evt.preventDefault();
+            }
+        });
 	</script>
 	
   

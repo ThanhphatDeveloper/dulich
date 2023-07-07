@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('tenphuongthuctt')->default('');
             $table->bigInteger('tienthanhtoan')->default(0);
             $table->string('mathanhtoan')->nullable()->default('');
-            $table->string('tenthanhtoan')->default('');
             $table->datetime('thoigianthanhtoan')->nullable();
             $table->boolean('trangthai')->default(1);
             $table->datetime('thoigianxoa')->nullable()->default(null);

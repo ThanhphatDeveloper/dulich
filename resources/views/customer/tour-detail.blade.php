@@ -1,6 +1,6 @@
 @extends('layouts.customer')
 
-@section('title', 'Trang chủ')
+@section('title', $tour->tentour)
 
 @section('content')
 
@@ -65,39 +65,62 @@
 					<aside class="col-lg-4" id="sidebar">
 						<div class="box_detail booking">
 							<div class="price">
-								<span>{{number_format($tour->gia, 0, '', ',')}} VNĐ <small>người</small></span>
+								<span id="gia">{{number_format($tour->gia, 0, '', ',')}} VNĐ <small>người</small></span>
 							</div>
 							<div class="form-group input-dates">
-								<input class="form-control" type="text" name="dates" placeholder="When..">
-								<i class="icon_calendar"></i>
+								<input id="customer_ten" class="form-control" type="text" placeholder="Họ và tên">
 							</div>
-							<div class="panel-dropdown">
-								<a href="#">Guests <span class="qtyTotal">1</span></a>
-								<div class="panel-dropdown-content right">
-									<div class="qtyButtons">
-										<label>Adults</label>
-										<input type="text" name="qtyInput" value="1">
-									</div>
-									<div class="qtyButtons">
-										<label>Childrens</label>
-										<input type="text" name="qtyInput" value="0">
-									</div>
-								</div>
-							</div>
-							<a href="cart-1.html" class="btn_1 full-width purchase">Purchase</a>
 
-							<form action="{{url('/momo_payment_qr')}}" method="post">
+							<div class="form-group input-dates">
+								<input id="customer_email" class="form-control" type="text" placeholder="Email">
+							</div>
+
+							<div class="form-group input-dates">
+								<input id="customer_sdt" class="form-control" type="text" placeholder="Số điện thoại">
+							</div>
+
+							<div class="form-group input-dates">
+								<input id="customer_sokhach" id="number" min="1" class="form-control" type="number" placeholder="Số người">
+							</div>
+
+							<div class="form-group input-dates">
+								<input id="customer_makhuyenmai" class="form-control" type="text" placeholder="Mã khuyến mãi">
+							</div>
+
+							<div class="form-group">
+								<button id="btn_khuyenmai" type="button">
+									Nhập mã khuyến mãi
+								</button>
+							</div>
+
+							<div class="form-group">
+								<p id="giakhuyenmai"></p>
+							</div>
+
+							<div class="form-group">
+								<p id="giadatcoc"></p>
+							</div>
+
+							<a href="cart-1.html" class="btn_1 full-width purchase">Tư vấn</a>
+
+							<form id="atm_momo" action="{{url('/momo_payment')}}" method="post">
+								@csrf
+								<input type="hidden" name="total_momo"><br>
+								<button id="btn_atm_momo" id="btn_atm_momo" name="payUrl" class="glow-on-hover" type="submit">Đặt cọc bằng ATM MOMO</button>
+							</form>
+
+							<form id="qr_momo" action="{{url('/momo_payment_qr')}}" method="post">
 								@csrf
 								<input type="hidden" name="total_momo" value="{{$tour->gia}}"><br>
-
-								<button name="payUrl" class="glow-on-hover" type="submit">Thanh toán QR MOMO</button>
+								<button id="btn_qr_momo" name="payUrl" class="glow-on-hover" type="submit">Đặt cọc bằng QR MOMO</button>
 							</form>
 
-							<form action="{{url('/vnpay_payment')}}" method="post">
+							<form id="form_vnpay" action="{{url('/vnpay_payment')}}" method="post">
 								@csrf
 								<input type="hidden" name="total_vnpay" value="{{$tour->gia}}"><br>
-								<button style="margin-right: 15px" name="redirect" class="glow-on-hover" type="submit">Thanh toán VNPAY</button>
+								<button id="btn_vnpay" name="redirect" class="glow-on-hover" type="submit">Đặt cọc bằng VNPAY</button>
 							</form>
+
 						</div>
 					</aside>
 				</div>
@@ -118,4 +141,194 @@
 		}
 	</style>
 
+	<script src="{{asset('vendor/jquery/jquery.js')}}"></script>
+	<script>
+
+	$(document).ready(function () {
+
+
+		$("#btn_khuyenmai").click(function () {
+
+			var makhuyenmai = $("#customer_makhuyenmai").val();
+			var array = @json($lst_km);
+			var sokhach = $("#customer_sokhach").val();
+
+			console.log(array[0].makhuyenmai)
+
+			for(i=0;i<array.length;i++){
+				if(array[i].makhuyenmai==makhuyenmai && array[i].hansudung>0){
+					
+					gia = {{$tour->gia}} * sokhach - array[i].mucgiam;
+
+					convert = gia.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+
+					$("#giakhuyenmai").text('Giá của tour là: '+convert);
+					$("#giadatcoc").text('Giá đặt cọc là: '+(gia*0.7).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }));
+
+					return;
+				}
+			}
+
+			$("#giakhuyenmai").text('Mã khuyến mãi không hợp lệ');
+		});
+
+		$("#btn_qr_momo").click(function () {
+
+			var ten = $("#customer_ten").val();
+			var email = $("#customer_email").val();
+			var sdt = $("#customer_sdt").val();
+			var sokhach = $("#customer_sokhach").val();
+			var makhuyenmai = $("#customer_makhuyenmai").val();
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'makhuyenmai',
+				value: makhuyenmai,
+			}).appendTo('#qr_momo');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'tour_id',
+				value: {{$tour->id}},
+			}).appendTo('#qr_momo');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'ten',
+				value: ten,
+			}).appendTo('#qr_momo');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'email',
+				value: email,
+			}).appendTo('#qr_momo');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'sdt',
+				value: sdt,
+			}).appendTo('#qr_momo');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'sokhach',
+				value: sokhach,
+			}).appendTo('#qr_momo');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'gioitinh',
+				value: 'Nam',
+			}).appendTo('#qr_momo');
+
+		});
+
+		$("#btn_vnpay").click(function () {
+
+			var ten = $("#customer_ten").val();
+			var email = $("#customer_email").val();
+			var sdt = $("#customer_sdt").val();
+			var sokhach = $("#customer_sokhach").val();
+			var makhuyenmai = $("#customer_makhuyenmai").val();
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'makhuyenmai',
+				value: makhuyenmai,
+			}).appendTo('#form_vnpay');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'tour_id',
+				value: {{$tour->id}},
+			}).appendTo('#form_vnpay');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'ten',
+				value: ten,
+			}).appendTo('#form_vnpay');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'email',
+				value: email,
+			}).appendTo('#form_vnpay');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'sdt',
+				value: sdt,
+			}).appendTo('#form_vnpay');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'sokhach',
+				value: sokhach,
+			}).appendTo('#form_vnpay');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'gioitinh',
+				value: 'Nam',
+			}).appendTo('#form_vnpay');
+
+		});
+
+		$("#btn_atm_momo").click(function () {
+
+			var ten = $("#customer_ten").val();
+			var email = $("#customer_email").val();
+			var sdt = $("#customer_sdt").val();
+			var sokhach = $("#customer_sokhach").val();
+			var makhuyenmai = $("#customer_makhuyenmai").val();
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'makhuyenmai',
+				value: makhuyenmai,
+			}).appendTo('#atm_momo');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'tour_id',
+				value: {{$tour->id}},
+			}).appendTo('#atm_momo');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'ten',
+				value: ten,
+			}).appendTo('#atm_momo');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'email',
+				value: email,
+			}).appendTo('#atm_momo');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'sdt',
+				value: sdt,
+			}).appendTo('#form_vnpay');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'sokhach',
+				value: sokhach,
+			}).appendTo('#atm_momo');
+
+			$('<input>').attr({
+				type: 'hidden',
+				name: 'gioitinh',
+				value: 'Nam',
+			}).appendTo('#atm_momo');
+
+		});
+
+	});
+
+	</script>
 @endsection

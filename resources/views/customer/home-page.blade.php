@@ -7,13 +7,13 @@
 	<main>
 		<section class="hero_single version_2">
 			<div class="wrapper">
-				<div class="container">
+				<div class="container" method="get" action="">
 					<h3>Tìm Trải Nghiệm Cho Bạn</h3>
 					<p>Khám phá các tour du lịch hàng đầu trên khắp thế giới</p>
-					<form>
+					<form method="get" action="{{route('customer_tours.index')}}">
 						<div id="custom-search-input">
 							<div class="input-group">
-								<input type="text" class=" search-query" placeholder="Ví dụ: tên tour, địa điểm,...">
+								<input class=" search-query" type="text" name="key" value="{{old('key')}}" placeholder="Ví dụ: tên tour, địa điểm,...">
 								<input type="submit" class="btn_search" value="Tìm kiếm">
 							</div>
 						</div>
