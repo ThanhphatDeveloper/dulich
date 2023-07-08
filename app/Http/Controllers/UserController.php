@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $lst_users=User::search()->orderBy('email_verified_at','DESC')->paginate(10);
+        $lst_users=User::search()->where('id','!=', 1)->orderBy('updated_at','DESC')->paginate(10);
 
         foreach($lst_users as $u){
             $this->fixImage($u);

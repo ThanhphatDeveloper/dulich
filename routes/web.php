@@ -159,7 +159,7 @@ function ($phuongthuc, $ten, $email, $sdt, $sokhach, $gioitinh, $tour_id, $km_id
             return view('customer.thanhtoan-thatbai');
         }
         else{
-            
+
             $d = DonHang::create(
                 [
                     'ten'=>$ten,
@@ -173,13 +173,14 @@ function ($phuongthuc, $ten, $email, $sdt, $sokhach, $gioitinh, $tour_id, $km_id
                     'tour_id'=>$tour_id,
                     'tenphuongthuctt'=>'vnpay',
                     'tienthanhtoan'=>$money,
-                    'mathanhtoan'=>$_GET['vnp_TmnCode'],
+                    'mathanhtoan'=>$_GET['vnp_BankTranNo'],
                     'thoigianthanhtoan'=>Carbon::now()->toDateTimeString(),
                     'trangthai'=>0,
                 ]
             );
             
             $d->save();
+            
             return view('customer.thanhtoan-thanhcong');
         }
     }

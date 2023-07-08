@@ -20,7 +20,7 @@
                         <li>
                             <i class="pe-7s-map-marker"></i>
                             <h4>Địa chỉ</h4>
-                            <span>Khu 2 phường 3 thị xã Cai lậy<br>Tỉnh Tiền Gian</span>
+                            <span>Khu 2 phường 3 thị xã Cai lậy<br>Tỉnh Tiền Giang</span>
                         </li>
                         <li>
                             <i class="pe-7s-mail-open-file"></i>

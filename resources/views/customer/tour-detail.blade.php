@@ -78,27 +78,29 @@
 							</div>
 
 							<div class="form-group input-dates">
-								<input id="customer_sdt" class="form-control" type="text" placeholder="Số điện thoại">
+								<input id="customer_sdt" maxlength="10"
+								 class="form-control" type="text" placeholder="Số điện thoại"
+								 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
 								<p id="noti_sdt" class="noti"></p>
 							</div>
 
 							<div class="form-group input-dates">
-								<input id="customer_sokhach" id="number" min="1" class="form-control" type="number" placeholder="Số người">
+								<input id="customer_sokhach" min="1" class="form-control" type="number" placeholder="Số người">
 								<p id="noti_sokhach" class="noti"></p>
 							</div>
 
 							<div class="container1">
 								<form class="namnu">
 									<label class="nu">
-										<input type="radio" name="radio" checked="">
+										<input type="radio" name="radio" checked="" value="Nam">
 										<span>Nam</span>
 									</label>
 									<label class="nu">
-										<input type="radio" name="radio">
+										<input type="radio" name="radio" value="Nữ">
 										<span>Nữ</span>
 									</label>
 								</form>
-							</div>
+							</div><br>
 
 							<div class="form-group input-dates">
 								<input id="customer_makhuyenmai" class="form-control" type="text" placeholder="Mã khuyến mãi">
@@ -118,7 +120,7 @@
 								<p id="giadatcoc"></p>
 							</div>
 
-							<a href="cart-1.html" class="btn_1 full-width purchase">Tư vấn</a>
+							<a target="_blank" href="{{url('/contact')}}" class="btn_1 full-width purchase">Tư vấn</a>
 
 							<form id="qr_momo" action="{{url('/momo_payment_qr')}}" method="post">
 								@csrf
@@ -222,6 +224,33 @@ margin: auto 40px;
 	<script src="{{asset('vendor/jquery/jquery.js')}}"></script>
 	<script>
 
+	document.querySelector("#customer_sokhach").addEventListener("keypress", function (evt) {
+		if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57)
+		{
+			evt.preventDefault();
+		}
+	});
+
+	function checkEmail(emailAddress) {
+		var sQtext = '[^\\x0d\\x22\\x5c\\x80-\\xff]';
+		var sDtext = '[^\\x0d\\x5b-\\x5d\\x80-\\xff]';
+		var sAtom = '[^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+';
+		var sQuotedPair = '\\x5c[\\x00-\\x7f]';
+		var sDomainLiteral = '\\x5b(' + sDtext + '|' + sQuotedPair + ')*\\x5d';
+		var sQuotedString = '\\x22(' + sQtext + '|' + sQuotedPair + ')*\\x22';
+		var sDomain_ref = sAtom;
+		var sSubDomain = '(' + sDomain_ref + '|' + sDomainLiteral + ')';
+		var sWord = '(' + sAtom + '|' + sQuotedString + ')';
+		var sDomain = sSubDomain + '(\\x2e' + sSubDomain + ')*';
+		var sLocalPart = sWord + '(\\x2e' + sWord + ')*';
+		var sAddrSpec = sLocalPart + '\\x40' + sDomain; // complete RFC822 email address spec
+		var sValidEmail = '^' + sAddrSpec + '$'; // as whole string
+
+		var reValidEmail = new RegExp(sValidEmail);
+
+		return reValidEmail.test(emailAddress);
+	}
+
 	$(document).ready(function () {
 
 
@@ -236,7 +265,12 @@ margin: auto 40px;
 				convert = gia.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
 
 				$("#giakhuyenmai").text('Giá của tour là: '+convert);
-				$("#giadatcoc").text('Giá đặt cọc là: '+(gia*0.7).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }));
+
+				if((gia*0.7) > 50000000){
+					$("#giadatcoc").text('Giá đặt cọc là: '+(gia*0.7).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })+' (chỉ áp dụng cho vnpay)');
+				}else{
+					$("#giadatcoc").text('Giá đặt cọc là: '+(gia*0.7).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }));
+				}
 
 				return;
 			}
@@ -254,7 +288,12 @@ margin: auto 40px;
 					convert = gia.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
 
 					$("#giakhuyenmai").text('Giá của tour là: '+convert);
-					$("#giadatcoc").text('Giá đặt cọc là: '+(gia*0.7).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }));
+
+					if((gia*0.7) > 50000000){
+						$("#giadatcoc").text('Giá đặt cọc là: '+(gia*0.7).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })+'(chỉ áp dụng cho vnpay)');
+					}else{
+						$("#giadatcoc").text('Giá đặt cọc là: '+(gia*0.7).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }));
+					}
 
 					return;
 				}
@@ -270,8 +309,9 @@ margin: auto 40px;
 			var sdt = $("#customer_sdt").val();
 			var sokhach = $("#customer_sokhach").val();
 			var makhuyenmai = $("#customer_makhuyenmai").val().trim();
+			var $gioitinh = $('input[name="radio"]:checked').val();
 
-			if(sokhach == '' || ten == '' || email == '' || sdt == ''){
+			if(sokhach == '' || ten == '' || email == '' || sdt == '' || sdt.length != 10 || (checkEmail(email) == false)){
 				$("#btn_qr_momo").attr("type", "button");
 				if(sokhach == ''){
 					$("#noti_sokhach").text('Vui lòng nhập số lượng khách');
@@ -279,8 +319,14 @@ margin: auto 40px;
 				if(ten == ''){
 					$("#noti_ten").text('Vui lòng nhập tên của bạn');
 				}
+				if(checkEmail(email) == false){
+					$("#noti_email").text('Email không hợp lệ');
+				}
 				if(email == ''){
 					$("#noti_email").text('Vui lòng nhập email của bạn');
+				}
+				if(sdt.length != 10){
+					$("#noti_sdt").text('Số điện thoại không hợp lệ');
 				}
 				if(sdt == ''){
 					$("#noti_sdt").text('Vui lòng nhập số điện thoại của bạn');
@@ -329,7 +375,7 @@ margin: auto 40px;
 			$('<input>').attr({
 				type: 'hidden',
 				name: 'gioitinh',
-				value: 'Nam',
+				value: $gioitinh,
 			}).appendTo('#qr_momo');
 
 			$("#qr_momo").submit();
@@ -342,7 +388,33 @@ margin: auto 40px;
 			var email = $("#customer_email").val();
 			var sdt = $("#customer_sdt").val();
 			var sokhach = $("#customer_sokhach").val();
-			var makhuyenmai = $("#customer_makhuyenmai").val();
+			var makhuyenmai = $("#customer_makhuyenmai").val().trim();
+			var $gioitinh = $('input[name="radio"]:checked').val();
+
+			if(sokhach == '' || ten == '' || email == '' || sdt == '' || sdt.length != 10 || checkEmail(email) == false){
+				$("#btn_vnpay").attr("type", "button");
+				if(sokhach == ''){
+					$("#noti_sokhach").text('Vui lòng nhập số lượng khách');
+				}
+				if(ten == ''){
+					$("#noti_ten").text('Vui lòng nhập tên của bạn');
+				}
+				if(checkEmail(email) == false){
+					$("#noti_email").text('Email không hợp lệ');
+				}
+				if(email == ''){
+					$("#noti_email").text('Vui lòng nhập email của bạn');
+				}
+				if(sdt.length != 10){
+					$("#noti_sdt").text('Số điện thoại không hợp lệ');
+				}
+				if(sdt == ''){
+					$("#noti_sdt").text('Vui lòng nhập số điện thoại của bạn');
+				}
+				return;
+			}
+
+			$("#btn_vnpay").attr("type", "submit");
 
 			$('<input>').attr({
 				type: 'hidden',
@@ -383,7 +455,7 @@ margin: auto 40px;
 			$('<input>').attr({
 				type: 'hidden',
 				name: 'gioitinh',
-				value: 'Nam',
+				value: $gioitinh,
 			}).appendTo('#form_vnpay');
 
 		});

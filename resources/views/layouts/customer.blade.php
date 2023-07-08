@@ -79,11 +79,11 @@
 					<div class="follow_us">
 						<ul>
 							<li>Follow us</li>
-							<li><a href="#0"><i class="ti-facebook"></i></a></li>
+							<li><a target="_blank" href="https://www.facebook.com/Deed.027"><i class="ti-facebook"></i></a></li>
 							<li><a href="#0"><i class="ti-twitter-alt"></i></a></li>
 							<li><a href="#0"><i class="ti-google"></i></a></li>
 							<li><a href="#0"><i class="ti-pinterest"></i></a></li>
-							<li><a href="#0"><i class="ti-instagram"></i></a></li>
+							<li><a target="_blank" href="https://www.instagram.com/deed_27"><i class="ti-instagram"></i></a></li>
 						</ul>
 					</div>
 				</div>
