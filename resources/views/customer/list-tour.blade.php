@@ -37,7 +37,8 @@
 					<div class="col-xl-4 col-lg-6 col-md-6">
 						<div class="box_grid">
 							<figure>
-								<a href="{{route('customer_tours.show',$t->id)}}"><img src="storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533">
+								<a href="{{route('customer_tours.show',$t->id)}}">
+									<img src="storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533">
 									<div class="read_more"><span>Chi tiết</span>
 									</div>
 								</a>

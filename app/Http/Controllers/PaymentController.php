@@ -100,7 +100,7 @@ class PaymentController extends Controller
 
     public function momo_payment_qr(Request $request){
         //0919100100
-        //dd($request->makhuyenmai);
+        //dd($request);
         //$money = $request->total_momo;
         $money = $request->total_momo * $request->sokhach;
         $giagoc = $money;
@@ -123,8 +123,6 @@ class PaymentController extends Controller
         $gioitinh = $request->gioitinh;
         $tour_id = $request->tour_id;
         $thoigiankhoihanh = $tour->ngaykhoihanh;
-
-       
 
         //dd($tour);
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";

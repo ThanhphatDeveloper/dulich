@@ -21,6 +21,7 @@ use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\PaymentController;
 use App\Models\DonHang;
 use App\Models\KhachHang;
+use App\Models\KhuyenMai;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use App\Models\Tour;
@@ -129,6 +130,36 @@ function ($phuongthuc, $ten, $email, $sdt, $sokhach, $gioitinh, $tour_id, $km_id
             return view('customer.thanhtoan-thatbai');
         }
         else{
+            $km = KhuyenMai::where('id', $km_id)->first();
+            KhuyenMai::where('id', $km_id)->where('id', '!=' , 1)->update(
+                [
+                    'hansudung'=>$km->hansudung-1
+                ]
+            );
+            $id_kh = 0;
+            if(KhachHang::where('sdt', $sdt)->exists()){
+                KhachHang::where('sdt', $sdt)->update(
+                    [
+                        'hoten'=>$ten,
+                        'email'=>$email,
+                        'gioitinh'=>$gioitinh,
+                    ]
+                );
+                $kh = KhachHang::where('sdt', $sdt)->first();
+                $id_kh = $kh->id;
+            }else{
+                $k = KhachHang::create(
+                    [
+                        'hoten'=>$ten,
+                        'email'=>$email,
+                        'sdt'=>$sdt,
+                        'gioitinh'=>$gioitinh,
+                    ]
+                );
+                $k->save();
+                $id_kh = $k->id;
+            }
+
             $d = DonHang::create(
                 [
                     'ten'=>$ten,
@@ -144,6 +175,7 @@ function ($phuongthuc, $ten, $email, $sdt, $sokhach, $gioitinh, $tour_id, $km_id
                     'tienthanhtoan'=>$money,
                     'mathanhtoan'=>$_GET['orderId'],
                     'thoigianthanhtoan'=>Carbon::now()->toDateTimeString(),
+                    'khach_hang_id'=>$id_kh,
                     'trangthai'=>0,
                 ]
             );
@@ -159,6 +191,35 @@ function ($phuongthuc, $ten, $email, $sdt, $sokhach, $gioitinh, $tour_id, $km_id
             return view('customer.thanhtoan-thatbai');
         }
         else{
+            $km = KhuyenMai::where('id', $km_id)->first();
+            KhuyenMai::where('id', $km_id)->where('id', '!=' , 1)->update(
+                [
+                    'hansudung'=>$km->hansudung-1
+                ]
+            );
+            $id_kh = 0;
+            if(KhachHang::where('sdt', $sdt)->exists()){
+                KhachHang::where('sdt', $sdt)->update(
+                    [
+                        'hoten'=>$ten,
+                        'email'=>$email,
+                        'gioitinh'=>$gioitinh,
+                    ]
+                );
+                $kh = KhachHang::where('sdt', $sdt)->first();
+                $id_kh = $kh->id;
+            }else{
+                $k = KhachHang::create(
+                    [
+                        'hoten'=>$ten,
+                        'email'=>$email,
+                        'sdt'=>$sdt,
+                        'gioitinh'=>$gioitinh,
+                    ]
+                );
+                $k->save();
+                $id_kh = $k->id;
+            }
 
             $d = DonHang::create(
                 [
@@ -175,6 +236,7 @@ function ($phuongthuc, $ten, $email, $sdt, $sokhach, $gioitinh, $tour_id, $km_id
                     'tienthanhtoan'=>$money,
                     'mathanhtoan'=>$_GET['vnp_BankTranNo'],
                     'thoigianthanhtoan'=>Carbon::now()->toDateTimeString(),
+                    'khach_hang_id'=>$id_kh,
                     'trangthai'=>0,
                 ]
             );

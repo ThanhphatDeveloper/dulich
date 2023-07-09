@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Tour;
+use App\Models\TourLienQuan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -32,7 +34,14 @@ class CustomerBlogController extends Controller
     public function show($id)
     {
         $blog = Blog::where('id', $id)->first();
+        $lst_tlq = TourLienQuan::where('blog_id', $id)->orderBy('updated_at','DESC')->take(5)->get();
+        $lst_tour = Tour::all();
 
-        return view('customer.blog-detail', ['blog'=>$blog]);
+        return view('customer.blog-detail', 
+        [
+            'blog'=>$blog,
+            'lst_tlq'=>$lst_tlq,
+            'lst_tour'=>$lst_tour
+        ]);
     }
 }

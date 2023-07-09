@@ -20,16 +20,14 @@ class KhachHangSeeder extends Seeder
                 'gioitinh'=>'Nam',
                 'sdt'=>'0345774006',
                 'email'=>'0306201498@caothang.edu.vn',
-                'don_hang_id'=>1,
             ]
         );
         KhachHang::create(
             [
-                'hoten'=>'Trần Văn C',
+                'hoten'=>'Nguyễn Thành Phát',
                 'gioitinh'=>'Nam',
-                'sdt'=>'0345774006',
+                'sdt'=>'0165165485',
                 'email'=>'abc@gmail.com',
-                'don_hang_id'=>2,
             ]
         );
         KhachHang::factory(15)->create();

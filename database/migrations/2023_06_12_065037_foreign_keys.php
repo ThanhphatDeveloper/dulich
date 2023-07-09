@@ -28,10 +28,6 @@ return new class extends Migration
             $table->foreignId('tour_id')->default(0)->constrained('tours');
         });
 
-        Schema::table('khach_hangs', function(Blueprint $table){
-            $table->foreignId('don_hang_id')->constrained('don_hangs');
-        });
-
         Schema::table('image_tours', function(Blueprint $table){
             $table->foreignId('tour_id')->default(0)->constrained('tours');
         });
@@ -39,6 +35,7 @@ return new class extends Migration
         Schema::table('don_hangs', function(Blueprint $table){
             $table->foreignId('khuyen_mai_id')->nullable()->default(null)->constrained('khuyen_mais');
             $table->foreignId('tour_id')->default(0)->constrained('tours');
+            $table->foreignId('khach_hang_id')->default(0)->constrained('khach_hangs');
         });
     }
 

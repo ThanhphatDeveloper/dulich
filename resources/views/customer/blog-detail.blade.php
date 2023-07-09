@@ -51,27 +51,24 @@
 							<h4>Tour liên quan</h4>
 						</div>
 						<ul class="comments-list">
-							<li>
-								<div class="alignleft">
-									<a href="#0"><img src="img/blog-5.jpg" alt=""></a>
-								</div>
-								<small>11.08.2016</small>
-								<h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-							</li>
-							<li>
-								<div class="alignleft">
-									<a href="#0"><img src="img/blog-6.jpg" alt=""></a>
-								</div>
-								<small>11.08.2016</small>
-								<h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-							</li>
-							<li>
-								<div class="alignleft">
-									<a href="#0"><img src="img/blog-4.jpg" alt=""></a>
-								</div>
-								<small>11.08.2016</small>
-								<h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-							</li>
+							@foreach($lst_tlq as $tlq)
+								@foreach($lst_tour as $t)
+									@if($tlq->tour_id == $t->id)
+										<li>
+											<div class="alignleft">
+												<a href="{{route('customer_tours.show',$t->id)}}">
+													<img src="http://localhost:8000/storage/{{$t->avatar}}">
+												</a>
+											</div>
+											<h3>
+												<a href="{{route('customer_tours.show',$t->id)}}" title="">
+													{{$t->tentour}}
+												</a>
+											</h3>
+										</li>
+									@endif
+								@endforeach
+							@endforeach
 						</ul>
 					</div>
 

@@ -126,12 +126,14 @@
 								@csrf
 								<input type="hidden" name="total_momo" value="{{$tour->gia}}"><br>
 								<button id="btn_qr_momo" name="payUrl" class="glow-on-hover" type="submit">Đặt cọc bằng QR MOMO</button>
+								<p id="noti_momo" class="noti"></p>
 							</form>
 
 							<form id="form_vnpay" action="{{url('/vnpay_payment')}}" method="post">
 								@csrf
 								<input type="hidden" name="total_vnpay" value="{{$tour->gia}}"><br>
 								<button id="btn_vnpay" name="redirect" class="glow-on-hover" type="submit">Đặt cọc bằng VNPAY</button>
+								<p id="noti_vnpay" class="noti"></p>
 							</form>
 
 						</div>
@@ -266,6 +268,11 @@ margin: auto 40px;
 
 				$("#giakhuyenmai").text('Giá của tour là: '+convert);
 
+				if((gia*0.7) > 1000000000){
+					$("#giadatcoc").text('Giá đặt cọc là: '+(gia*0.7).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })+' (không áp dụng đặt cọc online vui lòng liên hệ chúng tôi để đặt tour)');
+					return;
+				}
+
 				if((gia*0.7) > 50000000){
 					$("#giadatcoc").text('Giá đặt cọc là: '+(gia*0.7).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })+' (chỉ áp dụng cho vnpay)');
 				}else{
@@ -281,13 +288,18 @@ margin: auto 40px;
 			}
 
 			for(i=0;i<array.length;i++){
-				if(array[i].makhuyenmai==makhuyenmai && array[i].hansudung>0){
+				if(array[i].makhuyenmai==makhuyenmai && array[i].hansudung>0 && array[i].giatoithieu <= {{$tour->gia}}){
 
 					var gia = {{$tour->gia}} * sokhach - array[i].mucgiam;
 
 					convert = gia.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
 
 					$("#giakhuyenmai").text('Giá của tour là: '+convert);
+
+					if((gia*0.7) > 1000000000){
+						$("#giadatcoc").text('Giá đặt cọc là: '+(gia*0.7).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })+' (không áp dụng đặt cọc online vui lòng liên hệ chúng tôi để đặt tour)');
+						return;
+					}
 
 					if((gia*0.7) > 50000000){
 						$("#giadatcoc").text('Giá đặt cọc là: '+(gia*0.7).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })+'(chỉ áp dụng cho vnpay)');
@@ -310,6 +322,33 @@ margin: auto 40px;
 			var sokhach = $("#customer_sokhach").val();
 			var makhuyenmai = $("#customer_makhuyenmai").val().trim();
 			var $gioitinh = $('input[name="radio"]:checked').val();
+
+			var array = @json($lst_km);
+
+			if(makhuyenmai == ''){
+				var gia = {{$tour->gia}} * sokhach;
+
+				if((gia*0.7) > 50000000){
+					$("#btn_qr_momo").attr("type", "button");
+					$("#noti_momo").text('Không thể thanh toán bằng momo');
+				}
+
+				return;
+			}
+
+			for(i=0;i<array.length;i++){
+				if(array[i].makhuyenmai==makhuyenmai && array[i].hansudung>0 && array[i].giatoithieu <= {{$tour->gia}}){
+
+					var gia = {{$tour->gia}} * sokhach - array[i].mucgiam;
+
+					if((gia*0.7) > 50000000){
+						$("#btn_qr_momo").attr("type", "button");
+						$("#noti_momo").text('Không thể thanh toán bằng momo');
+					}
+
+					return;
+				}
+			}
 
 			if(sokhach == '' || ten == '' || email == '' || sdt == '' || sdt.length != 10 || (checkEmail(email) == false)){
 				$("#btn_qr_momo").attr("type", "button");
@@ -390,6 +429,31 @@ margin: auto 40px;
 			var sokhach = $("#customer_sokhach").val();
 			var makhuyenmai = $("#customer_makhuyenmai").val().trim();
 			var $gioitinh = $('input[name="radio"]:checked').val();
+
+			var array = @json($lst_km);
+
+			if(makhuyenmai == ''){
+				var gia = {{$tour->gia}} * sokhach;
+
+				if((gia*0.7) > 1000000000){
+					$("#btn_vnpay").attr("type", "button");
+					$("#noti_vnpay").text('Không thể thanh toán bằng vnpay');
+					return;
+				}
+			}
+
+			for(i=0;i<array.length;i++){
+				if(array[i].makhuyenmai==makhuyenmai && array[i].hansudung>0 && array[i].giatoithieu < {{$tour->gia}}){
+
+					var gia = {{$tour->gia}} * sokhach - array[i].mucgiam;
+
+					if((gia*0.7) > 1000000000){
+						$("#btn_vnpay").attr("type", "button");
+						$("#noti_vnpay").text('Không thể thanh toán bằng vnpay');
+						return;
+					}
+				}
+			}
 
 			if(sokhach == '' || ten == '' || email == '' || sdt == '' || sdt.length != 10 || checkEmail(email) == false){
 				$("#btn_vnpay").attr("type", "button");

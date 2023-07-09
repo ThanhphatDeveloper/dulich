@@ -39,6 +39,7 @@
                     <th>Họ tên</th>
                     <th>Giới tính</th>
                     <th>Số điện thoại</th>
+                    <th>Đơn hàng đã đặt</th>
                 </tr>
               </thead>
               <tbody>
@@ -47,6 +48,13 @@
                     <td>{{$d->hoten}}</td>
                     <td>{{$d->gioitinh}}</td>
                     <td>{{$d->sdt}}</td>
+                    <td>
+                      <form method="get" action="{{route('khachhangs.show', $d->id)}}">
+                        <button type="submit" class="btn btn-sm btn-info">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                      </form>
+                    </td>
                 </tr>
             @endforeach
                 

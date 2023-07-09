@@ -21,7 +21,6 @@ class KhachHangFactory extends Factory
             'gioitinh'=>'Nam',
             'sdt'=>$this->randomphone(),
             'email'=>fake()->unique()->safeEmail(),
-            'don_hang_id'=>1,
         ];
     }
 

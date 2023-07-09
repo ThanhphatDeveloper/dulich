@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             DiaDiemSeeder::class,
             ThoiGianTourSeeder::class,
             TourSeeder::class,
-            DonHangSeeder::class,
             KhachHangSeeder::class,
+            DonHangSeeder::class,
             ImageTourSeeder::class,
             TourLienQuanSeeder::class,
         ]);
