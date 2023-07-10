@@ -1,7 +1,7 @@
 <!-- payment_failed.blade.php -->
 
     <title>Thanh toán thất bại</title>
-
+    <link href="{{ asset('public/assets/thanhcong.css') }}" rel="stylesheet">
     <div class="container2">
         <div class="payment-failed2">
             <h1>Thanh toán thất bại</h1>

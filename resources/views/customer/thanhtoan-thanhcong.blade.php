@@ -1,7 +1,7 @@
 <!-- payment_success.html -->
     <title>Thanh toán thành công</title>
  
-    
+    <link href="{{ asset('public/assets/thanhcong.css') }}" rel="stylesheet">
     <div class="container3">
         <div class="payment-success3">
             <h1>Thanh toán thành công</h1>
