@@ -331,9 +331,8 @@ margin: auto 40px;
 				if((gia*0.7) > 50000000){
 					$("#btn_qr_momo").attr("type", "button");
 					$("#noti_momo").text('Không thể thanh toán bằng momo');
+					return;
 				}
-
-				return;
 			}
 
 			for(i=0;i<array.length;i++){
@@ -344,9 +343,8 @@ margin: auto 40px;
 					if((gia*0.7) > 50000000){
 						$("#btn_qr_momo").attr("type", "button");
 						$("#noti_momo").text('Không thể thanh toán bằng momo');
+						return;
 					}
-
-					return;
 				}
 			}
 

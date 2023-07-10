@@ -71,22 +71,29 @@
                         </td>
                         <td>
                             @if($u->trangthai == 0)
-                                <form method="post" action="{{route('users.update', ['user'=>$u])}}">
-                                    @csrf
-                                    @method('PUT')
-                                    <input type="hidden" name="restore" value="1">
-                                    <button type="submit" onclick="return checkRestore()" class="btn btn-sm btn-info">
-                                        <i class="fas fa-arrow-circle-left"></i>
-                                    </button>
-                                </form>
+                                
+                                    <form method="post" action="{{route('users.update', ['user'=>$u])}}">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="restore" value="1">
+                                        <button type="submit" onclick="return checkRestore()" class="btn btn-sm btn-info">
+                                            <i class="fas fa-arrow-circle-left"></i>
+                                        </button>
+                                    </form>
                             @else
-                                <form method="post" action="{{route('users.destroy', ['user'=>$u])}}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="return checkDelete()" class="btn btn-sm btn-danger">
+                                @if($u->id == Auth::user()->id)
+                                    <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-danger">
                                         <i class="fas fa-trash"></i>
                                     </button>
-                                </form>
+                                @else
+                                    <form method="post" action="{{route('users.destroy', ['user'=>$u])}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return checkDelete()" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                @endif
                             @endif
                         </td>
                         <td>
@@ -116,5 +123,25 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Tài khoản đang đăng nhập không thể xóa
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        </div>
+        </div>
+    </div>
+    </div>
     
 @endsection
