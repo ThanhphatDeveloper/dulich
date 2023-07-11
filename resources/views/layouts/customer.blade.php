@@ -28,7 +28,7 @@
     <link href="{{asset('customer/css/blog.css')}}" rel="stylesheet">
 
 	<!-- SPECIFIC CSS -->
-    <link href="css/blog.css" rel="stylesheet">
+    <link href="{{asset('css/blog.css')}}" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{{asset('customer/css/custom.css')}}" rel="stylesheet">

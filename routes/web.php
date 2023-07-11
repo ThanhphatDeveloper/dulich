@@ -182,6 +182,9 @@ function ($phuongthuc, $ten, $email, $sdt, $sokhach, $gioitinh, $tour_id, $km_id
             
             $d->save();
 
+            $tentour = Tour::where('id', $tour_id)->first();
+            $km = KhuyenMai::where('id', $km_id)->first();
+
             return view('customer.thanhtoan-thanhcong');
         }
 
