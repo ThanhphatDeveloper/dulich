@@ -86,10 +86,7 @@
                         </td>
                         <td>
                             @if($l->trangthai == 0)
-                                <form method="post" action="{{route('blogs.update', ['blog'=>$l])}}">
-                                    @csrf
-                                    @method('PUT')
-                                    <input type="hidden" name="restore" value="1">
+                                <form method="get" action="{{route('blogs.show', $l->id)}}">
                                     <button type="submit" onclick="return checkRestore()" class="btn btn-sm btn-info">
                                         <i class="fas fa-arrow-circle-left"></i>
                                     </button>

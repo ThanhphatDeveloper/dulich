@@ -6,7 +6,7 @@
         <div class="payment-failed2">
             <h1>Thanh toán thất bại</h1>
             <div class="button-container2">
-                <a href="#" class="button2">Quay lại trang thanh toán</a>
+                <a href="{{url('/')}}" class="button2">Quay lại trang thanh toán</a>
             </div>
         </div>
     </div>

@@ -96,6 +96,7 @@ Route::get('/customer_tour_detail', function () {
 
 Route::post('/momo_payment_qr', [PaymentController::class, 'momo_payment_qr']);
 Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment']);
+Route::post('/momo_payment', [PaymentController::class, 'momo_payment']);
 
 Route::get('/test', function () {
     return view('test');

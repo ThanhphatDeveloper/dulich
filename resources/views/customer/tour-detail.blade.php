@@ -129,6 +129,13 @@
 								<p id="noti_momo" class="noti"></p>
 							</form>
 
+							<form id="atm_momo" action="{{url('/momo_payment')}}" method="post">
+								@csrf
+								<input type="hidden" name="total_momo" value="{{$tour->gia}}"><br>
+								<button id="btn_atm_momo" name="payUrl" class="glow-on-hover" type="submit">Đặt cọc bằng ATM MOMO</button>
+								<p id="noti_momo_atm" class="noti"></p>
+							</form>
+
 							<form id="form_vnpay" action="{{url('/vnpay_payment')}}" method="post">
 								@csrf
 								<input type="hidden" name="total_vnpay" value="{{$tour->gia}}"><br>
@@ -418,6 +425,111 @@ margin: auto 40px;
 			$("#qr_momo").submit();
 
 		});
+
+		$("#btn_atm_momo").click(function () {
+
+var ten = $("#customer_ten").val();
+var email = $("#customer_email").val();
+var sdt = $("#customer_sdt").val();
+var sokhach = $("#customer_sokhach").val();
+var makhuyenmai = $("#customer_makhuyenmai").val().trim();
+var $gioitinh = $('input[name="radio"]:checked').val();
+
+var array = @json($lst_km);
+
+if(makhuyenmai == ''){
+	var gia = {{$tour->gia}} * sokhach;
+
+	if((gia*0.7) > 50000000){
+		$("#btn_atm_momo").attr("type", "button");
+		$("#noti_momo_atm").text('Không thể thanh toán bằng momo');
+		return;
+	}
+}
+
+for(i=0;i<array.length;i++){
+	if(array[i].makhuyenmai==makhuyenmai && array[i].hansudung>0 && array[i].giatoithieu <= {{$tour->gia}}){
+
+		var gia = {{$tour->gia}} * sokhach - array[i].mucgiam;
+
+		if((gia*0.7) > 50000000){
+			$("#btn_atm_momo").attr("type", "button");
+			$("#noti_momo_atm").text('Không thể thanh toán bằng momo');
+			return;
+		}
+	}
+}
+
+if(sokhach == '' || ten == '' || email == '' || sdt == '' || sdt.length != 10 || (checkEmail(email) == false)){
+	$("#btn_atm_momo").attr("type", "button");
+	if(sokhach == ''){
+		$("#noti_sokhach").text('Vui lòng nhập số lượng khách');
+	}
+	if(ten == ''){
+		$("#noti_ten").text('Vui lòng nhập tên của bạn');
+	}
+	if(checkEmail(email) == false){
+		$("#noti_email").text('Email không hợp lệ');
+	}
+	if(email == ''){
+		$("#noti_email").text('Vui lòng nhập email của bạn');
+	}
+	if(sdt.length != 10){
+		$("#noti_sdt").text('Số điện thoại không hợp lệ');
+	}
+	if(sdt == ''){
+		$("#noti_sdt").text('Vui lòng nhập số điện thoại của bạn');
+	}
+	return;
+}
+
+$("#btn_atm_momo").attr("type", "submit");
+
+$('<input>').attr({
+	type: 'hidden',
+	name: 'makhuyenmai',
+	value: makhuyenmai,
+}).appendTo('#atm_momo');
+
+$('<input>').attr({
+	type: 'hidden',
+	name: 'tour_id',
+	value: {{$tour->id}},
+}).appendTo('#atm_momo');
+
+$('<input>').attr({
+	type: 'hidden',
+	name: 'ten',
+	value: ten,
+}).appendTo('#atm_momo');
+
+$('<input>').attr({
+	type: 'hidden',
+	name: 'email',
+	value: email,
+}).appendTo('#atm_momo');
+
+$('<input>').attr({
+	type: 'hidden',
+	name: 'sdt',
+	value: sdt,
+}).appendTo('#atm_momo');
+
+$('<input>').attr({
+	type: 'hidden',
+	name: 'sokhach',
+	value: sokhach,
+}).appendTo('#atm_momo');
+
+$('<input>').attr({
+	type: 'hidden',
+	name: 'gioitinh',
+	value: $gioitinh,
+}).appendTo('#atm_momo');
+
+$("#atm_momo").submit();
+
+});
 
 		$("#btn_vnpay").click(function () {
 

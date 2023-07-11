@@ -67,9 +67,13 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Blog $blog)
+    public function show($id)
     {
-        
+        Blog::where('id', $id)->update([
+            'trangthai'=>1
+        ]);
+
+        return redirect()->route('blogs.index');
     }
 
     /**

@@ -6,7 +6,7 @@
         <div class="payment-success3">
             <h1>Thanh toán thành công</h1>
             <div class="button-container3">
-                <a href="#" class="button3">Quay lại trang chủ</a>
+                <a href="{{url('/')}}" class="button3">Quay lại trang chủ</a>
             </div>
         </div>
     </div>

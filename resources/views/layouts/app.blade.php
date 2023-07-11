@@ -327,6 +327,10 @@
             function checkRestore() {
                 return confirm('Bạn có chắc chắn muốn khôi phục');
             }
+
+            function checkUpdate() {
+                return confirm('Bạn có chắc chắn muốn cập nhật');
+            }
         </script>
     </header>
 </body>
