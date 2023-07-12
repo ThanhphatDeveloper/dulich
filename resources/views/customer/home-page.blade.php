@@ -66,7 +66,7 @@
 						<small></small>
 						<h3>Lĩnh Vực Hoạt Động<br>Trong nước & Ngoài nước</h3>
 						<p>Cung cấp nhiều tour chất lượng hàng đầu Việt Nam</p>
-						<a href="adventure.html" class="btn_1">Xem thêm</a>
+						<a href="{{route('customer_blogs.index')}}" class="btn_1">Xem thêm</a>
 					</div>
 				</div>
 				<!-- /wrapper -->
@@ -84,65 +84,18 @@
 					<p>Những địa điểm được yêu thích năm 2023.</p>
 				</div>
 				<div class="row">
-					<div class="col-lg-6">
-						<a class="box_news" href="#0">
-							<figure><img src="img/news_home_1.jpg" alt="">
-								<figcaption><strong>28</strong>Dec</figcaption>
-							</figure>
-							<ul>
-								<li>Đà Lạt</li>
-								<li>20/06/2023</li>
-							</ul>
-							<h4>Đại hội âm nhạc chưa từng có</h4>
-							<p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
-						</a>
-					</div>
-					<!-- /box_news -->
-					<div class="col-lg-6">
-						<a class="box_news" href="#0">
-							<figure><img src="img/news_home_2.jpg" alt="">
-								<figcaption><strong>28</strong>Dec</figcaption>
-							</figure>
-							<ul>
-								<li>Jhon Doe</li>
-								<li>20.11.2017</li>
-							</ul>
-							<h4>Duo eius postea suscipit ad</h4>
-							<p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
-						</a>
-					</div>
-					<!-- /box_news -->
-					<div class="col-lg-6">
-						<a class="box_news" href="#0">
-							<figure><img src="img/news_home_3.jpg" alt="">
-								<figcaption><strong>28</strong>Dec</figcaption>
-							</figure>
-							<ul>
-								<li>Luca Robinson</li>
-								<li>20.11.2017</li>
-							</ul>
-							<h4>Elitr mandamus cu has</h4>
-							<p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
-						</a>
-					</div>
-					<!-- /box_news -->
-					<div class="col-lg-6">
-						<a class="box_news" href="#0">
-							<figure><img src="img/news_home_4.jpg" alt="">
-								<figcaption><strong>28</strong>Dec</figcaption>
-							</figure>
-							<ul>
-								<li>Paula Rodrigez</li>
-								<li>20.11.2017</li>
-							</ul>
-							<h4>Id est adhuc ignota delenit</h4>
-							<p>Cu eum alia elit, usu in eius appareat, deleniti sapientem honestatis eos ex. In ius esse ullum vidisse....</p>
-						</a>
-					</div>
-					<!-- /box_news -->
+					@foreach($lst_blog as $b)
+						<div class="col-lg-6">
+							<a class="box_news" href="#0">
+								<figure><img src="storage{{$b->anhdaidien}}" alt="">
+								</figure>
+								<h4>{{$b->tieude}}</h4>
+							</a>
+						</div>
+					@endforeach
 				</div>
 				<!-- /row -->
-				<p class="btn_home_align"><a href="blog.html" class="btn_1 rounded">Xem thêm</a></p>
+				<p class="btn_home_align"><a href="{{route('customer_blogs.index')}}" class="btn_1 rounded">Xem thêm</a></p>
 			</div>
 			<!-- /container -->
 		</div>
@@ -156,7 +109,7 @@
 						<div class="box_1">
 							<h3>Tầm Nhìn - Sứ Mệnh</h3>
 							<p>Như tên thương hiệu đã khẳng định Trung Phát Travel và khẩu hiệu công ty đã lựa chọn “Du lịch Châu Á, Khám phá Mỹ – Úc – Âu”. Công ty Trung Phát Travel mong muốn phát triển bền vững để Trung Phát Travel đứng vào hàng ngũ 10 công ty du lịch hàng đầu của Việt Nam vào năm 2023. </p>
-							<a href="#0" class="btn_1 rounded">Xem thêm</a>
+							<a href="{{route('customer_blogs.index')}}" class="btn_1 rounded">Xem thêm</a>
 						</div>
 					</div>
 				</div>
