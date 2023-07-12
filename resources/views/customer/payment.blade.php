@@ -67,15 +67,15 @@
 		<div class="col-md-6">
 			<div class="box_faq">
 				<i class="icon_info_alt"></i>
-				<h4>Porro soleat pri ex, at has lorem accusamus?</h4>
-				<p>Ut unum diceret eos, mel cu velit principes, ut quo inani dolorem mediocritatem. Mea in justo posidonium necessitatibus. Augue honestatis vis no, ius quot mazim forensibus in, per sale virtute legimus ne. Mea dicta facilisis eu.</p>
+				<h4>Thông tin cá nhân của thành viên</h4>
+				<p>Công ty chúng tôi được công ty chúng tôi cam kết bảo mật tuyệt đối theo chính sách bảo vệ thông tin cá nhân của  công ty chúng tôi. Việc thu thập và sử dụng thông tin của mỗi thành viên chỉ được thực hiện khi có sự đồng ý của khách hàng đó trừ những trường hợp pháp luật có quy định khác. </p>
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="box_faq">
 				<i class="icon_info_alt"></i>
-				<h4>Ut quo inani dolorem mediocritatem?</h4>
-				<p>Ut unum diceret eos, mel cu velit principes, ut quo inani dolorem mediocritatem. Mea in justo posidonium necessitatibus. Augue honestatis vis no, ius quot mazim forensibus in, per sale virtute legimus ne. Mea dicta facilisis eu.</p>
+				<h4>Không sử dụng, không chuyển giao, cung cấp hay tiết lộ</h4>
+				<p>Bên thứ 3 nào về thông tin cá nhân của thành viên khi không có sự cho phép đồng ý từ thành viên. Trong trường hợp máy chủ lưu trữ thông tin bị hacker tấn công dẫn đến mất mát dữ liệu cá nhân thành viên, công ty chúng tôi sẽ có trách nhiệm thông báo vụ việc cho cơ quan chức năng điều tra xử lý kịp thời và thông báo cho thành viên được biết</p>
 			</div>
 		</div>
 	</div>
@@ -84,15 +84,15 @@
 		<div class="col-md-6">
 			<div class="box_faq">
 				<i class="icon_info_alt"></i>
-				<h4>Per sale virtute legimus ne?</h4>
-				<p>Ut unum diceret eos, mel cu velit principes, ut quo inani dolorem mediocritatem. Mea in justo posidonium necessitatibus. Augue honestatis vis no, ius quot mazim forensibus in, per sale virtute legimus ne. Mea dicta facilisis eu.</p>
+				<h4>Bảo mật tuyệt đối mọi thông tin</h4>
+				<p>Giao dịch trực tuyến của thành viên bao gồm thông tin hóa đơn kế toán chứng từ số hóa trên  công ty chúng tôi. Ban quản lý công ty chúng tôi yêu cầu các cá nhân khi đăng ký/mua hàng phải cung cấp đầy đủ thông tin cá nhân có liên quan như: Họ và tên, địa chỉ liên lạc, email, điện thoại,…., và chịu trách nhiệm về tính pháp lý của những thông tin trên.</p>
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="box_faq">
 				<i class="icon_info_alt"></i>
-				<h4>Mea in justo posidonium necessitatibus?</h4>
-				<p>Ut unum diceret eos, mel cu velit principes, ut quo inani dolorem mediocritatem. Mea in justo posidonium necessitatibus. Augue honestatis vis no, ius quot mazim forensibus in, per sale virtute legimus ne. Mea dicta facilisis eu.</p>
+				<h4>Ban quản lý công ty</h4>
+				<p> Chúng tôi không chịu trách nhiệm cũng như không giải quyết mọi khiếu nại có liên quan đến quyền lợi của thành viên đó nếu xét thấy tất cả thông tin cá nhân của thành viên đó cung cấp khi đăng ký ban đầu là không chính xác.</p>
 			</div>
 		</div>
 	</div>

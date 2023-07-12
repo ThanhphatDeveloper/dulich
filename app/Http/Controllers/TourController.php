@@ -125,6 +125,8 @@ class TourController extends Controller
         $t = Tour::create([
             'tentour'=>$request->tentour,
             'gia'=>$request->gia,
+            'avatar'=>'',
+            'imagelarge'=>'',
             'mota'=>$request->mota,
             'ngaykhoihanh'=>$request->nkh,
             'phuongtien'=>$request->phuongtien,

@@ -107,7 +107,7 @@
 							</div>
 
 							<div class="form-group">
-								<button id="btn_khuyenmai" type="button">
+								<button class="button2" id="btn_khuyenmai" type="button">
 									Tính tiền
 								</button>
 							</div>
@@ -125,21 +125,21 @@
 							<form id="qr_momo" action="{{url('/momo_payment_qr')}}" method="post">
 								@csrf
 								<input type="hidden" name="total_momo" value="{{$tour->gia}}"><br>
-								<button id="btn_qr_momo" name="payUrl" class="glow-on-hover" type="submit">Đặt cọc bằng QR MOMO</button>
+								<button id="btn_qr_momo" name="payUrl" class="button6" type="submit">Chuyển khoản QR MOMO</button>
 								<p id="noti_momo" class="noti"></p>
 							</form>
 
 							<form id="atm_momo" action="{{url('/momo_payment')}}" method="post">
 								@csrf
 								<input type="hidden" name="total_momo" value="{{$tour->gia}}"><br>
-								<button id="btn_atm_momo" name="payUrl" class="glow-on-hover" type="submit">Đặt cọc bằng ATM MOMO</button>
+								<button id="btn_atm_momo" name="payUrl" class="button6" type="submit">Chuyển khoản MOMO</button>
 								<p id="noti_momo_atm" class="noti"></p>
 							</form>
 
 							<form id="form_vnpay" action="{{url('/vnpay_payment')}}" method="post">
 								@csrf
 								<input type="hidden" name="total_vnpay" value="{{$tour->gia}}"><br>
-								<button id="btn_vnpay" name="redirect" class="glow-on-hover" type="submit">Đặt cọc bằng VNPAY</button>
+								<button id="btn_vnpay" name="redirect" class="button6" type="submit">Chuyển khoản VNPAY</button>
 								<p id="noti_vnpay" class="noti"></p>
 							</form>
 
@@ -171,7 +171,77 @@
   flex-wrap: wrap;
   flex-direction: row;
   margin: 0 20px;
+
+  /* css button thanh toán */
+  
 }
+
+
+.button::before {
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(135deg,#7b4397,#dc2430 );
+  transform: translate(0%,90%);
+  z-index: 99;
+  position: relative;
+  transform-origin: bottom;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+.button2{
+  position: relative;
+  background-color: transparent;
+  color: #e8e8e8;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 10px;
+  width: 140px;
+  height: 35px;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(51, 51, 51, 0.2);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+.button2::after {
+  content: "Thanh toán";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform-origin: top;
+  transform: translate(0%,-100%);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.button2:hover::before {
+  transform: translate(0%,0%);
+}
+
+.button2:hover::after {
+  transform: translate(0%,-200%);
+}
+
+.button2:focus {
+  outline: none;
+}
+
+.button2:active {
+  scale: 0.95;
+}
+
+
+
+  /* kết thúc css button thanh toán */
+
 
 .namnu .nu{
 margin: auto 40px;
@@ -227,6 +297,48 @@ margin: auto 40px;
   transition: 0.25s ease;
   box-shadow: inset 0 0 0 0.125em #00005c;
 }
+
+/* thanh toán momo */
+.button6 {
+  padding: 1em 2em;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  /* letter-spacing: 5px; */
+  text-transform: uppercase;
+  color: #2c9caf;
+  transition: all 1000ms;
+  font-size: 12px;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid #2c9caf;
+}
+
+button6:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  outline: 2px solid #70bdca;
+  box-shadow: 4px 5px 17px -4px #268391;
+}
+
+button66::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #2c9caf;
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1000ms;
+}
+
+button6:hover::before {
+  width: 250%;
+}
+
+/* thanh toán momo kết thúc */
 
 	</style>
 
