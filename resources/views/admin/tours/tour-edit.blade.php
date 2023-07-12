@@ -134,7 +134,7 @@
                         </tr>
                         
                         <tr>
-                            <td><button id="btn-submit" type="button" class="btn btn-primary">Cập nhật</button></td>
+                            <td><button onclick="return checkUpdate()" id="btn-submit" type="submit" class="btn btn-primary">Cập nhật</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -165,25 +165,25 @@
         }
     </style>
 
+    <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
+
     <script>
         CKEDITOR.replace('editor');
-        
-        document.getElementById('ful_img').onchange = function (e) {
-            document.getElementById('img_upload').src = URL.createObjectURL(e.target.files[0]);
-        };
 
-        $(document).ready(function () {
+        // $(document).ready(function () {
         
-        $("#btn-submit").click(function () {
-            var ngay = $("#ngay").val();
-            var dem = $("#dem").val();
-            if(ngay-dem==1&&ngay!=0&&dem!=0&&ngay<0&&dem<0 || ngay-dem==-1&&ngay!=0&&dem!=0&&ngay<0&&dem<0){
-                $("#btn-submit").attr("type", "submit");
-            }
-            if(ngay-dem!=1 || ngay-dem!=-1 || ngay == null || dem == null){
-                $("#noti_locate").text("Ngày đêm không hợp lệ");
-            }
-            });
-        });
+        // $("#btn-submit").click(function () {
+        //     var ngay = $("#ngay").val();
+        //     var dem = $("#dem").val();
+        //     //console.log(ngay+' '+dem);
+        //     if(ngay-dem==1&&ngay!=0&&dem!=0&&ngay<0&&dem<0 || ngay-dem==-1&&ngay!=0&&dem!=0&&ngay<0&&dem<0){
+        //         $("#btn-submit").attr("type", "submit");
+        //         $("#btn-submit").submit();
+        //     }
+        //     if(ngay-dem!=1 || ngay-dem!=-1 || ngay == null || dem == null){
+        //         $("#noti_locate").text("Ngày đêm không hợp lệ");
+        //     }
+        //     });
+        // });
     </script>
 @endsection

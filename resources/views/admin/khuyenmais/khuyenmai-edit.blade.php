@@ -43,7 +43,7 @@
                             <td>Mức giảm: </td>
                             <td>
                                 <div class="input input-group-sm mb-3">
-                                    <input id="number" type="number" name="mucgiam" value="{{old('mota', $k->mucgiam)}}" class="form-control" aria-describedby="basic-addon2">
+                                    <input id="number" type="number" name="mucgiam" value="{{old('mota', $k->mucgiam)}}" class="form-control number" aria-describedby="basic-addon2">
                                 </div>
                             </td>
                             <td><p class="text-danger">@if($errors->has('mucgiam')) {{$errors->first('mucgiam')}} @endif</p></td>
@@ -53,7 +53,7 @@
                             <td>Giá tối thiểu: </td>
                             <td>
                                 <div class="input input-group-sm mb-3">
-                                    <input id="number" type="number" name="giatoithieu" value="{{old('giatoithieu', $k->giatoithieu)}}" class="form-control" aria-describedby="basic-addon2">
+                                    <input id="number" type="number" name="giatoithieu" value="{{old('giatoithieu', $k->giatoithieu)}}" class="form-control number" aria-describedby="basic-addon2">
                                 </div>
                             </td>
                             <td><p class="text-danger">@if($errors->has('giatoithieu')) {{$errors->first('giatoithieu')}} @endif</p></td>
@@ -63,7 +63,7 @@
                             <td>Số lần sử dụng: </td>
                             <td>
                                 <div class="input input-group-sm mb-3">
-                                    <input id="number" type="number" name="hansudung" value="{{old('hansudung', $k->hansudung)}}" class="form-control" aria-describedby="basic-addon2">
+                                    <input id="number" type="number" name="hansudung" value="{{old('hansudung', $k->hansudung)}}" class="form-control number" aria-describedby="basic-addon2">
                                 </div>
                             </td>
                             <td><p class="text-danger">@if($errors->has('hansudung')) {{$errors->first('hansudung')}} @endif</p></td>
@@ -81,7 +81,7 @@
 
                         <tr>
                             <td>
-                                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                <button onclick="return checkUpdate()" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                                     Cập nhật
                                 </button>
                             </td>

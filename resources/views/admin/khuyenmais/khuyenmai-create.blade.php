@@ -37,7 +37,7 @@
                             <td>Mức giảm: </td>
                             <td>
                                 <div class="input input-group-sm mb-3">
-                                    <input id="number" type="number" name="mucgiam" value="{{old('mota')}}" class="form-control mucgiam" aria-describedby="basic-addon2">
+                                    <input type="number" name="mucgiam" value="{{old('mota')}}" class="form-control mucgiam number" aria-describedby="basic-addon2">
                                 </div>
                             </td>
                             <td>
@@ -49,7 +49,7 @@
                             <td>Giá tối thiểu: </td>
                             <td>
                                 <div class="input input-group-sm mb-3">
-                                    <input id="number" type="number" name="giatoithieu" value="{{old('giatoithieu')}}" class="form-control giatoithieu" aria-describedby="basic-addon2">
+                                    <input type="number" name="giatoithieu" value="{{old('giatoithieu')}}" class="form-control giatoithieu number" aria-describedby="basic-addon2">
                                 </div>
                             </td>
                             <td><p class="text-danger">@if($errors->has('giatoithieu')) {{$errors->first('giatoithieu')}} @endif</p></td>
@@ -59,7 +59,7 @@
                             <td>Số lần sử dụng: </td>
                             <td>
                                 <div class="input input-group-sm mb-3">
-                                    <input id="number" type="number" name="hansudung" value="{{old('hansudung')}}" class="form-control" aria-describedby="basic-addon2">
+                                    <input type="number" name="hansudung" value="{{old('hansudung')}}" class="form-control number" aria-describedby="basic-addon2">
                                 </div>
                             </td>
                             <td><p class="text-danger">@if($errors->has('hansudung')) {{$errors->first('hansudung')}} @endif</p></td>

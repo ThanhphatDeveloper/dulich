@@ -84,7 +84,7 @@
                         </tr>
 
                         <tr>
-                            <td><button id="btn-submit" type="submit" class="btn btn-primary">Cập nhật</button></td>
+                            <td><button onclick="return checkUpdate()" id="btn-submit" type="submit" class="btn btn-primary">Cập nhật</button></td>
                         </tr>
                     </tbody>
                 </table>

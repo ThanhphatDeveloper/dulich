@@ -57,7 +57,6 @@
 		</a>
 		<nav id="menu" class="main-menu">
 			<ul>
-
 				<li><span><a href="{{url('/')}}">Trang chủ</a></span></li>
 				<li><span><a href="{{route('customer_tours.index')}}">Tour</a></span></li>
 				<li><span><a href="{{route('customer_blogs.index')}}">Blog</a></span></li>

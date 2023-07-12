@@ -53,7 +53,8 @@
                             <td>Số điện thoại: </td>
                             <td>
                                 <div class="input input-group-sm mb-3">
-                                    <input name="sdt" value="{{old('sdt')}}" class="form-control" aria-describedby="basic-addon2">
+                                    <input name="sdt" value="{{old('sdt')}}" class="form-control number" aria-describedby="basic-addon2"
+                                    maxlength="10">
                                 </div>
                             </td>
                             <td> <p class="text-danger">@if($errors->has('sdt')) {{$errors->first('sdt')}} @endif</p></td>
