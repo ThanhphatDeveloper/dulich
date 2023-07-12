@@ -36,7 +36,7 @@ class TourController extends Controller
         // $a=Tour::find(1);
         // dd($a->loai_tour->loaitour);
 
-        $lst=Tour::search()->orderBy('updated_at','DESC')->paginate(10);
+        $lst=Tour::search()->where('id','!=', 1)->orderBy('updated_at','DESC')->paginate(10);
         $lst_diadiem=DiaDiem::all();
 
         

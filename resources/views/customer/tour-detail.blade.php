@@ -37,10 +37,10 @@
 							<h3>Ảnh lên quan</h3>
 							<div class="pictures_grid magnific-gallery clearfix">
 								@foreach($lst_img as $i)
-									@if($i->tour_id == 10)
+									@if($i->tour_id == $tour->id)
 							    		<figure>
-											<a href="../storage/{{$i->image}}" title="" data-effect="mfp-zoom-in">
-												<img src="../storage/{{$i->image}}" alt="">
+											<a href="{{url('/')}}/storage/{{$i->image}}" title="" data-effect="mfp-zoom-in">
+												<img src="{{url('/')}}/storage/{{$i->image}}" alt="">
 											</a>
 										</figure>
 							    	@endif
@@ -65,7 +65,7 @@
 					<aside class="col-lg-4" id="sidebar">
 						<div class="box_detail booking">
 							<div class="price">
-								<span id="gia">{{number_format($tour->gia, 0, '', ',')}} VNĐ <small>người</small></span>
+								<span id="gia">{{number_format($tour->gia, 0, '', ',')}} VNĐ<small>/người</small></span>
 							</div>
 							<div class="form-group input-dates">
 								<input id="customer_ten" class="form-control" type="text" placeholder="Họ và tên">
@@ -209,7 +209,7 @@
   transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
 }
 .button2::after {
-  content: "Thanh toán";
+  content: "Tính tiền";
   display: flex;
   align-items: center;
   justify-content: center;

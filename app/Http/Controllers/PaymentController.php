@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\KhuyenMai;
 use App\Models\Tour;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PaymentController extends Controller
 {
@@ -29,6 +30,7 @@ class PaymentController extends Controller
     
     public function momo_payment(Request $request){
         
+        //dd($request);
         $money = $request->total_momo * $request->sokhach;
         $giagoc = $money;
         $km_id = 1;
@@ -51,50 +53,59 @@ class PaymentController extends Controller
         $tour_id = $request->tour_id;
         $thoigiankhoihanh = $tour->ngaykhoihanh;
 
-        //dd($tour);
-        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+        $dulieu = array([
+            'a'=>$a,
+            'ten'=>$ten,
+            'email'=>$email,
+            'sdt'=>$sdt,
+            'sokhach'=>$sokhach,
+            'gioitinh'=>$gioitinh,
+            'tour_id'=>$tour_id,
+            'km_id'=>$km_id,
+            'money'=>$money,
+            'giagoc'=>$giagoc,
+            'thoigiankhoihanh'=>$thoigiankhoihanh,
+        ]);
+        Session::put('dulieu',$dulieu);
 
+        //dd($dulieu);
+        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
         $partnerCode = 'MOMOBKUN20180529';
         $accessKey = 'klm05TvNBzhg7h7j';
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
-        $orderInfo = "Thanh toán qua QR MoMo";
+        $orderInfo = 'Thanh toán đơn hàng';
         $amount = $money;
-        $orderId = time() ."";
-        $redirectUrl =
-         "http://localhost:8000/thanhtoan/$a/$ten/$email/$sdt/$sokhach/$gioitinh/$tour_id/$km_id/$money/$giagoc/$thoigiankhoihanh";
-        $ipnUrl =
-         "http://localhost:8000/thanhtoan/$a/$ten/$email/$sdt/$sokhach/$gioitinh/$tour_id/$km_id/$money/$giagoc/$thoigiankhoihanh";
+        $orderId = time() . "";
+        $redirectUrl = "http://localhost:8000/thanhtoan";
+        $ipnUrl = "http://localhost:8000/thanhtoan";
         $extraData = "";
-        $resultCode = "";
-
-            $requestId = time() . "";
-            $requestType = "payWithATM";
-            // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
-            //before sign HMAC SHA256 signature
-            $rawHash = "accessKey=" . $accessKey . "&amount=" . $money . "&extraData=" . $extraData . "&ipnUrl=" . 
-            $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . 
-            "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
-            $signature = hash_hmac("sha256", $rawHash, $secretKey);
-            $data = array('partnerCode' => $partnerCode,
-                'partnerName' => "Test",
-                "storeId" => "MomoTestStore",
-                'requestId' => $requestId,
-                'amount' => $money,
-                'orderId' => $orderId,
-                'orderInfo' => $orderInfo,
-                'redirectUrl' => $redirectUrl,
-                'ipnUrl' => $ipnUrl,
-                'lang' => 'vi',
-                'extraData' => $extraData,
-                'resultCode' => $resultCode,
-                'requestType' => $requestType,
-                'signature' => $signature);
-            $result = $this->execPostRequest($endpoint, json_encode($data));
-            
-            $jsonResult = json_decode($result, true);  // decode json
-
-            //Just a example, please check more in there
-            return redirect()->to($jsonResult['payUrl']);
+        $requestId = time() . "";
+        $requestType = "payWithATM";
+        // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
+        //before sign HMAC SHA256 signature
+        //dd($amount);
+        $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
+        $signature = hash_hmac("sha256", $rawHash, $secretKey);
+        $data = array(
+            'partnerCode' => $partnerCode,
+            'partnerName' => "Test",
+            "storeId" => "Test Store",
+            'requestId' => $requestId,
+            'amount' => $amount,
+            'orderId' => $orderId,
+            'orderInfo' => $orderInfo,
+            'redirectUrl' => $redirectUrl,
+            'ipnUrl' => $ipnUrl,
+            'lang' => 'vi',
+            'extraData' => $extraData,
+            'requestType' => $requestType,
+            'signature' => $signature
+        );
+        $result = $this->execPostRequest($endpoint, json_encode($data));
+        $jsonResult = json_decode($result, true); // decode json
+        //Just a example, please check more in there
+        $test = $jsonResult['payUrl'];
+        return redirect()->to($test);
         
     }
 

@@ -25,7 +25,7 @@ class CustomerHomepageController extends Controller
      */
     public function index()
     {
-        $lst = Tour::where('trangthai', 1)->orderBy('updated_at','DESC')->take(6)->get();
+        $lst = Tour::where('trangthai', 1)->where('id','!=', 1)->orderBy('updated_at','DESC')->take(6)->get();
         $lst_blog = Blog::where('trangthai', 1)->orderBy('updated_at','DESC')->take(4)->get();
 
         foreach($lst_blog as $u){

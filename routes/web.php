@@ -26,6 +26,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use App\Models\Tour;
 use App\Models\ImageTour;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,10 +121,21 @@ Route::get('/contact', function () {
 
 Route::resource('/abc', CkeditorController::class);
 
-Route::get('/thanhtoan/{phuongthuc?}/{ten?}/{email?}/{sdt?}/{sokhach?}/{gioitinh?}/{tour_id?}/{km_id?}/{money?}/{giagoc?}/{thoigiankhoihanh?}', 
-function ($phuongthuc, $ten, $email, $sdt, $sokhach, $gioitinh, $tour_id, $km_id, $money, $giagoc, $thoigiankhoihanh) {
+Route::get('/thanhtoan', 
+function () {
 
-    //dd();
+    $phuongthuc = Session::get('dulieu')[0]['a'];
+    $ten = Session::get('dulieu')[0]['ten'];
+    $email = Session::get('dulieu')[0]['email'];
+    $sdt = Session::get('dulieu')[0]['sdt'];
+    $sokhach = Session::get('dulieu')[0]['sokhach'];
+    $gioitinh = Session::get('dulieu')[0]['gioitinh'];
+    $tour_id = Session::get('dulieu')[0]['tour_id'];
+    $km_id = Session::get('dulieu')[0]['km_id'];
+    $money = Session::get('dulieu')[0]['money'];
+    $giagoc = Session::get('dulieu')[0]['giagoc'];
+    $thoigiankhoihanh = Session::get('dulieu')[0]['thoigiankhoihanh'];
+    //dd(Session::get('dulieu'));
 
     if($phuongthuc == 1){
     
