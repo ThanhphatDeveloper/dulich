@@ -87,7 +87,7 @@
 					@foreach($lst_blog as $b)
 						<div class="col-lg-6">
 							<a class="box_news" href="#0">
-								<figure><img src="storage{{$b->anhdaidien}}" alt="">
+								<figure><img src="{{$b->anhdaidien}}" alt="">
 								</figure>
 								<h4>{{$b->tieude}}</h4>
 							</a>

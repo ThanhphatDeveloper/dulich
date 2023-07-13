@@ -23,7 +23,7 @@
                             <div class="row g-0">
                                 <div class="col-lg-7">
                                     <figure>
-                                        <a href="{{route('customer_blogs.show', $b->id)}}"><img src="storage{{$b->anhdaidien}}" alt="">
+                                        <a href="{{route('customer_blogs.show', $b->id)}}"><img src="{{$b->anhdaidien}}" alt="">
                                             <div class="preview"><span>Chi tiết</span></div>
                                         </a>
                                     </figure>
