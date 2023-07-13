@@ -26,7 +26,7 @@
 		<div class="container container-custom margin_80_0">
 			<div class="main_title_2">
 				<span><em></em></span>
-				<h2>Tour Mới Nhất</h2>
+				<h2>Tour được yêu thích nhất</h2>
 			</div>
 			<div id="reccomended" class="owl-carousel owl-theme">
 				@foreach($lst as $t)
@@ -81,7 +81,7 @@
 				<div class="main_title_2">
 					<span><em></em></span>
 					<h3>Tin tức và sự kiện</h3>
-					<p>Những địa điểm được yêu thích năm 2023.</p>
+					<p>Những địa điểm được yêu thích năm 2023</p>
 				</div>
 				<div class="row">
 					@foreach($lst_blog as $b)
