@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\BookTour;
 use App\Models\KhuyenMai;
 use App\Models\Tour;
+use App\Models\LoaiTour;
 use App\Models\ImageTour;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreBookTourRequest;
 use App\Http\Requests\UpdateBookTourRequest;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\URL;
 
 class BookTourController extends Controller
 {
@@ -17,6 +20,9 @@ class BookTourController extends Controller
      */
     public function index()
     {
+        // dd($loaitour);
+        // $lt = LoaiTour::where('loaitour', $loaitour)->first();
+
         $lst = Tour::search()->where('trangthai', 1)->orderBy('updated_at','DESC')->paginate(6);
         
         $lst_img = ImageTour::all();
@@ -43,9 +49,36 @@ class BookTourController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show( $id)
+    public function show($slug)
     {
-        //dd($id);
+        //dd(Tour::where('tentour', Str::title(str_replace('-', ' ', $tentour)))->exists());
+        // $tentour = Str::title(str_replace('-', ' ', $tentour));
+        // $tentour = Str::of($tentour)->trim();
+        // dd(Tour::where('tentour', $tentour)->exists());
+        //dd(Tour::where('tentour', Str::title(str_replace('-', ' ', $tentour)))->get());
+        $t = Tour::where('slug', $slug)->first();
+        //dd($tentour);
+        $id = $t->id;
+
+        $tour = Tour::where('id', $id)->first();
+        $lst_km = KhuyenMai::all();
+        $lst_img = ImageTour::where('tour_id', $id)->orderBy('updated_at','DESC')->take(12)->get();
+
+        //dd($lst_img);
+        
+        return view('customer.tour-detail', ['tour' => $tour, 'lst_img' => $lst_img, 'lst_km' => $lst_km]);
+    }
+
+    public function show_tour($id)
+    {
+        dd($id);
+        // $tentour = Str::title(str_replace('-', ' ', $tentour));
+        // $tentour = Str::of($tentour)->trim();
+        // dd(Tour::where('tentour', $tentour)->exists());
+        //dd(Tour::where('tentour', Str::title(str_replace('-', ' ', $tentour)))->get());
+        // $t = Tour::where('id', $id)->first();
+        // dd($t);
+        // $id = $t->id;
 
         $tour = Tour::where('id', $id)->first();
         $lst_km = KhuyenMai::all();

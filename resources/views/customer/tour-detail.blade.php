@@ -132,7 +132,7 @@
 							<form id="atm_momo" action="{{url('/momo_payment')}}" method="post">
 								@csrf
 								<input type="hidden" name="total_momo" value="{{$tour->gia}}"><br>
-								<button id="btn_atm_momo" name="payUrl" class="button6" type="submit">Chuyển khoản MOMO</button>
+								<button id="btn_atm_momo" name="payUrl" class="button6" type="submit">Chuyển khoản ATM MOMO</button>
 								<p id="noti_momo_atm" class="noti"></p>
 							</form>
 

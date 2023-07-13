@@ -23,7 +23,7 @@
                             <td>Tên tour: </td>
                             <td>
                                 <div class="input input-group-sm mb-3">
-                                    <input name="tentour" value="{{old('tentour')}}" class="form-control" aria-describedby="basic-addon2">
+                                    <input id="kytudacbiet" name="tentour" value="{{old('tentour')}}" class="form-control" aria-describedby="basic-addon2">
                                     
                                 </div>
                             </td>
@@ -33,7 +33,7 @@
                         <tr>
                             <td>Loại tour: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="loaitour">
+                                <select class="custom-select" name="loaitour">
                                     @foreach($lst_loai_tour as $cat)
                                         <option value="{{$cat->id}}"> @if ($cat->id==old('loaitour'))
                                         @endif {{$cat->loaitour}}</option>
@@ -44,7 +44,7 @@
                         <tr>
                             <td>Điểm khởi hành: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="dkh">
+                                <select class="custom-select" name="dkh">
                                     @foreach($lst_dd as $d)
                                         <option value="{{$d->id}}"> @if ($d->id==old('diadiem'))
                                             selected @endif {{$d->diadiem}}</option>
@@ -55,7 +55,7 @@
                         <tr>
                             <td>Điểm kết thúc: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="dkt">
+                                <select class="custom-select" name="dkt">
                                     @foreach($lst_dd as $d)
                                         <option value="{{$d->id}}"> @if ($d->id==old('diadiem'))
                                         @endif {{$d->diadiem}}</option>
@@ -66,7 +66,7 @@
                         <tr>
                             <td>Nhà cung cấp: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="ncc">
+                                <select class="custom-select" name="ncc">
                                     @foreach($lst_ncc as $n)
                                         <option value="{{$n->id}}"> @if ($n->id==old('ncc'))
                                         @endif {{$n->nhacungcap}}</option>
@@ -127,7 +127,7 @@
                         <tr>
                             <td>Phương tiện: </td>
                             <td>
-                                <select class="custom-select custom-select-sm" name="phuongtien">
+                                <select class="custom-select" name="phuongtien">
                                     <option value='Xe khách'>Xe khách</option>
                                     <option value='Máy bay'>Máy bay</option>
                                 </select>
@@ -168,6 +168,15 @@
     <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
 
     <script type="text/javascript">
+        $('#kytudacbiet').on('keypress', function (event) {
+            var regex = new RegExp("^[a-zA-Z0-9]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+            event.preventDefault();
+            return false;
+            }
+        });
+        
         CKEDITOR.replace('editor');
 
         $(document).ready(function () {

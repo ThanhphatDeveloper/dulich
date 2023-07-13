@@ -24,7 +24,7 @@
                             <td>Tên tour: </td>
                             <td>
                                 <div class="input input-group-sm mb-3">
-                                    <input name="tentour" value="{{old('tentour', $t->tentour)}}" class="form-control" aria-describedby="basic-addon2">
+                                    <input id="kytudacbiet" name="tentour" value="{{old('tentour', $t->tentour)}}" class="form-control" aria-describedby="basic-addon2">
                                 </div>
                             </td>
                             <td>@if($errors->has('tentour')) {{$errors->first('tentour')}} @endif</td>
@@ -169,6 +169,15 @@
 
     <script>
         CKEDITOR.replace('editor');
+
+        $('#kytudacbiet').on('keypress', function (event) {
+            var regex = new RegExp("^[a-zA-Z0-9]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+            event.preventDefault();
+            return false;
+            }
+        });
 
         // $(document).ready(function () {
         

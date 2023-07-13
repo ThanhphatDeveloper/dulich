@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('mota');
             $table->datetime('ngaykhoihanh');
             $table->string('phuongtien');
+            $table->string('slug');
             $table->string('avatar');
             $table->string('imagelarge');
             $table->boolean('trangthai');

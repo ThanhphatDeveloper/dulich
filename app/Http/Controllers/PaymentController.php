@@ -31,6 +31,7 @@ class PaymentController extends Controller
     public function momo_payment(Request $request){
         
         //dd($request);
+        if(Session::has('dulieu')) Session::forget('dulieu');
         $money = $request->total_momo * $request->sokhach;
         $giagoc = $money;
         $km_id = 1;
@@ -113,6 +114,7 @@ class PaymentController extends Controller
         //0919100100
         //dd($request);
         //$money = $request->total_momo;
+        if(Session::has('dulieu')) Session::forget('dulieu');
         $money = $request->total_momo * $request->sokhach;
         $giagoc = $money;
         $km_id = 1;
@@ -135,6 +137,21 @@ class PaymentController extends Controller
         $tour_id = $request->tour_id;
         $thoigiankhoihanh = $tour->ngaykhoihanh;
 
+        $dulieu = array([
+            'a'=>$a,
+            'ten'=>$ten,
+            'email'=>$email,
+            'sdt'=>$sdt,
+            'sokhach'=>$sokhach,
+            'gioitinh'=>$gioitinh,
+            'tour_id'=>$tour_id,
+            'km_id'=>$km_id,
+            'money'=>$money,
+            'giagoc'=>$giagoc,
+            'thoigiankhoihanh'=>$thoigiankhoihanh,
+        ]);
+        Session::put('dulieu',$dulieu);
+
         //dd($tour);
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
@@ -145,9 +162,9 @@ class PaymentController extends Controller
         $amount = $money;
         $orderId = time() ."";
         $redirectUrl =
-         "http://localhost:8000/thanhtoan/$a/$ten/$email/$sdt/$sokhach/$gioitinh/$tour_id/$km_id/$money/$giagoc/$thoigiankhoihanh";
+         "http://localhost:8000/thanhtoan";
         $ipnUrl =
-         "http://localhost:8000/thanhtoan/$a/$ten/$email/$sdt/$sokhach/$gioitinh/$tour_id/$km_id/$money/$giagoc/$thoigiankhoihanh";
+         "http://localhost:8000/thanhtoan";
         $extraData = "";
         $resultCode = "";
 
@@ -183,9 +200,8 @@ class PaymentController extends Controller
 
     public function vnpay_payment(Request $request){
         //dd($request);
-
+        if(Session::has('dulieu')) Session::forget('dulieu');
         $money = $request->total_vnpay * $request->sokhach;
-        //dd($money);
         $giagoc = $money;
         $km_id = 1;
 
@@ -198,8 +214,7 @@ class PaymentController extends Controller
         $tour = Tour::where('id', $request->tour_id)->first();
 
         $money = $money * 0.7;
-
-
+        $a = 0;
         $ten = $request->ten;
         $email = $request->email;
         $sdt = $request->sdt;
@@ -208,7 +223,24 @@ class PaymentController extends Controller
         $tour_id = $request->tour_id;
         $thoigiankhoihanh = $tour->ngaykhoihanh;
 
-        $a = 0;
+        //dd($money);
+
+        $dulieu_vnpay = array([
+            'a'=>0,
+            'ten'=>$ten,
+            'email'=>$email,
+            'sdt'=>$sdt,
+            'sokhach'=>$sokhach,
+            'gioitinh'=>$gioitinh,
+            'tour_id'=>$tour_id,
+            'km_id'=>$km_id,
+            'money'=>$money,
+            'giagoc'=>$giagoc,
+            'thoigiankhoihanh'=>$thoigiankhoihanh,
+        ]);
+        //dd($dulieu_vnpay[0]);
+        Session::put('dulieu',$dulieu_vnpay);
+
         $data = $request->all();
         $code_cart = rand(00,9999);
 
@@ -216,7 +248,7 @@ class PaymentController extends Controller
 
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = 
-        "http://localhost:8000/thanhtoan/$a/$ten/$email/$sdt/$sokhach/$gioitinh/$tour_id/$km_id/$money/$giagoc/$thoigiankhoihanh";
+        "http://localhost:8000/thanhtoan/vnpay";
         $vnp_TmnCode = "FM9XJF5C";
         $vnp_HashSecret = "NRDAOOOFDEKIQUFRBDSUMQOLIKIEAFPW";
 

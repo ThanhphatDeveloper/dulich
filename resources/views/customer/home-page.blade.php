@@ -13,7 +13,7 @@
 					<form method="get" action="{{route('customer_tours.index')}}">
 						<div id="custom-search-input">
 							<div class="input-group">
-								<input class=" search-query" type="text" name="key" value="{{old('key')}}" placeholder="Ví dụ: tên tour, địa điểm,...">
+								<input class=" search-query" type="text" name="key" value="{{old('key')}}" placeholder="Ví dụ: tên tour,...">
 								<input type="submit" class="btn_search" value="Tìm kiếm">
 							</div>
 						</div>

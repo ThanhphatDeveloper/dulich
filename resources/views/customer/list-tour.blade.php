@@ -37,14 +37,14 @@
 					<div class="col-xl-4 col-lg-6 col-md-6">
 						<div class="box_grid">
 							<figure>
-								<a href="{{route('customer_tours.show',$t->id)}}">
+								<a href="{{route('customer_tours.show', $t->slug)}}">
 									<img src="storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533">
 									<div class="read_more"><span>Chi tiết</span>
 									</div>
 								</a>
 							</figure>
 							<div class="wrapper">
-								<h3><a href="{{route('customer_tours.show',$t->id)}}">{{$t->tentour}}</a></h3>
+								<h3><a href="{{route('customer_tours.show', $t->slug)}}">{{$t->tentour}}</a></h3>
 								<span class="price">Chỉ từ <strong>{{number_format($t->gia, 0, '', ',')}} VNĐ</strong> /người</span>
 							</div>
 						</div>

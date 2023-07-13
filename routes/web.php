@@ -95,6 +95,8 @@ Route::get('/customer_tour_detail', function () {
     return view('customer.tour-detail');
 });
 
+Route::get('/tour/{tentour}', 'App\Http\Controllers\BookTourController@show_tour')->name('show_tour');
+
 Route::post('/momo_payment_qr', [PaymentController::class, 'momo_payment_qr']);
 Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment']);
 Route::post('/momo_payment', [PaymentController::class, 'momo_payment']);
@@ -135,7 +137,7 @@ function () {
     $money = Session::get('dulieu')[0]['money'];
     $giagoc = Session::get('dulieu')[0]['giagoc'];
     $thoigiankhoihanh = Session::get('dulieu')[0]['thoigiankhoihanh'];
-    //dd(Session::get('dulieu'));
+    //dd($phuongthuc);
 
     if($phuongthuc == 1){
     
@@ -262,5 +264,88 @@ function () {
             return view('customer.thanhtoan-thanhcong');
         }
     }
+
+    
+
+});
+
+Route::get('/thanhtoan/vnpay', 
+function () {
+
+    $ten = Session::get('dulieu')[0]['ten'];
+    $email = Session::get('dulieu')[0]['email'];
+    $sdt = Session::get('dulieu')[0]['sdt'];
+    $sokhach = Session::get('dulieu')[0]['sokhach'];
+    $gioitinh = Session::get('dulieu')[0]['gioitinh'];
+    $tour_id = Session::get('dulieu')[0]['tour_id'];
+    $km_id = Session::get('dulieu')[0]['km_id'];
+    $money = Session::get('dulieu')[0]['money'];
+    $giagoc = Session::get('dulieu')[0]['giagoc'];
+    $thoigiankhoihanh = Session::get('dulieu')[0]['thoigiankhoihanh'];
+    //dd($phuongthuc);
+
+    
+    
+        if($_GET['vnp_ResponseCode'] != 0){
+            return view('customer.thanhtoan-thatbai');
+        }
+        else{
+            $km = KhuyenMai::where('id', $km_id)->first();
+            KhuyenMai::where('id', $km_id)->where('id', '!=' , 1)->update(
+                [
+                    'hansudung'=>$km->hansudung-1
+                ]
+            );
+            $id_kh = 0;
+            if(KhachHang::where('sdt', $sdt)->exists()){
+                KhachHang::where('sdt', $sdt)->update(
+                    [
+                        'hoten'=>$ten,
+                        'email'=>$email,
+                        'gioitinh'=>$gioitinh,
+                    ]
+                );
+                $kh = KhachHang::where('sdt', $sdt)->first();
+                $id_kh = $kh->id;
+            }else{
+                $k = KhachHang::create(
+                    [
+                        'hoten'=>$ten,
+                        'email'=>$email,
+                        'sdt'=>$sdt,
+                        'gioitinh'=>$gioitinh,
+                    ]
+                );
+                $k->save();
+                $id_kh = $k->id;
+            }
+
+            $d = DonHang::create(
+                [
+                    'ten'=>$ten,
+                    'email'=>$email,
+                    'sdt'=>$sdt,
+                    'thoigiankhoihanh'=>$thoigiankhoihanh,
+                    'sokhach'=>$sokhach,
+                    'ngaydat'=>Carbon::now()->toDateTimeString(),
+                    'tongtien'=>$giagoc,
+                    'khuyen_mai_id'=>$km_id,
+                    'tour_id'=>$tour_id,
+                    'tenphuongthuctt'=>'vnpay',
+                    'tienthanhtoan'=>$money,
+                    'mathanhtoan'=>$_GET['vnp_BankTranNo'],
+                    'thoigianthanhtoan'=>Carbon::now()->toDateTimeString(),
+                    'khach_hang_id'=>$id_kh,
+                    'trangthai'=>0,
+                ]
+            );
+            
+            $d->save();
+            
+            return view('customer.thanhtoan-thanhcong');
+        
+    }
+
+    
 
 });
