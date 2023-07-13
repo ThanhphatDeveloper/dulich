@@ -216,7 +216,7 @@ class TourController extends Controller
      */
     public function update(UpdateTourRequest $request, Tour $tour)
     {
-
+        
         if( $request->tentour != $tour->tentour){
             $request->validate(
                 [
@@ -235,7 +235,7 @@ class TourController extends Controller
 
         //dd($thoigian);
 
-        $t = Tour::where('id', $tour->id)->update([
+        Tour::where('id', $tour->id)->update([
             'tentour'=>$request->tentour,
             'gia'=>$request->gia,
             'mota'=>$request->mota,
@@ -249,6 +249,8 @@ class TourController extends Controller
             'slug'=>Str::of($request->tentour)->slug('-'),
             'trangthai'=>1,
         ]);
+
+
 
         // $image = ImageTour::where('id', $tour->thoi_gian_id)->update([
         //     'image'=>'',

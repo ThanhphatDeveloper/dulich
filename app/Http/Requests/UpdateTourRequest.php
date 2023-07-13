@@ -31,7 +31,6 @@ class UpdateTourRequest extends FormRequest
             'gia'=>['required'],
             'mota'=>['required'],
             'nkh'=>['required', 'after:tomorrow'],
-            'image'=>['required', 'mimes:jpg,png,bmp,gif'],
         ];
     }
 
@@ -51,8 +50,6 @@ class UpdateTourRequest extends FormRequest
             'mota.required' => 'Mô tả tour không được bỏ trống',
             'nkh.required' => 'Ngày khởi hành tour không được bỏ trống',
             'nkh.after' => 'Ngày khởi hành không hợp lệ',
-            'image.required' => 'Ảnh tour không được bỏ trống',
-            'image.mimes' => 'Định dạng ảnh không hợp lệ (định dạng hợp lệ: jpg, png, bmp, gif)'
         ];
     }
 }
