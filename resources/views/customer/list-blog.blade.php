@@ -23,14 +23,14 @@
                             <div class="row g-0">
                                 <div class="col-lg-7">
                                     <figure>
-                                        <a href="{{route('customer_blogs.show', $b->id)}}"><img src="{{$b->anhdaidien}}" alt="">
+                                        <a href="{{route('customer_blogs.show', $b->slug)}}"><img src="{{$b->anhdaidien}}" alt="">
                                             <div class="preview"><span>Chi tiết</span></div>
                                         </a>
                                     </figure>
                                 </div>
                                 <div class="col-lg-5">
                                     <div class="post_info">
-                                        <h3><a href="{{route('customer_blogs.show', $b->id)}}">{{$b->tieude}}</a></h3>
+                                        <h3><a href="{{route('customer_blogs.show', $b->slug)}}">{{$b->tieude}}</a></h3>
                                     </div>
                                 </div>
                             </div>

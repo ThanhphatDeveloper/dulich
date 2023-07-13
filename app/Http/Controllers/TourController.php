@@ -115,6 +115,12 @@ class TourController extends Controller
     public function store(StoreTourRequest $request)
     {
         //dd($request->file('image'));
+        $now = Carbon::now();
+        //dd($now->year);
+        $slug = Str::of($request->tentour)->slug('-');
+        if(Tour::where('slug', $slug)->exists()){
+            $slug = $slug.'-'.$now->year.'-'.$now->month.'-'.$now->day.'-'.$now->hour.'-'.$now->minute.'-'.$now->second;
+        }
 
         $thoigian = ThoiGianTour::create([
             'songay'=>$request->ngay,
@@ -136,7 +142,7 @@ class TourController extends Controller
             'dia_diem_ket_thuc_id'=>$request->dkt,
             'nha_cung_cap_id'=>$request->ncc,
             'thoi_gian_id'=>$thoigian->id,
-            'slug'=>Str::of($request->tentour)->slug('-'),
+            'slug'=>$slug,
             'trangthai'=>1,
         ]);
 
@@ -216,6 +222,12 @@ class TourController extends Controller
      */
     public function update(UpdateTourRequest $request, Tour $tour)
     {
+        $now = Carbon::now();
+        //dd($now->year);
+        $slug = Str::of($request->tentour)->slug('-');
+        if(Tour::where('slug', $slug)->exists()){
+            $slug = $slug.'-'.$now->year.'-'.$now->month.'-'.$now->day.'-'.$now->hour.'-'.$now->minute.'-'.$now->second;
+        }
         
         if( $request->tentour != $tour->tentour){
             $request->validate(
@@ -246,7 +258,7 @@ class TourController extends Controller
             'dia_diem_ket_thuc_id'=>$request->dkt,
             'nha_cung_cap_id'=>$request->ncc,
             'thoi_gian_id'=>$thoigian,
-            'slug'=>Str::of($request->tentour)->slug('-'),
+            'slug'=>$slug,
             'trangthai'=>1,
         ]);
 

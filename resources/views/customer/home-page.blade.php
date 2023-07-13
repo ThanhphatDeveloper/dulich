@@ -34,11 +34,11 @@
 						<div class="box_grid">
 							<figure>
 								
-								<a href="{{route('customer_tours.show', ['customer_tour'=>$t])}}"><img src="storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Chi tiết</span></div></a>
+								<a href="{{route('customer_tours.show', $t->slug)}}"><img src="storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Chi tiết</span></div></a>
 								
 							</figure>
 							<div class="wrapper">
-								<h3><a href="{{route('customer_tours.show', ['customer_tour'=>$t])}}">{{$t->tentour}}</a></h3>
+								<h3><a href="{{route('customer_tours.show', $t->slug)}}">{{$t->tentour}}</a></h3>
 								<span class="price">Chỉ từ <strong>{{number_format($t->gia, 0, '', ',')}} VNĐ </strong> /người</span>
 							</div>
 							
@@ -86,7 +86,7 @@
 				<div class="row">
 					@foreach($lst_blog as $b)
 						<div class="col-lg-6">
-							<a class="box_news" href="#0">
+							<a class="box_news" href="{{route('customer_blogs.show', $b->slug)}}">
 								<figure><img src="{{$b->anhdaidien}}" alt="">
 								</figure>
 								<h4>{{$b->tieude}}</h4>

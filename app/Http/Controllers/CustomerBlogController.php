@@ -31,8 +31,10 @@ class CustomerBlogController extends Controller
         return view('customer.list-blog', compact('lst'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
+        $b = Blog::where('slug', $slug)->first();
+        $id = $b->id;
         $blog = Blog::where('id', $id)->first();
         $lst_tlq = TourLienQuan::where('blog_id', $id)->orderBy('updated_at','DESC')->take(5)->get();
         $lst_tour = Tour::all();

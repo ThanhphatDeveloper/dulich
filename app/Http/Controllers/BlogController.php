@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -50,10 +51,18 @@ class BlogController extends Controller
     public function store(StoreBlogRequest $request)
     {
         //dd($request->image);
+        $now = Carbon::now();
+        //dd($now->year);
+        $slug = Str::of($request->tieude)->slug('-');
+        if(Blog::where('slug', $slug)->exists()){
+            $slug = $slug.'-'.$now->year.'-'.$now->month.'-'.$now->day.'-'.$now->hour.'-'.$now->minute.'-'.$now->second;
+        }
+        //dd($slug);
         $d = Blog::create([
             'tieude'=>$request->tieude,
             'noidung'=>$request->noidung,
-            'anhdaidien'=>'',
+            'slug'=>$slug,
+            'anhdaidien'=>$slug,
             'user_id'=>$request->tacgia,
             'trangthai'=>1
         ]);
@@ -90,6 +99,12 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
+        $now = Carbon::now();
+        //dd($now->year);
+        $slug = Str::of($request->tieude)->slug('-');
+        if(Blog::where('slug', $slug)->exists()){
+            $slug = $slug.'-'.$now->year.'-'.$now->month.'-'.$now->day.'-'.$now->hour.'-'.$now->minute.'-'.$now->second;
+        }
         if($request->restore == 1){
             Blog::where('id', $blog->id)->update([
                 'trangthai'=>1
@@ -117,6 +132,7 @@ class BlogController extends Controller
         Blog::where('id', $blog->id)->update([
             'tieude'=>$request->tieude,
             'noidung'=>$request->noidung,
+            'slug'=>$slug,
             'anhdaidien'=>$path,
             'user_id'=>$request->tacgia,
             'trangthai'=>$request->trangthai
