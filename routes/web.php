@@ -126,20 +126,20 @@ Route::get('/mail', function () {
 
 Route::resource('/abc', CkeditorController::class);
 
-Route::get('/thanhtoan', 
-function () {
-
-    $phuongthuc = Session::get('dulieu')[0]['a'];
-    $ten = Session::get('dulieu')[0]['ten'];
-    $m = Session::get('dulieu')[0]['email'];
-    $sdt = Session::get('dulieu')[0]['sdt'];
-    $sokhach = Session::get('dulieu')[0]['sokhach'];
-    $gioitinh = Session::get('dulieu')[0]['gioitinh'];
-    $tour_id = Session::get('dulieu')[0]['tour_id'];
-    $km_id = Session::get('dulieu')[0]['km_id'];
-    $money = Session::get('dulieu')[0]['money'];
-    $giagoc = Session::get('dulieu')[0]['giagoc'];
-    $thoigiankhoihanh = Session::get('dulieu')[0]['thoigiankhoihanh'];
+Route::get('/thanhtoan/{ten?}/{m?}/{sdt?}/{sokhach?}/{gioitinh?}/{tour_id?}/{km_id?}/{money?}/{giagoc?}/{thoigiankhoihanh?}', 
+function ($ten, $m, $sdt, $sokhach, $gioitinh, $tour_id, $km_id, $money, $giagoc, $thoigiankhoihanh) {
+    //dd($ten, $m, $sdt, $sokhach, $gioitinh, $tour_id, $km_id, $money, $giagoc, $thoigiankhoihanh);
+    // $phuongthuc = Session::get('dulieu_momo')[0]['a'];
+    // $ten = Session::get('dulieu_momo')[0]['ten'];
+    // $m = Session::get('dulieu_momo')[0]['email'];
+    // $sdt = Session::get('dulieu_momo')[0]['sdt'];
+    // $sokhach = Session::get('dulieu_momo')[0]['sokhach'];
+    // $gioitinh = Session::get('dulieu_momo')[0]['gioitinh'];
+    // $tour_id = Session::get('dulieu_momo')[0]['tour_id'];
+    // $km_id = Session::get('dulieu_momo')[0]['km_id'];
+    // $money = Session::get('dulieu_momo')[0]['money'];
+    // $giagoc = Session::get('dulieu_momo')[0]['giagoc'];
+    // $thoigiankhoihanh = Session::get('dulieu_momo')[0]['thoigiankhoihanh'];
     //dd($phuongthuc);
     //dd($m);
 
@@ -160,8 +160,6 @@ function () {
     ], function($email) use($m){
         $email->to($m, 'Trung Phat Travel');
     });
-
-    if($phuongthuc == 1){
     
         if($_GET['resultCode'] != 0){
             return view('customer.thanhtoan-thatbai');
@@ -224,23 +222,22 @@ function () {
 
             return view('customer.thanhtoan-thanhcong');
         }
-
-    }
 });
 
-Route::get('/thanhtoan/vnpay', 
-function () {
-
-    $ten = Session::get('dulieu')[0]['ten'];
-    $m = Session::get('dulieu')[0]['email'];
-    $sdt = Session::get('dulieu')[0]['sdt'];
-    $sokhach = Session::get('dulieu')[0]['sokhach'];
-    $gioitinh = Session::get('dulieu')[0]['gioitinh'];
-    $tour_id = Session::get('dulieu')[0]['tour_id'];
-    $km_id = Session::get('dulieu')[0]['km_id'];
-    $money = Session::get('dulieu')[0]['money'];
-    $giagoc = Session::get('dulieu')[0]['giagoc'];
-    $thoigiankhoihanh = Session::get('dulieu')[0]['thoigiankhoihanh'];
+Route::get('/thanhtoan/vnpay/{ten?}/{m?}/{sdt?}/{sokhach?}/{gioitinh?}/{tour_id?}/{km_id?}/{money?}/{giagoc?}/{thoigiankhoihanh?}', 
+function ($ten, $m, $sdt, $sokhach, $gioitinh, $tour_id, $km_id, $money, $giagoc, $thoigiankhoihanh) {
+    // dd(Session::get('dulieu_vnpay'));
+    // $phuongthuc = Session::get('dulieu_vnpay')[0]['a'];
+    // $ten = Session::get('dulieu_vnpay')[0]['ten'];
+    // $m = Session::get('dulieu_vnpay')[0]['email'];
+    // $sdt = Session::get('dulieu_vnpay')[0]['sdt'];
+    // $sokhach = Session::get('dulieu_vnpay')[0]['sokhach'];
+    // $gioitinh = Session::get('dulieu_vnpay')[0]['gioitinh'];
+    // $tour_id = Session::get('dulieu_vnpay')[0]['tour_id'];
+    // $km_id = Session::get('dulieu_vnpay')[0]['km_id'];
+    // $money = Session::get('dulieu_vnpay')[0]['money'];
+    // $giagoc = Session::get('dulieu_vnpay')[0]['giagoc'];
+    // $thoigiankhoihanh = Session::get('dulieu_vnpay')[0]['thoigiankhoihanh'];
     //dd($phuongthuc);
 
     $t = Tour::where('id', $tour_id)->first();
