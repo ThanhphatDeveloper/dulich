@@ -98,6 +98,8 @@ Route::get('/customer_tour_detail', function () {
 
 Route::get('/tour/{tentour}', 'App\Http\Controllers\BookTourController@show_tour')->name('show_tour');
 
+Route::get('/list_tour/{loai}', 'App\Http\Controllers\BookTourController@type')->name('type');
+
 Route::post('/momo_payment_qr', [PaymentController::class, 'momo_payment_qr']);
 Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment']);
 Route::post('/momo_payment', [PaymentController::class, 'momo_payment']);

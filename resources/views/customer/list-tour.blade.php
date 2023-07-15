@@ -38,7 +38,7 @@
 						<div class="box_grid">
 							<figure>
 								<a href="{{route('customer_tours.show', $t->slug)}}">
-									<img src="storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533">
+									<img src="{{url('/')}}/storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533">
 									<div class="read_more"><span>Chi tiết</span>
 									</div>
 								</a>

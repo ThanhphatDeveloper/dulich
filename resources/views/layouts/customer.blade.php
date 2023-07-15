@@ -60,16 +60,20 @@
 				<li><span><a href="{{url('/')}}">Trang chủ</a></span></li>
 				<li>
 					<span><a href="{{route('customer_tours.index')}}">Tour</a></span>
-					<!-- <ul>
+					<ul>
 						<li>
-							<span><a href="{{route('customer_tours.index')}}">Tour Trong nước</a></span>
+							<span><a href="{{route('type','ngoài nước')}}">Tour ngoài nước</a></span>
 						</li>
 						<li>
-							<span><a href="{{route('customer_tours.index')}}">Tours Ngoài nước</a></span>
+							<span><a href="{{route('type','trong nước')}}">Tour trong nước</a></span>
 						</li>
-					</ul> -->
+					</ul>
 				</li>
-				<li><span><a href="{{route('customer_blogs.index')}}">Blog</a></span></li>
+				<li>
+					<span>
+						<a href="{{route('customer_blogs.index')}}">Blog</a>
+					</span>
+				</li>
 				<li><span><a href="{{url('/policy')}}">Quy định thanh toán</a></span></li>
 				<li><span><a href="{{url('/payment')}}">Bảo mật và điều khoản</a></span></li>
 				<li><span><a href="{{url('/contact')}}">Liên hệ</a></span></li>

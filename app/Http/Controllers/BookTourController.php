@@ -20,7 +20,7 @@ class BookTourController extends Controller
      */
     public function index()
     {
-        // dd($loaitour);
+        //dd($key);
         // $lt = LoaiTour::where('loaitour', $loaitour)->first();
 
         $lst = Tour::search()->where('trangthai', 1)->orderBy('updated_at','DESC')->paginate(6);
@@ -33,9 +33,9 @@ class BookTourController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($key)
     {
-        //
+        dd($key);
     }
 
     /**
@@ -92,9 +92,26 @@ class BookTourController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(BookTour $bookTour)
+    public function edit($key)
     {
-        //
+        $l = LoaiTour::where('loaitour', $key)->first();
+        $id = $l->id;
+        $lst = Tour::search()->where('trangthai', 1)->where('loai_tour_id', $id)->orderBy('updated_at','DESC')->paginate(6);
+        
+        $lst_img = ImageTour::all();
+        
+        return view('customer.list-tour', compact('lst'), ['lst_img'=>$lst_img]);
+    }
+
+    public function type($loai)
+    {
+        $l = LoaiTour::where('loaitour', $loai)->first();
+        $id = $l->id;
+        $lst = Tour::search()->where('trangthai', 1)->where('loai_tour_id', $id)->orderBy('updated_at','DESC')->paginate(6);
+        
+        $lst_img = ImageTour::all();
+        
+        return view('customer.list-tour', compact('lst'), ['lst_img'=>$lst_img]);
     }
 
     /**

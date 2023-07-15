@@ -54,9 +54,14 @@ class CustomerHomepageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CustomerHomepage $customerHomepage)
+    public function show($key)
     {
-        //
+        dd($key);
+        $lst = Tour::search()->where('trangthai', 1)->orderBy('updated_at','DESC')->paginate(6);
+        
+        $lst_img = ImageTour::all();
+        
+        return view('customer.list-tour', compact('lst'), ['lst_img'=>$lst_img]);
     }
 
     /**
