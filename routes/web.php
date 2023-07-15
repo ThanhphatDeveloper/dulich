@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Tour;
 use App\Models\ImageTour;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -117,9 +118,9 @@ Route::get('/contact', function () {
     return view('customer.contact');
 });
 
-// Route::get('/ckdata', function () {
-//     return view('ckdata');
-// });
+Route::get('/mail', function () {
+    return view('mail.mail');
+});
 
 Route::resource('/abc', CkeditorController::class);
 
@@ -128,7 +129,7 @@ function () {
 
     $phuongthuc = Session::get('dulieu')[0]['a'];
     $ten = Session::get('dulieu')[0]['ten'];
-    $email = Session::get('dulieu')[0]['email'];
+    $m = Session::get('dulieu')[0]['email'];
     $sdt = Session::get('dulieu')[0]['sdt'];
     $sokhach = Session::get('dulieu')[0]['sokhach'];
     $gioitinh = Session::get('dulieu')[0]['gioitinh'];
@@ -138,6 +139,25 @@ function () {
     $giagoc = Session::get('dulieu')[0]['giagoc'];
     $thoigiankhoihanh = Session::get('dulieu')[0]['thoigiankhoihanh'];
     //dd($phuongthuc);
+    //dd($m);
+
+    $t = Tour::where('id', $tour_id)->first();
+
+    $k = KhuyenMai::where('id', $km_id)->first();
+
+    Mail::send('mail.mail', 
+    [
+        'ten' => $ten,
+        'phuongthuc' => 'MoMo',
+        'sokhach' => $sokhach,
+        'tour' => $t->tentour,
+        'km' => $k->mucgiam,
+        'money' => $money,
+        'giagoc' => $giagoc,
+        'thoigiankhoihanh' => $thoigiankhoihanh,
+    ], function($email) use($m){
+        $email->to($m, 'Trung Phat Travel');
+    });
 
     if($phuongthuc == 1){
     
@@ -156,7 +176,7 @@ function () {
                 KhachHang::where('sdt', $sdt)->update(
                     [
                         'hoten'=>$ten,
-                        'email'=>$email,
+                        'email'=>$m,
                         'gioitinh'=>$gioitinh,
                     ]
                 );
@@ -166,7 +186,7 @@ function () {
                 $k = KhachHang::create(
                     [
                         'hoten'=>$ten,
-                        'email'=>$email,
+                        'email'=>$m,
                         'sdt'=>$sdt,
                         'gioitinh'=>$gioitinh,
                     ]
@@ -178,7 +198,7 @@ function () {
             $d = DonHang::create(
                 [
                     'ten'=>$ten,
-                    'email'=>$email,
+                    'email'=>$m,
                     'sdt'=>$sdt,
                     'thoigiankhoihanh'=>$thoigiankhoihanh,
                     'sokhach'=>$sokhach,
@@ -204,76 +224,13 @@ function () {
         }
 
     }
-    else{
-        if($_GET['vnp_ResponseCode'] != 0){
-            return view('customer.thanhtoan-thatbai');
-        }
-        else{
-            $km = KhuyenMai::where('id', $km_id)->first();
-            KhuyenMai::where('id', $km_id)->where('id', '!=' , 1)->update(
-                [
-                    'hansudung'=>$km->hansudung-1
-                ]
-            );
-            $id_kh = 0;
-            if(KhachHang::where('sdt', $sdt)->exists()){
-                KhachHang::where('sdt', $sdt)->update(
-                    [
-                        'hoten'=>$ten,
-                        'email'=>$email,
-                        'gioitinh'=>$gioitinh,
-                    ]
-                );
-                $kh = KhachHang::where('sdt', $sdt)->first();
-                $id_kh = $kh->id;
-            }else{
-                $k = KhachHang::create(
-                    [
-                        'hoten'=>$ten,
-                        'email'=>$email,
-                        'sdt'=>$sdt,
-                        'gioitinh'=>$gioitinh,
-                    ]
-                );
-                $k->save();
-                $id_kh = $k->id;
-            }
-
-            $d = DonHang::create(
-                [
-                    'ten'=>$ten,
-                    'email'=>$email,
-                    'sdt'=>$sdt,
-                    'thoigiankhoihanh'=>$thoigiankhoihanh,
-                    'sokhach'=>$sokhach,
-                    'ngaydat'=>Carbon::now()->toDateTimeString(),
-                    'tongtien'=>$giagoc,
-                    'khuyen_mai_id'=>$km_id,
-                    'tour_id'=>$tour_id,
-                    'tenphuongthuctt'=>'vnpay',
-                    'tienthanhtoan'=>$money,
-                    'mathanhtoan'=>$_GET['vnp_BankTranNo'],
-                    'thoigianthanhtoan'=>Carbon::now()->toDateTimeString(),
-                    'khach_hang_id'=>$id_kh,
-                    'trangthai'=>0,
-                ]
-            );
-            
-            $d->save();
-            
-            return view('customer.thanhtoan-thanhcong');
-        }
-    }
-
-    
-
 });
 
 Route::get('/thanhtoan/vnpay', 
 function () {
 
     $ten = Session::get('dulieu')[0]['ten'];
-    $email = Session::get('dulieu')[0]['email'];
+    $m = Session::get('dulieu')[0]['email'];
     $sdt = Session::get('dulieu')[0]['sdt'];
     $sokhach = Session::get('dulieu')[0]['sokhach'];
     $gioitinh = Session::get('dulieu')[0]['gioitinh'];
@@ -284,7 +241,23 @@ function () {
     $thoigiankhoihanh = Session::get('dulieu')[0]['thoigiankhoihanh'];
     //dd($phuongthuc);
 
-    
+    $t = Tour::where('id', $tour_id)->first();
+
+    $k = KhuyenMai::where('id', $km_id)->first();
+
+    Mail::send('mail.mail', 
+    [
+        'ten' => $ten,
+        'phuongthuc' => 'VnPay',
+        'sokhach' => $sokhach,
+        'tour' => $t->tentour,
+        'km' => $k->mucgiam,
+        'money' => $money,
+        'giagoc' => $giagoc,
+        'thoigiankhoihanh' => $thoigiankhoihanh,
+    ], function($email) use($m){
+        $email->to($m, 'Trung Phat Travel');
+    });
     
         if($_GET['vnp_ResponseCode'] != 0){
             return view('customer.thanhtoan-thatbai');
@@ -301,7 +274,7 @@ function () {
                 KhachHang::where('sdt', $sdt)->update(
                     [
                         'hoten'=>$ten,
-                        'email'=>$email,
+                        'email'=>$m,
                         'gioitinh'=>$gioitinh,
                     ]
                 );
@@ -311,7 +284,7 @@ function () {
                 $k = KhachHang::create(
                     [
                         'hoten'=>$ten,
-                        'email'=>$email,
+                        'email'=>$m,
                         'sdt'=>$sdt,
                         'gioitinh'=>$gioitinh,
                     ]
@@ -323,7 +296,7 @@ function () {
             $d = DonHang::create(
                 [
                     'ten'=>$ten,
-                    'email'=>$email,
+                    'email'=>$m,
                     'sdt'=>$sdt,
                     'thoigiankhoihanh'=>$thoigiankhoihanh,
                     'sokhach'=>$sokhach,

@@ -56,7 +56,8 @@ class Tour extends Model
     public function scopeSearch($query)
     {
         if($key = request()->key){
-            $query=$query->where('tentour', 'like', '%'.$key.'%');
+            $query=$query->where('tentour', 'like', '%'.$key.'%')
+            ->orWhere('mota', 'like', '%'.$key.'%');
         }
 
         return $query;
