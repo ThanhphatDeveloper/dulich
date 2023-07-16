@@ -117,7 +117,7 @@
 			<div class="container margin_80_55">
 				<div class="main_title_2">
 					<span><em></em></span>
-					<h3>Tour nội địa</h3>
+					<h3>Tour trong nước</h3>
 				</div>
 				<div class="wrapper-grid">
 					<div class="row">
@@ -145,7 +145,7 @@
 					<!-- /row -->
 					</div>
 				<!-- /row -->
-				<p class="btn_home_align"><a href="{{route('customer_blogs.index')}}" class="btn_1 rounded">Xem thêm</a></p>
+				<p class="btn_home_align"><a href="{{route('type','trong nước')}}" class="btn_1 rounded">Xem thêm</a></p>
 			</div>
 			<!-- /container -->
 		</div>

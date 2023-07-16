@@ -102,7 +102,7 @@ class BlogController extends Controller
         $count = Blog::all()->count();
         //dd($now->year);
         $slug = Str::of($request->tieude)->slug('-');
-        if(Blog::where('slug', $slug)->exists()){
+        if(Blog::where('slug', $slug)->exists() && $request->tieude!=$blog->tieude){
             $slug = $slug.'-'.$count+1;
         }
 
