@@ -225,7 +225,7 @@ class TourController extends Controller
         $count = Tour::all()->count();
         //dd($now->year);
         $slug = Str::of($request->tentour)->slug('-');
-        if(Tour::where('slug', $slug)->exists()){
+        if(Tour::where('slug', $slug)->exists() && $request->tentour!=$tour->tentour){
             $slug = $slug.'-'.$count+1;
         }
         
