@@ -51,11 +51,11 @@ class BlogController extends Controller
     public function store(StoreBlogRequest $request)
     {
         //dd($request->image);
-        $now = Carbon::now();
+        $count = Blog::all()->count();
         //dd($now->year);
         $slug = Str::of($request->tieude)->slug('-');
         if(Blog::where('slug', $slug)->exists()){
-            $slug = $slug.'-'.$now->year.'-'.$now->month.'-'.$now->day.'-'.$now->hour.'-'.$now->minute.'-'.$now->second;
+            $slug = $slug.'-'.$count+1;
         }
         //dd($slug);
         $d = Blog::create([
@@ -99,12 +99,13 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        $now = Carbon::now();
+        $count = Blog::all()->count();
         //dd($now->year);
         $slug = Str::of($request->tieude)->slug('-');
         if(Blog::where('slug', $slug)->exists()){
-            $slug = $slug.'-'.$now->year.'-'.$now->month.'-'.$now->day.'-'.$now->hour.'-'.$now->minute.'-'.$now->second;
+            $slug = $slug.'-'.$count+1;
         }
+
         if($request->restore == 1){
             Blog::where('id', $blog->id)->update([
                 'trangthai'=>1

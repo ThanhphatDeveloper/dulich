@@ -115,11 +115,11 @@ class TourController extends Controller
     public function store(StoreTourRequest $request)
     {
         //dd($request->file('image'));
-        $now = Carbon::now();
+        $count = Tour::all()->count();
         //dd($now->year);
         $slug = Str::of($request->tentour)->slug('-');
         if(Tour::where('slug', $slug)->exists()){
-            $slug = $slug.'-'.$now->year.'-'.$now->month.'-'.$now->day.'-'.$now->hour.'-'.$now->minute.'-'.$now->second;
+            $slug = $slug.'-'.$count+1;
         }
 
         $thoigian = ThoiGianTour::create([
@@ -222,11 +222,11 @@ class TourController extends Controller
      */
     public function update(UpdateTourRequest $request, Tour $tour)
     {
-        $now = Carbon::now();
+        $count = Tour::all()->count();
         //dd($now->year);
         $slug = Str::of($request->tentour)->slug('-');
         if(Tour::where('slug', $slug)->exists()){
-            $slug = $slug.'-'.$now->year.'-'.$now->month.'-'.$now->day.'-'.$now->hour.'-'.$now->minute.'-'.$now->second;
+            $slug = $slug.'-'.$count+1;
         }
         
         if( $request->tentour != $tour->tentour){

@@ -26,7 +26,7 @@
 		<div class="container container-custom margin_80_0">
 			<div class="main_title_2">
 				<span><em></em></span>
-				<h2>Tour được yêu thích nhất</h2>
+				<h2>Tour mới cập nhật</h2>
 			</div>
 			<div id="reccomended" class="owl-carousel owl-theme">
 				@foreach($lst as $t)
@@ -81,111 +81,32 @@
 				<div class="main_title_2">
 					<span><em></em></span>
 					<h3>Tour Quốc Tế</h3>
-					<p>Những tour quốc tế được yêu thích năm 2023</p>
 				</div>
 				<div class="wrapper-grid">
 					<div class="row">
-						<div class="col-xl-4 col-lg-6 col-md-6">
-							<div class="box_grid">
-								<figure>
-									<a href="#0" class="wish_bt"></a>
-									<a href="tour-detail.html"><img src="img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-									{{-- <small>Historic</small> --}}
-								</figure>
-								<div class="wrapper">
-									<h3><a href="tour-detail.html">Arc Triomphe</a></h3>
-									<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-									<span class="price">From <strong>$54</strong> /per person</span>
+						@foreach($lst_ngoainuoc as $t)
+							<div class="col-xl-4 col-lg-6 col-md-6">
+								<div class="box_grid">
+									<figure>
+										<a href="{{route('customer_tours.show', $t->slug)}}">
+											<img src="{{url('/')}}/storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533">
+											<div class="read_more"><span>Chi tiết</span>
+											</div>
+										</a>
+									</figure>
+									<div class="wrapper">
+										<h3><a href="{{route('customer_tours.show', $t->slug)}}">{{$t->tentour}}</a></h3>
+										<span class="price">Chỉ từ <strong>{{number_format($t->gia, 0, '', ',')}} VNĐ</strong> /người</span>
+									</div>
 								</div>
-								
 							</div>
-						</div>
-						<!-- /box_grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6">
-							<div class="box_grid">
-								<figure>
-									<a href="#0" class="wish_bt"></a>
-									<a href="tour-detail.html"><img src="img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-									{{-- <small>Churches</small> --}}
-								</figure>
-								<div class="wrapper">
-									<h3><a href="tour-detail.html">Notredam</a></h3>
-									<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-									<span class="price">From <strong>$124</strong> /per person</span>
-								</div>
-								
-							</div>
-						</div>
-						<!-- /box_grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6">
-							<div class="box_grid">
-								<figure>
-									<a href="#0" class="wish_bt"></a>
-									<a href="tour-detail.html"><img src="img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-									{{-- <small>Historic</small> --}}
-								</figure>
-								<div class="wrapper">
-									<h3><a href="tour-detail.html">Versailles</a></h3>
-									<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-									<span class="price">From <strong>$25</strong> /per person</span>
-								</div>
-								
-							</div>
-						</div>
-						<!-- /box_grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6">
-							<div class="box_grid">
-								<figure>
-									<a href="#0" class="wish_bt"></a>
-									<a href="tour-detail.html"><img src="img/tour_4.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-									{{-- <small>Museum</small> --}}
-								</figure>
-								<div class="wrapper">
-									<h3><a href="tour-detail.html">Pompidue Museum</a></h3>
-									<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-									<span class="price">From <strong>$45</strong> /per person</span>
-								</div>
-								
-							</div>
-						</div>
-						<!-- /box_grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6">
-							<div class="box_grid">
-								<figure>
-									<a href="#0" class="wish_bt"></a>
-									<a href="tour-detail.html"><img src="img/tour_5.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-									{{-- <small>Walking</small> --}}
-								</figure>
-								<div class="wrapper">
-									<h3><a href="tour-detail.html">Tour Eiffel</a></h3>
-									<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-									<span class="price">From <strong>$65</strong> /per person</span>
-								</div>
-								
-							</div>
-						</div>
-						<!-- /box_grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6">
-							<div class="box_grid">
-								<figure>
-									<a href="#0" class="wish_bt"></a>
-									<a href="tour-detail.html"><img src="img/tour_6.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-									{{-- <small>Museum</small> --}}
-								</figure>
-								<div class="wrapper">
-									<h3><a href="tour-detail.html">Louvre Museum</a></h3>
-									<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-									<span class="price">From <strong>$95</strong> /per person</span>
-								</div>
-								
-							</div>
-						</div>
-						<!-- /box_grid -->
+						@endforeach
+						
 					</div>
 					<!-- /row -->
 					</div>
 				<!-- /row -->
-				<p class="btn_home_align"><a href="{{route('customer_blogs.index')}}" class="btn_1 rounded">Xem thêm</a></p>
+				<p class="btn_home_align"><a href="{{route('type','ngoài nước')}}" class="btn_1 rounded">Xem thêm</a></p>
 			</div>
 			<!-- /container -->
 		</div>
@@ -197,106 +118,29 @@
 				<div class="main_title_2">
 					<span><em></em></span>
 					<h3>Tour nội địa</h3>
-					<p>Những tour nội địa được yêu thích năm 2023</p>
 				</div>
 				<div class="wrapper-grid">
 					<div class="row">
-						<div class="col-xl-4 col-lg-6 col-md-6">
-							<div class="box_grid">
-								<figure>
-									<a href="#0" class="wish_bt"></a>
-									<a href="tour-detail.html"><img src="img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-									{{-- <small>Historic</small> --}}
-								</figure>
-								<div class="wrapper">
-									<h3><a href="tour-detail.html">Arc Triomphe</a></h3>
-									<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-									<span class="price">From <strong>$54</strong> /per person</span>
+
+						@foreach($lst_trongnuoc as $t)
+							<div class="col-xl-4 col-lg-6 col-md-6">
+								<div class="box_grid">
+									<figure>
+										<a href="{{route('customer_tours.show', $t->slug)}}">
+											<img src="{{url('/')}}/storage/{{$t->avatar}}" class="img-fluid" alt="" width="800" height="533">
+											<div class="read_more"><span>Chi tiết</span>
+											</div>
+										</a>
+									</figure>
+									<div class="wrapper">
+										<h3><a href="{{route('customer_tours.show', $t->slug)}}">{{$t->tentour}}</a></h3>
+										<span class="price">Chỉ từ <strong>{{number_format($t->gia, 0, '', ',')}} VNĐ</strong> /người</span>
+									</div>
 								</div>
-								
 							</div>
-						</div>
-						<!-- /box_grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6">
-							<div class="box_grid">
-								<figure>
-									<a href="#0" class="wish_bt"></a>
-									<a href="tour-detail.html"><img src="img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-									{{-- <small>Churches</small> --}}
-								</figure>
-								<div class="wrapper">
-									<h3><a href="tour-detail.html">Notredam</a></h3>
-									<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-									<span class="price">From <strong>$124</strong> /per person</span>
-								</div>
-								
-							</div>
-						</div>
-						<!-- /box_grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6">
-							<div class="box_grid">
-								<figure>
-									<a href="#0" class="wish_bt"></a>
-									<a href="tour-detail.html"><img src="img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-									{{-- <small>Historic</small> --}}
-								</figure>
-								<div class="wrapper">
-									<h3><a href="tour-detail.html">Versailles</a></h3>
-									<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-									<span class="price">From <strong>$25</strong> /per person</span>
-								</div>
-								
-							</div>
-						</div>
-						<!-- /box_grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6">
-							<div class="box_grid">
-								<figure>
-									<a href="#0" class="wish_bt"></a>
-									<a href="tour-detail.html"><img src="img/tour_4.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-									{{-- <small>Museum</small> --}}
-								</figure>
-								<div class="wrapper">
-									<h3><a href="tour-detail.html">Pompidue Museum</a></h3>
-									<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-									<span class="price">From <strong>$45</strong> /per person</span>
-								</div>
-								
-							</div>
-						</div>
-						<!-- /box_grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6">
-							<div class="box_grid">
-								<figure>
-									<a href="#0" class="wish_bt"></a>
-									<a href="tour-detail.html"><img src="img/tour_5.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-									{{-- <small>Walking</small> --}}
-								</figure>
-								<div class="wrapper">
-									<h3><a href="tour-detail.html">Tour Eiffel</a></h3>
-									<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-									<span class="price">From <strong>$65</strong> /per person</span>
-								</div>
-								
-							</div>
-						</div>
-						<!-- /box_grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6">
-							<div class="box_grid">
-								<figure>
-									<a href="#0" class="wish_bt"></a>
-									<a href="tour-detail.html"><img src="img/tour_6.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-									{{-- <small>Museum</small> --}}
-								</figure>
-								<div class="wrapper">
-									<h3><a href="tour-detail.html">Louvre Museum</a></h3>
-									<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-									<span class="price">From <strong>$95</strong> /per person</span>
-								</div>
-								
-							</div>
-						</div>
-						<!-- /box_grid -->
+						@endforeach
+
+						
 					</div>
 					<!-- /row -->
 					</div>

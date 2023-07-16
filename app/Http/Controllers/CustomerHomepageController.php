@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CustomerHomepage;
 use App\Models\Tour;
+use App\Models\LoaiTour;
 use App\Models\Blog;
 use App\Http\Requests\StoreCustomerHomepageRequest;
 use App\Http\Requests\UpdateCustomerHomepageRequest;
@@ -25,14 +26,26 @@ class CustomerHomepageController extends Controller
      */
     public function index()
     {
-        $lst = Tour::where('trangthai', 1)->where('id','!=', 1)->orderBy('updated_at','DESC')->take(6)->get();
+        $id_ngoainuoc = LoaiTour::where('loaitour', 'ngoài nước')->first();
+        $id_trongnuoc = LoaiTour::where('loaitour', 'trong nước')->first();
+
+        $lst_ngoainuoc = Tour::where('trangthai', 1)->where('loai_tour_id', $id_ngoainuoc->id)->orderBy('updated_at','DESC')->take(6)->get();
+        $lst_trongnuoc = Tour::where('trangthai', 1)->where('loai_tour_id', $id_trongnuoc->id)->orderBy('updated_at','DESC')->take(6)->get();
+
+        $lst = Tour::where('trangthai', 1)->orderBy('updated_at','DESC')->take(6)->get();
         $lst_blog = Blog::where('trangthai', 1)->orderBy('updated_at','DESC')->take(4)->get();
 
         foreach($lst_blog as $u){
             $this->fixImage($u);
         }
         //dd($lst);
-        return view('customer.home-page', ['lst'=>$lst, 'lst_blog'=>$lst_blog]);
+        return view('customer.home-page', 
+        [
+            'lst'=>$lst, 
+            'lst_blog'=>$lst_blog,
+            'lst_ngoainuoc'=>$lst_ngoainuoc, 
+            'lst_trongnuoc'=>$lst_trongnuoc,
+        ]);
     }
 
     /**

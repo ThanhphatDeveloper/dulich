@@ -23,7 +23,7 @@ class BookTourController extends Controller
         //dd($key);
         // $lt = LoaiTour::where('loaitour', $loaitour)->first();
 
-        $lst = Tour::search()->where('trangthai', 1)->orderBy('updated_at','DESC')->paginate(6);
+        $lst = Tour::search()->where('trangthai', 1)->where('id', '!=', 1)->orderBy('updated_at','DESC')->paginate(6);
         
         $lst_img = ImageTour::all();
         
@@ -107,7 +107,7 @@ class BookTourController extends Controller
     {
         $l = LoaiTour::where('loaitour', $loai)->first();
         $id = $l->id;
-        $lst = Tour::search()->where('trangthai', 1)->where('loai_tour_id', $id)->orderBy('updated_at','DESC')->paginate(6);
+        $lst = Tour::search()->where('trangthai', 1)->where('loai_tour_id', $id)->where('id', '!=', 1)->orderBy('updated_at','DESC')->paginate(6);
         
         $lst_img = ImageTour::all();
         
