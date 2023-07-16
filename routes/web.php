@@ -158,6 +158,7 @@ function ($ten, $m, $sdt, $sokhach, $gioitinh, $tour_id, $km_id, $money, $giagoc
         'giagoc' => $giagoc,
         'thoigiankhoihanh' => $thoigiankhoihanh,
     ], function($email) use($m){
+        $email->subject("Thanh toán đơn hàng thành công - Trung Phat Travel");
         $email->to($m, 'Trung Phat Travel');
     });
     
@@ -255,6 +256,7 @@ function ($ten, $m, $sdt, $sokhach, $gioitinh, $tour_id, $km_id, $money, $giagoc
         'giagoc' => $giagoc,
         'thoigiankhoihanh' => $thoigiankhoihanh,
     ], function($email) use($m){
+        $email->subject("Thanh toán đơn hàng thành công - Trung Phat Travel");
         $email->to($m, 'Trung Phat Travel');
     });
     

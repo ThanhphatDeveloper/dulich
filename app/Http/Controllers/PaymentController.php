@@ -31,7 +31,7 @@ class PaymentController extends Controller
     public function momo_payment(Request $request){
         
         //dd($request);
-        if(Session::has('dulieu')) Session::forget('dulieu');
+        //if(Session::has('dulieu')) Session::forget('dulieu');
         $money = $request->total_momo * $request->sokhach;
         $giagoc = $money;
         $km_id = 1;
@@ -75,7 +75,7 @@ class PaymentController extends Controller
         $accessKey = 'klm05TvNBzhg7h7j';
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
         $orderInfo = 'Thanh toán đơn hàng';
-        $amount = $money;
+        $amount = round($money);
         $orderId = time() . "";
         $redirectUrl = 
         "http://localhost:8000/thanhtoan/$ten/$email/$sdt/$sokhach/$gioitinh/$tour_id/$km_id/$money/$giagoc/$thoigiankhoihanh";
@@ -89,6 +89,7 @@ class PaymentController extends Controller
         //dd($amount);
         $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
         $signature = hash_hmac("sha256", $rawHash, $secretKey);
+        
         $data = array(
             'partnerCode' => $partnerCode,
             'partnerName' => "Test",
@@ -104,8 +105,10 @@ class PaymentController extends Controller
             'requestType' => $requestType,
             'signature' => $signature
         );
+        //dd($data);
         $result = $this->execPostRequest($endpoint, json_encode($data));
         $jsonResult = json_decode($result, true); // decode json
+        //dd($jsonResult);
         //Just a example, please check more in there
         $test = $jsonResult['payUrl'];
         return redirect()->to($test);
@@ -116,7 +119,7 @@ class PaymentController extends Controller
         //0919100100
         //dd($request);
         //$money = $request->total_momo;
-        if(Session::has('dulieu')) Session::forget('dulieu');
+        //if(Session::has('dulieu')) Session::forget('dulieu');
         $money = $request->total_momo * $request->sokhach;
         $giagoc = $money;
         $km_id = 1;
@@ -139,29 +142,13 @@ class PaymentController extends Controller
         $tour_id = $request->tour_id;
         $thoigiankhoihanh = $tour->ngaykhoihanh;
 
-        // $dulieu = array([
-        //     'a'=>$a,
-        //     'ten'=>$ten,
-        //     'email'=>$email,
-        //     'sdt'=>$sdt,
-        //     'sokhach'=>$sokhach,
-        //     'gioitinh'=>$gioitinh,
-        //     'tour_id'=>$tour_id,
-        //     'km_id'=>$km_id,
-        //     'money'=>$money,
-        //     'giagoc'=>$giagoc,
-        //     'thoigiankhoihanh'=>$thoigiankhoihanh,
-        // ]);
-        // Session::put('dulieu_momo',$dulieu);
-
-        //dd($tour);
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
         $partnerCode = 'MOMOBKUN20180529';
         $accessKey = 'klm05TvNBzhg7h7j';
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
         $orderInfo = "Thanh toán qua QR MoMo";
-        $amount = $money;
+        $amount = round($money);
         $orderId = time() ."";
         $redirectUrl =
          "http://localhost:8000/thanhtoan/$ten/$email/$sdt/$sokhach/$gioitinh/$tour_id/$km_id/$money/$giagoc/$thoigiankhoihanh";
