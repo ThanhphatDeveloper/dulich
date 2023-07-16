@@ -108,7 +108,7 @@
 
 							<div class="form-group">
 								<button class="button2" id="btn_khuyenmai" type="button">
-									Tính tiền
+									Thành tiền
 								</button>
 							</div>
 
@@ -120,7 +120,6 @@
 								<p id="giadatcoc"></p>
 							</div>
 
-							<a target="_blank" href="{{url('/contact')}}" class="btn_1 full-width purchase">Tư vấn</a>
 
 							<form id="qr_momo" action="{{url('/momo_payment_qr')}}" method="post">
 								@csrf
@@ -142,6 +141,8 @@
 								<button id="btn_vnpay" name="redirect" class="button6" type="submit">Chuyển khoản VNPAY</button>
 								<p id="noti_vnpay" class="noti"></p>
 							</form>
+							<a target="_blank" href="{{url('/contact')}}" class="btn_1 full-width purchase">Tư vấn</a>
+
 
 						</div>
 					</aside>
@@ -161,6 +162,8 @@
 			-o-background-size: cover;
 			background-size: cover;
 		}
+
+		
 
 		.noti{
 			color: red;
@@ -257,6 +260,26 @@ margin: auto 40px;
   overflow: hidden;
   margin-bottom: 0.375em;
 }
+#qr_momo{
+			display: flex;
+			justify-content: center;
+			margin: 16px 0 0 auto;
+			/* align-items: center; */
+		}
+#atm_momo{
+			display: flex;
+			justify-content: center;
+			margin: 16px 0 0 auto;
+
+			/* align-items: center; */
+		}
+#form_vnpay{
+			display: flex;
+			justify-content: center;
+			margin: 16px 0 0 auto;
+
+			/* align-items: center; */
+		}
 
 .container1  label input {
   position: absolute;

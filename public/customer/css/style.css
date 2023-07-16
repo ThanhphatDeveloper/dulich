@@ -664,9 +664,10 @@ a.btn_1:hover,
 a.btn_1.full-width,
 .btn_1.full-width {
   display: block;
-  width: 100%;
+  width: 30%;
   text-align: center;
   margin-bottom: 5px;
+  margin: 16px 0 0 0;
 }
 a.btn_1.full-width.purchase,
 .btn_1.full-width.purchase {
