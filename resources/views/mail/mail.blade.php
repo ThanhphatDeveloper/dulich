@@ -16,7 +16,7 @@
     <o:PixelsPerInch>96</o:PixelsPerInch>
     </o:OfficeDocumentSettings>
 </xml>
-<![endif]--><!--[if !mso]><!-- -->
+<![endif]--><!--[if !mso]>< -->
   <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"><!--<![endif]-->
   <style type="text/css">
@@ -91,7 +91,7 @@ a[x-apple-data-detectors] {
                   <td class="es-m-p0r es-m-p20b" valign="top" align="center" style="padding:0;Margin:0;width:560px">
                    <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:10px;background-color:#ffffff" bgcolor="#ffffff" role="presentation">
                      <tr>
-                      <td align="center" style="padding:30px;Margin:0"><h1 style="Margin:0;line-height:57px;mso-line-height-rule:exactly;font-family:'Krona One', sans-serif;font-size:38px;font-style:normal;font-weight:normal;color:#333333">Trung Phat <span style="color:#30225e">Travel</span></h1></td>
+                      <td align="center" style="padding:30px;Margin:0"><h1 style="Margin:0;line-height:57px;mso-line-height-rule:exactly;font-family:'Krona One', sans-serif;font-size:38px;font-style:normal;font-weight:normal;color:#333333">Cty cổ phần<span style="color:#30225e">Trung Phát Travel</span></h1></td>
                      </tr>
                      <tr>
                       <td align="left" style="padding:0;Margin:0;padding-bottom:30px;padding-left:30px;padding-right:30px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Poppins, sans-serif;line-height:21px;color:#333333;font-size:14px">
@@ -163,14 +163,12 @@ a[x-apple-data-detectors] {
                        </ul>
                        <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Poppins, sans-serif;line-height:21px;color:#333333;font-size:14px">
                             Chúng tôi cảm ơn bạn đã đặt hàng tại trang của chúng tôi, sẽ có nhân viên liên hệ với bạn để xác
-                            nhận đơn hàng trong thời gian ngắn nhất.
+                            nhận đơn hàng trong thời gian ngắn nhất, bạn có liên hệ số <span style="color:#30225e">+84 345774006</span> để được phản hồi sớm nhất trong 24H.
                         </p><br>
 
                         <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Poppins, sans-serif;line-height:21px;color:#333333;font-size:14px">
-                        <strong>Trân trọng</strong>
+                        <strong>Trân trọng</strong><span style="color:#30225e">Cty cổ phần Trung Phát Travel</span>
                     </p>
-
-                        
 
                     </td>
                      </tr>
